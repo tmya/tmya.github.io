@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos - misc</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2018-08-20T00:00:00+09:00</updated><entry><title>First Post</title><link href="/first-post.html" rel="alternate"></link><published>2018-08-20T00:00:00+09:00</published><updated>2018-08-20T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:None,2018-08-20:/first-post.html</id><content type="html">&lt;h1&gt;Test Post&lt;/h1&gt;
+&lt;p&gt;最初のテスト&lt;/p&gt;
+&lt;p&gt;:::python
+print('test')&lt;/p&gt;</content></entry></feed>
