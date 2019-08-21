@@ -4,9 +4,11 @@
 &lt;ul&gt;
 &lt;li&gt;eigo danraku 1&lt;/li&gt;
 &lt;li&gt;eigo danraku 2&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>How to fix display slide show on LibreOffice Impress in high resolution (4k)</title><link href="/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html" rel="alternate"></link><published>2018-08-21T00:00:00+09:00</published><updated>2018-08-21T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:None,2018-08-21:/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html</id><content type="html">&lt;p&gt;仕方がないので ツール &amp;gt; オプション
-LibreOffice &amp;gt; 表示
-* ハードウェアアクセラレーション
-* すべてのレンダリングにOpenGLを使う
-のチェックを外す。&lt;/p&gt;
-</content></entry></feed>
+&lt;/ul&gt;</content></entry><entry><title>How to fix display slide show on LibreOffice Impress in high resolution (4k)</title><link href="/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html" rel="alternate"></link><published>2018-08-21T00:00:00+09:00</published><updated>2018-08-21T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:None,2018-08-21:/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html</id><content type="html">&lt;h1&gt;if Resolution too high(over 2k?), Display is distorted.&lt;/h1&gt;
+&lt;p&gt;Tool &amp;gt; Option&lt;/p&gt;
+&lt;p&gt;LibreOffice &amp;gt; View&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hardware Accelaration&lt;/li&gt;
+&lt;li&gt;use OpenGL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Uncheck above settings.&lt;/p&gt;</content></entry></feed>
