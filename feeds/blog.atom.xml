@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos - Blog</title><link href="/" rel="alternate"></link><link href="/feeds/blog.atom.xml" rel="self"></link><id>/</id><updated>2018-08-21T00:00:00+09:00</updated><entry><title>How to fix display slide show on LibreOffice Impress in high resolution (4k)</title><link href="/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html" rel="alternate"></link><published>2018-08-21T00:00:00+09:00</published><updated>2018-08-21T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:None,2018-08-21:/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html</id><content type="html">&lt;h1&gt;解像度が高いとバグる&lt;/h1&gt;
-&lt;p&gt;仕方がないので ツール &amp;gt; オプション
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos - Blog</title><link href="/" rel="alternate"></link><link href="/feeds/blog.atom.xml" rel="self"></link><id>/</id><updated>2018-08-21T00:00:00+09:00</updated><entry><title>How to fix display slide show on LibreOffice Impress in high resolution (4k)</title><link href="/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html" rel="alternate"></link><published>2018-08-21T00:00:00+09:00</published><updated>2018-08-21T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:None,2018-08-21:/how-to-fix-display-slide-show-on-libreoffice-impress-in-high-resolution-4k.html</id><content type="html">&lt;p&gt;仕方がないので ツール &amp;gt; オプション
 LibreOffice &amp;gt; 表示
 * ハードウェアアクセラレーション
 * すべてのレンダリングにOpenGLを使う
-のチェックを外す。&lt;/p&gt;</content></entry></feed>
+のチェックを外す。&lt;/p&gt;
+</content></entry></feed>
