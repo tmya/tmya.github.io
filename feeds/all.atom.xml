@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2019-10-23T00:00:00+09:00</updated><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
-&lt;h3&gt;Complete install CentOS with server option (w/z GUI).&lt;/h3&gt;
+&lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
 &lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
-Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
-&lt;h3&gt;Complete install CentOS with server option (w/z GUI).&lt;/h3&gt;
+Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
+&lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
 &lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
 Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation, Edit on web console later.&lt;/p&gt;
 &lt;h3&gt;Open url https://YOURSERVER:9090/ when on your console type command below.&lt;/h3&gt;
