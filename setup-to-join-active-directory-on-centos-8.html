@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html">
     <meta name="twitter:title" content="Akkie's Memos ~ Setup to join Active Directory on CentOS 8">
-    <meta name="twitter:description" content="Important notice: This setting is trying. Perhaps to change later. systemctl enable --now cockpit.socket">
+    <meta name="twitter:description" content="Important notice: This setting is trying. Perhaps to change later. Complete install CentOS with server option (w/z GUI). systemctl enable --now cockpit.socket [domain/%YOURDOMAIN%] use_fully_qualified_names = False override_homedir = /home/%u fallback_homedir = /home/%u">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's Memos ~ Setup to join Active Directory on CentOS 8"/>
-    <meta property="og:description" content="Important notice: This setting is trying. Perhaps to change later. systemctl enable --now cockpit.socket"/>
+    <meta property="og:description" content="Important notice: This setting is trying. Perhaps to change later. Complete install CentOS with server option (w/z GUI). systemctl enable --now cockpit.socket [domain/%YOURDOMAIN%] use_fully_qualified_names = False override_homedir = /home/%u fallback_homedir = /home/%u"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -83,7 +83,17 @@
                                                   title="Permalink to Setup to join Active Directory on CentOS 8">Setup to join Active Directory on CentOS 8</a></h2>
             <div class="entry-content blog-post">
                 <h1>Important notice: This setting is trying. Perhaps to change later.</h1>
+<ol>
+<li>Complete install CentOS with server option (w/z GUI).</li>
+</ol>
 <div class="highlight"><pre><span></span>systemctl <span class="nb">enable</span> --now cockpit.socket
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">[</span>domain/%YOURDOMAIN%<span class="o">]</span>
+<span class="nv">use_fully_qualified_names</span> <span class="o">=</span> False
+<span class="nv">override_homedir</span> <span class="o">=</span> /home/%u
+<span class="nv">fallback_homedir</span> <span class="o">=</span> /home/%u
 </pre></div>
             </div>
             <div class="post_list">
