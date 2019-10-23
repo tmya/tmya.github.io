@@ -82,18 +82,18 @@
             <h2 class="post_title post_detail"><a href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="bookmark"
                                                   title="Permalink to Setup to join Active Directory on CentOS 8">Setup to join Active Directory on CentOS 8</a></h2>
             <div class="entry-content blog-post">
-                <h1>Important notice: This setting is trying. Perhaps to change later.</h1>
-<h2>Complete install CentOS with server option (w/z GUI).</h2>
+                <h2>Important notice: This setting is trying. Perhaps to change later.</h2>
+<h3>Complete install CentOS with server option (w/z GUI).</h3>
 <p>Setting DNS server IP address the same as Active Directory Server IP address.<br>
 Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation, Edit on web console later.</p>
-<h2>Open url https://YOURSERVER:9090/ when on your console type command below.</h2>
+<h3>Open url https://YOURSERVER:9090/ when on your console type command below.</h3>
 <div class="highlight"><pre><span></span>systemctl <span class="nb">enable</span> --now cockpit.socket
 </pre></div>
 
 
-<h2>Click "System" -&gt; "Domain" and type Admin's(or Manager account) id/pass, domain.</h2>
+<h3>Click "System" -&gt; "Domain" and type Admin's(or Manager account) id/pass, domain.</h3>
 <p>Important: Do not use IP address for domain field. sssd does not resolve domain by IP address.</p>
-<h2>Edit /etc/sssd/sssd.conf (option. I prefer this settings.)</h2>
+<h3>Edit /etc/sssd/sssd.conf (option. I prefer this settings.)</h3>
 <p>If you want to custom user's home directory and user name. </p>
 <div class="highlight"><pre><span></span><span class="o">[</span>domain/%YOURDOMAIN%<span class="o">]</span>
 <span class="nv">use_fully_qualified_names</span> <span class="o">=</span> False
