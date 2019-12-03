@@ -58,7 +58,7 @@ Proceed with reboot? &lt;span class="o"&gt;(&lt;/span&gt;Yes/No&lt;span class="o
 
 
 &lt;p&gt;Let's pray.  &lt;/p&gt;
-&lt;p&gt;Few time later reconnect to VyOS. Check the Version.&lt;/p&gt;
+&lt;p&gt;Few times later reconnect to VyOS. Check the Version.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show version
 Version:          VyOS &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217
 Built by:         autobuild@vyos.net
