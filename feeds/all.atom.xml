@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2019-11-26T00:00:00+09:00</updated><entry><title>Update VyoS 1.1.8 to 1.2.0</title><link href="https://tmya.github.io/update-vyos-118-to-120.html" rel="alternate"></link><published>2019-11-26T00:00:00+09:00</published><updated>2019-11-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-11-26:/update-vyos-118-to-120.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2019-12-03T00:00:00+09:00</updated><entry><title>Update VyoS 1.1.8 to 1.2.0</title><link href="https://tmya.github.io/update-vyos-118-to-120.html" rel="alternate"></link><published>2019-12-03T00:00:00+09:00</published><updated>2019-12-03T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-12-03:/update-vyos-118-to-120.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
 &lt;p&gt;VyOS seemed to change release policy ago.
 LTS(Long Term Support) Release is provides to subscriber.
 Subscriber includes commercial customer and contributor.
@@ -14,7 +14,7 @@ If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
 &lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
 &lt;h1&gt;Upgrade&lt;/h1&gt;
 &lt;h2&gt;Open your console&lt;/h2&gt;
-&lt;p&gt;Connect ssh or other way to vyOS.
+&lt;p&gt;Connect ssh or other way to vyOS.&lt;br&gt;
 Check to running image.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show system image
 
@@ -29,14 +29,14 @@ The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;
 
 
 &lt;h2&gt;Download and add image&lt;/h2&gt;
-&lt;p&gt;Download latest rolling release build or choose what you like.
+&lt;p&gt;Download latest rolling release build or choose what you like.&lt;br&gt;
 &lt;a href="https://downloads.vyos.io/?dir=rolling/current/amd64"&gt;VyOS Downloads&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;!Notice! If you are reboot soon will boot new image but sometimes occur problem. At your own risk.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Perhaps you answer yes to the questions you are asked. me too. :p
+&lt;p&gt;Perhaps you answer yes to the questions you are asked. me too. :p&lt;br&gt;
 You can see added image when retype "show system image".&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show system image
 
@@ -57,7 +57,17 @@ Proceed with reboot? &lt;span class="o"&gt;(&lt;/span&gt;Yes/No&lt;span class="o
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Let's pray.&lt;/p&gt;</content></entry><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
+&lt;p&gt;Let's pray.  &lt;/p&gt;
+&lt;p&gt;Few time later reconnect to VyOS. Check the Version.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show version
+Version:          VyOS &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217
+Built by:         autobuild@vyos.net
+Built on:         Tue &lt;span class="m"&gt;03&lt;/span&gt; Dec &lt;span class="m"&gt;2019&lt;/span&gt; &lt;span class="m"&gt;02&lt;/span&gt;:17 UTC
+~~
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's done it.&lt;/p&gt;</content></entry><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
 &lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
 &lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
 Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
