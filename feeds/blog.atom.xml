@@ -31,7 +31,8 @@ The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;
 &lt;h2&gt;Download and add image&lt;/h2&gt;
 &lt;p&gt;Download latest rolling release build or choose what you like.&lt;br&gt;
 &lt;a href="https://downloads.vyos.io/?dir=rolling/current/amd64"&gt;VyOS Downloads&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;!Notice! If you are reboot soon will boot new image but sometimes occur problem. At your own risk.&lt;/p&gt;
+&lt;p&gt;!Notice! If you are reboot soon will boot new image but sometimes occur problem.&lt;br&gt;
+At your own risk.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 &lt;/pre&gt;&lt;/div&gt;
 
