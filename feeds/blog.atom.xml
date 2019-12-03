@@ -5,14 +5,59 @@ LTS(Long Term Support) Release is provides to subscriber.
 Subscriber includes commercial customer and contributor.
 If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
 &lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
-&lt;h2&gt;Download and add …&lt;/h2&gt;</summary><content type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;h1&gt;Upgrade&lt;/h1&gt;
+&lt;h2&gt;Open your …&lt;/h2&gt;</summary><content type="html">&lt;h3&gt;Memo&lt;/h3&gt;
 &lt;p&gt;VyOS seemed to change release policy ago.
 LTS(Long Term Support) Release is provides to subscriber.
 Subscriber includes commercial customer and contributor.
 If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
 &lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
-&lt;h2&gt;Download and add image.&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"&gt;rolling-latest&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
+&lt;h1&gt;Upgrade&lt;/h1&gt;
+&lt;h2&gt;Open your console&lt;/h2&gt;
+&lt;p&gt;Connect ssh or other way to vyOS.
+Check to running image.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show system image
+
+The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; installed:
+
+   &lt;span class="m"&gt;1&lt;/span&gt;: VyOS-1.1.8 &lt;span class="o"&gt;(&lt;/span&gt;default boot&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;running image&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;2&lt;/span&gt;: VyOS-1.1.7
+   &lt;span class="m"&gt;3&lt;/span&gt;: VyOS-1.1.6
+   &lt;span class="m"&gt;4&lt;/span&gt;: VyOS-1.1.5
+   &lt;span class="m"&gt;5&lt;/span&gt;: Old-non-image-installation
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Download and add image&lt;/h2&gt;
+&lt;p&gt;Download latest rolling release build or choose what you like.
+&lt;a href="https://downloads.vyos.io/?dir=rolling/current/amd64"&gt;VyOS Downloads&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;!Notice! If you are reboot soon will boot new image but sometimes occur problem. At your own risk.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Perhaps you answer yes to the questions you are asked. me too. :p
+You can see added image when retype "show system image".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show system image
+
+The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; installed:
+
+   &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217- &lt;span class="o"&gt;(&lt;/span&gt;default boot&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;2&lt;/span&gt;: VyOS-1.1.8 &lt;span class="o"&gt;(&lt;/span&gt;running image&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;3&lt;/span&gt;: VyOS-1.1.7
+   &lt;span class="m"&gt;4&lt;/span&gt;: VyOS-1.1.6
+   &lt;span class="m"&gt;5&lt;/span&gt;: VyOS-1.1.5
+   &lt;span class="m"&gt;6&lt;/span&gt;: Old-non-image-installation
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's reboot.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ reboot
+Proceed with reboot? &lt;span class="o"&gt;(&lt;/span&gt;Yes/No&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;No&lt;span class="o"&gt;]&lt;/span&gt; Yes
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's pray.&lt;/p&gt;</content></entry><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
 &lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
 &lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
 Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Important notice: This setting is trying. Perhaps to change later.&lt;/h2&gt;
