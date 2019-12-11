@@ -12,7 +12,7 @@ Subscriber includes commercial customer and contributor.
 If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
 &lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
 &lt;h2&gt;Open your console&lt;/h2&gt;
-&lt;p&gt;Connect ssh or other way to vyOS.&lt;br&gt;
+&lt;p&gt;Connect ssh or other way to VyOS.&lt;br&gt;
 Check to running image.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show system image
 
@@ -58,7 +58,7 @@ Proceed with reboot? &lt;span class="o"&gt;(&lt;/span&gt;Yes/No&lt;span class="o
 
 
 &lt;p&gt;Let's pray.  &lt;/p&gt;
-&lt;p&gt;Few times later reconnect to VyOS. Check the Version.&lt;/p&gt;
+&lt;p&gt;Few minutes later reconnect to VyOS. Check the Version.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ show version
 Version:          VyOS &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217
 Built by:         autobuild@vyos.net
