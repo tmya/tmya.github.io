@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/how-to-install-softether-on-centos-to-enable-certificate-authentication-and-radius-authentication-in-japan.html">
     <meta name="twitter:title" content="Akkie's Memos ~ How to install SoftEther on CentOS to enable Certificate authentication and RADIUS authentication in Japan.">
-    <meta name="twitter:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Procedure Download source(tar.gz archive or other) from SoftEther website and untar file. SoftEther writing...">
+    <meta name="twitter:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code of SoftEther VPN&#34; from &#34;Choose a …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's Memos ~ How to install SoftEther on CentOS to enable Certificate authentication and RADIUS authentication in Japan."/>
-    <meta property="og:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Procedure Download source(tar.gz archive or other) from SoftEther website and untar file. SoftEther writing..."/>
+    <meta property="og:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code of SoftEther VPN&#34; from &#34;Choose a …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -85,9 +85,22 @@
                 <h3>Memo</h3>
 <p>As you know disabled Certificate authentication or RADIUS authentication in Japan due to SoftEther's contractual issue.
 If you need these features, have to add code and compile from source.</p>
-<h2>Procedure</h2>
-<p>Download source(tar.gz archive or other) from SoftEther website and untar file.
-<a href="https://ja.softether.org/5-download">SoftEther</a></p>
+<h2>Download source code from SoftEther website.</h2>
+<p><a href="https://www.softether-download.com/ja.aspx">SoftEther Download page</a></p>
+<p>You should choice "Source Code of SoftEther VPN" from "Choose a component" listbox.
+It can choose tar.gz or zip if you like and download then untar it.</p>
+<div class="highlight"><pre><span></span>$ wget https://jp.softether-download.com/files/softether/v4.34-9745-beta-2020.04.05-tree/Source_Code/softether-src-v4.34-9745-beta.tar.gz
+$ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
+</pre></div>
+
+
+<h2>Edit source code.</h2>
+<p>Edit Server.c file. I like "micro" editor.</p>
+<p><a href="https://micro-editor.github.io/">micro</a></p>
+<div class="highlight"><pre><span></span>$ micro v4.34-9745/src/Cedar/Server.c
+</pre></div>
+
+
 <p>writing...</p>
             </div>
             <div class="post_list">
