@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html">
     <meta name="twitter:title" content="Akkie's Memos ~ How to install SoftEther on CentOS to enable RADIUS authentication in Japan.">
-    <meta name="twitter:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet loggin,,,) in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code …">
+    <meta name="twitter:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's Memos ~ How to install SoftEther on CentOS to enable RADIUS authentication in Japan."/>
-    <meta property="og:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet loggin,,,) in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code …"/>
+    <meta property="og:description" content="Memo As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther&#39;s contractual issue. If you need these features, have to add code and compile from source. Download source code from SoftEther website. SoftEther Download page You should choice &#34;Source Code …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -83,7 +83,7 @@
                                                   title="Permalink to How to install SoftEther on CentOS to enable RADIUS authentication in Japan.">How to install SoftEther on CentOS to enable RADIUS authentication in Japan.</a></h2>
             <div class="entry-content blog-post">
                 <h3>Memo</h3>
-<p>As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet loggin,,,) in Japan due to SoftEther's contractual issue.
+<p>As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther's contractual issue.
 If you need these features, have to add code and compile from source.</p>
 <h2>Download source code from SoftEther website.</h2>
 <p><a href="https://www.softether-download.com/ja.aspx">SoftEther Download page</a></p>
@@ -102,26 +102,51 @@ $ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
 
 
 <p>Search the "SiIsEnterpriseFunctionsRestrictedOnOpenSource" function and edit inner code.</p>
+<p>The're many ways to get the remove restrictions but one purpose and simple. It's rewrite the function return false any time.</p>
 <p>Before:</p>
-<div class="highlight"><pre><span></span>bool SiIsEnterpriseFunctionsRestrictedOnOpenSource<span class="o">(</span>CEDAR *c<span class="o">)</span>
-<span class="o">{</span>
-    char region<span class="o">[</span><span class="m">128</span><span class="o">]</span><span class="p">;</span>
-    bool <span class="nv">ret</span> <span class="o">=</span> false<span class="p">;</span>
-    // Validate arguments
-    <span class="k">if</span> <span class="o">(</span><span class="nv">c</span> <span class="o">==</span> NULL<span class="o">)</span>
-    <span class="o">{</span>
-        <span class="k">return</span> false<span class="p">;</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">region</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+    <span class="kt">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="c1">// Validate arguments</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    SiGetCurrentRegion<span class="o">(</span>c, region, sizeof<span class="o">(</span>region<span class="o">))</span><span class="p">;</span>
+    <span class="n">SiGetCurrentRegion</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">region</span><span class="p">));</span>
 
-    <span class="k">if</span> <span class="o">(</span>StrCmpi<span class="o">(</span>region, <span class="s2">&quot;JP&quot;</span><span class="o">)</span> <span class="o">==</span> <span class="m">0</span> <span class="o">||</span> StrCmpi<span class="o">(</span>region, <span class="s2">&quot;CN&quot;</span><span class="o">)</span> <span class="o">==</span> <span class="m">0</span><span class="o">)</span>
-    <span class="o">{</span>
-        <span class="nv">ret</span> <span class="o">=</span> true<span class="p">;</span>
-    <span class="o">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">StrCmpi</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="s">&quot;JP&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">StrCmpi</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="s">&quot;CN&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="k">return</span> ret<span class="p">;</span>
-<span class="o">}</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>I'll show you my examples.</p>
+<p>After:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">region</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+    <span class="kt">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="c1">// Validate arguments</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">SiGetCurrentRegion</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">region</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">StrCmpi</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="s">&quot;JP&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">StrCmpi</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="s">&quot;CN&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
 
