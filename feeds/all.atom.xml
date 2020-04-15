@@ -72,7 +72,18 @@ $ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;writing...&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>Update VyoS 1.1.8 to 1.2.0</title><link href="https://tmya.github.io/update-vyos-118-to-120.html" rel="alternate"></link><published>2019-12-03T00:00:00+09:00</published><updated>2019-12-03T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-12-03:/update-vyos-118-to-120.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;p&gt;ret = true; to ret = false;&lt;/p&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;ret = true; to //ret = true; (comment out)&lt;/p&gt;
+&lt;h2&gt;Configure and Compile&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; v4.34-9745
+$ ./configure
+$ make
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Wait few minutes.&lt;/p&gt;
+&lt;p&gt;When compiled, You'll find compiled binary in bin directory.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>Update VyoS 1.1.8 to 1.2.0</title><link href="https://tmya.github.io/update-vyos-118-to-120.html" rel="alternate"></link><published>2019-12-03T00:00:00+09:00</published><updated>2019-12-03T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-12-03:/update-vyos-118-to-120.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
 &lt;p&gt;VyOS seemed to change release policy ago.
 LTS(Long Term Support) Release is provides to subscriber.
 Subscriber includes commercial customer and contributor.
