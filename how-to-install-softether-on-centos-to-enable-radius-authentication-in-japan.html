@@ -89,22 +89,22 @@ If you need these features, have to add code and compile from source.</p>
 <p><a href="https://www.softether-download.com/ja.aspx">SoftEther Download page</a></p>
 <p>You should choice "Source Code of SoftEther VPN" from "Choose a component" listbox.
 It can choose tar.gz or zip if you like and download then untar it.</p>
-<div class="highlight"><pre><span></span><code>$ wget https://jp.softether-download.com/files/softether/v4.34-9745-beta-2020.04.05-tree/Source_Code/softether-src-v4.34-9745-beta.tar.gz
+<div class="highlight"><pre><span></span>$ wget https://jp.softether-download.com/files/softether/v4.34-9745-beta-2020.04.05-tree/Source_Code/softether-src-v4.34-9745-beta.tar.gz
 $ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
-</code></pre></div>
+</pre></div>
 
 
 <h2>Edit source code.</h2>
 <p>Edit Server.c file at "src/Cedar/". I like "micro" editor. Of cource, any other editor is fine.</p>
 <p><a href="https://micro-editor.github.io/">micro</a></p>
-<div class="highlight"><pre><span></span><code>$ micro v4.34-9745/src/Cedar/Server.c
-</code></pre></div>
+<div class="highlight"><pre><span></span>$ micro v4.34-9745/src/Cedar/Server.c
+</pre></div>
 
 
 <p>Search the "SiIsEnterpriseFunctionsRestrictedOnOpenSource" function and edit inner code.</p>
 <p>The're many ways to get the remove restrictions but one purpose and simple. It's rewrite the function return false any time.</p>
 <p>Before:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">char</span> <span class="n">region</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
     <span class="kt">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
@@ -123,12 +123,12 @@ $ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
 
     <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>I'll show you my examples.</p>
 <p>After:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">SiIsEnterpriseFunctionsRestrictedOnOpenSource</span><span class="p">(</span><span class="n">CEDAR</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">char</span> <span class="n">region</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
     <span class="kt">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
@@ -147,17 +147,17 @@ $ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
 
     <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>ret = true; to ret = false;</p>
 <p>or</p>
 <p>ret = true; to //ret = true; (comment out)</p>
 <h2>Configure and Compile</h2>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> v4.34-9745
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> v4.34-9745
 $ ./configure
 $ make
-</code></pre></div>
+</pre></div>
 
 
 <p>Wait few minutes.</p>

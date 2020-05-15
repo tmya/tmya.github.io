@@ -91,7 +91,7 @@ If you are not subscribed, subscribe or get rolling release builds.</p>
 <h2>Open your console</h2>
 <p>Connect ssh or other way to VyOS.<br>
 Check to running image.</p>
-<div class="highlight"><pre><span></span><code>$ show system image
+<div class="highlight"><pre><span></span>$ show system image
 
 The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
 
@@ -100,7 +100,7 @@ The system currently has the following image<span class="o">(</span>s<span class
    <span class="m">3</span>: VyOS-1.1.6
    <span class="m">4</span>: VyOS-1.1.5
    <span class="m">5</span>: Old-non-image-installation
-</code></pre></div>
+</pre></div>
 
 
 <h2>Download and add image</h2>
@@ -108,13 +108,13 @@ The system currently has the following image<span class="o">(</span>s<span class
 <a href="https://downloads.vyos.io/?dir=rolling/current/amd64">VyOS Downloads</a></p>
 <p>!Notice! If you are reboot soon will boot new image but sometimes occur problem.<br>
 At your own risk.</p>
-<div class="highlight"><pre><span></span><code>$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
-</code></pre></div>
+<div class="highlight"><pre><span></span>$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+</pre></div>
 
 
 <p>Perhaps you answer yes to the questions you are asked. me too. :p<br>
 You can see added image when retype "show system image".</p>
-<div class="highlight"><pre><span></span><code>$ show system image
+<div class="highlight"><pre><span></span>$ show system image
 
 The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
 
@@ -124,24 +124,24 @@ The system currently has the following image<span class="o">(</span>s<span class
    <span class="m">4</span>: VyOS-1.1.6
    <span class="m">5</span>: VyOS-1.1.5
    <span class="m">6</span>: Old-non-image-installation
-</code></pre></div>
+</pre></div>
 
 
 <h2>Reboot to apply new image</h2>
 <p>Let's reboot.</p>
-<div class="highlight"><pre><span></span><code>$ reboot
+<div class="highlight"><pre><span></span>$ reboot
 Proceed with reboot? <span class="o">(</span>Yes/No<span class="o">)</span> <span class="o">[</span>No<span class="o">]</span> Yes
-</code></pre></div>
+</pre></div>
 
 
 <p>Let's pray.  </p>
 <p>Few minutes later reconnect to VyOS. Check the Version.</p>
-<div class="highlight"><pre><span></span><code>$ show version
+<div class="highlight"><pre><span></span>$ show version
 Version:          VyOS <span class="m">1</span>.2-rolling-201912030217
 Built by:         autobuild@vyos.net
 Built on:         Tue <span class="m">03</span> Dec <span class="m">2019</span> <span class="m">02</span>:17 UTC
 ~~
-</code></pre></div>
+</pre></div>
 
 
 <p>That's done it.</p>
