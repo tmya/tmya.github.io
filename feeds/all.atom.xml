@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2020-10-26T00:00:00+09:00</updated><entry><title>THIS IS SKEL</title><link href="https://tmya.github.io/this-is-skel.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/this-is-skel.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2020-10-26T00:00:00+09:00</updated><entry><title>効率のいい平方根の計算方法</title><link href="https://tmya.github.io/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
 &lt;li&gt;前提：コンピュータは基本的には加算と減算は高速に可能。次に早いのが乗算で、一番遅いのは除算です。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;さて、平方根の計算をプログラムで書くときに、i x i=...とやって、(i)をインクリメントしながら順番に計算する方法がまず思いつくのではないでしょうか。
+&lt;p&gt;さて、平方根の計算をプログラムで書くときに、[i x i=...]とやって、(i)をインクリメントしながら順番に計算する方法がまず思いつくのではないでしょうか。
 とても非効率な気がします。では平方根を早く計算すればいいのか？が問題になります。&lt;/p&gt;
 &lt;p&gt;解決方法を考える細かい説明は置いておいて、私は平方根の逆数の近似値を計算する方法を選びました。
 ※逆数は、ある数(a)を考えた時に、[a×b=1]になる(b)を(a)の逆数と言います（雑な説明）。
@@ -15,7 +15,7 @@
 &lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
 &lt;li&gt;前提：コンピュータは基本的には加算と減算は高速に可能。次に早いのが乗算で、一番遅いのは除算です。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;さて、平方根の計算をプログラムで書くときに、i x i=...とやって、(i)をインクリメントしながら順番に計算する方法がまず思いつくのではないでしょうか。
+&lt;p&gt;さて、平方根の計算をプログラムで書くときに、[i x i=...]とやって、(i)をインクリメントしながら順番に計算する方法がまず思いつくのではないでしょうか。
 とても非効率な気がします。では平方根を早く計算すればいいのか？が問題になります。&lt;/p&gt;
 &lt;p&gt;解決方法を考える細かい説明は置いておいて、私は平方根の逆数の近似値を計算する方法を選びました。
 ※逆数は、ある数(a)を考えた時に、[a×b=1]になる(b)を(a)の逆数と言います（雑な説明）。
@@ -25,17 +25,17 @@
 &lt;p&gt;先ほどの変数(c)は近似値ですが、[√n]よりは小さい値になっています。その為[c × c]を計算して(n)より小さければ(c)をインクリメントし、
 [c+1 × c+1]を計算してみて(n)より小さければもう一度インクリメントし・・と繰り返し(n)ぴったりの数字が出てくればそれが答えになるはずです。
 「√nを超えない最大の整数」を求めるのであれば、(n)を超えたらインクリメントする手前の(c)が(n)の平方根より小さい最大の整数となるはずです。&lt;/p&gt;
-&lt;p&gt;ということで肝心の計算方法ですが、先人が計算を行っているので習うとしましょう。
-&lt;a href="https://github.com/id-Software/Quake-III-Arena/blob/master/code/game/q_math.c#L552"&gt;Quake-III-Arena/q_math.c at master · id-Software/Quake-III-Arena&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ということで肝心の計算方法ですが、先人が計算を行っているので習うとしましょう。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/id-Software/Quake-III-Arena/blob/master/code/game/q_math.c#L552"&gt;Quake-III-Arena/q_math.c at master · id-Software/Quake-III-Arena&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;これはとある昔のFPSのゲームのコードですが、GPL v2で公開されていますので適切に利用する分には問題ありません。
 このURLのファイルで552行目から572行目までの関数Q_rsqrtが目的のものです。
 566行目から570行目は不要なので削除して良いと思います。理由を忘れましたが私はfloatからdoubleで計算できるように改造しました。
 (n)を引数として関数Q_rsqrtを呼ぶと[1/√n]が求まるので、あとは前者の通りの計算を行えば答えが出てくるはずです。&lt;/p&gt;
 &lt;p&gt;なるべく高校以上の数学を使わない説明を心掛けました。
 もっと詳しいのは下記に列挙したURLをご覧いただければと思います。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cs.uwaterloo.ca/~m32rober/rsqrt.pdf"&gt;A Brief History of InvSqrt - Matthew Robertson&lt;/a&gt; / Q_rsqrtの詳しい説明
-&lt;a href="https://en.wikipedia.org/wiki/Fast_inverse_square_root"&gt;Fast inverse square root - Wikipedia&lt;/a&gt; / History and investigationの項にfloatからdoubleに改造するヒントあり。
-&lt;a href="https://kaneshin.hateblo.jp/entry/2018/12/05/202123"&gt;高速逆平方根計算アルゴリズムの小詳解 - at kaneshin&lt;/a&gt; / Go言語だけど、ほぼ同じコードで日本語での解説がある。&lt;/p&gt;</content><category term="p-tips"></category></entry><entry><title>初級プログラミングを始めるにあたって</title><link href="https://tmya.github.io/chu-ji-puroguraminguwoshi-meruniatatsute.html" rel="alternate"></link><published>2020-10-20T00:00:00+09:00</published><updated>2020-10-20T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-20:/chu-ji-puroguraminguwoshi-meruniatatsute.html</id><content type="html">&lt;h1&gt;TOUのプログラミング関連授業の履修&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://cs.uwaterloo.ca/~m32rober/rsqrt.pdf"&gt;A Brief History of InvSqrt - Matthew Robertson&lt;/a&gt; / Q_rsqrtの詳しい説明&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Fast_inverse_square_root"&gt;Fast inverse square root - Wikipedia&lt;/a&gt; / History and investigationの項にfloatからdoubleに改造するヒントあり。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kaneshin.hateblo.jp/entry/2018/12/05/202123"&gt;高速逆平方根計算アルゴリズムの小詳解 - at kaneshin&lt;/a&gt; / Go言語だけど、ほぼ同じコードで日本語での解説がある。&lt;/p&gt;</content><category term="p-tips"></category></entry><entry><title>初級プログラミングを始めるにあたって</title><link href="https://tmya.github.io/chu-ji-puroguraminguwoshi-meruniatatsute.html" rel="alternate"></link><published>2020-10-20T00:00:00+09:00</published><updated>2020-10-20T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-20:/chu-ji-puroguraminguwoshi-meruniatatsute.html</id><content type="html">&lt;h1&gt;TOUのプログラミング関連授業の履修&lt;/h1&gt;
 &lt;p&gt;年に一回しか&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;list&lt;/li&gt;
