@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-install-pyenv-pipenv.html">
     <meta name="twitter:title" content="Akkie's Memos ~ How to install pyenv, pipenv">
-    <meta name="twitter:description" content="Why using pyenv and pipenv for Python Python has many version of many environments. I tired to pick a python and modules. I want to easy operation. pyenv : Easy to switch between some versions of Python. pipenv : It can install modules separately of version.(use pyenv&#39;s version switch modul inside …">
+    <meta name="twitter:description" content="Why using pyenv and pipenv for Python Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely. pyenv : Easy to switch between some versions of Python. pipenv : It can install …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's Memos ~ How to install pyenv, pipenv"/>
-    <meta property="og:description" content="Why using pyenv and pipenv for Python Python has many version of many environments. I tired to pick a python and modules. I want to easy operation. pyenv : Easy to switch between some versions of Python. pipenv : It can install modules separately of version.(use pyenv&#39;s version switch modul inside …"/>
+    <meta property="og:description" content="Why using pyenv and pipenv for Python Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely. pyenv : Easy to switch between some versions of Python. pipenv : It can install …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -85,9 +85,9 @@
                                                   title="Permalink to How to install pyenv, pipenv">How to install pyenv, pipenv</a></h2>
             <div class="entry-content blog-post">
                 <h1>Why using pyenv and pipenv for Python</h1>
-<p>Python has many version of many environments. I tired to pick a python and modules.　I want to easy operation.</p>
+<p>Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely.</p>
 <p>pyenv : Easy to switch between some versions of Python.</p>
-<p>pipenv : It can install modules separately of version.(use pyenv's version switch modul inside.)</p>
+<p>pipenv : It can install modules separately of version.(use pyenv's version switch module inside.)</p>
 <h1>Memo</h1>
 <ul>
 <li>I using this settings on Raspberry Pi 4(64bit Kernel) and MacOS Catalina</li>
@@ -101,16 +101,18 @@
 <li>How to use.</li>
 </ul>
 <h2>Install require components</h2>
-<p>(Raspberry Pi)</p>
+<p>(Raspberry Pi) &gt;</p>
 <div class="highlight"><pre><span></span>sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 </pre></div>
 
 
-<p>(MacOS)</p>
+<p>&lt; (Raspberry Pi)</p>
+<p>(MacOS) &gt;</p>
 <div class="highlight"><pre><span></span>brew install readline xz
 </pre></div>
 
 
+<p>&lt; (MacOS)</p>
 <h2>Install pyenv</h2>
 <p>First, install pyenv from CUI command.</p>
 <div class="highlight"><pre><span></span>$ curl https://pyenv.run <span class="p">|</span> bash
@@ -129,6 +131,7 @@
 </pre></div>
 
 
+<p>(Raspberry Pi)</p>
 <p>Edit ~/.bashrc file and add three rows.</p>
 <div class="highlight"><pre><span></span>$ micro ~/.bashrc
 </pre></div>
@@ -145,12 +148,25 @@
 </pre></div>
 
 
+<p>&lt; (Raspberry Pi)</p>
+<p>(MacOS)</p>
+<div class="highlight"><pre><span></span>$ brew install pyenv
+</pre></div>
+
+
+<p>&lt; (MacOS)</p>
 <h2>Install pipenv.</h2>
 <div class="highlight"><pre><span></span>$ python -m pip install pipenv
 </pre></div>
 
 
-<h2>Install Python 3.8.2 or what you need.</h2>
+<p>or</p>
+<div class="highlight"><pre><span></span>$ python3 -m pip install pipenv
+</pre></div>
+
+
+<h2>How to use</h2>
+<h3>Install Python 3.8.2 or what you need.</h3>
 <div class="highlight"><pre><span></span>$ pyenv install <span class="m">3</span>.8.2
 </pre></div>
 
@@ -201,13 +217,13 @@ Python <span class="m">3</span>.8.2
 </pre></div>
 
 
-<h2>Install library</h2>
+<h3>Install library</h3>
 <p>You can not use 'pip' command. You should use 'pipenv' command instead.</p>
 <div class="highlight"><pre><span></span>$ pipenv install beautifulsoup4
 </pre></div>
 
 
-<h2>Optional settings.</h2>
+<h3>Optional settings</h3>
 <p>プロジェクトディレクトリに仮想環境を作るには</p>
 <div class="highlight"><pre><span></span>$ micro ~/.bashrc
 

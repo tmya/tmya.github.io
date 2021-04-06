@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos - blog</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2020-10-20T00:00:00+09:00</updated><entry><title>初級プログラミングを始めるにあたって</title><link href="https://tmya.github.io/chu-ji-puroguraminguwoshi-meruniatatsute.html" rel="alternate"></link><published>2020-10-20T00:00:00+09:00</published><updated>2020-10-20T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-20:/chu-ji-puroguraminguwoshi-meruniatatsute.html</id><content type="html">&lt;h1&gt;TOUのプログラミング関連授業の履修&lt;/h1&gt;
-&lt;p&gt;年に一回しか&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;list&lt;/li&gt;
-&lt;li&gt;list&lt;/li&gt;
-&lt;li&gt;日本語の文章&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
-&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>How to install SoftEther on CentOS to enable RADIUS authentication in Japan.</title><link href="https://tmya.github.io/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html" rel="alternate"></link><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-04-12:/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's Memos - blog</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2020-04-12T00:00:00+09:00</updated><entry><title>How to install SoftEther on CentOS to enable RADIUS authentication in Japan.</title><link href="https://tmya.github.io/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html" rel="alternate"></link><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-04-12:/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
 &lt;p&gt;As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther's contractual issue.
 If you need these features, have to add code and compile from source.&lt;/p&gt;
 &lt;h2&gt;Download source code from SoftEther website.&lt;/h2&gt;
