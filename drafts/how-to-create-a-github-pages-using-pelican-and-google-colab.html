@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-create-a-github-pages-using-pelican-and-google-colab.html">
     <meta name="twitter:title" content="Akkie's memos ~ How to create a GitHub Pages using Pelican and Google Colab">
-    <meta name="twitter:description" content="Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based. It&#39;ll be using this. Pelican Google Colaboratory Google Drive">
+    <meta name="twitter:description" content="Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based. Work flow Create a empty repository for GitHub Pages. (username.github.io) Generate a personal access token. it&#39;s alternative way to not use a GitHub password. Coding on Colaboratory. Initialize …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's memos ~ How to create a GitHub Pages using Pelican and Google Colab"/>
-    <meta property="og:description" content="Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based. It&#39;ll be using this. Pelican Google Colaboratory Google Drive"/>
+    <meta property="og:description" content="Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based. Work flow Create a empty repository for GitHub Pages. (username.github.io) Generate a personal access token. it&#39;s alternative way to not use a GitHub password. Coding on Colaboratory. Initialize …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -85,12 +85,39 @@
                                                   title="Permalink to How to create a GitHub Pages using Pelican and Google Colab">How to create a GitHub Pages using Pelican and Google Colab</a></h2>
             <div class="entry-content blog-post">
                 <p>Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based.</p>
-<h3>It'll be using this.</h3>
+<h3>Work flow</h3>
+<ol>
+<li>Create a empty repository for GitHub Pages. (<code>username</code>.github.io)</li>
+<li>Generate a personal access token. it's alternative way to not use a GitHub password.</li>
+<li>Coding on Colaboratory.</li>
+<li>Initialize a blog with Pelican.</li>
+<li>Git initialize.</li>
+<li>Write a article and publish.</li>
+</ol>
+<p>It'll be using this.</p>
 <ul>
-<li>Pelican</li>
+<li>Pip module ( Pelican, markdown, ghp-import)</li>
 <li>Google Colaboratory</li>
 <li>Google Drive</li>
 </ul>
+<hr>
+<h2>How to do</h2>
+<h3>Create a empty repository</h3>
+<p>The repository name needs to be <code>username</code>.github.io (ex. tmya.github.io). and will be URL is https://<code>username</code>.github.io/.</p>
+<h3>Generate a personal access token</h3>
+<p>You can generate it here. <a href="https://github.com/settings/tokens">Personal access tokens</a></p>
+<p>Press <code>Generate new token</code> button and check <code>repo</code> checkbox. Note field can be anything, or <code>blog</code> for simplicity.</p>
+<h3>Coding on Colab</h3>
+<p>Open your <a href="https://drive.google.com/">Google Drive</a></p>
+<p>Create a folder for blog on Google Drive. (ex. pelican-blog) <code>My Drive &gt; pelican-blog</code> and create Colaboratory. (Right mouse click -&gt; More -&gt; Google Colaboratory)</p>
+<p>Next, connect the Colaboratory to Google Drive. Press <code>File</code> and then <code>Mount google drive</code> then it'll ask you allow access for Google Drive. Let's allow.</p>
+<p><strong>NOTE:</strong> If you save a file in Colaboratory, it'll all disappear after a certain period of time. so you should need to safe save for Google Drive.</p>
+<h3>Initialize a blog with Pelican.</h3>
+<div class="highlight"><pre><span></span><code><span class="nf">%cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span>
+<span class="o">!</span><span class="n">pip</span> <span class="n">install</span> <span class="s">&quot;pelican[markdown]&quot;</span> <span class="n">ghp</span><span class="o">-</span><span class="k">import</span>
+<span class="o">!</span><span class="n">git</span> <span class="n">init</span>
+<span class="o">!</span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+</code></pre></div>
             </div>
             <div class="post_list">
                 <span>By </span>
