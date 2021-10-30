@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-10-25T00:00:00+09:00</updated><entry><title>MIRACLE LINUX 8.4 メモ</title><link href="https://tmya.github.io/miracle-linux-84-memo.html" rel="alternate"></link><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-25:/miracle-linux-84-memo.html</id><summary type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
+とりあえず無償提供の物を使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
+とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
+CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
+日本発ディストリなので、ML関係の記事は日本語で書くよ。&lt;/p&gt;
+&lt;h2&gt;気をつけるポイント&lt;/h2&gt;
+&lt;h3&gt;パーティション構成&lt;/h3&gt;
+&lt;p&gt;自動構成だと&lt;code&gt;/&lt;/code&gt;と&lt;code&gt;/home&lt;/code&gt;でパーティションが分かれている。場合によってはまとめてもいいかもしれない。&lt;/p&gt;
+&lt;h3&gt;インストール後&lt;/h3&gt;
+&lt;p&gt;日本語入力は&lt;code&gt;半角/英数&lt;/code&gt;や&lt;code&gt;Ctrl + Space&lt;/code&gt;を押してもすぐには出来無い。画面右上のタスクバーから日本語入力に切り替えると、キーボードでの切り替えが可能になる。（公式にも書いてある）&lt;/p&gt;
+&lt;h2&gt;やってみたこと一覧&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;pyenv, pipenvの導入&lt;/li&gt;
+&lt;li&gt;GnuPGの導入&lt;/li&gt;
+&lt;li&gt;Google Chromeの導入&lt;/li&gt;
+&lt;li&gt;GNOME Classicへの切り替え&lt;/li&gt;
+&lt;li&gt;Cockpitの導入&lt;/li&gt;
+&lt;li&gt;VirtualBoxの導入&lt;/li&gt;
+&lt;li&gt;MIRACLE LINUX on WSL2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;VirtualBoxでやったこと&lt;/h3&gt;
+&lt;p&gt;元のWindows10マシンにSSDを追加してMLをインストールし、物理SSDにアクセスするvmdkを用意する。あとはVirtualBoxにそのvmdkを追加するとWindows10が起動する。なおライセンスに注意。
+&lt;img alt="Windows10 on MIRACLE LINUX" src="https://tmya.github.io/images/ml_win_d.png"&gt;&lt;/p&gt;
+&lt;h2&gt;気付いたこと&lt;/h2&gt;
+&lt;h3&gt;マスコット画像&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;/usr/share/backgrounds&lt;/code&gt; にみらくるちゃんとカーネルくんの背景画像が存在する。
+&lt;img alt="みらくるちゃんとカーネルくん" src="https://tmya.github.io/images/miracle_kernel.jpg"&gt;&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/miraclelinux-license-free/"&gt;MIRACLE LINUX ライセンスフリー&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry></feed>

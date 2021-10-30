@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - blog</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-09-24T00:00:00+09:00</updated><entry><title>How to install pyenv, pipenv</title><link href="https://tmya.github.io/how-to-install-pyenv-pipenv.html" rel="alternate"></link><published>2021-09-24T00:00:00+09:00</published><updated>2021-09-24T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-09-24:/how-to-install-pyenv-pipenv.html</id><summary type="html">&lt;h1&gt;Why using pyenv and pipenv for Python&lt;/h1&gt;
+&lt;p&gt;Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely.&lt;/p&gt;
+&lt;p&gt;pyenv : Easy to switch between some versions of Python.&lt;/p&gt;
+&lt;p&gt;pipenv : It can install …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Why using pyenv and pipenv for Python&lt;/h1&gt;
+&lt;p&gt;Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely.&lt;/p&gt;
+&lt;p&gt;pyenv : Easy to switch between some versions of Python.&lt;/p&gt;
+&lt;p&gt;pipenv : It can install modules separately of version.(use pyenv's version switch module inside.)&lt;/p&gt;
+&lt;h1&gt;Memo&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;I using this settings on Raspberry Pi 4(64bit Kernel) and MacOS Catalina&lt;/li&gt;
+&lt;li&gt;Python 3(.8)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Contents&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Install require components&lt;/li&gt;
+&lt;li&gt;Install pyenv&lt;/li&gt;
+&lt;li&gt;Install pipenv&lt;/li&gt;
+&lt;li&gt;How to use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Install require components&lt;/h2&gt;
+&lt;p&gt;(Raspberry Pi) &amp;gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&amp;lt; (Raspberry Pi)&lt;/p&gt;
+&lt;p&gt;(MacOS) &amp;gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install readline xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&amp;lt; (MacOS)&lt;/p&gt;
+&lt;h2&gt;Install pyenv&lt;/h2&gt;
+&lt;p&gt;(Raspberry Pi)&lt;/p&gt;
+&lt;p&gt;First, install pyenv from CUI command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ curl https://pyenv.run &lt;span class="p"&gt;|&lt;/span&gt; bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When install finished, You'll see warnings like below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;WARNING: seems you still have not added &lt;span class="s1"&gt;&amp;#39;pyenv&amp;#39;&lt;/span&gt; to the load path.
+
+&lt;span class="c1"&gt;# Load pyenv automatically by adding&lt;/span&gt;
+&lt;span class="c1"&gt;# the following to ~/.bashrc:&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/home/tmya/.pyenv/bin:&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;pyenv init -&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;pyenv virtualenv-init -&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit ~/.bashrc file and add three rows.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ micro ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/home/tmya/.pyenv/bin:&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;pyenv init -&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;pyenv virtualenv-init -&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Reload .bashrc file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&amp;lt; (Raspberry Pi)&lt;/p&gt;
+&lt;p&gt;(MacOS)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ brew install pyenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&amp;lt; (MacOS)&lt;/p&gt;
+&lt;h2&gt;Install pipenv.&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m pip install pipenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python3 -m pip install pipenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;How to use&lt;/h2&gt;
+&lt;h3&gt;Install Python 3.8.2 or what you need.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.8.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Create a local environment.&lt;/h2&gt;
+&lt;p&gt;First check the default Python version&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python --version
+Python &lt;span class="m"&gt;3&lt;/span&gt;.7.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir mypy
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; mypy
+$ pipenv install --python &lt;span class="m"&gt;3&lt;/span&gt;.8.2
+
+Creating a virtualenv &lt;span class="k"&gt;for&lt;/span&gt; this project…
+Pipfile: /home/tmya/mypy/Pipfile
+Using /home/tmya/.pyenv/versions/3.8.2/bin/python3.8 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.8.2&lt;span class="o"&gt;)&lt;/span&gt; to create virtualenv…
+⠦ Creating virtual environment...created virtual environment CPython3.8.2.final.0-32 in 1015ms
+  creator CPython3Posix&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dest&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka, &lt;span class="nv"&gt;clear&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;False, &lt;span class="nv"&gt;global&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;False&lt;span class="o"&gt;)&lt;/span&gt;
+  seeder FromAppData&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;download&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;False, &lt;span class="nv"&gt;pip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;latest, &lt;span class="nv"&gt;setuptools&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;latest, &lt;span class="nv"&gt;wheel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;latest, &lt;span class="nv"&gt;via&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;copy, &lt;span class="nv"&gt;app_data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/tmya/.local/share/virtualenv/seed-app-data/v1.0.1&lt;span class="o"&gt;)&lt;/span&gt;
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+
+✔ Successfully created virtual environment! 
+Virtualenv location: /home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka
+Creating a Pipfile &lt;span class="k"&gt;for&lt;/span&gt; this project…
+Pipfile.lock not found, creating…
+Locking &lt;span class="o"&gt;[&lt;/span&gt;dev-packages&lt;span class="o"&gt;]&lt;/span&gt; dependencies…
+Locking &lt;span class="o"&gt;[&lt;/span&gt;packages&lt;span class="o"&gt;]&lt;/span&gt; dependencies…
+Updated Pipfile.lock &lt;span class="o"&gt;(&lt;/span&gt;db4242&lt;span class="o"&gt;)&lt;/span&gt;!
+Installing dependencies from Pipfile.lock &lt;span class="o"&gt;(&lt;/span&gt;db4242&lt;span class="o"&gt;)&lt;/span&gt;…
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ &lt;span class="m"&gt;0&lt;/span&gt;/0 — &lt;span class="m"&gt;00&lt;/span&gt;:00:00
+To activate this project&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s virtualenv, run pipenv shell.
+Alternatively, run a &lt;span class="nb"&gt;command&lt;/span&gt; inside the virtualenv with pipenv run.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see your specified version of Python.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pipenv shell
+~~~
+$ python --version
+Python &lt;span class="m"&gt;3&lt;/span&gt;.8.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to exit local environment, type 'exit' command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Install library&lt;/h3&gt;
+&lt;p&gt;You can not use 'pip' command. You should use 'pipenv' command instead.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pipenv install beautifulsoup4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Optional settings&lt;/h3&gt;
+&lt;p&gt;How to create a virtual environment in the project directory.
+This setting is recommended for git and other version-control software.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ micro ~/.bashrc
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PIPENV_VENV_IN_PROJECT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+
+$ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>How to install SoftEther on CentOS to enable RADIUS authentication in Japan.</title><link href="https://tmya.github.io/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html" rel="alternate"></link><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-04-12:/how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;p&gt;As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther's contractual issue.
+If you need these features, have to add code and compile from source.&lt;/p&gt;
+&lt;h2&gt;Download source code from SoftEther website.&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.softether-download.com/ja.aspx"&gt;SoftEther Download page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You should choice "Source Code …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;p&gt;As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther's contractual issue.
+If you need these features, have to add code and compile from source.&lt;/p&gt;
+&lt;h2&gt;Download source code from SoftEther website.&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.softether-download.com/ja.aspx"&gt;SoftEther Download page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You should choice "Source Code of SoftEther VPN" from "Choose a component" listbox.
+It can choose tar.gz or zip if you like and download then untar it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ wget https://jp.softether-download.com/files/softether/v4.34-9745-beta-2020.04.05-tree/Source_Code/softether-src-v4.34-9745-beta.tar.gz
+$ tar xvf ./softether-src-v4.34-9745-beta.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Edit source code.&lt;/h2&gt;
+&lt;p&gt;Edit Server.c file at "src/Cedar/". I like "micro" editor. Of cource, any other editor is fine.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ micro v4.34-9745/src/Cedar/Server.c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Search the "SiIsEnterpriseFunctionsRestrictedOnOpenSource" function and edit inner code.&lt;/p&gt;
+&lt;p&gt;The're many ways to get the remove restrictions but one purpose and simple. It's rewrite the function return false any time.&lt;/p&gt;
+&lt;p&gt;Before:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;SiIsEnterpriseFunctionsRestrictedOnOpenSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CEDAR&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="c1"&gt;// Validate arguments&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;SiGetCurrentRegion&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;StrCmpi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;JP&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;StrCmpi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;CN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I'll show you my examples.&lt;/p&gt;
+&lt;p&gt;After:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;SiIsEnterpriseFunctionsRestrictedOnOpenSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CEDAR&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="c1"&gt;// Validate arguments&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;SiGetCurrentRegion&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;StrCmpi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;JP&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;StrCmpi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;CN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;ret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ret = true; to ret = false;&lt;/p&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;ret = true; to //ret = true; (comment out)&lt;/p&gt;
+&lt;h2&gt;Configure and Compile&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; v4.34-9745
+$ ./configure
+$ make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Wait few minutes.&lt;/p&gt;
+&lt;p&gt;When compiled, You'll find compiled binary in bin directory.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>Upgrade VyoS 1.1.8 to 1.2.0</title><link href="https://tmya.github.io/upgrade-vyos-118-to-120.html" rel="alternate"></link><published>2019-12-03T00:00:00+09:00</published><updated>2019-12-03T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-12-03:/upgrade-vyos-118-to-120.html</id><summary type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;p&gt;VyOS seemed to change release policy ago.
+LTS(Long Term Support) Release is provides to subscriber.
+Subscriber includes commercial customer and contributor.
+If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
+&lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
+&lt;h2&gt;Open your console …&lt;/h2&gt;</summary><content type="html">&lt;h3&gt;Memo&lt;/h3&gt;
+&lt;p&gt;VyOS seemed to change release policy ago.
+LTS(Long Term Support) Release is provides to subscriber.
+Subscriber includes commercial customer and contributor.
+If you are not subscribed, subscribe or get rolling release builds.&lt;/p&gt;
+&lt;p&gt;Here is about upgrade v1.1.8 to v1.2.0(rolling release).&lt;/p&gt;
+&lt;h2&gt;Open your console&lt;/h2&gt;
+&lt;p&gt;Connect ssh or other way to VyOS.&lt;br&gt;
+Check to running image.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ show system image
+
+The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; installed:
+
+   &lt;span class="m"&gt;1&lt;/span&gt;: VyOS-1.1.8 &lt;span class="o"&gt;(&lt;/span&gt;default boot&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;running image&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;2&lt;/span&gt;: VyOS-1.1.7
+   &lt;span class="m"&gt;3&lt;/span&gt;: VyOS-1.1.6
+   &lt;span class="m"&gt;4&lt;/span&gt;: VyOS-1.1.5
+   &lt;span class="m"&gt;5&lt;/span&gt;: Old-non-image-installation
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Download and add image&lt;/h2&gt;
+&lt;p&gt;Download latest rolling release build or choose what you like.&lt;br&gt;
+&lt;a href="https://downloads.vyos.io/?dir=rolling/current/amd64"&gt;VyOS Downloads&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;!Notice! If you are reboot soon will boot new image but sometimes occur problem.&lt;br&gt;
+At your own risk.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Perhaps you answer yes to the questions you are asked. me too. :p&lt;br&gt;
+You can see added image when retype "show system image".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ show system image
+
+The system currently has the following image&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; installed:
+
+   &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217- &lt;span class="o"&gt;(&lt;/span&gt;default boot&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;2&lt;/span&gt;: VyOS-1.1.8 &lt;span class="o"&gt;(&lt;/span&gt;running image&lt;span class="o"&gt;)&lt;/span&gt;
+   &lt;span class="m"&gt;3&lt;/span&gt;: VyOS-1.1.7
+   &lt;span class="m"&gt;4&lt;/span&gt;: VyOS-1.1.6
+   &lt;span class="m"&gt;5&lt;/span&gt;: VyOS-1.1.5
+   &lt;span class="m"&gt;6&lt;/span&gt;: Old-non-image-installation
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Reboot to apply new image&lt;/h2&gt;
+&lt;p&gt;Let's reboot.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ reboot
+Proceed with reboot? &lt;span class="o"&gt;(&lt;/span&gt;Yes/No&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;No&lt;span class="o"&gt;]&lt;/span&gt; Yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Let's pray.  &lt;/p&gt;
+&lt;p&gt;Few minutes later reconnect to VyOS. Check the Version.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ show version
+Version:          VyOS &lt;span class="m"&gt;1&lt;/span&gt;.2-rolling-201912030217
+Built by:         autobuild@vyos.net
+Built on:         Tue &lt;span class="m"&gt;03&lt;/span&gt; Dec &lt;span class="m"&gt;2019&lt;/span&gt; &lt;span class="m"&gt;02&lt;/span&gt;:17 UTC
+~~
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That's done it.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>Setup to join Active Directory on CentOS 8</title><link href="https://tmya.github.io/setup-to-join-active-directory-on-centos-8.html" rel="alternate"></link><published>2019-10-23T00:00:00+09:00</published><updated>2019-10-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2019-10-23:/setup-to-join-active-directory-on-centos-8.html</id><summary type="html">&lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
+&lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
+Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation, Edit on web console later.&lt;/p&gt;
+&lt;h3&gt;Open url https://YOURSERVER:9090 …&lt;/h3&gt;</summary><content type="html">&lt;h3&gt;Complete install CentOS with server option (without GUI).&lt;/h3&gt;
+&lt;p&gt;Setting DNS server IP address the same as Active Directory Server IP address.&lt;br&gt;
+Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation, Edit on web console later.&lt;/p&gt;
+&lt;h3&gt;Open url https://YOURSERVER:9090/ when on your console type command below.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; --now cockpit.socket
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Click "System" -&amp;gt; "Domain" and type Admin's(or Manager account) id/pass, domain.&lt;/h3&gt;
+&lt;p&gt;Important: Do not use IP address for domain field. sssd does not resolve domain by IP address.&lt;/p&gt;
+&lt;h3&gt;Edit /etc/sssd/sssd.conf (option. I prefer this settings.)&lt;/h3&gt;
+&lt;p&gt;If you want to custom user's home directory and user name. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;domain/%YOURDOMAIN%&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;use_fully_qualified_names&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; False
+&lt;span class="nv"&gt;override_homedir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /home/%u
+&lt;span class="nv"&gt;fallback_homedir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /home/%u
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry></feed>

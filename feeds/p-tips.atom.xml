@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - p-tips</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/p-tips.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-04-08T00:00:00+09:00</updated><entry><title>初級プログラミング向け情報まとめ</title><link href="https://tmya.github.io/chu-ji-puroguraminguxiang-keqing-bao-matome.html" rel="alternate"></link><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-04-08:/chu-ji-puroguraminguxiang-keqing-bao-matome.html</id><summary type="html">&lt;h1&gt;初級プログラミング向け情報まとめ&lt;/h1&gt;
+&lt;h2&gt;解説&lt;/h2&gt;
+&lt;h3&gt;関数を使うのに必要なヘッダーファイル&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ヘッダーファイル&lt;/th&gt;
+&lt;th&gt;関数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;stdio.h&lt;/td&gt;
+&lt;td&gt;printf()&lt;br /&gt;scanf …&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</summary><content type="html">&lt;h1&gt;初級プログラミング向け情報まとめ&lt;/h1&gt;
+&lt;h2&gt;解説&lt;/h2&gt;
+&lt;h3&gt;関数を使うのに必要なヘッダーファイル&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ヘッダーファイル&lt;/th&gt;
+&lt;th&gt;関数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;stdio.h&lt;/td&gt;
+&lt;td&gt;printf()&lt;br /&gt;scanf()&lt;br /&gt;sprintf()&lt;br /&gt;sscanf()&lt;br /&gt;getc()&lt;br /&gt;putc()&lt;br /&gt;gets()&lt;br /&gt;puts()&lt;br /&gt;fopen()&lt;br /&gt;fclose()&lt;br /&gt;fscanf()&lt;br /&gt;fprintf()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;stdlib.h&lt;/td&gt;
+&lt;td&gt;atoi()&lt;br /&gt;rand()&lt;br /&gt;malloc()&lt;br /&gt;realloc()&lt;br /&gt;free()&lt;br /&gt;qsort()&lt;br /&gt;abs()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;math.h&lt;/td&gt;
+&lt;td&gt;sin()&lt;br /&gt;cos()&lt;br /&gt;tan()&lt;br /&gt;sqrt()&lt;br /&gt;sqrtf()&lt;br /&gt;sqrtl()&lt;br /&gt;pow()&lt;br /&gt;powf()&lt;br /&gt;powl()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;string.h&lt;/td&gt;
+&lt;td&gt;strcpy()&lt;br /&gt;strncpy()&lt;br /&gt;strcmp()&lt;br /&gt;strstr()&lt;br /&gt;strlen()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;#include &amp;lt;xxxx.h&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上記の関数を使う時は、左側のヘッダーファイルをインクルードするのを忘れないように。&lt;/p&gt;
+&lt;h2&gt;C言語の解説サイト&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://www.tohoho-web.com/ex/c-lang.html#hello-world"&gt;C言語入門 - とほほのWWW入門&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.kumei.ne.jp/c_lang/index_c.html"&gt;C言語編 猫でもわかるプログラミング&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;少し背伸びしたい人向け&lt;/h2&gt;
+&lt;h3&gt;競技プログラミング&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://paiza.jp/challenges"&gt;プログラミングスキルチェック paiza&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;初級～上級向け&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://atcoder.jp/"&gt;AtCoder&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;中級～ガチ勢向け&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="p-tips"></category></entry><entry><title>効率のいい平方根の計算方法</title><link href="https://tmya.github.io/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
+&lt;li&gt;前提：コンピュータは基本的には加算と減算は高速 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
+&lt;li&gt;前提：コンピュータは基本的には加算と減算は高速に可能。次に早いのが乗算で、一番遅いのは除算です。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;さて、平方根の計算をプログラムで書くときに、[i x i=...]とやって、(i)をインクリメントしながら順番に計算する方法がまず思いつくのではないでしょうか。
+とても非効率な気がします。では平方根を早く計算すればいいのか？が問題になります。&lt;/p&gt;
+&lt;p&gt;解決方法を考える細かい説明は置いておいて、私は平方根の逆数の近似値を計算する方法を選びました。
+※逆数は、ある数(a)を考えた時に、[a×b=1]になる(b)を(a)の逆数と言います（雑な説明）。
+　平方根をニュートン法を用いて計算しようとすると除算が必要になり、平方根の逆数は除算が不要なのです。&lt;/p&gt;
+&lt;p&gt;平方根の逆数[1/√n]がとりあえず求まったら、(n)をかけて[√n]を求め、結果を別の変数(iとかcとか好きなの)ここでは仮に変数(c)に代入しておきます。
+※[1/√n]を有理化すると、[√n/n]になります。(n)を分数にすると[n/1]になります。[√n/n × n/1]を計算すると[n√n/n]になり約分すると[√n]になります。（中学校の算数）&lt;/p&gt;
+&lt;p&gt;先ほどの変数(c)は近似値ですが、[√n]よりは小さい値になっています。その為[c × c]を計算して(n)より小さければ(c)をインクリメントし、
+[c+1 × c+1]を計算してみて(n)より小さければもう一度インクリメントし・・と繰り返し(n)ぴったりの数字が出てくればそれが答えになるはずです。
+「√nを超えない最大の整数」を求めるのであれば、(n)を超えたらインクリメントする手前の(c)が(n)の平方根より小さい最大の整数となるはずです。&lt;/p&gt;
+&lt;p&gt;ということで肝心の計算方法ですが、先人が計算を行っているので習うとしましょう。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/id-Software/Quake-III-Arena/blob/master/code/game/q_math.c#L552"&gt;Quake-III-Arena/q_math.c at master · id-Software/Quake-III-Arena&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;これはとある昔のFPSのゲームのコードですが、GPL v2で公開されていますので適切に利用する分には問題ありません。
+このURLのファイルで552行目から572行目までの関数Q_rsqrtが目的のものです。
+566行目から570行目は不要なので削除して良いと思います。理由を忘れましたが私はfloatからdoubleで計算できるように改造しました。
+(n)を引数として関数Q_rsqrtを呼ぶと[1/√n]が求まるので、あとは前者の通りの計算を行えば答えが出てくるはずです。&lt;/p&gt;
+&lt;p&gt;なるべく高校以上の数学を使わない説明を心掛けました。
+もっと詳しいのは下記に列挙したURLをご覧いただければと思います。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cs.uwaterloo.ca/~m32rober/rsqrt.pdf"&gt;A Brief History of InvSqrt - Matthew Robertson&lt;/a&gt; / Q_rsqrtの詳しい説明&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Fast_inverse_square_root"&gt;Fast inverse square root - Wikipedia&lt;/a&gt; / History and investigationの項にfloatからdoubleに改造するヒントあり。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kaneshin.hateblo.jp/entry/2018/12/05/202123"&gt;高速逆平方根計算アルゴリズムの小詳解 - at kaneshin&lt;/a&gt; / Go言語だけど、ほぼ同じコードで日本語での解説がある。&lt;/p&gt;</content><category term="p-tips"></category></entry></feed>
