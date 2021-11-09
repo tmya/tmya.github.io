@@ -92,7 +92,7 @@
 エラー: 一致するものが見つかりません: nkf
 </code></pre></div>
 
-<p>MLでは<a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/">PowerTools リポジトリと思われるURL</a>に存在するが、まだ準備中(2021/11/9現在)のようで<code>repomd.xml</code>が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定とのこと。</p>
+<p>MLでは<a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/">PowerTools リポジトリと思われるURL</a>に存在するが、まだ準備中(2021/11/9現在)のようで<code>repomd.xml</code>が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>とのこと。</p>
 <p><strong>NOTE:</strong> CentOS Stream release 8であれば<code>CentOS-Stream-PowerTools.repo</code>が存在していて<code>dnf config-manager</code>ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。</p>
 <p><img alt="nkfのパッケージ" src="https://tmya.github.io/images/nkf-2.1.4.jpg"></p>
 <p>リポジトリをミラーリングして<code>createrepo</code>という手もあるけれどそろそろ公開してくれると期待して今回はやりません。</p>
@@ -143,6 +143,14 @@ Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1996
 </code></pre></div>
 
 <p>問題なくインストールできてます。が、バージョンを見ると現行の一つ前のバージョンですね。バグを踏まなければ使えるでしょう。</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>https://www.cybertrust.co.jp/miraclelinux-license-free/&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
             </div>
             <div class="post_list">
                 <span>By </span>
