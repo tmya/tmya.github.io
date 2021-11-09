@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-10-30T00:00:00+09:00</updated><entry><title>How to create a GitHub Pages using Pelican and Google Colaboratory</title><link href="https://tmya.github.io/how-to-create-a-github-pages-using-pelican-and-google-colaboratory.html" rel="alternate"></link><published>2021-10-30T00:00:00+09:00</published><updated>2021-10-30T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-30:/how-to-create-a-github-pages-using-pelican-and-google-colaboratory.html</id><summary type="html">&lt;p&gt;Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-09T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/nkfnoinsutoru-miracle-linux-84.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-09T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/nkfnoinsutoru-miracle-linux-84.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
+&lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
+&lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install nkf
+一致した引数がありません: nkf
+エラー: 一致するものが見つかりません: nkf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;MLでは&lt;a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/"&gt;PowerTools リポジトリと思われるURL&lt;/a&gt;に存在するが、まだ準備中(2021/11/9現在)のようで&lt;code&gt;repomd.xml&lt;/code&gt;が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定とのこと。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; CentOS Stream release 8であれば&lt;code&gt;CentOS-Stream-PowerTools.repo&lt;/code&gt;が存在していて&lt;code&gt;dnf config-manager&lt;/code&gt;ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nkfのパッケージ" src="https://tmya.github.io/images/nkf-2.1.4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;リポジトリをミラーリングして&lt;code&gt;createrepo&lt;/code&gt;という手もあるけれどそろそろ公開してくれると期待して今回はやりません。&lt;/p&gt;
+&lt;h3&gt;nkfのインストール&lt;/h3&gt;
+&lt;p&gt;パッケージだけダウンロードして&lt;code&gt;localinstall&lt;/code&gt;オプションを使ってインストールしてみます。依存関係に問題がでないのでこれだけで導入可能です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ wget https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
+$ sudo dnf localinstall ./nkf-2.1.4-8.el8.x86_64.rpm
+メタデータの期限切れの最終確認: &lt;span class="m"&gt;3&lt;/span&gt;:06:36 時間前の 2021年11月09日 09時21分29秒 に実施しました。
+依存関係が解決しました。
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+ パッケージ            アーキテクチャー         バージョン                         リポジトリー                   &lt;span class="nv"&gt;サイズ&lt;/span&gt;
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+インストール:
+ nkf                   x86_64                   &lt;span class="m"&gt;1&lt;/span&gt;:2.1.4-8.el8                      @commandline                   &lt;span class="m"&gt;143&lt;/span&gt; k
+
+&lt;span class="nv"&gt;トランザクションの概要&lt;/span&gt;
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+インストール  &lt;span class="m"&gt;1&lt;/span&gt; パッケージ
+
+合計サイズ: &lt;span class="m"&gt;143&lt;/span&gt; k
+インストール後のサイズ: &lt;span class="m"&gt;309&lt;/span&gt; k
+これでよろしいですか? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;y&lt;/code&gt;を押して&lt;code&gt;Enter&lt;/code&gt;でインストールできます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;これでよろしいですか? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
+パッケージのダウンロード:
+トランザクションの確認を実行中
+トランザクションの確認に成功しました。
+トランザクションのテストを実行中
+トランザクションのテストに成功しました。
+トランザクションを実行中
+  準備             :                                                                                                &lt;span class="m"&gt;1&lt;/span&gt;/1
+  インストール中   : nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+  scriptletの実行中: nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+  検証             : nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+
+インストール済み:
+  nkf-1:2.1.4-8.el8.x86_64
+
+完了しました!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nkf -v
+Network Kanji Filter Version &lt;span class="m"&gt;2&lt;/span&gt;.1.4 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-12-12&lt;span class="o"&gt;)&lt;/span&gt;
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1987&lt;/span&gt;, FUJITSU LTD. &lt;span class="o"&gt;(&lt;/span&gt;I.Ichikawa&lt;span class="o"&gt;)&lt;/span&gt;.
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1996&lt;/span&gt;-2015, The nkf Project.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;問題なくインストールできてます。が、バージョンを見ると現行の一つ前のバージョンですね。バグを踏まなければ使えるでしょう。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>How to create a GitHub Pages using Pelican and Google Colaboratory</title><link href="https://tmya.github.io/how-to-create-a-github-pages-using-pelican-and-google-colaboratory.html" rel="alternate"></link><published>2021-10-30T00:00:00+09:00</published><updated>2021-10-30T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-30:/how-to-create-a-github-pages-using-pelican-and-google-colaboratory.html</id><summary type="html">&lt;p&gt;Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based.&lt;/p&gt;
 &lt;h3&gt;Work flow&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Create a empty repository for GitHub Pages. (&lt;code&gt;username&lt;/code&gt;.github.io)&lt;/li&gt;
