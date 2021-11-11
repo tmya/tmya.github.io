@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
 html { 
   font-family: 'M PLUS Rounded 1c', 'Open Sans', 'helvetica', sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: white;
   font-size: 14px;
 }
@@ -9,7 +10,7 @@ html {
 /* Titles */
 h1 { text-transform: uppercase }
 h1, h2 { 
-	font-weight: normal; 
+  font-weight: normal; 
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -256,7 +257,7 @@ img {
 }
 
 /* custom by Akio Tomita */
-code {
+p code, li code {
 	background: #eeeeee;
 	border-radius: 4px;
 	padding: 2px 6px;
