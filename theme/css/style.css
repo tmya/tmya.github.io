@@ -110,6 +110,7 @@ a:hover { text-decoration: underline; }
 
 /* Code */
 .highlight pre {
+  font-family: 'Source Code Pro';
   font-size: 14px;
   overflow: auto;
   padding: 8px;
