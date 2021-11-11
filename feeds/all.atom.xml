@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-11T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/How%20to%20install%20nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/How to install nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-11T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
@@ -183,7 +183,7 @@ Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&
 &lt;li&gt;Change &lt;code&gt;USERNAME&lt;/code&gt; to your username. Change &lt;code&gt;ACCESS_TOKEN&lt;/code&gt; to your access token obtained in the some previous step.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let's execute cell. Run the cell every time you write or edit an article.&lt;/p&gt;
-&lt;p&gt;If result with no errors, you can see blog on https://&lt;code&gt;username&lt;/code&gt;.github.io after a few minutes.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>MIRACLE LINUX 8.4 メモ</title><link href="https://tmya.github.io/miracle-linux-84-memo.html" rel="alternate"></link><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-25:/miracle-linux-84-memo.html</id><summary type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
+&lt;p&gt;If result with no errors, you can see blog on https://&lt;code&gt;username&lt;/code&gt;.github.io after a few minutes.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>MIRACLE LINUX 8.4 メモ</title><link href="https://tmya.github.io/miracle-linux-tips.html" rel="alternate"></link><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-25:/miracle-linux-tips.html</id><summary type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
 とりあえず無償提供の物を使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
 とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
 CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
@@ -351,7 +351,7 @@ This setting is recommended for git and other version-control software.&lt;/p&gt
 &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PIPENV_VENV_IN_PROJECT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
 
 $ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>初級プログラミング向け情報まとめ</title><link href="https://tmya.github.io/chu-ji-puroguraminguxiang-keqing-bao-matome.html" rel="alternate"></link><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-04-08:/chu-ji-puroguraminguxiang-keqing-bao-matome.html</id><summary type="html">&lt;h1&gt;初級プログラミング向け情報まとめ&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>初級プログラミング向け情報まとめ</title><link href="https://tmya.github.io/for-programming-beginner.html" rel="alternate"></link><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-04-08:/for-programming-beginner.html</id><summary type="html">&lt;h1&gt;初級プログラミング向け情報まとめ&lt;/h1&gt;
 &lt;h2&gt;解説&lt;/h2&gt;
 &lt;h3&gt;関数を使うのに必要なヘッダーファイル&lt;/h3&gt;
 &lt;table&gt;
@@ -409,7 +409,7 @@ $ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
 &lt;p&gt;&lt;a href="https://atcoder.jp/"&gt;AtCoder&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;中級～ガチ勢向け&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="p-tips"></category></entry><entry><title>効率のいい平方根の計算方法</title><link href="https://tmya.github.io/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/xiao-lu-noiiping-fang-gen-noji-suan-fang-fa.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="p-tips"></category></entry><entry><title>効率のいい平方根の計算方法</title><link href="https://tmya.github.io/an-efficient-way-to-calculate-square-roots.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/an-efficient-way-to-calculate-square-roots.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
 &lt;li&gt;前提：コンピュータは基本的には加算と減算は高速 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;

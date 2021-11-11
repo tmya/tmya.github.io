@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>初級プログラミングを始めるにあたって</title>
+        <title>MIRACLE LINUX 8.4 メモ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -30,13 +30,13 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html">
-    <meta name="twitter:title" content="Akkie's memos ~ 初級プログラミングを始めるにあたって">
-    <meta name="twitter:description" content="TOUのプログラミング関連授業の履修 年に一回しか list list 日本語の文章 $ curl https://pyenv.run | bash">
+    <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips.html">
+    <meta name="twitter:title" content="Akkie's memos ~ MIRACLE LINUX 8.4 メモ">
+    <meta name="twitter:description" content="CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー1となって公開された。 とりあえず無償提供の物を使っ …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="Akkie's memos ~ 初級プログラミングを始めるにあたって"/>
-    <meta property="og:description" content="TOUのプログラミング関連授業の履修 年に一回しか list list 日本語の文章 $ curl https://pyenv.run | bash"/>
+    <meta property="og:title" content="Akkie's memos ~ MIRACLE LINUX 8.4 メモ"/>
+    <meta property="og:description" content="CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー1となって公開された。 とりあえず無償提供の物を使っ …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -68,9 +68,9 @@
 
         <h2>Categories</h2>
         <ul class="navbar">
-                <li class="active"><a
-                        href="https://tmya.github.io/category/blog.html">blog</a></li>
                 <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
                         href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
                         href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
@@ -83,26 +83,51 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html" rel="bookmark"
-                                                  title="Permalink to 初級プログラミングを始めるにあたって">初級プログラミングを始めるにあたって</a></h2>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips.html" rel="bookmark"
+                                                  title="Permalink to MIRACLE LINUX 8.4 メモ">MIRACLE LINUX 8.4 メモ</a></h2>
             <div class="entry-content blog-post">
-                <h1>TOUのプログラミング関連授業の履修</h1>
-<p>年に一回しか</p>
+                <p>CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>となって公開された。
+とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
+CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
+日本発ディストリなので、ML関係の記事は日本語で書くよ。</p>
+<h2>気をつけるポイント</h2>
+<h3>パーティション構成</h3>
+<p>自動構成だと<code>/</code>と<code>/home</code>でパーティションが分かれている。場合によってはまとめてもいいかもしれない。</p>
+<h3>インストール後</h3>
+<p>日本語入力は<code>半角/英数</code>や<code>Ctrl + Space</code>を押してもすぐには出来無い。画面右上のタスクバーから日本語入力に切り替えると、キーボードでの切り替えが可能になる。（公式にも書いてある）</p>
+<h2>やってみたこと一覧</h2>
 <ul>
-<li>list</li>
-<li>list</li>
-<li>日本語の文章</li>
+<li>pyenv, pipenvの導入</li>
+<li>GnuPGの導入</li>
+<li>Google Chromeの導入</li>
+<li>GNOME Classicへの切り替え</li>
+<li>Cockpitの導入</li>
+<li>VirtualBoxの導入</li>
+<li>MIRACLE LINUX on WSL2</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$ curl https://pyenv.run <span class="p">|</span> bash
-</code></pre></div>
+<h3>VirtualBoxでやったこと</h3>
+<p>元のWindows10マシンにSSDを追加してMLをインストールし、物理SSDにアクセスするvmdkを用意する。あとはVirtualBoxにそのvmdkを追加するとWindows10が起動する。なおライセンスに注意。
+<img alt="Windows10 on MIRACLE LINUX" src="https://tmya.github.io/images/ml_win_d.png"></p>
+<h2>気付いたこと</h2>
+<h3>マスコット画像</h3>
+<p><code>/usr/share/backgrounds</code> にみらくるちゃんとカーネルくんの背景画像が存在する。
+<img alt="みらくるちゃんとカーネルくん" src="https://tmya.github.io/images/miracle_kernel.jpg"></p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.cybertrust.co.jp/miraclelinux-license-free/">MIRACLE LINUX ライセンスフリー</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
             </div>
             <div class="post_list">
                 <span>By </span>
                 <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="https://tmya.github.io/category/blog.html" rel="bookmark"
-                                               title="Permalink to blog">[ blog ]</a></span>
-                <span class="post_date">Tue 20 October 2020</span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Mon 25 October 2021</span>
                 <div><span>Tags : </span>
                 </div>
 
@@ -110,28 +135,28 @@
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html&text=初級プログラミングを始めるにあたって&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips.html&text=MIRACLE LINUX 8.4 メモ&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/miracle-linux-tips.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html&t=初級プログラミングを始めるにあたって"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips.html&t=MIRACLE LINUX 8.4 メモ"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html&title=初級プログラミングを始めるにあたって"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips.html&title=MIRACLE LINUX 8.4 メモ"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=初級プログラミングを始めるにあたって&amp;body=Viens découvrir un article à propos de [初級プログラミングを始めるにあたって] sur le site de Akio Tomita. https://tmya.github.io/drafts/chu-ji-puroguraminguwoshi-meruniatatsute.html"
+                            href="mailto:?subject=MIRACLE LINUX 8.4 メモ&amp;body=Viens découvrir un article à propos de [MIRACLE LINUX 8.4 メモ] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>
