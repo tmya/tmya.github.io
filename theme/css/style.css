@@ -110,10 +110,20 @@ a:hover { text-decoration: underline; }
 
 /* Code */
 .highlight pre {
-  font-family: 'Source Code Pro';
   font-size: 14px;
   overflow: auto;
   padding: 8px;
+}
+
+/* custom by Akio Tomita */
+.highlight pre code {
+  font-family: 'Source Code Pro';
+}
+p code, li code {
+	font-family: 'Source Code Pro';
+	background: #eeeeee;
+	border-radius: 4px;
+	padding: 2px 6px;
 }
 
 /* Sidebar */
@@ -258,10 +268,3 @@ img {
   max-width: 100%;
 }
 
-/* custom by Akio Tomita */
-p code, li code {
-	font-family: 'Source Code Pro';
-	background: #eeeeee;
-	border-radius: 4px;
-	padding: 2px 6px;
-}
