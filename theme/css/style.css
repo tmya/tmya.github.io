@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+
 html { 
-  font-family: 'Open Sans', 'helvetica', sans-serif;
+  font-family: 'M PLUS Rounded 1c', 'Open Sans', 'helvetica', sans-serif;
   background: white;
   font-size: 14px;
 }
@@ -254,7 +256,7 @@ img {
 }
 
 /* custom by Akio Tomita */
-p code {
+code {
 	background: #eeeeee;
 	border-radius: 4px;
 	padding: 2px 6px;
