@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-11T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-11T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-13T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
@@ -11,6 +11,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;MLでは&lt;a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/"&gt;PowerTools リポジトリと思われるURL&lt;/a&gt;に存在するが、まだ準備中(2021/11/9現在)のようで&lt;code&gt;repomd.xml&lt;/code&gt;が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;とのこと。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2021/11/13 更新:&lt;/strong&gt; いつのまにか公式サイトが11月上旬から11月末という表記に変わっていてTwitterにも告知が出ていました。&lt;a href="https://twitter.com/miraclelinux/status/1459038248148209664"&gt;Twitter - みらくるちゃん &amp;amp; カーネルくん 2021/11/12 15:00&lt;/a&gt; もう少し待つしかない模様。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; CentOS Stream release 8であれば&lt;code&gt;CentOS-Stream-PowerTools.repo&lt;/code&gt;が存在していて&lt;code&gt;dnf config-manager&lt;/code&gt;ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="nkfのパッケージ" src="https://tmya.github.io/images/nkf-2.1.4.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;リポジトリをミラーリングして&lt;code&gt;createrepo&lt;/code&gt;という手もあるけれどそろそろ公開してくれると期待して今回はやりません。&lt;/p&gt;
