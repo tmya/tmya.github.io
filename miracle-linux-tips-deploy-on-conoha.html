@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>ConoHaにMIRACLE LINUX 8.4を導入</title>
+        <title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -31,11 +31,11 @@
 
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html">
-    <meta name="twitter:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4を導入">
+    <meta name="twitter:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入">
     <meta name="twitter:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4を導入"/>
+    <meta property="og:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入"/>
     <meta property="og:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …"/>
     <meta property="og:image" content=""/>
 </head>
@@ -84,9 +84,9 @@
     <section id="content">
         <article>
             <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="bookmark"
-                                                  title="Permalink to ConoHaにMIRACLE LINUX 8.4を導入">ConoHaにMIRACLE LINUX 8.4を導入</a></h2>
+                                                  title="Permalink to ConoHaにMIRACLE LINUX 8.4(CUI)を導入">ConoHaにMIRACLE LINUX 8.4(CUI)を導入</a></h2>
             <div class="entry-content blog-post">
-                <p>今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。</p>
+                <p>今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。</p>
 <h3>ConoHaで新しいサーバの追加</h3>
 <p>まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは<code>Steam8(64bit)</code>になっているので、ドロップダウンから<code>8.3(64bit)</code>を選びます。</p>
 <p><img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"></p>
@@ -172,7 +172,7 @@ xxx-xxx-xxx-xxx login:
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&text=ConoHaにMIRACLE LINUX 8.4を導入&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&text=ConoHaにMIRACLE LINUX 8.4(CUI)を導入&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
@@ -183,17 +183,17 @@ xxx-xxx-xxx-xxx login:
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&t=ConoHaにMIRACLE LINUX 8.4を導入"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&t=ConoHaにMIRACLE LINUX 8.4(CUI)を導入"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&title=ConoHaにMIRACLE LINUX 8.4を導入"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&title=ConoHaにMIRACLE LINUX 8.4(CUI)を導入"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=ConoHaにMIRACLE LINUX 8.4を導入&amp;body=Viens découvrir un article à propos de [ConoHaにMIRACLE LINUX 8.4を導入] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html"
+                            href="mailto:?subject=ConoHaにMIRACLE LINUX 8.4(CUI)を導入&amp;body=Viens découvrir un article à propos de [ConoHaにMIRACLE LINUX 8.4(CUI)を導入] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>
