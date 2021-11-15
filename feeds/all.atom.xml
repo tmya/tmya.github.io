@@ -62,7 +62,7 @@ Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an X86
 xxx-xxx-xxx-xxx login:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3&gt;[おまけ] 新規ユーザの追加&lt;/h3&gt;
+&lt;h3&gt;新規ユーザの追加&lt;/h3&gt;
 &lt;p&gt;今までの作業は&lt;code&gt;root&lt;/code&gt;という名前のユーザで作業してきました。これはスーパーユーザとも言い、システム等を自由に変更できる"すごいユーザ"であるので、コマンドを打ち間違えてシステムを破壊してしまうかもしれません。一般的に作業を行う一般ユーザを作成しましょう。ユーザを作成するには&lt;code&gt;adduser&lt;/code&gt;コマンドを使います。&lt;code&gt;XXXX&lt;/code&gt;には自分のユーザ名を入力してください。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# adduser XXXX&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
