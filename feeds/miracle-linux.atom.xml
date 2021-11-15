@@ -53,22 +53,94 @@ MIRACLE LINUX release &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# reboot&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;ブートローダーの一番上にMIRACLE LINUXが追加されているので、数秒待つと起動します。ログイン画面が表示されたらログインしましょう。&lt;/p&gt;
+&lt;p&gt;ブートローダの一番上にMIRACLE LINUXが追加されているので、数秒待つと起動します。ログイン画面が表示されたらログインしましょう。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ブートローダ" src="https://tmya.github.io/images/conoha-ml-boot.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;ログイン画面では次のようにMIRACLE LINUX 8.4と表示されます。以上で完了です。&lt;/p&gt;
+&lt;p&gt;ログイン画面では次のようにMIRACLE LINUX 8.4と表示されます。以上で移行は完了です。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MIRACLE LINUX &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
 Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an X86_64
 
 xxx-xxx-xxx-xxx login:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;h3&gt;[おまけ] 新規ユーザの追加&lt;/h3&gt;
+&lt;p&gt;今までの作業は&lt;code&gt;root&lt;/code&gt;という名前のユーザで作業してきました。これはスーパーユーザとも言い、システム等を自由に変更できる"すごいユーザ"であるので、コマンドを打ち間違えてシステムを破壊してしまうかもしれません。一般的に作業を行う一般ユーザを作成しましょう。ユーザを作成するには&lt;code&gt;adduser&lt;/code&gt;コマンドを使います。&lt;code&gt;XXXX&lt;/code&gt;には自分のユーザ名を入力してください。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# adduser XXXX&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;特に何の出力もありませんが、ユーザの作成はできているはずです。下記のコマンドで自分の作成したユーザの行が出力されていれば大丈夫です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# grep XXXX /etc/passwd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;一般ユーザと言っても、時々システムの管理を行いたい事があると思います。その時の為に管理者としてコマンドを実行できるように&lt;code&gt;wheel&lt;/code&gt;グループに作成したユーザを追加しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# usermod -aG wheel XXXX&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;こちらも下記のコマンドで、wheelで始まる行が出力されていれば追加されていると確認できます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# grep XXXX /etc/group&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;そして作成したユーザにはまだパスワードが設定されていません。パスワードを設定しましょう。設定したいパスワードを2回入力します。1回でないのは、もし打ち間違えているとログインできなくなってしまうので確認の為にこうなっています。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# passwd XXXX&lt;/span&gt;
+Changing password &lt;span class="k"&gt;for&lt;/span&gt; user XXXX.
+New password:
+Retype new password:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; &lt;code&gt;passwd&lt;/code&gt;の後にユーザ名を付けずに実行してしまうと、今ログインしてるユーザのパスワードを変更してしまいます。このタイミングではrootユーザのパスワードを変更してしまうので気を付けてください。1行目の&lt;code&gt;Changing password for user XXXX.&lt;/code&gt;の最後に自分のユーザ名が表示されているか確認しましょう。&lt;/p&gt;
+&lt;p&gt;2回とも同じパスワードを入力できているとパスワードが設定されます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;passwd: all authentication tokens updated successfully.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;一旦ログアウトして、作成したユーザでログインしてみましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;先ほど作成したユーザ名を入力してEnterキーを押しパスワードを入力してEnterキーを押します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MIRACLE LINUX &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
+Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an x86_64
+
+xxx-xxx-xxx-xxx login: XXXX
+Password:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ログインできるとコンソールの表示が先ほどまでのrootとちょっと違う形で表示されます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;XXXX@xxx-xxx-xxx-xxx ~&lt;span class="o"&gt;]&lt;/span&gt;$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;[&lt;code&gt;ユーザ名&lt;/code&gt;@&lt;code&gt;ホスト名&lt;/code&gt; ~]$となります。最後の$は一般ユーザであることを表しています。実は先ほどまでのrootユーザは$ではなく#でした。&lt;/p&gt;
+&lt;p&gt;試しにrootユーザでない場合にどうなるか試すにはrootのホームディレクトリを覗こうとしてみるとわかります。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls /root
+ls: cannot open directory &lt;span class="s1"&gt;&amp;#39;/root&amp;#39;&lt;/span&gt;: Permission denied
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Permission deniedと表示され、権限がないと言われます。&lt;/p&gt;
+&lt;p&gt;一時的にスーパーユーザとして実行するにはコマンドの先頭に&lt;code&gt;sudo&lt;/code&gt;をくっつけます。試してみましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ls /root
+
+We trust you have received the usual lecture from the &lt;span class="nb"&gt;local&lt;/span&gt; System
+Administrator. It usually boils down to these three things:
+
+    &lt;span class="c1"&gt;#1) Respect the privacy of others.&lt;/span&gt;
+    &lt;span class="c1"&gt;#2) Think before you type.&lt;/span&gt;
+    &lt;span class="c1"&gt;#3) With great power comes great responsibility.&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; password &lt;span class="k"&gt;for&lt;/span&gt; XXXX:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は翻訳ソフトで調べてください。&lt;/p&gt;
+&lt;p&gt;ここでパスワードが要求されますが、&lt;code&gt;password for XXXX&lt;/code&gt;となっている通りrootのパスワードではなく作成した一般ユーザのパスワードを入力してください。正しいパスワードが入力されていれば&lt;code&gt;ls&lt;/code&gt;コマンドが実行されると思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;migrate2ml.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;これは、最初に移行ツールをダウンロードしたのでそのファイルが表示されています。ダウンロードした時はrootユーザのホームディレクトリで作業していたのでここで表示されます。&lt;/p&gt;
+&lt;p&gt;今後は一般ユーザでログインし、必要があれば&lt;code&gt;sudo&lt;/code&gt;を使って作業を行います。&lt;/p&gt;
 &lt;h4&gt;その他 いくつか&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;os-release&lt;/code&gt;がML仕様になっています。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/os-release&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cat /etc/os-release
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf repolist --enabled&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ dnf repolist --enabled
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;

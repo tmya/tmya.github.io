@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title>
+        <title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -30,13 +30,13 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html">
-    <meta name="twitter:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入">
-    <meta name="twitter:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html">
+    <meta name="twitter:title" content="Akkie's memos ~ ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">
+    <meta name="twitter:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。 前提としてConoHaに …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入"/>
-    <meta property="og:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …"/>
+    <meta property="og:title" content="Akkie's memos ~ ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"/>
+    <meta property="og:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。 前提としてConoHaに …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -83,10 +83,44 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="bookmark"
-                                                  title="Permalink to ConoHaにMIRACLE LINUX 8.4(CUI)を導入">ConoHaにMIRACLE LINUX 8.4(CUI)を導入</a></h2>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html" rel="bookmark"
+                                                  title="Permalink to ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</a></h2>
             <div class="entry-content blog-post">
-                <p>今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。</p>
+                <p>みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。</p>
+<p><strong>前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> </strong></p>
+<h3>まずはマインクラフトサーバの本体をダウンロード</h3>
+<p>ConoHaのコンソールを開き、一般ユーザでログインします。まずはマインクラフトサーバを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
+<div class="highlight"><pre><span></span><code>$ mkdir minecraft-server
+$ <span class="nb">cd</span> minecraft-server
+</code></pre></div>
+
+<p>コンソールが[<code>ユーザ名</code>@<code>ホスト名</code> minecraft-server ]$ となっていると思います。</p>
+<p>次にコンソールにコマンドを打ちMinecraftをダウンロードします。</p>
+<div class="highlight"><pre><span></span><code>wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
+</code></pre></div>
+
+<p>と言ってもURLが長いので、上のコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックします。</p>
+<p><img alt="テキストを張り付ける方法" src="https://tmya.github.io/images/conoha-mc-dl.jpg"></p>
+<p>そしてEnterキーを押して実行します。</p>
+<div class="highlight"><pre><span></span><code>~~略~~  <span class="s1">&#39;server.jar&#39;</span> saved <span class="o">[</span><span class="m">43626592</span>/43626592<span class="o">]</span>
+</code></pre></div>
+
+<p>ダウンロードが完了したので、実行用のスクリプトを作成します。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;usr/bin/bash\njava -Xmx512M -Xms512M -jar server.jar nogui&quot;</span> &gt; start.sh
+</code></pre></div>
+
+<p>先ほどと同じく、上のコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックし、Enterキーを押します。</p>
+<p>start.shファイルが作成されていると思います。</p>
+<div class="highlight"><pre><span></span><code>$ ls
+server.jar start.sh
+</code></pre></div>
+
+<h3>JAVAの実行環境をインストール</h3>
+<p>次に、サーバを実行するためのJAVAのインストールを行います。ここで<code>sudo</code>コマンドの登場です。パスワードを聞かれるので、ログインしたユーザのパスワードを入力します。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf -y install java-latest-openjdk-headless
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
+</code></pre></div>
+
 <h3>ConoHaで新しいサーバの追加</h3>
 <p>まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは<code>Steam8(64bit)</code>になっているので、ドロップダウンから<code>8.3(64bit)</code>を選びます。</p>
 <p><img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"></p>
@@ -236,7 +270,7 @@ Administrator. It usually boils down to these three things:
                 <span> in </span>
                 <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
-                <span class="post_date">Mon 15 November 2021</span>
+                <span class="post_date">Tue 16 November 2021</span>
                 <div><span>Tags : </span>
                 </div>
 
@@ -244,28 +278,28 @@ Administrator. It usually boils down to these three things:
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&text=ConoHaにMIRACLE LINUX 8.4(CUI)を導入&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&text=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&t=ConoHaにMIRACLE LINUX 8.4(CUI)を導入"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&t=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html&title=ConoHaにMIRACLE LINUX 8.4(CUI)を導入"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&title=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=ConoHaにMIRACLE LINUX 8.4(CUI)を導入&amp;body=Viens découvrir un article à propos de [ConoHaにMIRACLE LINUX 8.4(CUI)を導入] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html"
+                            href="mailto:?subject=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&amp;body=Viens découvrir un article à propos de [ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる] sur le site de Akio Tomita. https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>
