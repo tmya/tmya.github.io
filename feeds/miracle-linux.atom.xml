@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-13T00:00:00+09:00</updated><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-15T00:00:00+09:00</updated><entry><title>ConoHaにMIRACLE LINUX 8.4を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …&lt;/p&gt;</summary><content type="html">&lt;p&gt;今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。&lt;/p&gt;
+&lt;h3&gt;ConoHaで新しいサーバの追加&lt;/h3&gt;
+&lt;p&gt;まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは&lt;code&gt;Steam8(64bit)&lt;/code&gt;になっているので、ドロップダウンから&lt;code&gt;8.3(64bit)&lt;/code&gt;を選びます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;rootパスワードは大文字や小文字、数字と記号を混ぜないといけないので思いつかない場合は何らかのソフトで生成しましょう。&lt;a href="https://1password.com/jp/password-generator/"&gt;1passwordのジェネレータ&lt;/a&gt;でサクっと生成する方法もあります。お手持ちのマシンに&lt;code&gt;pwgen&lt;/code&gt;コマンドや&lt;code&gt;mkpasswd&lt;/code&gt;コマンドなどがあればそれで生成してもいいでしょう。&lt;/p&gt;
+&lt;p&gt;セキュリティ上の懸念があるため&lt;code&gt;オプションを見る&lt;/code&gt;をクリックして、&lt;code&gt;接続許可ポート IPv4&lt;/code&gt;と&lt;code&gt;接続許可ポート IPv6&lt;/code&gt;は両方とも&lt;code&gt;全て拒否&lt;/code&gt;にしましょう。これはサーバの設定を全て終わらせてある程度セキュリティを担保してから許可に変更すると良いでしょう。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="オプションを見るの中身" src="https://tmya.github.io/images/conoha-option-disable-inbound-port.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;サーバを追加すると1分程度構築中と表示され、その後起動中になります。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="サーバの追加完了" src="https://tmya.github.io/images/conoha-add-server-2.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;サーバへのログイン&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ネームタグ&lt;/code&gt;から先ほど作成したサーバをクリックし、&lt;code&gt;コンソール&lt;/code&gt;をクリックすると新しいウィンドウでコンソール画面が表示されます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="コンソール" src="https://tmya.github.io/images/conoha-console.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;root&lt;/code&gt;と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止でそうなっています。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xxx-xxx-xxx-xxx login: root
+Password:
+&lt;span class="o"&gt;[&lt;/span&gt;root@xxx-xxx-xxx-xxx ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="c1"&gt;# &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;この時点ではCentOS 8.3がインストールされていることが確認できます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
+CentOS Linux release &lt;span class="m"&gt;8&lt;/span&gt;.3.2011
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;MIRACLE LINUXへの移行ツールのダウンロードと実行&lt;/h3&gt;
+&lt;p&gt;移行ツールをダウンロードします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# wget https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;移行ツールを実行するために、実行権限を付与します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# chmod +x ./migrate2ml.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;通常の切り替えモードで移行ツールを実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# ./migrate2ml.sh --core&lt;/span&gt;
+
+~~~~略~~~~
+
+Core package migration is completed!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;確認してみましょう。&lt;code&gt;redhat-release&lt;/code&gt;ファイルはMIRACLE LINUXになっています。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
+MIRACLE LINUX release &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;パッケージのアップデートと再起動&lt;/h3&gt;
+&lt;p&gt;パッケージをアップデートします。数分かかるので待ちましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf -y update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;終わったら念のため再起動しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ブートローダーの一番上にMIRACLE LINUXが追加されているので、数秒待つと起動します。ログイン画面が表示されたらログインしましょう。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ブートローダ" src="https://tmya.github.io/images/conoha-ml-boot.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;ログイン画面では次のようにMIRACLE LINUX 8.4と表示されます。以上で完了です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MIRACLE LINUX &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
+Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an X86_64
+
+xxx-xxx-xxx-xxx login:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;その他 いくつか&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;os-release&lt;/code&gt;がML仕様になっています。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/os-release&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf repolist --enabled&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
