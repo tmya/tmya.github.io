@@ -30,7 +30,7 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html">
+    <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html">
     <meta name="twitter:title" content="Akkie's memos ~ ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">
     <meta name="twitter:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使っ …">
 
@@ -83,7 +83,7 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html" rel="bookmark"
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html" rel="bookmark"
                                                   title="Permalink to ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</a></h2>
             <div class="entry-content blog-post">
                 <p>みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。</p>
@@ -113,9 +113,10 @@ $ <span class="nb">cd</span> minecraft-server
 </code></pre></div>
 
 <p>ダウンロードが完了したので、実行用のスクリプトを作成します。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx512M -Xms512M -jar server.jar nogui&quot;</span> &gt; start.sh
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx1024M -Xms1024M -jar server.jar nogui&quot;</span> &gt; start.sh
 </code></pre></div>
 
+<p><strong>NOTE:</strong> 今回のメモではサーバに512MBのメモリ(RAM)しかありませんが、Swapというメモリが足りなかった場合に使える領域が2GB程度存在します。メモリに比べて速度がとても遅いのでメモリの代わりにはなりませんが、サーバの動作というだけなら起動は可能です。また、<code>-Xmx1024M</code>と<code>-Xms1024M</code>はそれぞれ指定できる最低値です。これ以下の値を指定しても、自動的に1024Mが指定されたものとして起動してしまいます。</p>
 <p>先ほどと同じく、上のコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックし、Enterキーを押します。</p>
 <p>start.shファイルが作成されていると思います。</p>
 <div class="highlight"><pre><span></span><code>$ ls
@@ -228,6 +229,16 @@ success
 <p>画面下部の接続許可ポートのうち、<code>PostgreSQL (5432)</code>にチェックを入れて数秒待つと画面左下に<code>成功しました。</code>と表示されます。</p>
 <p><img alt="接続許可ポートにチェック" src="https://tmya.github.io/images/conoha-port-open-5432.jpg"></p>
 <p>以上で設定は完了です。</p>
+<h3>ゲームの起動と接続</h3>
+<p>マインクラフト(バージョン 1.17.1)を起動し、<code>マルチプレイ</code>から<code>サーバーを追加</code>をクリックします。<code>サーバー名</code>はわかりやすい値で好きなように設定し、<code>サーバーアドレス</code>には<code>ConoHaのIPv4のIPアドレス</code>:5432を入力し、完了をクリックします。</p>
+<p><img alt="サーバーの追加" src="https://tmya.github.io/images/mc-add-serv.jpg"></p>
+<p><img alt="ConoHaのIPアドレス" src="https://tmya.github.io/images/conoha-serv-ip.jpg"></p>
+<p><strong>NOTE:</strong> IPアドレスとポート番号の5432の間は<code>コロン</code>という記号で、<code>:</code>です。日本語のキーボードを使っている場合は<code>け</code>の位置です。</p>
+<p>追加されたサーバーを選び、<code>サーバーに接続</code>をクリックするとゲームを開始できます。</p>
+<p><img alt="サーバーログイン後" src="https://tmya.github.io/images/mc-login.jpg"></p>
+<p>コンソール画面を見ると、ログインしたことがわかるログが表示されています。</p>
+<p><img alt="ログインがわかるコンソール" src="https://tmya.github.io/images/conoha-mc-log.jpg"></p>
+<p>以上で完了です。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
@@ -243,28 +254,28 @@ success
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&text=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html&text=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&t=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html&t=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html&title=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html&title=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&amp;body=Viens découvrir un article à propos de [ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる] sur le site de Akio Tomita. https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html"
+                            href="mailto:?subject=ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる&amp;body=Viens découvrir un article à propos de [ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>

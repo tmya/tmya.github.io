@@ -22,7 +22,159 @@ $ sudo mv micro /usr/bin
 &lt;p&gt;ほとんどWindowsのメモ帳と同じ。カーソルキーで動かしたり文字を打てば入力できます。&lt;/p&gt;
 &lt;h4&gt;保存等&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;Ctrl + s&lt;/code&gt; で保存。&lt;code&gt;Ctrl + q&lt;/code&gt;で終了。&lt;code&gt;micro&lt;/code&gt;のみで起動した後、&lt;code&gt;Ctrl + s&lt;/code&gt;を押すとファイル名を聞かれるので入力してEnterキーで保存。&lt;code&gt;Ctrl + q&lt;/code&gt;を押すと変更を保存するか聞かれるので、&lt;code&gt;y&lt;/code&gt;か&lt;code&gt;n&lt;/code&gt;かキャンセルなら&lt;code&gt;Esc&lt;/code&gt;を押す。&lt;/p&gt;
-&lt;p&gt;後は&lt;code&gt;micro エディタ 使い方&lt;/code&gt;で検索すると各種ショートカットが調べられると思います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。&lt;/p&gt;
+&lt;p&gt;後は&lt;code&gt;micro エディタ 使い方&lt;/code&gt;で検索すると各種ショートカットが調べられると思います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/miracle-linux-tips-minecraft-server-conoha.html</id><summary type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;必要な事&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;サーバのダウンロード&lt;/li&gt;
+&lt;li&gt;JAVAのインストール&lt;/li&gt;
+&lt;li&gt;ファイヤウォールの設定&lt;/li&gt;
+&lt;li&gt;ConoHaの接続許可ポートの設定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;マインクラフトサーバの本体をダウンロード&lt;/h3&gt;
+&lt;p&gt;ConoHaのコンソールを開き、一般ユーザでログインします。まずはマインクラフトサーバを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir minecraft-server
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; minecraft-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;コンソールが[&lt;code&gt;ユーザ名&lt;/code&gt;@&lt;code&gt;ホスト名&lt;/code&gt; minecraft-server ]$ となっていると思います。&lt;/p&gt;
+&lt;p&gt;次にコンソールにコマンドを打ちMinecraftをダウンロードします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;と言ってもURLが長いので、上のコマンドをコピーしてコンソール上部の&lt;code&gt;テキスト送信&lt;/code&gt;をクリックして貼り付け、&lt;code&gt;送信&lt;/code&gt;ボタンをクリックします。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="テキストを張り付ける方法" src="https://tmya.github.io/images/conoha-mc-dl.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;そしてEnterキーを押して実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~~略~~  &lt;span class="s1"&gt;&amp;#39;server.jar&amp;#39;&lt;/span&gt; saved &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;43626592&lt;/span&gt;/43626592&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ダウンロードが完了したので、実行用のスクリプトを作成します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s1"&gt;&amp;#39;#!&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/bin/bash\njava -Xmx1024M -Xms1024M -jar server.jar nogui&amp;quot;&lt;/span&gt; &amp;gt; start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; 今回のメモではサーバに512MBのメモリ(RAM)しかありませんが、Swapというメモリが足りなかった場合に使える領域が2GB程度存在します。メモリに比べて速度がとても遅いのでメモリの代わりにはなりませんが、サーバの動作というだけなら起動は可能です。また、&lt;code&gt;-Xmx1024M&lt;/code&gt;と&lt;code&gt;-Xms1024M&lt;/code&gt;はそれぞれ指定できる最低値です。これ以下の値を指定しても、自動的に1024Mが指定されたものとして起動してしまいます。&lt;/p&gt;
+&lt;p&gt;先ほどと同じく、上のコマンドをコピーしてコンソール上部の&lt;code&gt;テキスト送信&lt;/code&gt;をクリックして貼り付け、&lt;code&gt;送信&lt;/code&gt;ボタンをクリックし、Enterキーを押します。&lt;/p&gt;
+&lt;p&gt;start.shファイルが作成されていると思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls
+server.jar start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;実行権限を付与しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ chmod +x start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;JAVAの実行環境をインストール&lt;/h3&gt;
+&lt;p&gt;次に、サーバを実行するためのJAVAのインストールを行います。ここで&lt;code&gt;sudo&lt;/code&gt;コマンドの登場です。パスワードを聞かれるので、ログインしたユーザのパスワードを入力します。java以外にも必要なパッケージが自動でインストールされます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf -y install java-latest-openjdk-headless
+&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; password &lt;span class="k"&gt;for&lt;/span&gt; XXXX:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは&lt;code&gt;java-latest-openjdkほにゃらら&lt;/code&gt;がバージョン16になります。因みに&lt;code&gt;java-11-openjdkほにゃらら&lt;/code&gt;だとバージョン11がインストールされます。&lt;/p&gt;
+&lt;h3&gt;サーバの初期設定&lt;/h3&gt;
+&lt;p&gt;とりあえず一度起動しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ./start.sh
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/ERROR&lt;span class="o"&gt;]&lt;/span&gt;: Failed to load properties from file: server.properties
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/WARN&lt;span class="o"&gt;]&lt;/span&gt;: Failed to load eula.txt
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/INFO&lt;span class="o"&gt;]&lt;/span&gt;: You need to agree to the EULA in order to run the server. Go to eula.txt &lt;span class="k"&gt;for&lt;/span&gt; more info.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;何やらメッセージが表示されます。それぞれの行で、&lt;code&gt;server.properties&lt;/code&gt;ファイルが見当たらない、&lt;code&gt;eula.txt&lt;/code&gt;がロードできない、EULAに同意しないといけないとなっています。&lt;/p&gt;
+&lt;p&gt;一旦今のファイル一覧を見てみましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls
+eula.txt logs server.jar server.properties start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ファイルが増えています。&lt;/p&gt;
+&lt;p&gt;EULAに同意するため下記のコマンドを実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sed -i &lt;span class="s1"&gt;&amp;#39;s/false/true/g&amp;#39;&lt;/span&gt; eula.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;サーバのポートがデフォルトだとtcpの25565番ですが、ConoHaの接続許可ポートを指定するにはAPI操作等が必要になってきます。ですので、簡単に選べる代表的なポートを拝借して5432番ポートを利用するように設定変更します。5432番は元々PostgreSQL用ですが、マインクラフトサーバを立てるにあたり同じサーバでPostgreSQLを動かす事はほとんどないと思うので影響は無いと考えていいと思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sed -i &lt;span class="s1"&gt;&amp;#39;s/25565/5432/g&amp;#39;&lt;/span&gt; server.properties
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;確認は下記のコマンドで可能です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ grep &lt;span class="m"&gt;5432&lt;/span&gt; server.properties
+server-port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;
+query.port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;サーバの起動&lt;/h3&gt;
+&lt;p&gt;サーバを起動しましょう。いろいろ文字が表示されます。メモリ512MBでは非常に苦しく時間がかかるので、しばし待ちましょう。今回は起動に210秒かかりました。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ./start.sh
+~~略~~
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;Server thread/INFO&lt;span class="o"&gt;]&lt;/span&gt;: Done &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;210&lt;/span&gt;.643.s&lt;span class="o"&gt;)&lt;/span&gt;! For help, &lt;span class="nb"&gt;type&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;Server thread/WARN&lt;span class="o"&gt;]&lt;/span&gt;: Can&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t keep up! Is the server overloaded? Running 2885ms or &lt;span class="m"&gt;57&lt;/span&gt; ticks behind
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;無事に起動しましたが、すでにサーバがオーバーロード（つまりあっぷあっぷして苦しい）していないか？と警告が出ています。メモリ512MBでは厳しいようです。今回はこのまま進めます。&lt;/p&gt;
+&lt;p&gt;ここまででサーバが立ち上がりました。早速接続を・・・と考えたくなりますが、実はポートが開いていないので接続できません。ポートを開ける為に2種類の設定を行わなければなりません。&lt;/p&gt;
+&lt;p&gt;一旦&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;c&lt;/code&gt;ボタンを押して、サーバを終了させましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;^C&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;Server thread/INFO&lt;span class="o"&gt;]&lt;/span&gt;: Stopping server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;と表示され、サーバが終了してコンソール画面に戻ってくると思います。&lt;/p&gt;
+&lt;h3&gt;ファイヤウォールの設定&lt;/h3&gt;
+&lt;p&gt;1種類目はMLのファイヤウォール設定です。現在のファイヤウォールの設定を確認します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --list-all
+&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; password &lt;span class="k"&gt;for&lt;/span&gt; XXXX:
+public &lt;span class="o"&gt;(&lt;/span&gt;active&lt;span class="o"&gt;)&lt;/span&gt;
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;現在有効な設定が表示されます。現在はservicesの行にあるサービスしか外部から通信できません。今回はserviceとしてではなく、portとして、&lt;code&gt;tcp&lt;/code&gt;の&lt;code&gt;5432&lt;/code&gt;を追加し、もう一度確認しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --add-port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;/tcp
+success
+$ sudo firewall-cmd --list-all
+public &lt;span class="o"&gt;(&lt;/span&gt;active&lt;span class="o"&gt;)&lt;/span&gt;
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports: &lt;span class="m"&gt;5432&lt;/span&gt;/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;ports&lt;/code&gt;行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、恒久的に適用するために下記のコマンドを実行しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --runtime-to-permanent
+success
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;success&lt;/code&gt;と表示がされればOKです。&lt;/p&gt;
+&lt;h3&gt;ConoHaの接続許可ポートの設定&lt;/h3&gt;
+&lt;p&gt;2種類目はVPSの接続許可ポートの設定です。&lt;/p&gt;
+&lt;p&gt;ConoHaのWebから&lt;a href="https://manage.conoha.jp/Service/"&gt;サーバーリストを参照&lt;/a&gt;し、ネームタグの列の作成したサーバをクリックします。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="サーバーリスト" src="https://tmya.github.io/images/conoha-server-list-1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;画面下部の接続許可ポートのうち、&lt;code&gt;PostgreSQL (5432)&lt;/code&gt;にチェックを入れて数秒待つと画面左下に&lt;code&gt;成功しました。&lt;/code&gt;と表示されます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="接続許可ポートにチェック" src="https://tmya.github.io/images/conoha-port-open-5432.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;以上で設定は完了です。&lt;/p&gt;
+&lt;h3&gt;ゲームの起動と接続&lt;/h3&gt;
+&lt;p&gt;マインクラフト(バージョン 1.17.1)を起動し、&lt;code&gt;マルチプレイ&lt;/code&gt;から&lt;code&gt;サーバーを追加&lt;/code&gt;をクリックします。&lt;code&gt;サーバー名&lt;/code&gt;はわかりやすい値で好きなように設定し、&lt;code&gt;サーバーアドレス&lt;/code&gt;には&lt;code&gt;ConoHaのIPv4のIPアドレス&lt;/code&gt;:5432を入力し、完了をクリックします。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="サーバーの追加" src="https://tmya.github.io/images/mc-add-serv.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ConoHaのIPアドレス" src="https://tmya.github.io/images/conoha-serv-ip.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; IPアドレスとポート番号の5432の間は&lt;code&gt;コロン&lt;/code&gt;という記号で、&lt;code&gt;:&lt;/code&gt;です。日本語のキーボードを使っている場合は&lt;code&gt;け&lt;/code&gt;の位置です。&lt;/p&gt;
+&lt;p&gt;追加されたサーバーを選び、&lt;code&gt;サーバーに接続&lt;/code&gt;をクリックするとゲームを開始できます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="サーバーログイン後" src="https://tmya.github.io/images/mc-login.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;コンソール画面を見ると、ログインしたことがわかるログが表示されています。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ログインがわかるコンソール" src="https://tmya.github.io/images/conoha-mc-log.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。&lt;/p&gt;
 &lt;h3&gt;ConoHaで新しいサーバの追加&lt;/h3&gt;
 &lt;p&gt;まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは&lt;code&gt;Steam8(64bit)&lt;/code&gt;になっているので、ドロップダウンから&lt;code&gt;8.3(64bit)&lt;/code&gt;を選びます。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"&gt;&lt;/p&gt;
