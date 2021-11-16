@@ -28,6 +28,7 @@ $ sudo mv micro /usr/bin
 &lt;ul&gt;
 &lt;li&gt;サーバのダウンロード&lt;/li&gt;
 &lt;li&gt;JAVAのインストール&lt;/li&gt;
+&lt;li&gt;サーバの初期設定&lt;/li&gt;
 &lt;li&gt;ファイヤウォールの設定&lt;/li&gt;
 &lt;li&gt;ConoHaの接続許可ポートの設定&lt;/li&gt;
 &lt;/ul&gt;
