@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html">
     <meta name="twitter:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入">
-    <meta name="twitter:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …">
+    <meta name="twitter:description" content="ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであ …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's memos ~ ConoHaにMIRACLE LINUX 8.4(CUI)を導入"/>
-    <meta property="og:description" content="今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …"/>
+    <meta property="og:description" content="ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであ …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -86,7 +86,7 @@
             <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="bookmark"
                                                   title="Permalink to ConoHaにMIRACLE LINUX 8.4(CUI)を導入">ConoHaにMIRACLE LINUX 8.4(CUI)を導入</a></h2>
             <div class="entry-content blog-post">
-                <p>今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。</p>
+                <p>ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。</p>
 <h3>ConoHaで新しいサーバの追加</h3>
 <p>まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは<code>Steam8(64bit)</code>になっているので、ドロップダウンから<code>8.3(64bit)</code>を選びます。</p>
 <p><img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"></p>
@@ -98,7 +98,7 @@
 <h3>サーバへのログイン</h3>
 <p><code>ネームタグ</code>から先ほど作成したサーバをクリックし、<code>コンソール</code>をクリックすると新しいウィンドウでコンソール画面が表示されます。</p>
 <p><img alt="コンソール" src="https://tmya.github.io/images/conoha-console.jpg"></p>
-<p><code>root</code>と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止でそうなっています。</p>
+<p><code>root</code>と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>でそうなっています。</p>
 <div class="highlight"><pre><span></span><code>xxx-xxx-xxx-xxx login: root
 Password:
 <span class="o">[</span>root@xxx-xxx-xxx-xxx ~<span class="o">]</span><span class="c1"># </span>
@@ -110,11 +110,11 @@ CentOS Linux release <span class="m">8</span>.3.2011
 </code></pre></div>
 
 <h3>MIRACLE LINUXへの移行ツールのダウンロードと実行</h3>
-<p>移行ツールをダウンロードします。</p>
+<p>移行ツールをダウンロード<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>します。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># wget https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh</span>
 </code></pre></div>
 
-<p>移行ツールを実行するために、実行権限を付与します。</p>
+<p>移行ツール<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>を実行するために、実行権限を付与します。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># chmod +x ./migrate2ml.sh</span>
 </code></pre></div>
 
@@ -200,7 +200,7 @@ Password:
 ls: cannot open directory <span class="s1">&#39;/root&#39;</span>: Permission denied
 </code></pre></div>
 
-<p>Permission deniedと表示され、権限がないと言われます。</p>
+<p>Permission deniedと表示され、権限がないよと言われます。</p>
 <p>一時的にスーパーユーザとして実行するにはコマンドの先頭に<code>sudo</code>をくっつけます。試してみましょう。</p>
 <div class="highlight"><pre><span></span><code>$ sudo ls /root
 
@@ -214,7 +214,7 @@ Administrator. It usually boils down to these three things:
 <span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
 </code></pre></div>
 
-<p>初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は翻訳ソフトで調べてください。</p>
+<p>初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は<a href="https://www.deepl.com/en/translator#en/ja/We%20trust%20you%20have%20received%20the%20usual%20lecture%20from%20the%20local%20System%20Administrator.%20It%20usually%20boils%20down%20to%20these%20three%20things.%0A%0ARespect%20the%20privacy%20of%20others.%0AThink%20before%20you%20type.%0AWith%20great%20power%20comes%20great%20responsibility">翻訳ソフトで調べて</a>ください。</p>
 <p>ここでパスワードが要求されますが、<code>password for XXXX</code>となっている通りrootのパスワードではなく作成した一般ユーザのパスワードを入力してください。正しいパスワードが入力されていれば<code>ls</code>コマンドが実行されると思います。</p>
 <div class="highlight"><pre><span></span><code>migrate2ml.sh
 </code></pre></div>
@@ -229,6 +229,21 @@ Administrator. It usually boils down to these three things:
 <p>リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。</p>
 <div class="highlight"><pre><span></span><code>$ dnf repolist --enabled
 </code></pre></div>
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>参考: <a href="https://blogs.mcafee.jp/shoulder-surfing-protect">社員のための抜け目ないショルダーハック対策と注意したい５つの事例</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/">https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://www.cybertrust.co.jp/miraclelinux-license-free/docs/ml84-migrationtool-manual.pdf">MIRACLE LINUX 8.4 移行ツールマニュアル</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
             </div>
             <div class="post_list">
                 <span>By </span>

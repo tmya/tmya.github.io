@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-15T00:00:00+09:00</updated><entry><title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4ま …&lt;/p&gt;</summary><content type="html">&lt;p&gt;今回はConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-16T00:00:00+09:00</updated><entry><title>micro(テキストエディタ)のインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-micro.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/how-to-install-micro.html</id><summary type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
+&lt;h3&gt;インストール&lt;/h3&gt;
+&lt;p&gt;インストールはとっても簡単。2つ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
+&lt;h3&gt;インストール&lt;/h3&gt;
+&lt;p&gt;インストールはとっても簡単。2つのコマンドで完了する。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ curl https://getmic.ro &lt;span class="p"&gt;|&lt;/span&gt; bash
+$ sudo mv micro /usr/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;使い方&lt;/h3&gt;
+&lt;h4&gt;起動方法&lt;/h4&gt;
+&lt;p&gt;単体で起動すると空のエディタが立ち上がります。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ micro
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;後ろにファイル名を指定するとそのファイルを開くことができます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ micro hoge.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;操作方法&lt;/h4&gt;
+&lt;p&gt;ほとんどWindowsのメモ帳と同じ。カーソルキーで動かしたり文字を打てば入力できます。&lt;/p&gt;
+&lt;h4&gt;保存等&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + s&lt;/code&gt; で保存。&lt;code&gt;Ctrl + q&lt;/code&gt;で終了。&lt;code&gt;micro&lt;/code&gt;のみで起動した後、&lt;code&gt;Ctrl + s&lt;/code&gt;を押すとファイル名を聞かれるので入力してEnterキーで保存。&lt;code&gt;Ctrl + q&lt;/code&gt;を押すと変更を保存するか聞かれるので、&lt;code&gt;y&lt;/code&gt;か&lt;code&gt;n&lt;/code&gt;かキャンセルなら&lt;code&gt;Esc&lt;/code&gt;を押す。&lt;/p&gt;
+&lt;p&gt;後は&lt;code&gt;micro エディタ 使い方&lt;/code&gt;で検索すると各種ショートカットが調べられると思います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。&lt;/p&gt;
 &lt;h3&gt;ConoHaで新しいサーバの追加&lt;/h3&gt;
 &lt;p&gt;まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは&lt;code&gt;Steam8(64bit)&lt;/code&gt;になっているので、ドロップダウンから&lt;code&gt;8.3(64bit)&lt;/code&gt;を選びます。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"&gt;&lt;/p&gt;
@@ -11,7 +34,7 @@
 &lt;h3&gt;サーバへのログイン&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;ネームタグ&lt;/code&gt;から先ほど作成したサーバをクリックし、&lt;code&gt;コンソール&lt;/code&gt;をクリックすると新しいウィンドウでコンソール画面が表示されます。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="コンソール" src="https://tmya.github.io/images/conoha-console.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;root&lt;/code&gt;と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止でそうなっています。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;root&lt;/code&gt;と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;でそうなっています。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xxx-xxx-xxx-xxx login: root
 Password:
 &lt;span class="o"&gt;[&lt;/span&gt;root@xxx-xxx-xxx-xxx ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="c1"&gt;# &lt;/span&gt;
@@ -23,11 +46,11 @@ CentOS Linux release &lt;span class="m"&gt;8&lt;/span&gt;.3.2011
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;MIRACLE LINUXへの移行ツールのダウンロードと実行&lt;/h3&gt;
-&lt;p&gt;移行ツールをダウンロードします。&lt;/p&gt;
+&lt;p&gt;移行ツールをダウンロード&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# wget https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;移行ツールを実行するために、実行権限を付与します。&lt;/p&gt;
+&lt;p&gt;移行ツール&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;を実行するために、実行権限を付与します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# chmod +x ./migrate2ml.sh&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -113,7 +136,7 @@ Password:
 ls: cannot open directory &lt;span class="s1"&gt;&amp;#39;/root&amp;#39;&lt;/span&gt;: Permission denied
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Permission deniedと表示され、権限がないと言われます。&lt;/p&gt;
+&lt;p&gt;Permission deniedと表示され、権限がないよと言われます。&lt;/p&gt;
 &lt;p&gt;一時的にスーパーユーザとして実行するにはコマンドの先頭に&lt;code&gt;sudo&lt;/code&gt;をくっつけます。試してみましょう。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ls /root
 
@@ -127,7 +150,7 @@ Administrator. It usually boils down to these three things:
 &lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; password &lt;span class="k"&gt;for&lt;/span&gt; XXXX:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は翻訳ソフトで調べてください。&lt;/p&gt;
+&lt;p&gt;初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は&lt;a href="https://www.deepl.com/en/translator#en/ja/We%20trust%20you%20have%20received%20the%20usual%20lecture%20from%20the%20local%20System%20Administrator.%20It%20usually%20boils%20down%20to%20these%20three%20things.%0A%0ARespect%20the%20privacy%20of%20others.%0AThink%20before%20you%20type.%0AWith%20great%20power%20comes%20great%20responsibility"&gt;翻訳ソフトで調べて&lt;/a&gt;ください。&lt;/p&gt;
 &lt;p&gt;ここでパスワードが要求されますが、&lt;code&gt;password for XXXX&lt;/code&gt;となっている通りrootのパスワードではなく作成した一般ユーザのパスワードを入力してください。正しいパスワードが入力されていれば&lt;code&gt;ls&lt;/code&gt;コマンドが実行されると思います。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;migrate2ml.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -141,7 +164,22 @@ Administrator. It usually boils down to these three things:
 
 &lt;p&gt;リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ dnf repolist --enabled
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;参考: &lt;a href="https://blogs.mcafee.jp/shoulder-surfing-protect"&gt;社員のための抜け目ないショルダーハック対策と注意したい５つの事例&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;&lt;a href="https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/"&gt;https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/miraclelinux-license-free/docs/ml84-migrationtool-manual.pdf"&gt;MIRACLE LINUX 8.4 移行ツールマニュアル&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;

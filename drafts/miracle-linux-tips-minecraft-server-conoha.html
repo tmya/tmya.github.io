@@ -32,11 +32,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html">
     <meta name="twitter:title" content="Akkie's memos ~ ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">
-    <meta name="twitter:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。とりあえず動か …">
+    <meta name="twitter:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使っ …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="Akkie's memos ~ ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる"/>
-    <meta property="og:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。とりあえず動か …"/>
+    <meta property="og:description" content="みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使っ …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -86,7 +86,7 @@
             <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/miracle-linux-tips-minecraft-server-conoha.html" rel="bookmark"
                                                   title="Permalink to ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</a></h2>
             <div class="entry-content blog-post">
-                <p>みんな大好きマインクラフト。サーバを建てるにもCentOSが選べない今MIRACLE LINUXにインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。</p>
+                <p>みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。</p>
 <p><strong>前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> </strong></p>
 <h3>必要な事</h3>
 <ul>
@@ -132,6 +132,7 @@ server.jar start.sh
 <span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
 </code></pre></div>
 
+<p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
 <h3>サーバの初期設定</h3>
 <p>とりあえず一度起動しましょう。</p>
 <div class="highlight"><pre><span></span><code>$ ./start.sh
@@ -151,6 +152,16 @@ eula.txt logs server.jar server.properties start.sh
 <div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/false/true/g&#39;</span> eula.txt
 </code></pre></div>
 
+<p>サーバのポートがデフォルトだとtcpの25565番ですが、ConoHaの接続許可ポートを指定するにはAPI操作等が必要になってきます。ですので、簡単に選べる代表的なポートを拝借して5432番ポートを利用するように設定変更します。5432番は元々PostgreSQL用ですが、マインクラフトサーバを立てるにあたり同じサーバでPostgreSQLを動かす事はほとんどないと思うので影響は無いと考えていいと思います。</p>
+<div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/25565/5432/g&#39;</span> server.properties
+</code></pre></div>
+
+<p>確認は下記のコマンドで可能です。</p>
+<div class="highlight"><pre><span></span><code>$ grep <span class="m">5432</span> server.properties
+server-port<span class="o">=</span><span class="m">5432</span>
+query.port<span class="o">=</span><span class="m">5432</span>
+</code></pre></div>
+
 <h3>サーバの起動</h3>
 <p>サーバを起動しましょう。いろいろ文字が表示されます。メモリ512MBでは非常に苦しく時間がかかるので、しばし待ちましょう。今回は起動に210秒かかりました。</p>
 <div class="highlight"><pre><span></span><code>$ ./start.sh
@@ -167,7 +178,7 @@ eula.txt logs server.jar server.properties start.sh
 
 <p>と表示され、サーバが終了してコンソール画面に戻ってくると思います。</p>
 <h3>ファイヤウォールの設定</h3>
-<p>現在のファイヤウォールの設定を確認します。</p>
+<p>1種類目はMLのファイヤウォール設定です。現在のファイヤウォールの設定を確認します。</p>
 <div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --list-all
 <span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
 public <span class="o">(</span>active<span class="o">)</span>
@@ -185,8 +196,8 @@ public <span class="o">(</span>active<span class="o">)</span>
   rich rules:
 </code></pre></div>
 
-<p>現在有効な設定が表示されます。現在はservicesの行にあるサービスしか外部から通信できません。今回はserviceとしてではなく、portとしてマインクラフトサーバの標準ポートである、<code>tcp</code>の<code>25565</code>を追加し、もう一度確認しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">25565</span>/tcp
+<p>現在有効な設定が表示されます。現在はservicesの行にあるサービスしか外部から通信できません。今回はserviceとしてではなく、portとして、<code>tcp</code>の<code>5432</code>を追加し、もう一度確認しましょう。</p>
+<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">5432</span>/tcp
 success
 $ sudo firewall-cmd --list-all
 public <span class="o">(</span>active<span class="o">)</span>
@@ -195,7 +206,7 @@ public <span class="o">(</span>active<span class="o">)</span>
   interfaces: eth0
   sources:
   services: cockpit dhcpv6-client ssh
-  ports: <span class="m">25565</span>/tcp
+  ports: <span class="m">5432</span>/tcp
   protocols:
   masquerade: no
   forward-ports:
@@ -211,6 +222,12 @@ success
 
 <p><code>success</code>と表示がされればOKです。</p>
 <h3>ConoHaの接続許可ポートの設定</h3>
+<p>2種類目はVPSの接続許可ポートの設定です。</p>
+<p>ConoHaのWebから<a href="https://manage.conoha.jp/Service/">サーバーリストを参照</a>し、ネームタグの列の作成したサーバをクリックします。</p>
+<p><img alt="サーバーリスト" src="https://tmya.github.io/images/conoha-server-list-1.jpg"></p>
+<p>画面下部の接続許可ポートのうち、<code>PostgreSQL (5432)</code>にチェックを入れて数秒待つと画面左下に<code>成功しました。</code>と表示されます。</p>
+<p><img alt="接続許可ポートにチェック" src="https://tmya.github.io/images/conoha-port-open-5432.jpg"></p>
+<p>以上で設定は完了です。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
