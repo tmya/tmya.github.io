@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-16T00:00:00+09:00</updated><entry><title>micro(テキストエディタ)のインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-micro.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/how-to-install-micro.html</id><summary type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-17T00:00:00+09:00</updated><entry><title>Windowsからsshで接続する - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-using-ssh.html" rel="alternate"></link><published>2021-11-17T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-17:/how-to-using-ssh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh鍵の生成&lt;/li&gt;
+&lt;li&gt;ConoHaへssh鍵の登録と設定&lt;/li&gt;
+&lt;li&gt;ConoHaの接続許可ポートの設定&lt;/li&gt;
+&lt;li&gt;接続&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;ssh鍵の生成&lt;/h3&gt;
+&lt;p&gt;スタートメニューをクリックしてメニューバーの検索欄に&lt;code&gt;cmd&lt;/code&gt;と入力するとコマンドプロンプトが表示されるので、クリックして起動します。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="コマンドプロンプト" src="https://tmya.github.io/images/win-start-cmd.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;黒い背景のウィンドウが表示されるので、下記のコマンドを入力してエンターを押します。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="コンソールウィンドウ" src="https://tmya.github.io/images/win-ssh-keygen.jpg"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh-keygen -C &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; -t ed25519
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;3回質問がありますが、何も入力せずそのままEnterキーを3回押します。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; 本来は鍵ファイルの流出時に不正使用を防止する為にパスワードの設定を推奨します。&lt;code&gt;Enter passphrase&lt;/code&gt;と&lt;code&gt;Enter same passphrase again&lt;/code&gt;に同じパスワードを入力します。ここでは簡略化の為に設定していません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Generating public/private ed25519 key pair.
+Enter file in which to save the key &lt;span class="o"&gt;(&lt;/span&gt;C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXXX/.ssh/id_ed25519&lt;span class="o"&gt;)&lt;/span&gt;:
+Enter passphrase &lt;span class="o"&gt;(&lt;/span&gt;empty &lt;span class="k"&gt;for&lt;/span&gt; no passphrase&lt;span class="o"&gt;)&lt;/span&gt;:
+Enter same passphrase again:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;鍵生成が行われて処理結果が表示されます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Your identification has been saved in C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXXX/.ssh/id_ed25519.
+Your public key has been saved in C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXXX/.ssh/id_ed25519.pub.
+The key fingerprint is:
+SHA256:F5WpHOiy7GSSTgHBNv0jJ71gLgfpNPmzQxLS9Zy47n0
+The key&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s randomart image is:
++--&lt;span class="o"&gt;[&lt;/span&gt;ED25519 &lt;span class="m"&gt;256&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;--+
+&lt;span class="p"&gt;|&lt;/span&gt; ..o     .  .o   &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; o   . ..o    &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; o * * o ..o     &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;. O B X . o.     &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; + B &lt;span class="nv"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;S .      &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;  + @ *  .       &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;   O B           &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;    &lt;span class="o"&gt;=&lt;/span&gt;.. E        &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;   .....         &lt;span class="p"&gt;|&lt;/span&gt;
++----&lt;span class="o"&gt;[&lt;/span&gt;SHA256&lt;span class="o"&gt;]&lt;/span&gt;-----+
+
+C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXXX&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;出来上がった鍵から、ConoHaに登録する鍵を表示してみましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXX&amp;gt;type .ssh&lt;span class="se"&gt;\i&lt;/span&gt;d_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;中身が1行で表示されます。コマンドプロンプトのウィンドウは表示したままにして次のステップに進みましょう。&lt;/p&gt;
+&lt;h3&gt;ConoHaへssh鍵の登録と設定&lt;/h3&gt;
+&lt;p&gt;ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、&lt;code&gt;echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;の行のうち、&lt;code&gt;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd&lt;/code&gt;の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sshkey" src="https://tmya.github.io/blog/images/win-type-sshpubkey.jpg"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir ~/.ssh
+$ chmod &lt;span class="m"&gt;700&lt;/span&gt; ~/.ssh
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &amp;gt;&amp;gt; ~/.ssh/authorized_keys
+$ chmod &lt;span class="m"&gt;600&lt;/span&gt; ~/.ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;次に、sshサーバの設定を行います。既存の設定ファイルを別名保存して公開鍵認証を有効にしてパスワード認証を禁止にしてRootでのログインを禁止にしてsshサーバを再起動する一連のコマンドです。テキスト送信へコピペすると楽です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+sudo sed -i &lt;span class="s1"&gt;&amp;#39;s/^#PubkeyAuthentication yes/PubkeyAuthentication yes/&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo sed -i &lt;span class="s1"&gt;&amp;#39;s/^PasswordAuthentication yes/PasswordAuthentication no/&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo sed -i &lt;span class="s1"&gt;&amp;#39;s/^PermitRootLogin yes/PermitRootLogin no/&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo systemctl restart sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;ConoHaの接続許可ポートの設定&lt;/h3&gt;
+&lt;p&gt;今度はConoHaのWeb上での作業です。ConoHaにログインするとサーバの名前が表示されているはずなので、右側の&lt;code&gt;詳細設定&lt;/code&gt;をクリックします。&lt;/p&gt;
+&lt;p&gt;サーバの詳細設定画面では下にスクロールすると下部に&lt;code&gt;接続許可ポート&lt;/code&gt;の設定がありますので、&lt;code&gt;□ SSH(22)&lt;/code&gt;をクリックしてチェックマークをつけます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="接続許可ポート" src="https://tmya.github.io/images/conoha-port-open-5432.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;↑この図ではチェックついていませんがチェックしてください。&lt;/p&gt;
+&lt;h3&gt;接続&lt;/h3&gt;
+&lt;p&gt;あとはもう接続するのみです。コマンドプロンプトからsshコマンドで接続可能です。オプションには&lt;code&gt;ユーザ名&lt;/code&gt;@&lt;code&gt;IPアドレス&lt;/code&gt;を指定します。ユーザ名はMLで作成した一般ユーザ名、IPアドレスにはConoHaの詳細設定で確認できるIPアドレスです。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例:&lt;/strong&gt; ssh tmya@192.168.0.1&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ssh接続" src="https://tmya.github.io/images/win-ssh-connect.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;接続が成功するとコンソール画面と同じようにユーザ名と最後が&lt;code&gt;$&lt;/code&gt;の行が出力されます。切断は&lt;code&gt;exit&lt;/code&gt;コマンドで行います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>micro(テキストエディタ)のインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-micro.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/how-to-install-micro.html</id><summary type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
 &lt;h3&gt;インストール&lt;/h3&gt;
 &lt;p&gt;インストールはとっても簡単。2つ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
 &lt;h3&gt;インストール&lt;/h3&gt;
