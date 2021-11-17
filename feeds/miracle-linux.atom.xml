@@ -52,7 +52,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
 &lt;p&gt;中身が1行で表示されます。コマンドプロンプトのウィンドウは表示したままにして次のステップに進みましょう。&lt;/p&gt;
 &lt;h3&gt;ConoHaへssh鍵の登録と設定&lt;/h3&gt;
 &lt;p&gt;ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、&lt;code&gt;echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;の行のうち、&lt;code&gt;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd&lt;/code&gt;の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="sshkey" src="https://tmya.github.io/blog/images/win-type-sshpubkey.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="sshkey" src="https://tmya.github.io/images/win-type-sshpubkey.jpg"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir ~/.ssh
 $ chmod &lt;span class="m"&gt;700&lt;/span&gt; ~/.ssh
 $ &lt;span class="nb"&gt;echo&lt;/span&gt; ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &amp;gt;&amp;gt; ~/.ssh/authorized_keys
