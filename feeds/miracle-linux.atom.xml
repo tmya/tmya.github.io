@@ -44,12 +44,14 @@ The key&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s randomart image is:
 C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXXX&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;出来上がった鍵から、ConoHaに登録する鍵を表示してみましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:&lt;span class="se"&gt;\U&lt;/span&gt;sers&lt;span class="se"&gt;\X&lt;/span&gt;XXX&amp;gt;type .ssh&lt;span class="se"&gt;\i&lt;/span&gt;d_ed25519.pub
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
+&lt;p&gt;出来上がった鍵から、ConoHaに登録する鍵を表示するため次のコマンドを実行しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;type&lt;/span&gt; .ssh&lt;span class="se"&gt;\i&lt;/span&gt;d_ed25519.pub
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;中身が1行で表示されます。コマンドプロンプトのウィンドウは表示したままにして次のステップに進みましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;ConoHaへssh鍵の登録と設定&lt;/h3&gt;
 &lt;p&gt;ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、&lt;code&gt;echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;の行のうち、&lt;code&gt;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd&lt;/code&gt;の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="sshkey" src="https://tmya.github.io/images/win-type-sshpubkey.jpg"&gt;&lt;/p&gt;
@@ -59,7 +61,11 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI
 $ chmod &lt;span class="m"&gt;600&lt;/span&gt; ~/.ssh/authorized_keys
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;次に、sshサーバの設定を行います。既存の設定ファイルを別名保存して公開鍵認証を有効にしてパスワード認証を禁止にしてRootでのログインを禁止にしてsshサーバを再起動する一連のコマンドです。テキスト送信へコピペすると楽です。&lt;/p&gt;
+&lt;p&gt;次に、sshサーバの設定を行います。既存の設定ファイルを別名保存して公開鍵認証を有効にしてパスワード認証を禁止にしてRootでのログインを禁止にしてsshサーバを再起動する一連のコマンドです。テキスト送信へコピペする場合、&lt;code&gt;sudo&lt;/code&gt;コマンドの初回にパスワードを聞かれると複数行の貼りつけがうまくできないので、まずは&lt;code&gt;sudo true&lt;/code&gt;と実行してパスワードを入力してから5分以内にテキスト送信に貼りつけると楽です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo &lt;span class="nb"&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;↑でパスワードを入力したら5分以内に↓をテキスト送信に貼りつけ&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 sudo sed -i &lt;span class="s1"&gt;&amp;#39;s/^#PubkeyAuthentication yes/PubkeyAuthentication yes/&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
 sudo sed -i &lt;span class="s1"&gt;&amp;#39;s/^PasswordAuthentication yes/PasswordAuthentication no/&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
