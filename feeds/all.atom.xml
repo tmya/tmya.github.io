@@ -1,5 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-17T00:00:00+09:00</updated><entry><title>Windowsからsshで接続する - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-using-ssh.html" rel="alternate"></link><published>2021-11-17T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-17:/how-to-using-ssh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Akkie's memos</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-22T00:00:00+09:00</updated><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
+&lt;h4&gt;手順&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PowerShellを開く&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WSL2の確認と準備(不必要な事もある)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;CentOSの導入&lt;/li&gt;
+&lt;li&gt;移行ツールを使ってのMLへの移行&lt;/li&gt;
+&lt;li&gt;SLを走らせる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;PowerShellを開く&lt;/h3&gt;
+&lt;p&gt;スタートメニューの検索窓に、&lt;code&gt;powershell&lt;/code&gt;と入力してPowerShellを起動します。下から続くコマンドはすべてPowerShellのウィンドウに打ち込むかコピペしてください。また、行頭の&lt;code&gt;&amp;gt;&lt;/code&gt;はプロンプトを表すので、入力しないでください。PowerShellの画面上、行頭には&lt;code&gt;PS C:\XXXXXX\XXXX&amp;gt;&lt;/code&gt;と表示されていると思いますが、その部分を表す為に&lt;code&gt;&amp;gt;&lt;/code&gt;と表示しています。&lt;/p&gt;
+&lt;h3&gt;WSL2の確認と準備(環境によっては必要が無い場合があります)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; wsl --set-default-version &lt;span class="m"&gt;2&lt;/span&gt;
+Windows の仮想マシン プラットフォーム機能を有効にして、BIOS で仮想化が有効になっていることを確認してください。
+詳細については、https://aka.ms/wsl2-install を参照してください
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;Windowsの機能の有効化または無効化&lt;/code&gt;で仮想マシンプラットフォームのチェックが外れていたのでチェックをして再起動しました。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="仮想マシンプラットフォームの有効化" src="https://tmya.github.io/images/win_virt_plt.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;もう一度実行すると切り替えができました。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; wsl --set-default-version &lt;span class="m"&gt;2&lt;/span&gt;
+WSL &lt;span class="m"&gt;2&lt;/span&gt; との主な違いについては、https://aka.ms/wsl2 を参照してください
+この操作を正しく終了しました。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;CentOSの導入&lt;/h3&gt;
+&lt;p&gt;WSL公式にはCentOSが用意されていません。またCentOSの公開されているWSL向けイメージも古いものが多い状況です。その為CentOS 8.4を用意したので使ってみてください。（無保証・β）&lt;/p&gt;
+&lt;p&gt;まずはCentOS 8.4のイメージをダウンロードして解凍します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;Invoke-WebRequest&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tmya&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;WSL-CentOS8&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;releases&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="n"&gt;8&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;2105&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;centos8&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="n"&gt;-OutFile&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;Convert-Path&lt;/span&gt; &lt;span class="p"&gt;.)&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\\centos8.zip&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;Expand-Archive&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;Convert-Path&lt;/span&gt; &lt;span class="p"&gt;.)&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\\centos8.zip&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;-DestinationPath&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Convert-Path&lt;/span&gt; &lt;span class="p"&gt;.)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;CentOSを導入する為のフォルダを作成します。今回はC:\wsl\ML以下にインストールします。後程MIRACLE LINUXに移行するのでMLという名前にしています。好きな場所でも良いと思いますが、その場合は後に続くコマンドのパスを直してください。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; New-Item -ItemType Directory -Force -Path C:&lt;span class="se"&gt;\w&lt;/span&gt;sl&lt;span class="se"&gt;\M&lt;/span&gt;L
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; インポートせずに通常通りWSLでインストールする場合は%homepath%\AppData\Local\Packages\以下になる模様です。&lt;/p&gt;
+&lt;p&gt;そしてWSLにインポートします。以下の様なメッセージが表示された場合はリンクに従ってパッケージをインストールしてください。表示されなければもう一度このコマンドを実行する必要はありません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; wsl --import ML c:&lt;span class="se"&gt;\w&lt;/span&gt;sl&lt;span class="se"&gt;\M&lt;/span&gt;L .&lt;span class="se"&gt;\c&lt;/span&gt;entos8.tar
+WSL &lt;span class="m"&gt;2&lt;/span&gt; を実行するには、カーネル コンポーネントの更新が必要です。詳細については https://aka.ms/wsl2kernel を参照してください
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="https://aka.ms/wsl2kernel"&gt;手順4 - Linux カーネル更新プログラム パッケージをダウンロードする&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kernelのアップデート" src="https://tmya.github.io/images/win-wsl-kernel-update.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;もう一度実行するとエラーは表示されません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; wsl --import ML c:&lt;span class="se"&gt;\w&lt;/span&gt;sl&lt;span class="se"&gt;\M&lt;/span&gt;L .&lt;span class="se"&gt;\c&lt;/span&gt;entos8.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ディストリビューション一覧を表示してみます。インポートできているようです。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;  wsl -l
+Linux 用 Windows サブシステム ディストリビューション:
+ML &lt;span class="o"&gt;(&lt;/span&gt;既定&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;wslコマンドに&lt;code&gt;-d&lt;/code&gt;オプションと名前を与えると、そのディストリビューションで起動します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; wsl -d ML
+&lt;span class="o"&gt;[&lt;/span&gt;root@PC user&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;LINUXらしいプロンプトに切り替わりましたので、LINUXコマンドで確認してみましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
+CentOS Linux release &lt;span class="m"&gt;8&lt;/span&gt;.4.2105
+&lt;span class="c1"&gt;# pwd&lt;/span&gt;
+/mnt/c/Users/user
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;どうやらCentOSになっているようです。カレントディレクトリはWindowsユーザのホームフォルダになっています。作業するのに分かりやすくするためLinuxのホームディレクトリに移動しておきましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cd&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;root@pc ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# pwd&lt;/span&gt;
+/root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;CentOSとして使用する場合はここまでの手順で完了です。&lt;/p&gt;
+&lt;h3&gt;移行ツールを使ってのMLへの移行&lt;/h3&gt;
+&lt;p&gt;移行ツールをダウンロードします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# curl -LO https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh&lt;/span&gt;
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+&lt;span class="m"&gt;100&lt;/span&gt; &lt;span class="m"&gt;20833&lt;/span&gt;  &lt;span class="m"&gt;100&lt;/span&gt; &lt;span class="m"&gt;20833&lt;/span&gt;    &lt;span class="m"&gt;0&lt;/span&gt;     &lt;span class="m"&gt;0&lt;/span&gt;  &lt;span class="m"&gt;98734&lt;/span&gt;      &lt;span class="m"&gt;0&lt;/span&gt; --:--:-- --:--:-- --:--:-- &lt;span class="m"&gt;98734&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;マイグレーションツールを実行します。ブートローダーはありませんし切り替える必要がないので./migrate2ml.sh --minimalでも良いのですが、商標の入ったパッケージの切り替えを行いたいので--coreオプションにしています。そのため最後にgrub2パッケージのエラー表示がありますがおそらく大丈夫だと思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# bash ./migrate2ml.sh --core&lt;/span&gt;
+
+~略~
+Failed to upgrade grub2 packages
+Exit.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;確認してみましょう。商標やリポジトリが切り替わっています。localeはそのうち直しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
+MIRACLE LINUX release &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf repolist&lt;/span&gt;
+Failed to &lt;span class="nb"&gt;set&lt;/span&gt; locale, defaulting to C.UTF-8
+Last metadata expiration check: &lt;span class="m"&gt;0&lt;/span&gt;:03:08 ago on Mon Nov &lt;span class="m"&gt;22&lt;/span&gt; &lt;span class="m"&gt;02&lt;/span&gt;:06:52 &lt;span class="m"&gt;2021&lt;/span&gt;.
+repo id                                           repo name                                                       status
+ML8-AppStream                                     MIRACLE LINUX  - AppStream                                      &lt;span class="m"&gt;14445&lt;/span&gt;
+ML8-BaseOS                                        MIRACLE LINUX  - BaseOS                                          &lt;span class="m"&gt;6170&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;パッケージのアップデートを行います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf -y update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;これでMIRACLE LINUXの導入はひと段落です。&lt;/p&gt;
+&lt;h3&gt;SLを走らせる&lt;/h3&gt;
+&lt;p&gt;我々はいつの時代にもlsをslと打ち間違える必要があるのです。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/"&gt;豊田正史とslコマンド (Masashi Toyoda and SL command)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;導入しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf -y install git gcc make ncurses-devel&lt;/span&gt;
+&lt;span class="c1"&gt;# git clone https://github.com/mtoyoda/sl.git&lt;/span&gt;
+&lt;span class="c1"&gt;# cd sl&lt;/span&gt;
+&lt;span class="c1"&gt;# make&lt;/span&gt;
+&lt;span class="c1"&gt;# ./sl&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img alt="wslsl" src="https://tmya.github.io/images/wsl-sl.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;あとは作者の案内に従いバイナリを&lt;code&gt;/usr/local/bin&lt;/code&gt;に設置しましょう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# mv ./sl /usr/local/bin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;これで&lt;code&gt;ls&lt;/code&gt;を打ち間違えるといつでもslを走らせることができます。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Windowsからsshで接続する - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-using-ssh.html" rel="alternate"></link><published>2021-11-17T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-17:/how-to-using-ssh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ssh鍵の生成&lt;/li&gt;
