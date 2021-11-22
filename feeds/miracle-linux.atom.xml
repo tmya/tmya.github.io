@@ -4,12 +4,8 @@
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
 &lt;h4&gt;手順&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;PowerShellを開く&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;WSL2の確認と準備(不必要な事もある)&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;PowerShellを開く&lt;/li&gt;
+&lt;li&gt;WSL2の確認と準備(不必要な事もある)&lt;/li&gt;
 &lt;li&gt;CentOSの導入&lt;/li&gt;
 &lt;li&gt;移行ツールを使ってのMLへの移行&lt;/li&gt;
 &lt;li&gt;SLを走らせる&lt;/li&gt;
