@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-11-22T00:00:00+09:00</updated><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-12-09T00:00:00+09:00</updated><entry><title>Synology Drive Clientのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="alternate"></link><published>2021-12-09T00:00:00+09:00</published><updated>2021-12-09T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-12-09:/how-to-install-synology-drive-client.html</id><summary type="html">&lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
+&lt;h3&gt;前提知識&lt;/h3&gt;
+&lt;p&gt;ダウン …&lt;/p&gt;</summary><content type="html">&lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
+&lt;h3&gt;前提知識&lt;/h3&gt;
+&lt;p&gt;ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXのGUI環境で操作することを想定しています。&lt;/p&gt;
+&lt;h3&gt;手順&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Synology Drive Clientのダウンロード&lt;/li&gt;
+&lt;li&gt;dnfでEPELを有効にする(未実施の場合)&lt;/li&gt;
+&lt;li&gt;alienとfakerootのインストール&lt;/li&gt;
+&lt;li&gt;DEBからRPMへの変換&lt;/li&gt;
+&lt;li&gt;Synology Drive Clientのインストール&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Synology Drive Clientのダウンロード&lt;/h3&gt;
+&lt;p&gt;Synologyのサイトからダウンロードします。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.synology.com/ja-jp/support/download/DS220j?version=7.0#utilities"&gt;デスクトップ ユーティリティ - Synology&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Synology Drive Client&lt;/code&gt;の右側の&lt;code&gt;ダウンロード&lt;/code&gt;をクリックして、&lt;code&gt;Ubuntu (64 bits, deb)&lt;/code&gt;の右側の&lt;code&gt;ダウンロード&lt;/code&gt;リンクをクリックしてダウンロードします。&lt;/p&gt;
+&lt;h3&gt;dnfでEPELを有効にする(未実施の場合)&lt;/h3&gt;
+&lt;p&gt;alienはEPELに存在するのでEPELを使えるようにします。すでにEPELを使えている方はこの手順は不要です。&lt;/p&gt;
+&lt;p&gt;EPELの有効化については、サイバートラストのサイトに&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html"&gt;説明が載っています&lt;/a&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;alienとfakerootのインストール&lt;/h3&gt;
+&lt;p&gt;dnfを使ってalienをインストールします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install alien fakeroot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;DEBからRPMへの変換&lt;/h3&gt;
+&lt;p&gt;fakerootを使うので下記のようなコマンドとオプションになります。&lt;code&gt;-r&lt;/code&gt;はrpmへ変換。&lt;code&gt;-c&lt;/code&gt;はスクリプトを含む。rpmはカレントディレクトリに出来上がります。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ fakeroot alient -r -c ./Downloads/synology-drive-client-12682.x86_64.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Synology Drive Clientのインストール&lt;/h3&gt;
+&lt;p&gt;rpmコマンドでインストールします。&lt;code&gt;dnf localinstall&lt;/code&gt;でも可能と思いますが試していません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;起動後は通常通り使えるので設定を行い終了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
 &lt;h4&gt;手順&lt;/h4&gt;

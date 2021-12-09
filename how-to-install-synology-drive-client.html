@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Synology Drive Clientのインストール - MIRACLE LINUX 8.4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-synology-drive-client.html">
+    <meta name="twitter:title" content="tmya note ~ Synology Drive Clientのインストール - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。 前提知識 ダウン …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ Synology Drive Clientのインストール - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。 前提知識 ダウン …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="bookmark"
+                                                  title="Permalink to Synology Drive Clientのインストール - MIRACLE LINUX 8.4">Synology Drive Clientのインストール - MIRACLE LINUX 8.4</a></h2>
+            <div class="entry-content blog-post">
+                <p>SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。</p>
+<h3>前提知識</h3>
+<p>ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXのGUI環境で操作することを想定しています。</p>
+<h3>手順</h3>
+<ul>
+<li>Synology Drive Clientのダウンロード</li>
+<li>dnfでEPELを有効にする(未実施の場合)</li>
+<li>alienとfakerootのインストール</li>
+<li>DEBからRPMへの変換</li>
+<li>Synology Drive Clientのインストール</li>
+</ul>
+<h3>Synology Drive Clientのダウンロード</h3>
+<p>Synologyのサイトからダウンロードします。</p>
+<p><a href="https://www.synology.com/ja-jp/support/download/DS220j?version=7.0#utilities">デスクトップ ユーティリティ - Synology</a></p>
+<p><code>Synology Drive Client</code>の右側の<code>ダウンロード</code>をクリックして、<code>Ubuntu (64 bits, deb)</code>の右側の<code>ダウンロード</code>リンクをクリックしてダウンロードします。</p>
+<h3>dnfでEPELを有効にする(未実施の場合)</h3>
+<p>alienはEPELに存在するのでEPELを使えるようにします。すでにEPELを使えている方はこの手順は不要です。</p>
+<p>EPELの有効化については、サイバートラストのサイトに<a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">説明が載っています</a>。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+</code></pre></div>
+
+<h3>alienとfakerootのインストール</h3>
+<p>dnfを使ってalienをインストールします。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install alien fakeroot
+</code></pre></div>
+
+<h3>DEBからRPMへの変換</h3>
+<p>fakerootを使うので下記のようなコマンドとオプションになります。<code>-r</code>はrpmへ変換。<code>-c</code>はスクリプトを含む。rpmはカレントディレクトリに出来上がります。</p>
+<div class="highlight"><pre><span></span><code>$ fakeroot alient -r -c ./Downloads/synology-drive-client-12682.x86_64.deb
+</code></pre></div>
+
+<h3>Synology Drive Clientのインストール</h3>
+<p>rpmコマンドでインストールします。<code>dnf localinstall</code>でも可能と思いますが試していません。</p>
+<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+</code></pre></div>
+
+<p>インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。</p>
+<p><img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"></p>
+<p>起動後は通常通り使えるので設定を行い終了です。</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Thu 09 December 2021</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-synology-drive-client.html&text=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-synology-drive-client.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-synology-drive-client.html&t=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-synology-drive-client.html&title=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Synology Drive Clientのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-synology-drive-client.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
