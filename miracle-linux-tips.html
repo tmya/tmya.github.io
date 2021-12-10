@@ -114,6 +114,22 @@ CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその�
 <h3>マスコット画像</h3>
 <p><code>/usr/share/backgrounds</code> にみらくるちゃんとカーネルくんの背景画像が存在する。
 <img alt="みらくるちゃんとカーネルくん" src="https://tmya.github.io/images/miracle_kernel.jpg"></p>
+<h3>ちょっとしたメモ</h3>
+<h4>ホームディレクトリのフォルダ名を英語にする。</h4>
+<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C xdg-user-dirs-gtk-update
+</code></pre></div>
+
+<h4>RDPサーバを動かす</h4>
+<p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">ここ</a>を参考にEPELを有効にした後下記のコマンドを実行する。GNOME</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install xrdp tigervnc-server
+$ sudo systemctl start xrdp
+$ sudo systemctl <span class="nb">enable</span> xrdp
+</code></pre></div>
+
+<p>GNOME classicで使いたい場合は追加で下記のコマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$ sudo sh -c <span class="s1">&#39;echo &quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&quot; &gt; /etc/sysconfig/desktop&#39;</span>
+</code></pre></div>
+
 <div class="footnote">
 <hr>
 <ol>
