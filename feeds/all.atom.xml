@@ -30,8 +30,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;DEBからRPMへの変換&lt;/h3&gt;
-&lt;p&gt;fakerootを使うので下記のようなコマンドとオプションになります。&lt;code&gt;-r&lt;/code&gt;はrpmへ変換。&lt;code&gt;-c&lt;/code&gt;はスクリプトを含む。rpmはカレントディレクトリに出来上がります。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ fakeroot alien -r -c ./Downloads/synology-drive-client-12682.x86_64.deb
+&lt;p&gt;fakerootを使うので下記のようなコマンドとオプションになります。&lt;code&gt;-r&lt;/code&gt;はrpmへ変換。&lt;code&gt;-c&lt;/code&gt;はスクリプトを含む。rpmはカレントディレクトリに出来上がります。&lt;strong&gt;2021/12/10追記: -cは要らなかった&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ fakeroot alien -r ./Downloads/synology-drive-client-12682.x86_64.deb
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Synology Drive Clientのインストール&lt;/h3&gt;
