@@ -5,7 +5,7 @@
 &lt;p&gt;ダウン …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
 &lt;h3&gt;前提知識&lt;/h3&gt;
-&lt;p&gt;ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXのGUI環境で操作することを想定しています。&lt;/p&gt;
+&lt;p&gt;ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXの&lt;strong&gt;GUI環境&lt;/strong&gt;で操作することを想定しています。&lt;/p&gt;
 &lt;h3&gt;手順&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Synology Drive Clientのダウンロード&lt;/li&gt;
@@ -13,6 +13,7 @@
 &lt;li&gt;alienとfakerootのインストール&lt;/li&gt;
 &lt;li&gt;DEBからRPMへの変換&lt;/li&gt;
 &lt;li&gt;Synology Drive Clientのインストール&lt;/li&gt;
+&lt;li&gt;[2021/12/24 追記]OSアップデートの際に必要なこと&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Synology Drive Clientのダウンロード&lt;/h3&gt;
 &lt;p&gt;Synologyのサイトからダウンロードします。&lt;/p&gt;
@@ -41,7 +42,27 @@
 
 &lt;p&gt;インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;起動後は通常通り使えるので設定を行い終了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+&lt;p&gt;起動後は通常通り使えるので設定を行い終了です。&lt;/p&gt;
+&lt;h4&gt;OSアップデートの際に必要なこと&lt;/h4&gt;
+&lt;p&gt;上記で&lt;code&gt;--nodeps&lt;/code&gt;と&lt;code&gt;--force&lt;/code&gt;オプションを使ってインストールしているため、システムの依存関係をまったく無視してしまっています。その為、OSのアップデートの際に何かしらが競合してアップデートできない状態になります。一旦Synology Driveを終了し、アンインストールしてOSアップデートを行い、再度Synology Driveをインストールする手順で回避します。接続設定等は消えずに残るようなのでそこまで大変ではないと思います。&lt;/p&gt;
+&lt;h5&gt;Synology Driveの終了&lt;/h5&gt;
+&lt;p&gt;GUIから終了できないので、コマンドから終了します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;kill&lt;/span&gt; -TERM &lt;span class="sb"&gt;`&lt;/span&gt;pgrep cloud-drive-ui&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Synology Driveのアンインストール&lt;/h5&gt;
+&lt;p&gt;RPMを削除します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -e synology-drive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;OSのアップデート&lt;/h5&gt;
+&lt;p&gt;ここでシステムのアップデートを行います。GUIであれば&lt;code&gt;アプリケーション&lt;/code&gt;→&lt;code&gt;システムツール&lt;/code&gt;→&lt;code&gt;ソフトウェア&lt;/code&gt;を選び、アップデートタブからアップデートを行います。CUIであれば&lt;code&gt;$ sudo dnf update&lt;/code&gt;と実行します。&lt;/p&gt;
+&lt;h5&gt;再度Synology Driveのインストール&lt;/h5&gt;
+&lt;p&gt;インストール時と同じコマンドでインストールします。作成したrpmを削除してしまっていたらrpmを作成する所から作業します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;インストールが完了したら&lt;code&gt;アプリケーション&lt;/code&gt;→&lt;code&gt;インターネット&lt;/code&gt;→&lt;code&gt;Synology Drive Client&lt;/code&gt;を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
 &lt;h4&gt;手順&lt;/h4&gt;
@@ -692,6 +713,10 @@ $ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; xrdp
 
 &lt;p&gt;GNOME classicで使いたい場合は追加で下記のコマンドを実行する。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo sh -c &lt;span class="s1"&gt;&amp;#39;echo &amp;quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&amp;quot; &amp;gt; /etc/sysconfig/desktop&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;C# sdkのインストール&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install dotnet-sdk-5.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class="footnote"&gt;

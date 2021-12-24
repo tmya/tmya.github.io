@@ -91,7 +91,7 @@
                 <p><img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"></p>
 <p>SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。</p>
 <h3>前提知識</h3>
-<p>ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXのGUI環境で操作することを想定しています。</p>
+<p>ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXの<strong>GUI環境</strong>で操作することを想定しています。</p>
 <h3>手順</h3>
 <ul>
 <li>Synology Drive Clientのダウンロード</li>
@@ -99,6 +99,7 @@
 <li>alienとfakerootのインストール</li>
 <li>DEBからRPMへの変換</li>
 <li>Synology Drive Clientのインストール</li>
+<li>[2021/12/24 追記]OSアップデートの際に必要なこと</li>
 </ul>
 <h3>Synology Drive Clientのダウンロード</h3>
 <p>Synologyのサイトからダウンロードします。</p>
@@ -128,6 +129,26 @@
 <p>インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。</p>
 <p><img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"></p>
 <p>起動後は通常通り使えるので設定を行い終了です。</p>
+<h4>OSアップデートの際に必要なこと</h4>
+<p>上記で<code>--nodeps</code>と<code>--force</code>オプションを使ってインストールしているため、システムの依存関係をまったく無視してしまっています。その為、OSのアップデートの際に何かしらが競合してアップデートできない状態になります。一旦Synology Driveを終了し、アンインストールしてOSアップデートを行い、再度Synology Driveをインストールする手順で回避します。接続設定等は消えずに残るようなのでそこまで大変ではないと思います。</p>
+<h5>Synology Driveの終了</h5>
+<p>GUIから終了できないので、コマンドから終了します。</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">kill</span> -TERM <span class="sb">`</span>pgrep cloud-drive-ui<span class="sb">`</span>
+</code></pre></div>
+
+<h5>Synology Driveのアンインストール</h5>
+<p>RPMを削除します。</p>
+<div class="highlight"><pre><span></span><code>$ sudo rpm -e synology-drive
+</code></pre></div>
+
+<h5>OSのアップデート</h5>
+<p>ここでシステムのアップデートを行います。GUIであれば<code>アプリケーション</code>→<code>システムツール</code>→<code>ソフトウェア</code>を選び、アップデートタブからアップデートを行います。CUIであれば<code>$ sudo dnf update</code>と実行します。</p>
+<h5>再度Synology Driveのインストール</h5>
+<p>インストール時と同じコマンドでインストールします。作成したrpmを削除してしまっていたらrpmを作成する所から作業します。</p>
+<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+</code></pre></div>
+
+<p>インストールが完了したら<code>アプリケーション</code>→<code>インターネット</code>→<code>Synology Drive Client</code>を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
