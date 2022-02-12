@@ -23,9 +23,6 @@ $ opam init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;少し待つと、&lt;code&gt;Do you want opam to modify ~/.bash_profile? [N/y/f]&lt;/code&gt;とか聞かれるので、&lt;code&gt;y&lt;/code&gt;を入力してからEnter。その後数分待ちます。最後に&lt;code&gt;Done&lt;/code&gt;と表示されて完了です。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ opam install google-drive-ocamlfuse
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 &lt;h2&gt;google-drive-ocamlfuseのインストール&lt;/h2&gt;
 &lt;p&gt;下記コマンドを実行します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ opam install google-drive-ocamlfuse
