@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2021-12-09T00:00:00+09:00</updated><entry><title>Synology Drive Clientのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="alternate"></link><published>2021-12-09T00:00:00+09:00</published><updated>2021-12-09T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-12-09:/how-to-install-synology-drive-client.html</id><summary type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-02-12T00:00:00+09:00</updated><entry><title>google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html" rel="alternate"></link><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-02-12:/how-to-install-google-drive-ocamlfuse.html</id><summary type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/astrada/google-drive-ocamlfuse"&gt;google-drive-ocamlfuse - Github&lt;/a&gt;を信じられる人向け。&lt;/p&gt;
+&lt;h3&gt;前提&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Homebrewが使用可能&lt;/li&gt;
+&lt;li&gt;インストールは&lt;a href="https://brew.sh/index_ja"&gt;公式サイト&lt;/a&gt;に倣えば簡 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/astrada/google-drive-ocamlfuse"&gt;google-drive-ocamlfuse - Github&lt;/a&gt;を信じられる人向け。&lt;/p&gt;
+&lt;h3&gt;前提&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Homebrewが使用可能&lt;/li&gt;
+&lt;li&gt;インストールは&lt;a href="https://brew.sh/index_ja"&gt;公式サイト&lt;/a&gt;に倣えば簡単。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;手順&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;opamのインストールと初期設定&lt;/li&gt;
+&lt;li&gt;google-drive-ocamlfuseのインストール&lt;/li&gt;
+&lt;li&gt;google-drive-ocamlfuseの起動と設定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;opamのインストールと初期設定&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ brew install opam
+$ opam init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;少し待つと、&lt;code&gt;Do you want opam to modify ~/.bash_profile? [N/y/f]&lt;/code&gt;とか聞かれるので、&lt;code&gt;y&lt;/code&gt;を入力してからEnter。その後数分待ちます。最後に&lt;code&gt;Done&lt;/code&gt;と表示されて完了です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ opam install google-drive-ocamlfuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;google-drive-ocamlfuseのインストール&lt;/h2&gt;
+&lt;p&gt;下記コマンドを実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ opam install google-drive-ocamlfuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;Do you want to continu? [Y/n]&lt;/code&gt;と聞かれるのでそのままEnter。&lt;/p&gt;
+&lt;p&gt;しかしここで&lt;code&gt;conf-gmp&lt;/code&gt;, &lt;code&gt;conf-libcurl&lt;/code&gt;, &lt;code&gt;conf-libfuse&lt;/code&gt;のインストールに失敗してしまいました。必要なパッケージをインストールします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install libcurl-devel fuse-devel gmp-devel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;もう一度google-drive-ocamlfuseをインストールします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ opam install google-drive-ocamlfuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;今回は成功しました。下記のコマンドを実行すると環境変数が今のシェルに読み込まれます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$eval&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;opam env&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;google-drive-ocamlfuseの起動と設定&lt;/h2&gt;
+&lt;p&gt;初回起動でgoogleの認証を行います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ google-drive-ocamlfuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ブラウザが立ち上がり、Googleアカウントでのログインが促されるのでログインします。Google Driveへのアクセスが要求されます。サードパーティのソフトウェアなので、信じるかどうかは各自で判断するしかありません。&lt;/p&gt;
+&lt;p&gt;ログインして正常に通信が行われていればコンソールに下記のようなメッセージが表示されます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Access token retrieved correctly.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ユーザのホームディレクトリ直下にフォルダを作り、そこにマウントします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir ~/googledrive
+$ google-drive-ocamlfuse ~/googledrive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;マウントが完了してファイル操作が可能になります。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Synology Drive Clientのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="alternate"></link><published>2021-12-09T00:00:00+09:00</published><updated>2021-12-09T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-12-09:/how-to-install-synology-drive-client.html</id><summary type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
 &lt;h3&gt;前提知識&lt;/h3&gt;
 &lt;p&gt;ダウン …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
@@ -43,21 +103,21 @@
 &lt;p&gt;インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;起動後は通常通り使えるので設定を行い終了です。&lt;/p&gt;
-&lt;h4&gt;OSアップデートの際に必要なこと&lt;/h4&gt;
+&lt;h3&gt;OSアップデートの際に必要なこと&lt;/h3&gt;
 &lt;p&gt;上記で&lt;code&gt;--nodeps&lt;/code&gt;と&lt;code&gt;--force&lt;/code&gt;オプションを使ってインストールしているため、システムの依存関係をまったく無視してしまっています。その為、OSのアップデートの際に何かしらが競合してアップデートできない状態になります。一旦Synology Driveを終了し、アンインストールしてOSアップデートを行い、再度Synology Driveをインストールする手順で回避します。接続設定等は消えずに残るようなのでそこまで大変ではないと思います。&lt;/p&gt;
-&lt;h5&gt;Synology Driveの終了&lt;/h5&gt;
+&lt;h4&gt;Synology Driveの終了&lt;/h4&gt;
 &lt;p&gt;GUIから終了できないので、コマンドから終了します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;kill&lt;/span&gt; -TERM &lt;span class="sb"&gt;`&lt;/span&gt;pgrep cloud-drive-ui&lt;span class="sb"&gt;`&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h5&gt;Synology Driveのアンインストール&lt;/h5&gt;
+&lt;h4&gt;Synology Driveのアンインストール&lt;/h4&gt;
 &lt;p&gt;RPMを削除します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -e synology-drive
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h5&gt;OSのアップデート&lt;/h5&gt;
+&lt;h4&gt;OSのアップデート&lt;/h4&gt;
 &lt;p&gt;ここでシステムのアップデートを行います。GUIであれば&lt;code&gt;アプリケーション&lt;/code&gt;→&lt;code&gt;システムツール&lt;/code&gt;→&lt;code&gt;ソフトウェア&lt;/code&gt;を選び、アップデートタブからアップデートを行います。CUIであれば&lt;code&gt;$ sudo dnf update&lt;/code&gt;と実行します。&lt;/p&gt;
-&lt;h5&gt;再度Synology Driveのインストール&lt;/h5&gt;
+&lt;h4&gt;再度Synology Driveのインストール&lt;/h4&gt;
 &lt;p&gt;インストール時と同じコマンドでインストールします。作成したrpmを削除してしまっていたらrpmを作成する所から作業します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -672,6 +732,76 @@ Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&
 &lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/miraclelinux-license-free/"&gt;MIRACLE LINUX ライセンスフリー ｜サイバートラスト&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
+&lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
+&lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install nkf
+一致した引数がありません: nkf
+エラー: 一致するものが見つかりません: nkf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;MLでは&lt;a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/"&gt;PowerTools リポジトリと思われるURL&lt;/a&gt;に存在するが、まだ準備中(2021/11/9現在)のようで&lt;code&gt;repomd.xml&lt;/code&gt;が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;とのこと。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2021/11/13 更新:&lt;/strong&gt; いつのまにか公式サイトが11月上旬から11月末という表記に変わっていてTwitterにも告知が出ていました。&lt;a href="https://twitter.com/miraclelinux/status/1459038248148209664"&gt;Twitter - みらくるちゃん &amp;amp; カーネルくん 2021/11/12 15:00&lt;/a&gt; もう少し待つしかない模様。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; CentOS Stream release 8であれば&lt;code&gt;CentOS-Stream-PowerTools.repo&lt;/code&gt;が存在していて&lt;code&gt;dnf config-manager&lt;/code&gt;ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nkfのパッケージ" src="https://tmya.github.io/images/nkf-2.1.4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;リポジトリをミラーリングして&lt;code&gt;createrepo&lt;/code&gt;という手もあるけれどそろそろ公開してくれると期待して今回はやりません。&lt;/p&gt;
+&lt;h3&gt;nkfのインストール&lt;/h3&gt;
+&lt;p&gt;パッケージだけダウンロードして&lt;code&gt;localinstall&lt;/code&gt;オプションを使ってインストールしてみます。依存関係に問題がでないのでこれだけで導入可能です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ wget https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
+$ sudo dnf localinstall ./nkf-2.1.4-8.el8.x86_64.rpm
+メタデータの期限切れの最終確認: &lt;span class="m"&gt;3&lt;/span&gt;:06:36 時間前の 2021年11月09日 09時21分29秒 に実施しました。
+依存関係が解決しました。
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+ パッケージ            アーキテクチャー         バージョン                         リポジトリー                   &lt;span class="nv"&gt;サイズ&lt;/span&gt;
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+インストール:
+ nkf                   x86_64                   &lt;span class="m"&gt;1&lt;/span&gt;:2.1.4-8.el8                      @commandline                   &lt;span class="m"&gt;143&lt;/span&gt; k
+
+&lt;span class="nv"&gt;トランザクションの概要&lt;/span&gt;
+&lt;span class="o"&gt;========================================================================================================================&lt;/span&gt;
+インストール  &lt;span class="m"&gt;1&lt;/span&gt; パッケージ
+
+合計サイズ: &lt;span class="m"&gt;143&lt;/span&gt; k
+インストール後のサイズ: &lt;span class="m"&gt;309&lt;/span&gt; k
+これでよろしいですか? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;y&lt;/code&gt;を押して&lt;code&gt;Enter&lt;/code&gt;でインストールできます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;これでよろしいですか? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
+パッケージのダウンロード:
+トランザクションの確認を実行中
+トランザクションの確認に成功しました。
+トランザクションのテストを実行中
+トランザクションのテストに成功しました。
+トランザクションを実行中
+  準備             :                                                                                                &lt;span class="m"&gt;1&lt;/span&gt;/1
+  インストール中   : nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+  scriptletの実行中: nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+  検証             : nkf-1:2.1.4-8.el8.x86_64                                                                       &lt;span class="m"&gt;1&lt;/span&gt;/1
+
+インストール済み:
+  nkf-1:2.1.4-8.el8.x86_64
+
+完了しました!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nkf -v
+Network Kanji Filter Version &lt;span class="m"&gt;2&lt;/span&gt;.1.4 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-12-12&lt;span class="o"&gt;)&lt;/span&gt;
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1987&lt;/span&gt;, FUJITSU LTD. &lt;span class="o"&gt;(&lt;/span&gt;I.Ichikawa&lt;span class="o"&gt;)&lt;/span&gt;.
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1996&lt;/span&gt;-2015, The nkf Project.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;問題なくインストールできてます。が、バージョンを見ると現行の一つ前のバージョンですね。バグを踏まなければ使えるでしょう。&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/miraclelinux-license-free/"&gt;MIRACLE LINUX ライセンスフリー ｜サイバートラスト&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>MIRACLE LINUX 8.4 メモ</title><link href="https://tmya.github.io/miracle-linux-tips.html" rel="alternate"></link><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-25:/miracle-linux-tips.html</id><summary type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
 とりあえず無償提供の物を使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
 とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
@@ -691,6 +821,7 @@ CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその�
 &lt;li&gt;Cockpitの導入&lt;/li&gt;
 &lt;li&gt;VirtualBoxの導入&lt;/li&gt;
 &lt;li&gt;MIRACLE LINUX on WSL2&lt;/li&gt;
+&lt;li&gt;VSCodeの導入&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;VirtualBoxでやったこと&lt;/h3&gt;
 &lt;p&gt;元のWindows10マシンにSSDを追加してMLをインストールし、物理SSDにアクセスするvmdkを用意する。あとはVirtualBoxにそのvmdkを追加するとWindows10が起動する。なおライセンスに注意。
@@ -705,13 +836,13 @@ CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4&gt;RDPサーバを動かす&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html"&gt;ここ&lt;/a&gt;を参考にEPELを有効にした後下記のコマンドを実行する。GNOME&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html"&gt;ここ&lt;/a&gt;を参考にEPELを有効にした後下記のコマンドを実行する。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install xrdp tigervnc-server
 $ sudo systemctl start xrdp
 $ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; xrdp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;GNOME classicで使いたい場合は追加で下記のコマンドを実行する。&lt;/p&gt;
+&lt;p&gt;GNOME classicで使いたい場合は追加で下記のコマンドを実行する。元に戻す場合は&lt;code&gt;/etc/sysconfig/desktop&lt;/code&gt;を削除の事。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo sh -c &lt;span class="s1"&gt;&amp;#39;echo &amp;quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&amp;quot; &amp;gt; /etc/sysconfig/desktop&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 

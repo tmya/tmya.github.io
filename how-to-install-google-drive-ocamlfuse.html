@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>MIRACLE LINUX 8.4 メモ</title>
+        <title>google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -30,13 +30,13 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/miracle-linux-tips.html">
-    <meta name="twitter:title" content="tmya note ~ MIRACLE LINUX 8.4 メモ">
-    <meta name="twitter:description" content="CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー1となって公開された。 とりあえず無償提供の物を使っ …">
+    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html">
+    <meta name="twitter:title" content="tmya note ~ google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="GoogleドライブをMIRACLE LINUXでも使いたい。 google-drive-ocamlfuse - Githubを信じられる人向け。 前提 Homebrewが使用可能 インストールは公式サイトに倣えば簡 …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="tmya note ~ MIRACLE LINUX 8.4 メモ"/>
-    <meta property="og:description" content="CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー1となって公開された。 とりあえず無償提供の物を使っ …"/>
+    <meta property="og:title" content="tmya note ~ google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="GoogleドライブをMIRACLE LINUXでも使いたい。 google-drive-ocamlfuse - Githubを信じられる人向け。 前提 Homebrewが使用可能 インストールは公式サイトに倣えば簡 …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -85,63 +85,65 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/miracle-linux-tips.html" rel="bookmark"
-                                                  title="Permalink to MIRACLE LINUX 8.4 メモ">MIRACLE LINUX 8.4 メモ</a></h2>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html" rel="bookmark"
+                                                  title="Permalink to google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4">google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
-                <p>CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>となって公開された。
-とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
-CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
-日本発ディストリなので、ML関係の記事は日本語で書くよ。</p>
-<h2>気をつけるポイント</h2>
-<h3>パーティション構成</h3>
-<p>自動構成だと<code>/</code>と<code>/home</code>でパーティションが分かれている。場合によってはまとめてもいいかもしれない。</p>
-<h3>インストール後</h3>
-<p>日本語入力は<code>半角/英数</code>や<code>Ctrl + Space</code>を押してもすぐには出来無い。画面右上のタスクバーから日本語入力に切り替えると、キーボードでの切り替えが可能になる。（公式にも書いてある）</p>
-<h2>やってみたこと一覧</h2>
+                <p>GoogleドライブをMIRACLE LINUXでも使いたい。</p>
+<p><a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse - Github</a>を信じられる人向け。</p>
+<h3>前提</h3>
 <ul>
-<li>pyenv, pipenvの導入</li>
-<li>GnuPGの導入</li>
-<li>Google Chromeの導入</li>
-<li>GNOME Classicへの切り替え</li>
-<li>Cockpitの導入</li>
-<li>VirtualBoxの導入</li>
-<li>MIRACLE LINUX on WSL2</li>
+<li>Homebrewが使用可能</li>
+<li>インストールは<a href="https://brew.sh/index_ja">公式サイト</a>に倣えば簡単。</li>
 </ul>
-<h3>VirtualBoxでやったこと</h3>
-<p>元のWindows10マシンにSSDを追加してMLをインストールし、物理SSDにアクセスするvmdkを用意する。あとはVirtualBoxにそのvmdkを追加するとWindows10が起動する。なおライセンスに注意。
-<img alt="Windows10 on MIRACLE LINUX" src="https://tmya.github.io/images/ml_win_d.png"></p>
-<h2>気付いたこと</h2>
-<h3>マスコット画像</h3>
-<p><code>/usr/share/backgrounds</code> にみらくるちゃんとカーネルくんの背景画像が存在する。
-<img alt="みらくるちゃんとカーネルくん" src="https://tmya.github.io/images/miracle_kernel.jpg"></p>
-<h3>ちょっとしたメモ</h3>
-<h4>ホームディレクトリのフォルダ名を英語にする。</h4>
-<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C xdg-user-dirs-gtk-update
-</code></pre></div>
-
-<h4>RDPサーバを動かす</h4>
-<p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">ここ</a>を参考にEPELを有効にした後下記のコマンドを実行する。GNOME</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install xrdp tigervnc-server
-$ sudo systemctl start xrdp
-$ sudo systemctl <span class="nb">enable</span> xrdp
-</code></pre></div>
-
-<p>GNOME classicで使いたい場合は追加で下記のコマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$ sudo sh -c <span class="s1">&#39;echo &quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&quot; &gt; /etc/sysconfig/desktop&#39;</span>
-</code></pre></div>
-
-<h4>C# sdkのインストール</h4>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install dotnet-sdk-5.0
-</code></pre></div>
-
-<div class="footnote">
-<hr>
+<h3>手順</h3>
 <ol>
-<li id="fn:1">
-<p><a href="https://www.cybertrust.co.jp/miraclelinux-license-free/">MIRACLE LINUX ライセンスフリー</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
+<li>opamのインストールと初期設定</li>
+<li>google-drive-ocamlfuseのインストール</li>
+<li>google-drive-ocamlfuseの起動と設定</li>
 </ol>
-</div>
+<h2>opamのインストールと初期設定</h2>
+<div class="highlight"><pre><span></span><code>$ brew install opam
+$ opam init
+</code></pre></div>
+
+<p>少し待つと、<code>Do you want opam to modify ~/.bash_profile? [N/y/f]</code>とか聞かれるので、<code>y</code>を入力してからEnter。その後数分待ちます。最後に<code>Done</code>と表示されて完了です。</p>
+<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+</code></pre></div>
+
+<h2>google-drive-ocamlfuseのインストール</h2>
+<p>下記コマンドを実行します。</p>
+<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+</code></pre></div>
+
+<p><code>Do you want to continu? [Y/n]</code>と聞かれるのでそのままEnter。</p>
+<p>しかしここで<code>conf-gmp</code>, <code>conf-libcurl</code>, <code>conf-libfuse</code>のインストールに失敗してしまいました。必要なパッケージをインストールします。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install libcurl-devel fuse-devel gmp-devel
+</code></pre></div>
+
+<p>もう一度google-drive-ocamlfuseをインストールします。</p>
+<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+</code></pre></div>
+
+<p>今回は成功しました。下記のコマンドを実行すると環境変数が今のシェルに読み込まれます。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$eval</span> <span class="k">$(</span>opam env<span class="k">)</span>
+</code></pre></div>
+
+<h2>google-drive-ocamlfuseの起動と設定</h2>
+<p>初回起動でgoogleの認証を行います。</p>
+<div class="highlight"><pre><span></span><code>$ google-drive-ocamlfuse
+</code></pre></div>
+
+<p>ブラウザが立ち上がり、Googleアカウントでのログインが促されるのでログインします。Google Driveへのアクセスが要求されます。サードパーティのソフトウェアなので、信じるかどうかは各自で判断するしかありません。</p>
+<p>ログインして正常に通信が行われていればコンソールに下記のようなメッセージが表示されます。</p>
+<div class="highlight"><pre><span></span><code>Access token retrieved correctly.
+</code></pre></div>
+
+<p>ユーザのホームディレクトリ直下にフォルダを作り、そこにマウントします。</p>
+<div class="highlight"><pre><span></span><code>$ mkdir ~/googledrive
+$ google-drive-ocamlfuse ~/googledrive
+</code></pre></div>
+
+<p>マウントが完了してファイル操作が可能になります。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
@@ -149,7 +151,7 @@ $ sudo systemctl <span class="nb">enable</span> xrdp
                 <span> in </span>
                 <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
-                <span class="post_date">Mon 25 October 2021</span>
+                <span class="post_date">Sat 12 February 2022</span>
                 <div><span>Tags : </span>
                 </div>
 
@@ -157,28 +159,28 @@ $ sudo systemctl <span class="nb">enable</span> xrdp
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/miracle-linux-tips.html&text=MIRACLE LINUX 8.4 メモ&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&text=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/miracle-linux-tips.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/miracle-linux-tips.html&t=MIRACLE LINUX 8.4 メモ"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&t=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/miracle-linux-tips.html&title=MIRACLE LINUX 8.4 メモ"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&title=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=MIRACLE LINUX 8.4 メモ&amp;body=Viens découvrir un article à propos de [MIRACLE LINUX 8.4 メモ] sur le site de Akio Tomita. https://tmya.github.io/miracle-linux-tips.html"
+                            href="mailto:?subject=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>
