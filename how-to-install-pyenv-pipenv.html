@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>How to install pyenv, pipenv</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-pyenv-pipenv.html">
+    <meta name="twitter:title" content="tmya note ~ How to install pyenv, pipenv">
+    <meta name="twitter:description" content="Why using pyenv and pipenv for Python? Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely. pyenv : Easy to switch between some versions of Python. pipenv : It can install …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ How to install pyenv, pipenv"/>
+    <meta property="og:description" content="Why using pyenv and pipenv for Python? Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely. pyenv : Easy to switch between some versions of Python. pipenv : It can install …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li class="active"><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-pyenv-pipenv.html" rel="bookmark"
+                                                  title="Permalink to How to install pyenv, pipenv">How to install pyenv, pipenv</a></h2>
+            <div class="entry-content blog-post">
+                <p>Why using pyenv and pipenv for Python?</p>
+<p>Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely.</p>
+<p>pyenv : Easy to switch between some versions of Python.</p>
+<p>pipenv : It can install modules separately of version.(use pyenv's version switch module inside.)</p>
+<h1>Memo</h1>
+<ul>
+<li>I using this settings on Raspberry Pi 4(64bit Kernel) and MacOS Catalina</li>
+<li>Python 3(.8)</li>
+</ul>
+<h1>Contents</h1>
+<ul>
+<li>Install require components</li>
+<li>Install pyenv</li>
+<li>Install pipenv</li>
+<li>How to use.</li>
+</ul>
+<h2>Install require components</h2>
+<p>(Raspberry Pi) &gt;</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+</code></pre></div>
+
+<p>&lt; (Raspberry Pi)</p>
+<p>(MacOS) &gt;</p>
+<div class="highlight"><pre><span></span><code>brew install readline xz
+</code></pre></div>
+
+<p>&lt; (MacOS)</p>
+<h2>Install pyenv</h2>
+<p>(Raspberry Pi)</p>
+<p>First, install pyenv from CUI command.</p>
+<div class="highlight"><pre><span></span><code>$ curl https://pyenv.run <span class="p">|</span> bash
+</code></pre></div>
+
+<p>When install finished, You'll see warnings like below.</p>
+<div class="highlight"><pre><span></span><code>WARNING: seems you still have not added <span class="s1">&#39;pyenv&#39;</span> to the load path.
+
+<span class="c1"># Load pyenv automatically by adding</span>
+<span class="c1"># the following to ~/.bashrc:</span>
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Edit ~/.bashrc file and add three rows.</p>
+<div class="highlight"><pre><span></span><code>$ micro ~/.bashrc
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Reload .bashrc file.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+
+<p>&lt; (Raspberry Pi)</p>
+<p>(MacOS)</p>
+<div class="highlight"><pre><span></span><code>$ brew install pyenv
+</code></pre></div>
+
+<p>&lt; (MacOS)</p>
+<h2>Install pipenv.</h2>
+<div class="highlight"><pre><span></span><code>$ python -m pip install pipenv
+</code></pre></div>
+
+<p>or</p>
+<div class="highlight"><pre><span></span><code>$ python3 -m pip install pipenv
+</code></pre></div>
+
+<h2>How to use</h2>
+<h3>Install Python 3.8.2 or what you need.</h3>
+<div class="highlight"><pre><span></span><code>$ pyenv install <span class="m">3</span>.8.2
+</code></pre></div>
+
+<h2>Create a local environment.</h2>
+<p>First check the default Python version</p>
+<div class="highlight"><pre><span></span><code>$ python --version
+Python <span class="m">3</span>.7.3
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ mkdir mypy
+$ <span class="nb">cd</span> mypy
+$ pipenv install --python <span class="m">3</span>.8.2
+
+Creating a virtualenv <span class="k">for</span> this project…
+Pipfile: /home/tmya/mypy/Pipfile
+Using /home/tmya/.pyenv/versions/3.8.2/bin/python3.8 <span class="o">(</span><span class="m">3</span>.8.2<span class="o">)</span> to create virtualenv…
+⠦ Creating virtual environment...created virtual environment CPython3.8.2.final.0-32 in 1015ms
+  creator CPython3Posix<span class="o">(</span><span class="nv">dest</span><span class="o">=</span>/home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka, <span class="nv">clear</span><span class="o">=</span>False, <span class="nv">global</span><span class="o">=</span>False<span class="o">)</span>
+  seeder FromAppData<span class="o">(</span><span class="nv">download</span><span class="o">=</span>False, <span class="nv">pip</span><span class="o">=</span>latest, <span class="nv">setuptools</span><span class="o">=</span>latest, <span class="nv">wheel</span><span class="o">=</span>latest, <span class="nv">via</span><span class="o">=</span>copy, <span class="nv">app_data_dir</span><span class="o">=</span>/home/tmya/.local/share/virtualenv/seed-app-data/v1.0.1<span class="o">)</span>
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+
+✔ Successfully created virtual environment! 
+Virtualenv location: /home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka
+Creating a Pipfile <span class="k">for</span> this project…
+Pipfile.lock not found, creating…
+Locking <span class="o">[</span>dev-packages<span class="o">]</span> dependencies…
+Locking <span class="o">[</span>packages<span class="o">]</span> dependencies…
+Updated Pipfile.lock <span class="o">(</span>db4242<span class="o">)</span>!
+Installing dependencies from Pipfile.lock <span class="o">(</span>db4242<span class="o">)</span>…
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ <span class="m">0</span>/0 — <span class="m">00</span>:00:00
+To activate this project<span class="err">&#39;</span>s virtualenv, run pipenv shell.
+Alternatively, run a <span class="nb">command</span> inside the virtualenv with pipenv run.
+</code></pre></div>
+
+<p>You can see your specified version of Python.</p>
+<div class="highlight"><pre><span></span><code>$ pipenv shell
+~~~
+$ python --version
+Python <span class="m">3</span>.8.2
+</code></pre></div>
+
+<p>If you want to exit local environment, type 'exit' command.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">exit</span>
+</code></pre></div>
+
+<h3>Install library</h3>
+<p>You can not use 'pip' command. You should use 'pipenv' command instead.</p>
+<div class="highlight"><pre><span></span><code>$ pipenv install beautifulsoup4
+</code></pre></div>
+
+<h3>Optional settings</h3>
+<p>How to create a virtual environment in the project directory.
+This setting is recommended for git and other version-control software.</p>
+<div class="highlight"><pre><span></span><code>$ micro ~/.bashrc
+
+<span class="nb">export</span> <span class="nv">PIPENV_VENV_IN_PROJECT</span><span class="o">=</span><span class="m">1</span>
+
+$ <span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/blog.html" rel="bookmark"
+                                               title="Permalink to blog">[ blog ]</a></span>
+                <span class="post_date">Fri 24 September 2021</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-pyenv-pipenv.html&text=How to install pyenv, pipenv&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-pyenv-pipenv.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-pyenv-pipenv.html&t=How to install pyenv, pipenv"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-pyenv-pipenv.html&title=How to install pyenv, pipenv"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=How to install pyenv, pipenv&amp;body=Viens découvrir un article à propos de [How to install pyenv, pipenv] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-pyenv-pipenv.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>

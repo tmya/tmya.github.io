@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>wget2のインストール - MIRACLE LINUX 8.4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-install-wget2.html">
+    <meta name="twitter:title" content="tmya note ~ wget2のインストール - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="wget2をインストールしよう。 sudo dnf install texinfo lzip nkfパッケージはどこ とりあえずdnfでインストールしようとすると見つかりま …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ wget2のインストール - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="wget2をインストールしよう。 sudo dnf install texinfo lzip nkfパッケージはどこ とりあえずdnfでインストールしようとすると見つかりま …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/how-to-install-wget2.html" rel="bookmark"
+                                                  title="Permalink to wget2のインストール - MIRACLE LINUX 8.4">wget2のインストール - MIRACLE LINUX 8.4</a></h2>
+            <div class="entry-content blog-post">
+                <p>wget2をインストールしよう。</p>
+<p>sudo dnf install texinfo lzip</p>
+<h3>nkfパッケージはどこ</h3>
+<p>とりあえず<code>dnf</code>でインストールしようとすると見つかりません。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install nkf
+一致した引数がありません: nkf
+エラー: 一致するものが見つかりません: nkf
+</code></pre></div>
+
+<p>MLでは<a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/">PowerTools リポジトリと思われるURL</a>に存在するが、まだ準備中(2021/11/9現在)のようで<code>repomd.xml</code>が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>とのこと。</p>
+<p><strong>NOTE:</strong> CentOS Stream release 8であれば<code>CentOS-Stream-PowerTools.repo</code>が存在していて<code>dnf config-manager</code>ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。</p>
+<p><img alt="nkfのパッケージ" src="https://tmya.github.io/images/nkf-2.1.4.jpg"></p>
+<p>リポジトリをミラーリングして<code>createrepo</code>という手もあるけれどそろそろ公開してくれると期待して今回はやりません。</p>
+<h3>nkfのインストール</h3>
+<p>パッケージだけダウンロードして<code>localinstall</code>オプションを使ってインストールしてみます。依存関係に問題がでないのでこれだけで導入可能です。</p>
+<div class="highlight"><pre><span></span><code>$ wget https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
+$ sudo dnf localinstall ./nkf-2.1.4-8.el8.x86_64.rpm
+メタデータの期限切れの最終確認: <span class="m">3</span>:06:36 時間前の 2021年11月09日 09時21分29秒 に実施しました。
+依存関係が解決しました。
+<span class="o">========================================================================================================================</span>
+ パッケージ            アーキテクチャー         バージョン                         リポジトリー                   <span class="nv">サイズ</span>
+<span class="o">========================================================================================================================</span>
+インストール:
+ nkf                   x86_64                   <span class="m">1</span>:2.1.4-8.el8                      @commandline                   <span class="m">143</span> k
+
+<span class="nv">トランザクションの概要</span>
+<span class="o">========================================================================================================================</span>
+インストール  <span class="m">1</span> パッケージ
+
+合計サイズ: <span class="m">143</span> k
+インストール後のサイズ: <span class="m">309</span> k
+これでよろしいですか? <span class="o">[</span>y/N<span class="o">]</span>:
+</code></pre></div>
+
+<p><code>y</code>を押して<code>Enter</code>でインストールできます。</p>
+<div class="highlight"><pre><span></span><code>これでよろしいですか? <span class="o">[</span>y/N<span class="o">]</span>: y
+パッケージのダウンロード:
+トランザクションの確認を実行中
+トランザクションの確認に成功しました。
+トランザクションのテストを実行中
+トランザクションのテストに成功しました。
+トランザクションを実行中
+  準備             :                                                                                                <span class="m">1</span>/1
+  インストール中   : nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
+  scriptletの実行中: nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
+  検証             : nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
+
+インストール済み:
+  nkf-1:2.1.4-8.el8.x86_64
+
+完了しました!
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ nkf -v
+Network Kanji Filter Version <span class="m">2</span>.1.4 <span class="o">(</span><span class="m">2015</span>-12-12<span class="o">)</span>
+Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1987</span>, FUJITSU LTD. <span class="o">(</span>I.Ichikawa<span class="o">)</span>.
+Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1996</span>-2015, The nkf Project.
+</code></pre></div>
+
+<p>問題なくインストールできてます。が、バージョンを見ると現行の一つ前のバージョンですね。バグを踏まなければ使えるでしょう。</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.cybertrust.co.jp/miraclelinux-license-free/">MIRACLE LINUX ライセンスフリー ｜サイバートラスト</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Thu 11 November 2021</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/how-to-install-wget2.html&text=wget2のインストール - MIRACLE LINUX 8.4&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/how-to-install-wget2.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/how-to-install-wget2.html&t=wget2のインストール - MIRACLE LINUX 8.4"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/how-to-install-wget2.html&title=wget2のインストール - MIRACLE LINUX 8.4"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=wget2のインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [wget2のインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/drafts/how-to-install-wget2.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>

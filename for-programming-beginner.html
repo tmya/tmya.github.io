@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>初級プログラミング向け情報まとめ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/for-programming-beginner.html">
+    <meta name="twitter:title" content="tmya note ~ 初級プログラミング向け情報まとめ">
+    <meta name="twitter:description" content="初級プログラミング向け情報まとめ 解説 関数を使うのに必要なヘッダーファイル ヘッダーファイル 関数 stdio.h printf()scanf …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ 初級プログラミング向け情報まとめ"/>
+    <meta property="og:description" content="初級プログラミング向け情報まとめ 解説 関数を使うのに必要なヘッダーファイル ヘッダーファイル 関数 stdio.h printf()scanf …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/for-programming-beginner.html" rel="bookmark"
+                                                  title="Permalink to 初級プログラミング向け情報まとめ">初級プログラミング向け情報まとめ</a></h2>
+            <div class="entry-content blog-post">
+                <h1>初級プログラミング向け情報まとめ</h1>
+<h2>解説</h2>
+<h3>関数を使うのに必要なヘッダーファイル</h3>
+<table>
+<thead>
+<tr>
+<th>ヘッダーファイル</th>
+<th>関数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stdio.h</td>
+<td>printf()<br />scanf()<br />sprintf()<br />sscanf()<br />getc()<br />putc()<br />gets()<br />puts()<br />fopen()<br />fclose()<br />fscanf()<br />fprintf()</td>
+</tr>
+<tr>
+<td>stdlib.h</td>
+<td>atoi()<br />rand()<br />malloc()<br />realloc()<br />free()<br />qsort()<br />abs()</td>
+</tr>
+<tr>
+<td>math.h</td>
+<td>sin()<br />cos()<br />tan()<br />sqrt()<br />sqrtf()<br />sqrtl()<br />pow()<br />powf()<br />powl()</td>
+</tr>
+<tr>
+<td>string.h</td>
+<td>strcpy()<br />strncpy()<br />strcmp()<br />strstr()<br />strlen()</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>#include &lt;xxxx.h&gt;</code></p>
+</blockquote>
+<p>上記の関数を使う時は、左側のヘッダーファイルをインクルードするのを忘れないように。</p>
+<h2>C言語の解説サイト</h2>
+<p><a href="http://www.tohoho-web.com/ex/c-lang.html#hello-world">C言語入門 - とほほのWWW入門</a></p>
+<p><a href="http://www.kumei.ne.jp/c_lang/index_c.html">C言語編 猫でもわかるプログラミング</a></p>
+<h2>少し背伸びしたい人向け</h2>
+<h3>競技プログラミング</h3>
+<p><a href="https://paiza.jp/challenges">プログラミングスキルチェック paiza</a></p>
+<blockquote>
+<p>初級～上級向け</p>
+</blockquote>
+<p><a href="https://atcoder.jp/">AtCoder</a></p>
+<blockquote>
+<p>中級～ガチ勢向け</p>
+</blockquote>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/p-tips.html" rel="bookmark"
+                                               title="Permalink to p-tips">[ p-tips ]</a></span>
+                <span class="post_date">Thu 08 April 2021</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/for-programming-beginner.html&text=初級プログラミング向け情報まとめ&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/for-programming-beginner.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/for-programming-beginner.html&t=初級プログラミング向け情報まとめ"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/for-programming-beginner.html&title=初級プログラミング向け情報まとめ"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=初級プログラミング向け情報まとめ&amp;body=Viens découvrir un article à propos de [初級プログラミング向け情報まとめ] sur le site de Akio Tomita. https://tmya.github.io/for-programming-beginner.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
