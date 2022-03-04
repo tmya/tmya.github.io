@@ -149,6 +149,11 @@
 </code></pre></div>
 
 <p>インストールが完了したら<code>アプリケーション</code>→<code>インターネット</code>→<code>Synology Drive Client</code>を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。</p>
+<h4>試行錯誤メモ</h4>
+<p>いろいろ試してみたけど諦めたやつ</p>
+<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force --relocate /<span class="o">=</span>/opt/synology-drive --badreloc
+sudo micro /opt/synology-drive/usr/bin/synology-drive
+</code></pre></div>
             </div>
             <div class="post_list">
                 <span>By </span>

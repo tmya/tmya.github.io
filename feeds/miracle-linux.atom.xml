@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-02-12T00:00:00+09:00</updated><entry><title>google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html" rel="alternate"></link><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-02-12:/how-to-install-google-drive-ocamlfuse.html</id><summary type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-03-04T00:00:00+09:00</updated><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
+&lt;h3&gt;前提&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;EPELリポジトリが使えること&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使えない場合は&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html"&gt;MIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラスト&lt;/a&gt;の下の方に記載の方法で使えるようにしましょう。コマンド一発です。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;インストール&lt;/h3&gt;
+&lt;p&gt;インストールはとっても簡単。インストールの続行を問われるので、&lt;code&gt;y&lt;/code&gt;を入力して&lt;code&gt;Enterキー&lt;/code&gt;をプッシュ。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install byobu
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;一緒に&lt;code&gt;screen&lt;/code&gt;がインストールされます。Byobuはscreenをバックエンドに使い、機能を拡張しています。設定を行なえばバックエンドにtmuxも使えるよ。&lt;/p&gt;
+&lt;h3&gt;使い方&lt;/h3&gt;
+&lt;p&gt;Byobuは仮想的にCUIの中に複数のウィンドウを開いて並べることができます。&lt;/p&gt;
+&lt;h4&gt;起動方法&lt;/h4&gt;
+&lt;p&gt;コマンドを実行すると新しいターミナルが立ち上がります。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ byobu
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;この状態でいろいろな作業を行うことができます。&lt;/p&gt;
+&lt;h4&gt;操作方法&lt;/h4&gt;
+&lt;p&gt;公式の説明は&lt;a href="https://www.byobu.org/documentation"&gt;Byobu - Documentation&lt;/a&gt;にあります。私の適当な説明は下記に記載。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;キーボードのボタン&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;F2&lt;/td&gt;
+&lt;td&gt;新しいウィンドウを開く&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F3&lt;/td&gt;
+&lt;td&gt;前のウィンドウに切り換える&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F4&lt;/td&gt;
+&lt;td&gt;次のウィンドウに切り換える&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F5&lt;/td&gt;
+&lt;td&gt;プロファイルを再読み込みする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F6&lt;/td&gt;
+&lt;td&gt;Byobuを起動したままByobuから離れる（ログアウトするかも）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F7&lt;/td&gt;
+&lt;td&gt;スクロールモードに移る（カーソルキーで画面の上に消えていったメッセージを見ることができる。Enterキーで離脱可。）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F8&lt;/td&gt;
+&lt;td&gt;今のウィンドウの名前を変更する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F9&lt;/td&gt;
+&lt;td&gt;設定メニューを表示する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F2&lt;/td&gt;
+&lt;td&gt;上下に現在のウィンドウを分割する（一つのウィンドウに上下分割で二つのセッション）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + F2&lt;/td&gt;
+&lt;td&gt;左右に現在のウィンドウを分割する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F3&lt;/td&gt;
+&lt;td&gt;分割したウィンドウの中で前のウィンドウを選択&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F4&lt;/td&gt;
+&lt;td&gt;分割したウィンドウの中で次のウィンドウを選択&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F5&lt;/td&gt;
+&lt;td&gt;分割を結合？（詳細不明）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + F5&lt;/td&gt;
+&lt;td&gt;GPGとSSHソケットに再接続する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F6&lt;/td&gt;
+&lt;td&gt;Byobuを起動したままByobuから離れる（ログアウトしない）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + F6&lt;/td&gt;
+&lt;td&gt;現在のウィンドウの分割を削除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt + Page Up&lt;/td&gt;
+&lt;td&gt;スクロールモードに移る&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt + Page Down&lt;/td&gt;
+&lt;td&gt;スクロールモードに移る&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + a の後に $&lt;/td&gt;
+&lt;td&gt;詳細ステータスを表示（となっているけどセッション名変更になる）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + a の後に R&lt;/td&gt;
+&lt;td&gt;プロファイルの再読み込み&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + a の後に !&lt;/td&gt;
+&lt;td&gt;キーバインディングのON/OFF切り替え&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + a の後に k&lt;/td&gt;
+&lt;td&gt;現在のウィンドウをkillする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + a の後に~&lt;/td&gt;
+&lt;td&gt;今のウィンドウのスクロールバッファを保存する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;簡単に使うためには&lt;/h4&gt;
+&lt;p&gt;あまり深く考えずにbyobuを起動して作業を行い、作業途中で&lt;code&gt;Shift&lt;/code&gt; + &lt;code&gt;F6&lt;/code&gt;でデタッチをすれば、次にbyobuを起動した時に前回の続きから作業を行うことができます。&lt;/p&gt;
+&lt;h4&gt;メモ&lt;/h4&gt;
+&lt;p&gt;さて、SSHで接続した時に作業開始と共にbyobuを起動することを忘れたりします。忘れないようにSSH接続した時に自動でbyobuを起動するにように設定するには下記の通りにコマンドを実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ byobu-enable
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;次回、SSHでログインした時に自動でbyobuが実行されるはずです。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html" rel="alternate"></link><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-02-12:/how-to-install-google-drive-ocamlfuse.html</id><summary type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/astrada/google-drive-ocamlfuse"&gt;google-drive-ocamlfuse - Github&lt;/a&gt;を信じられる人向け。&lt;/p&gt;
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
@@ -31,6 +166,10 @@ $ opam init
 &lt;p&gt;&lt;code&gt;Do you want to continu? [Y/n]&lt;/code&gt;と聞かれるのでそのままEnter。&lt;/p&gt;
 &lt;p&gt;しかしここで&lt;code&gt;conf-gmp&lt;/code&gt;, &lt;code&gt;conf-libcurl&lt;/code&gt;, &lt;code&gt;conf-libfuse&lt;/code&gt;のインストールに失敗してしまいました。必要なパッケージをインストールします。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install libcurl-devel fuse-devel gmp-devel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;【2022/2/18追記】別のマシンではconf-sqlite3も必要だったので、追加でパッケージインストールが必要かもしれません。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install sqlite-devel
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;もう一度google-drive-ocamlfuseをインストールします。&lt;/p&gt;
@@ -119,7 +258,12 @@ $ google-drive-ocamlfuse ~/googledrive
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;インストールが完了したら&lt;code&gt;アプリケーション&lt;/code&gt;→&lt;code&gt;インターネット&lt;/code&gt;→&lt;code&gt;Synology Drive Client&lt;/code&gt;を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+&lt;p&gt;インストールが完了したら&lt;code&gt;アプリケーション&lt;/code&gt;→&lt;code&gt;インターネット&lt;/code&gt;→&lt;code&gt;Synology Drive Client&lt;/code&gt;を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。&lt;/p&gt;
+&lt;h4&gt;試行錯誤メモ&lt;/h4&gt;
+&lt;p&gt;いろいろ試してみたけど諦めたやつ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force --relocate /&lt;span class="o"&gt;=&lt;/span&gt;/opt/synology-drive --badreloc
+sudo micro /opt/synology-drive/usr/bin/synology-drive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
 &lt;h4&gt;手順&lt;/h4&gt;

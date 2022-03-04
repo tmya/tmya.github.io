@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</title>
+        <title>Node.jsのインストール - MIRACLE LINUX 8.4</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -30,13 +30,13 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html">
-    <meta name="twitter:title" content="tmya note ~ google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4">
-    <meta name="twitter:description" content="GoogleドライブをMIRACLE LINUXでも使いたい。 google-drive-ocamlfuse - Githubを信じられる人向け。 前提 Homebrewが使用可能 インストールは公式サイトに倣えば簡 …">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-install-nodejs.html">
+    <meta name="twitter:title" content="tmya note ~ Node.jsのインストール - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="Node.jsをインストールしたい。 手順 Node.jsのインストール？ Node.jsインストール？ 私自身はNode.jsを触ったことがほとんどあり …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="tmya note ~ google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"/>
-    <meta property="og:description" content="GoogleドライブをMIRACLE LINUXでも使いたい。 google-drive-ocamlfuse - Githubを信じられる人向け。 前提 Homebrewが使用可能 インストールは公式サイトに倣えば簡 …"/>
+    <meta property="og:title" content="tmya note ~ Node.jsのインストール - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="Node.jsをインストールしたい。 手順 Node.jsのインストール？ Node.jsインストール？ 私自身はNode.jsを触ったことがほとんどあり …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -85,66 +85,27 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html" rel="bookmark"
-                                                  title="Permalink to google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4">google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4</a></h2>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/how-to-install-nodejs.html" rel="bookmark"
+                                                  title="Permalink to Node.jsのインストール - MIRACLE LINUX 8.4">Node.jsのインストール - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
-                <p>GoogleドライブをMIRACLE LINUXでも使いたい。</p>
-<p><a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse - Github</a>を信じられる人向け。</p>
-<h3>前提</h3>
-<ul>
-<li>Homebrewが使用可能</li>
-<li>インストールは<a href="https://brew.sh/index_ja">公式サイト</a>に倣えば簡単。</li>
-</ul>
+                <p>Node.jsをインストールしたい。</p>
 <h3>手順</h3>
 <ol>
-<li>opamのインストールと初期設定</li>
-<li>google-drive-ocamlfuseのインストール</li>
-<li>google-drive-ocamlfuseの起動と設定</li>
+<li>Node.jsのインストール？</li>
 </ol>
-<h2>opamのインストールと初期設定</h2>
-<div class="highlight"><pre><span></span><code>$ brew install opam
-$ opam init
+<h2>Node.jsインストール？</h2>
+<p>私自身はNode.jsを触ったことがほとんどありません。人気らしいのでてっきり最初からMLにインストールされているのかなと思いコマンドを打ったところインストールされていませんでした。その代わりにインストールを促すメッセージが表示されました。便利ですね。</p>
+<div class="highlight"><pre><span></span><code>$ node
+bash: node: コマンドが見つかりませんでした...
+コマンド node<span class="s1">&#39; を提供するためにパッケージ &#39;</span>nodejs<span class="err">&#39;</span> をインストールしますか? <span class="o">[</span>N/y<span class="o">]</span> y
 </code></pre></div>
 
-<p>少し待つと、<code>Do you want opam to modify ~/.bash_profile? [N/y/f]</code>とか聞かれるので、<code>y</code>を入力してからEnter。その後数分待ちます。最後に<code>Done</code>と表示されて完了です。</p>
-<h2>google-drive-ocamlfuseのインストール</h2>
-<p>下記コマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+<p><code>y</code>と入力しEnterキーを押すだけでインストールが完了しました。</p>
+<div class="highlight"><pre><span></span><code>$ node -v
+v10.24.0
 </code></pre></div>
 
-<p><code>Do you want to continu? [Y/n]</code>と聞かれるのでそのままEnter。</p>
-<p>しかしここで<code>conf-gmp</code>, <code>conf-libcurl</code>, <code>conf-libfuse</code>のインストールに失敗してしまいました。必要なパッケージをインストールします。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install libcurl-devel fuse-devel gmp-devel
-</code></pre></div>
-
-<p>【2022/2/18追記】別のマシンではconf-sqlite3も必要だったので、追加でパッケージインストールが必要かもしれません。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install sqlite-devel
-</code></pre></div>
-
-<p>もう一度google-drive-ocamlfuseをインストールします。</p>
-<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
-</code></pre></div>
-
-<p>今回は成功しました。下記のコマンドを実行すると環境変数が今のシェルに読み込まれます。</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">eval</span> <span class="k">$(</span>opam env<span class="k">)</span>
-</code></pre></div>
-
-<h2>google-drive-ocamlfuseの起動と設定</h2>
-<p>初回起動でgoogleの認証を行います。</p>
-<div class="highlight"><pre><span></span><code>$ google-drive-ocamlfuse
-</code></pre></div>
-
-<p>ブラウザが立ち上がり、Googleアカウントでのログインが促されるのでログインします。Google Driveへのアクセスが要求されます。サードパーティのソフトウェアなので、信じるかどうかは各自で判断するしかありません。</p>
-<p>ログインして正常に通信が行われていればコンソールに下記のようなメッセージが表示されます。</p>
-<div class="highlight"><pre><span></span><code>Access token retrieved correctly.
-</code></pre></div>
-
-<p>ユーザのホームディレクトリ直下にフォルダを作り、そこにマウントします。</p>
-<div class="highlight"><pre><span></span><code>$ mkdir ~/googledrive
-$ google-drive-ocamlfuse ~/googledrive
-</code></pre></div>
-
-<p>マウントが完了してファイル操作が可能になります。</p>
+<p>現時点ではv10.24.0がインストールされるようです。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
@@ -152,7 +113,7 @@ $ google-drive-ocamlfuse ~/googledrive
                 <span> in </span>
                 <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
-                <span class="post_date">Sat 12 February 2022</span>
+                <span class="post_date">Wed 16 February 2022</span>
                 <div><span>Tags : </span>
                 </div>
 
@@ -160,28 +121,28 @@ $ google-drive-ocamlfuse ~/googledrive
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&text=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/how-to-install-nodejs.html&text=Node.jsのインストール - MIRACLE LINUX 8.4&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/how-to-install-nodejs.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&t=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/how-to-install-nodejs.html&t=Node.jsのインストール - MIRACLE LINUX 8.4"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html&title=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/how-to-install-nodejs.html&title=Node.jsのインストール - MIRACLE LINUX 8.4"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [google-drive-ocamlfuseのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-google-drive-ocamlfuse.html"
+                            href="mailto:?subject=Node.jsのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Node.jsのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/drafts/how-to-install-nodejs.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>
