@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-install-voicepeak.html">
+    <meta name="twitter:title" content="tmya note ~ VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="VOICEPEAK 商用可能 6ナレーターセット｜製品情報｜AHS(AH-Software)はテキストから音声を出力できるソフトウェアです。 前提 EPELリポジト …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="VOICEPEAK 商用可能 6ナレーターセット｜製品情報｜AHS(AH-Software)はテキストから音声を出力できるソフトウェアです。 前提 EPELリポジト …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/how-to-install-voicepeak.html" rel="bookmark"
+                                                  title="Permalink to VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4">VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4</a></h2>
+            <div class="entry-content blog-post">
+                <p><a href="https://www.ah-soft.com/voice/6nare/">VOICEPEAK 商用可能 6ナレーターセット｜製品情報｜AHS(AH-Software)</a>はテキストから音声を出力できるソフトウェアです。</p>
+<h3>前提</h3>
+<ul>
+<li>
+<p>EPELリポジトリが使えること</p>
+</li>
+<li>
+<p>使えない場合は<a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">MIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラスト</a>の下の方に記載の方法で使えるようにしましょう。コマンド一発です。</p>
+</li>
+</ul>
+<h3>インストール</h3>
+<p><code>unzip</code>コマンドで解答すると文字化けしてしまうので、MacOSでは有名な<code>unar</code>で解凍します。コマンドラインツールだけならWindowsやLinuxでも使用できます。上記の通りEPELが使えるのであれば下記コマンドでインストール可能です。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install unar
+</code></pre></div>
+
+<p>解凍したフォルダへ移動します。</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> VOICEPEAK<span class="se">\ </span>商用可能<span class="se">\ </span>6ナレーターセット<span class="se">\ </span>ダウンロード版
+</code></pre></div>
+
+<p>解凍したフォルダの<code>はじめにお読みください.txt</code>の内容を確認すると手順は次の通りだそうです。</p>
+<ul>
+<li>
+<p>ダウンローダの Linux/voicepeak-downloader-linux64 を実行する。</p>
+</li>
+<li>
+<p>画面にしたがってダウンロード開始とアクティベーションコードの入力を行う。</p>
+</li>
+<li>
+<p>ダウンロードしたインストーラを実行する。</p>
+</li>
+<li>
+<p>インストールを行って完了。</p>
+</li>
+</ul>
+<h4>Linux/voicepeak-downloader-linux64を実行する</h4>
+<p>実行権限がついてないのでそのままでは実行できません。</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Mon 14 March 2022</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/how-to-install-voicepeak.html&text=VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/how-to-install-voicepeak.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/how-to-install-voicepeak.html&t=VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/how-to-install-voicepeak.html&title=VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [VOICEPEAK 商用可能 6ナレーターセットのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/drafts/how-to-install-voicepeak.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
