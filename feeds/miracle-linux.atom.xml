@@ -132,7 +132,7 @@ query.port=5432&lt;/p&gt;
 &lt;p&gt;success&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;追加されたか確認しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo firewall-cmd --list-all
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;sudo firewall-cmd --list-all&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
