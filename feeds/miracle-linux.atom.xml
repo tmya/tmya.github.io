@@ -9,6 +9,7 @@
 &lt;li&gt;マインクラフトサーバの本体をダウンロード&lt;/li&gt;
 &lt;li&gt;サーバの初期設定&lt;/li&gt;
 &lt;li&gt;ファイヤウォールの設定&lt;/li&gt;
+&lt;li&gt;サーバの起動&lt;/li&gt;
 &lt;li&gt;ゲームの起動と接続&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;ConoHaのVPSでサーバを追加&lt;/h3&gt;
@@ -150,6 +151,13 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;success&lt;/code&gt;と表示がされればOKです。&lt;/p&gt;
+&lt;h3&gt;サーバの起動&lt;/h3&gt;
+&lt;p&gt;ついにマインクラフトサーバを起動します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; ./start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;マップデータの初期化などが行われるので、数分待つことになると思います。
+最後に&lt;code&gt;Done (xx.xxs)! For help, type "help"&lt;/code&gt;と表示されたらサーバにログインが可能です。&lt;/p&gt;
 &lt;h3&gt;ゲームの起動と接続&lt;/h3&gt;
 &lt;p&gt;マインクラフト(バージョン 1.18.2)を起動し、&lt;code&gt;マルチプレイ&lt;/code&gt;から&lt;code&gt;サーバーを追加&lt;/code&gt;をクリックします。&lt;code&gt;サーバー名&lt;/code&gt;はわかりやすい値で好きなように設定し、&lt;code&gt;サーバーアドレス&lt;/code&gt;には&lt;code&gt;ConoHaのIPv4のIPアドレス&lt;/code&gt;:5432を入力し、完了をクリックします。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:画像は古いバージョンですが1.18.2も同じ画面です。&lt;/strong&gt;&lt;/p&gt;
@@ -161,9 +169,40 @@
 &lt;p&gt;コンソール画面を見ると、ログインしたことがわかるログが表示されています。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ログインがわかるコンソール" src="https://tmya.github.io/images/conoha-mc-log.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;以上で完了です。&lt;/p&gt;
-&lt;h3&gt;おまけ&lt;/h3&gt;
+&lt;h2&gt;おまけ&lt;/h2&gt;
 &lt;p&gt;サイバートラスト株式会社さんがMIRACLE LINUXロゴがイメージされたマップデータとみらくるちゃんのスキンデータを公開してくれました！
-詳細は&lt;a href="https://www.miraclelinux.com/tech-blog/minecraft"&gt;Minecraft用みらくるちゃんスキンとmapを公開! / みらくるブログ&lt;/a&gt;をご覧ください。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
+詳細は&lt;a href="https://www.miraclelinux.com/tech-blog/minecraft"&gt;Minecraft用みらくるちゃんスキンとmapを公開! / みらくるブログ&lt;/a&gt;をご覧ください。&lt;/p&gt;
+&lt;h3&gt;提供マップデータのマルチサーバへの適用&lt;/h3&gt;
+&lt;p&gt;起動中のサーバのコンソールで&lt;code&gt;/stop&lt;/code&gt;と入力して&lt;code&gt;Enter&lt;/code&gt;キーを押してください。
+サーバの状態が保存され終了し、コマンドを入力するシェルに戻ってきます。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;/stop&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;先ほどのサイトから辿れるGithubからデータをダウンロードします。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; wget https://github.com/miraclelinux/minecraft-miraclelinux-map/archive/refs/heads/main.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;zip形式で圧縮されているので解凍します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; unzip main.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;このデータにはスキンなども入っているので、必要なマップデータのみをマインクラフトサーバの実行フォルダ内に移動します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; mv minecraft-miraclelinux-map-main/saves/MIRACLE&lt;span class="se"&gt;\ &lt;/span&gt;LINUX&lt;span class="se"&gt;\ &lt;/span&gt;MEETUP/ ./
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;マップデータ名は&lt;code&gt;server.properties&lt;/code&gt;ファイルの&lt;code&gt;level-name&lt;/code&gt;行に設定されています。
+初期値は&lt;code&gt;world&lt;/code&gt;で同名のフォルダ以下にワールドデータがありますが、配布データは&lt;code&gt;MIRACLE LINUX MEETUP&lt;/code&gt;ですので、サーバの設定ファイルを書き換えて配布データを読み込むように設定します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; sed -i &lt;span class="s1"&gt;&amp;#39;s/=world/=MIRACLE LINUX MEETUP/g&amp;#39;&lt;/span&gt; server.properties
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;確認すると&lt;code&gt;level-name&lt;/code&gt;行が書き変わっていると思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; grep MIRACLE server.properties
+&lt;span class="go"&gt;level-name=MIRACLE LINUX MEETUP&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;サーバを起動してクライアントからログインしてみましょう。マップデータが読み込まれ、クライアントからログインを行うとロゴが見えると思います。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; ./start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
