@@ -128,124 +128,110 @@
 <p>追加したサーバーのネームタグ部分をクリックすると、サーバーの操作が可能になります。画面中央上部に<code>コンソール</code>ボタンがあるのでクリックすると新しくウィンドウが立ち上がり、サーバーのコンソール画面が表示されてキーボードからコマンドを入力できるようになります。</p>
 <p>先ほどの手順でrootパスワードを設定しました。今回のライブデモではroot
 ユーザで作業を行います。rootユーザでログインを行うため、ユーザ名の<code>root</code>と入力して<code>Enter</code>キーを押します。</p>
-<div class="highlight"><pre><span></span><code>MIRACLE LINUX <span class="m">8</span>.4 <span class="o">(</span>Peony<span class="o">)</span>
-Kernel <span class="m">4</span>.18.0-348.12.2.el8_5.x86_64 on an x86_64
+<div class="highlight"><pre><span></span><code><span class="go">MIRACLE LINUX 8.4 (Peony)</span>
+<span class="go">Kernel 4.18.0-348.12.2.el8_5.x86_64 on an x86_64</span>
 
-xxx-xxx-xxx-xxx login: root
+<span class="go">xxx-xxx-xxx-xxx login: root</span>
 </code></pre></div>
 
 <p>次の行に移り、パスワードを求められるので先ほど設定したパスワードを入力します。パスワードの入力についてはキーボードで押したボタンが画面上に表示されませんがそのまま入力して最後に<code>Enter</code>キーを押してください。</p>
-<div class="highlight"><pre><span></span><code>Password: 
+<div class="highlight"><pre><span></span><code><span class="go">Password: </span>
 </code></pre></div>
 
 <p>ログインに成功すると、一番最後の行がコマンドを受け付ける状態になります。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@xxx-xxx-xxx-xxx ~<span class="o">]</span><span class="c1">#</span>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@xxx-xxx-xxx-xxx ~]#</span>
 </code></pre></div>
 
-<p>これ以降、特にコマンドを打つ際に下記の表示はしませんが、<code>#</code>の後ろにコマンドを打って、<code>Enter</code>キーを押すことでコマンドを実行することを繰り返す流れになります。</p>
+<p><strong>これ以降、コマンドを打つ際に上記の表記を省略して<code>#</code>だけ行頭に表記しておきます。<code>#</code>より後ろのコマンドを打って、<code>Enter</code>キーを押すことでコマンドを実行することを繰り返す流れになります。行頭に<code>#</code>が無い行はコマンドの実行結果として表示される出力です。</strong></p>
 <h3>JAVAのインストール</h3>
 <p>マインクラフトサーバの本体を動かすために、JAVAのランタイムというものが必要です。下記のコマンドでインストール可能です。
 それなりに大きいファイルのダウンロードがあるので終了まで数分かかるかもしれません。</p>
-<div class="highlight"><pre><span></span><code>dnf -y install java-latest-openjdk-headless
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> dnf -y install java-latest-openjdk-headless
 </code></pre></div>
 
 <p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
 <h3>マインクラフトサーバの本体をダウンロード</h3>
 <p>まずはマインクラフトサーバのファイルを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
-<div class="highlight"><pre><span></span><code>mkdir minecraft-server
-<span class="nb">cd</span> minecraft-server
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> mkdir minecraft-server
+<span class="gp">#</span> <span class="nb">cd</span> minecraft-server
 </code></pre></div>
 
 <p>マインクラフトサーバのファイルをダウンロードします。今回はバージョン 1.18.2 です。下記のようなコマンドは長くキーボードで全て入力するのは大変ですので、このコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックします。</p>
 <p><img alt="テキストを張り付ける方法" src="https://tmya.github.io/images/conoha-mc-dl.jpg"></p>
-<div class="highlight"><pre><span></span><code>wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 </code></pre></div>
 
 <p>そしてEnterキーを押して実行します。以降もコマンドについては同じ手順でコピー&amp;ペーストを繰り返すととても楽です。</p>
 <h3>サーバの初期設定</h3>
 <p>マインクラフトサーバに使用メモリなど指定して実行したいので、そのためのスクリプトを作成します。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx3072M -Xms1024M -jar server.jar nogui&quot;</span> &gt; start.sh
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> <span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx3072M -Xms1024M -jar server.jar nogui&quot;</span> &gt; start.sh
 </code></pre></div>
 
 <p>この設定についてはConoHaの<a href="https://www.conoha.jp/vps/media/mine-semi/memory/">マイクラゼミ</a>に解説があります。</p>
 <p>start.shファイルが作成されていると思います。</p>
-<div class="highlight"><pre><span></span><code>ls
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> ls
+<span class="go">server.jar start.sh</span>
 </code></pre></div>
 
-<blockquote>
-<p>server.jar start.sh</p>
-</blockquote>
 <p>start.shはそのままでは実行できません。実行権限を付与しましょう。</p>
-<div class="highlight"><pre><span></span><code>chmod +x start.sh
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> chmod +x start.sh
 </code></pre></div>
 
 <p>とりあえず一度起動してみましょう。</p>
-<div class="highlight"><pre><span></span><code>./start.sh
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> ./start.sh
+<span class="go">[00:00:00] [main/ERROR]: Failed to load properties from file: server.properties</span>
+<span class="go">[00:00:00] [main/WARN]: Failed to load eula.txt</span>
+<span class="go">[00:00:00] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.</span>
 </code></pre></div>
 
-<blockquote>
-<p>[00:00:00] [main/ERROR]: Failed to load properties from file: server.properties
-[00:00:00] [main/WARN]: Failed to load eula.txt
-[00:00:00] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.</p>
-</blockquote>
 <p>何やらメッセージが表示されます。それぞれの行で、<code>server.properties</code>ファイルが見当たらない、<code>eula.txt</code>がロードできない、EULAに同意しないといけないとなっています。</p>
 <p>一旦今のファイル一覧を見てみましょう。</p>
-<div class="highlight"><pre><span></span><code>ls
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> ls
+<span class="go">eula.txt logs server.jar server.properties start.sh</span>
 </code></pre></div>
 
-<blockquote>
-<p>eula.txt logs server.jar server.properties start.sh</p>
-</blockquote>
 <p>ファイルが増えています。EULAに同意するため下記のコマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;s/false/true/g&#39;</span> eula.txt
+<div class="highlight"><pre><span></span><code><span class="go">sed -i &#39;s/false/true/g&#39; eula.txt</span>
 </code></pre></div>
 
 <p>サーバのポートがデフォルトだとtcpの25565番ですが、ConoHaの接続許可ポートを指定するにはAPI操作等が必要になってきます。ですので、簡単に選べる代表的なポートを拝借して5432番ポートを利用するように設定変更します。5432番は元々PostgreSQL用ですが、マインクラフトサーバを立てるにあたり同じサーバでPostgreSQLを動かす事はほとんどないと思うので影響は無いと考えていいと思います。</p>
-<div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;s/25565/5432/g&#39;</span> server.properties
+<div class="highlight"><pre><span></span><code><span class="go">sed -i &#39;s/25565/5432/g&#39; server.properties</span>
 </code></pre></div>
 
 <p>確認は下記のコマンドで可能です。</p>
-<div class="highlight"><pre><span></span><code>grep <span class="m">5432</span> server.properties
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> grep <span class="m">5432</span> server.properties
+<span class="go">server-port=5432</span>
+<span class="go">query.port=5432</span>
 </code></pre></div>
 
-<blockquote>
-<p>server-port=5432
-query.port=5432</p>
-</blockquote>
 <h3>ファイヤウォールの設定</h3>
 <p>MIRACLE LINUXに機能としてあるファイヤウォールを設定します。初期状態では、マインクラフトサーバで設定した<code>tcp</code>の<code>5432</code>ポートへの接続は閉じられていますので、接続を受け付けるように設定します。</p>
-<div class="highlight"><pre><span></span><code>firewall-cmd --add-port<span class="o">=</span><span class="m">5432</span>/tcp
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --add-port<span class="o">=</span><span class="m">5432</span>/tcp
+<span class="go">success</span>
 </code></pre></div>
 
-<blockquote>
-<p>success</p>
-</blockquote>
 <p>追加されたか確認しましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="go">sudo firewall-cmd --list-all</span>
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --list-all
+<span class="go">public (active)</span>
+<span class="go">  target: default</span>
+<span class="go">  icmp-block-inversion: no</span>
+<span class="go">  interfaces: eth0</span>
+<span class="go">  sources:</span>
+<span class="go">  services: cockpit dhcpv6-client ssh</span>
+<span class="go">  ports: 5432/tcp</span>
+<span class="go">  protocols:</span>
+<span class="go">  masquerade: no</span>
+<span class="go">  forward-ports:</span>
+<span class="go">  source-ports:</span>
+<span class="go">  icmp-blocks:</span>
+<span class="go">  rich rules:</span>
 </code></pre></div>
 
-<blockquote>
-<p>public (active)
-  target: default
-  icmp-block-inversion: no
-  interfaces: eth0
-  sources:
-  services: cockpit dhcpv6-client ssh
-  ports: 5432/tcp
-  protocols:
-  masquerade: no
-  forward-ports:
-  source-ports:
-  icmp-blocks:
-  rich rules:</p>
-</blockquote>
 <p><code>ports</code>行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、永続的に適用するために下記のコマンドを実行しましょう。</p>
-<div class="highlight"><pre><span></span><code>sudo firewall-cmd --runtime-to-permanent
+<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --runtime-to-permanent
+<span class="go">success</span>
 </code></pre></div>
 
-<blockquote>
-<p>success</p>
-</blockquote>
 <p><code>success</code>と表示がされればOKです。</p>
 <h3>ゲームの起動と接続</h3>
 <p>マインクラフト(バージョン 1.18.2)を起動し、<code>マルチプレイ</code>から<code>サーバーを追加</code>をクリックします。<code>サーバー名</code>はわかりやすい値で好きなように設定し、<code>サーバーアドレス</code>には<code>ConoHaのIPv4のIPアドレス</code>:5432を入力し、完了をクリックします。</p>
