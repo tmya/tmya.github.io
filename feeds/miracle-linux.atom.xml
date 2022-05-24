@@ -132,7 +132,7 @@ query.port=5432&lt;/p&gt;
 &lt;p&gt;success&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;追加されたか確認しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --list-all
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo firewall-cmd --list-all
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
@@ -151,7 +151,7 @@ query.port=5432&lt;/p&gt;
   rich rules:&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;ports&lt;/code&gt;行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、永続的に適用するために下記のコマンドを実行しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --runtime-to-permanent
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo firewall-cmd --runtime-to-permanent
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;

@@ -221,7 +221,7 @@ query.port=5432</p>
 <p>success</p>
 </blockquote>
 <p>追加されたか確認しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --list-all
+<div class="highlight"><pre><span></span><code>sudo firewall-cmd --list-all
 </code></pre></div>
 
 <blockquote>
@@ -240,7 +240,7 @@ query.port=5432</p>
   rich rules:</p>
 </blockquote>
 <p><code>ports</code>行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、永続的に適用するために下記のコマンドを実行しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --runtime-to-permanent
+<div class="highlight"><pre><span></span><code>sudo firewall-cmd --runtime-to-permanent
 </code></pre></div>
 
 <blockquote>
