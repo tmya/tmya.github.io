@@ -146,6 +146,7 @@
 &lt;p&gt;&lt;code&gt;success&lt;/code&gt;と表示がされればOKです。&lt;/p&gt;
 &lt;h3&gt;ゲームの起動と接続&lt;/h3&gt;
 &lt;p&gt;マインクラフト(バージョン 1.18.2)を起動し、&lt;code&gt;マルチプレイ&lt;/code&gt;から&lt;code&gt;サーバーを追加&lt;/code&gt;をクリックします。&lt;code&gt;サーバー名&lt;/code&gt;はわかりやすい値で好きなように設定し、&lt;code&gt;サーバーアドレス&lt;/code&gt;には&lt;code&gt;ConoHaのIPv4のIPアドレス&lt;/code&gt;:5432を入力し、完了をクリックします。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:画像は古いバージョンですが現行版も同じ画面です。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="サーバーの追加" src="https://tmya.github.io/images/mc-add-serv.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ConoHaのIPアドレス" src="https://tmya.github.io/images/conoha-serv-ip.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; IPアドレスとポート番号の5432の間は&lt;code&gt;コロン&lt;/code&gt;という記号で、&lt;code&gt;:&lt;/code&gt;です。日本語のキーボードを使っている場合は&lt;code&gt;け&lt;/code&gt;の位置です。&lt;/p&gt;
