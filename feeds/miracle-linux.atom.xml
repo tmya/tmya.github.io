@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-05-23T00:00:00+09:00</updated><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前提として、ConoHaの契約を行いコントロールパネルにログインができるようになっていることを想定しています。&lt;/p&gt;
-&lt;h3&gt;設定の流れ&lt;/h3&gt;
+&lt;h4&gt;設定の流れ&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;ConoHaのVPSでサーバを追加&lt;/li&gt;
 &lt;li&gt;コンソールを開く&lt;/li&gt;
@@ -19,10 +19,14 @@
 &lt;li&gt;Minecraftというタブがあり簡単設定もできますが、今回のライブデモではOS標準の状態からサーバーを用意するため選びません。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;VPS割引きっぷ : &lt;code&gt;利用しない&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;VPS割引きっぷ : &lt;code&gt;利用しない&lt;/code&gt;&lt;ul&gt;
 &lt;li&gt;今回はデモでサーバーを長期利用しないので利用しません。ずっと使うのであれば安く利用できる可能性があるので検討しても良いと思います。&lt;/li&gt;
-&lt;li&gt;(月額料金書いてある部分) : &lt;code&gt;4GB 3,608円/月&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;デモではこのプランを利用します。6人ぐらいまでであればこのプランで良いようです。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(月額料金書いてある部分) : &lt;code&gt;4GB 3,608円/月&lt;/code&gt;&lt;ul&gt;
+&lt;li&gt;今回はこのプランを利用します。6人ぐらいまでであればこのプランで良いようです。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;イメージタイプ : &lt;code&gt;OSタブ&lt;/code&gt;の&lt;code&gt;MIRACLE LINUX 8.4 (64bit)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;root パスワード : 表記通りに9〜70文字で半角英数記号の組み合わせでお好みのものを。&lt;/li&gt;
 &lt;li&gt;ネームタグ : そのままでも構いませんし、&lt;code&gt;Minecraft-server&lt;/code&gt;などわかりやすく名づけても良いと思います。&lt;/li&gt;
