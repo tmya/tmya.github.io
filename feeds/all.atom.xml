@@ -80,70 +80,83 @@ xxx-xxx-xxx-xxx login: root
 
 &lt;p&gt;この設定についてはConoHaの&lt;a href="https://www.conoha.jp/vps/media/mine-semi/memory/"&gt;マイクラゼミ&lt;/a&gt;に解説があります。&lt;/p&gt;
 &lt;p&gt;start.shファイルが作成されていると思います。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls
-server.jar start.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ls
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;server.jar start.sh&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;start.shはそのままでは実行できません。実行権限を付与しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ chmod +x start.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;chmod +x start.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;とりあえず一度起動してみましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ./start.sh
-&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/ERROR&lt;span class="o"&gt;]&lt;/span&gt;: Failed to load properties from file: server.properties
-&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/WARN&lt;span class="o"&gt;]&lt;/span&gt;: Failed to load eula.txt
-&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;main/INFO&lt;span class="o"&gt;]&lt;/span&gt;: You need to agree to the EULA in order to run the server. Go to eula.txt &lt;span class="k"&gt;for&lt;/span&gt; more info.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;./start.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;[00:00:00] [main/ERROR]: Failed to load properties from file: server.properties
+[00:00:00] [main/WARN]: Failed to load eula.txt
+[00:00:00] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;何やらメッセージが表示されます。それぞれの行で、&lt;code&gt;server.properties&lt;/code&gt;ファイルが見当たらない、&lt;code&gt;eula.txt&lt;/code&gt;がロードできない、EULAに同意しないといけないとなっています。&lt;/p&gt;
 &lt;p&gt;一旦今のファイル一覧を見てみましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls
-eula.txt logs server.jar server.properties start.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ls
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;ファイルが増えています。&lt;/p&gt;
-&lt;p&gt;EULAに同意するため下記のコマンドを実行します。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sed -i &lt;span class="s1"&gt;&amp;#39;s/false/true/g&amp;#39;&lt;/span&gt; eula.txt
+&lt;blockquote&gt;
+&lt;p&gt;eula.txt logs server.jar server.properties start.sh&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ファイルが増えています。EULAに同意するため下記のコマンドを実行します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/false/true/g&amp;#39;&lt;/span&gt; eula.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;サーバのポートがデフォルトだとtcpの25565番ですが、ConoHaの接続許可ポートを指定するにはAPI操作等が必要になってきます。ですので、簡単に選べる代表的なポートを拝借して5432番ポートを利用するように設定変更します。5432番は元々PostgreSQL用ですが、マインクラフトサーバを立てるにあたり同じサーバでPostgreSQLを動かす事はほとんどないと思うので影響は無いと考えていいと思います。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sed -i &lt;span class="s1"&gt;&amp;#39;s/25565/5432/g&amp;#39;&lt;/span&gt; server.properties
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/25565/5432/g&amp;#39;&lt;/span&gt; server.properties
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;確認は下記のコマンドで可能です。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ grep &lt;span class="m"&gt;5432&lt;/span&gt; server.properties
-server-port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;
-query.port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep &lt;span class="m"&gt;5432&lt;/span&gt; server.properties
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;server-port=5432
+query.port=5432&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3&gt;ファイヤウォールの設定&lt;/h3&gt;
 &lt;p&gt;MIRACLE LINUXに機能としてあるファイヤウォールを設定します。初期状態では、マインクラフトサーバで設定した&lt;code&gt;tcp&lt;/code&gt;の&lt;code&gt;5432&lt;/code&gt;ポートへの接続は閉じられていますので、接続を受け付けるように設定します。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;firewall-cmd --add-port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5432&lt;/span&gt;/tcp
-success
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;success&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;追加されたか確認しましょう。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --list-all
-public &lt;span class="o"&gt;(&lt;/span&gt;active&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;public (active)
   target: default
   icmp-block-inversion: no
   interfaces: eth0
   sources:
   services: cockpit dhcpv6-client ssh
-  ports: &lt;span class="m"&gt;5432&lt;/span&gt;/tcp
+  ports: 5432/tcp
   protocols:
   masquerade: no
   forward-ports:
   source-ports:
   icmp-blocks:
-  rich rules:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
+  rich rules:&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;ports&lt;/code&gt;行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、永続的に適用するために下記のコマンドを実行しましょう。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --runtime-to-permanent
-success
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;success&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;success&lt;/code&gt;と表示がされればOKです。&lt;/p&gt;
 &lt;h3&gt;ゲームの起動と接続&lt;/h3&gt;
 &lt;p&gt;マインクラフト(バージョン 1.18.2)を起動し、&lt;code&gt;マルチプレイ&lt;/code&gt;から&lt;code&gt;サーバーを追加&lt;/code&gt;をクリックします。&lt;code&gt;サーバー名&lt;/code&gt;はわかりやすい値で好きなように設定し、&lt;code&gt;サーバーアドレス&lt;/code&gt;には&lt;code&gt;ConoHaのIPv4のIPアドレス&lt;/code&gt;:5432を入力し、完了をクリックします。&lt;/p&gt;
