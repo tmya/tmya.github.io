@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-05-23T00:00:00+09:00</updated><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時のご参考にして …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時のご参考にしてください。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-05-23T00:00:00+09:00</updated><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前提として、ConoHaの契約を行いコントロールパネルにログインができるようになっていることを想定しています。&lt;/p&gt;
 &lt;h3&gt;設定の流れ&lt;/h3&gt;
 &lt;ul&gt;
@@ -15,8 +15,10 @@
 &lt;p&gt;ConoHaのコントロールパネルにログイン後、&lt;code&gt;VPS&lt;/code&gt;タブの&lt;code&gt;サーバー追加&lt;/code&gt;をクリックし、下記の設定でサーバーを追加します。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;リージョン : &lt;code&gt;東京&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;サービス : &lt;code&gt;VPS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;サービス : &lt;code&gt;VPS&lt;/code&gt;&lt;ul&gt;
 &lt;li&gt;Minecraftというタブがあり簡単設定もできますが、今回のライブデモではOS標準の状態からサーバーを用意するため選びません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;VPS割引きっぷ : &lt;code&gt;利用しない&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;今回はデモでサーバーを長期利用しないので利用しません。ずっと使うのであれば安く利用できる可能性があるので検討しても良いと思います。&lt;/li&gt;
 &lt;li&gt;(月額料金書いてある部分) : &lt;code&gt;4GB 3,608円/月&lt;/code&gt;&lt;/li&gt;
@@ -154,7 +156,10 @@
 &lt;p&gt;&lt;img alt="サーバーログイン後" src="https://tmya.github.io/images/mc-login.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;コンソール画面を見ると、ログインしたことがわかるログが表示されています。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ログインがわかるコンソール" src="https://tmya.github.io/images/conoha-mc-log.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
+&lt;p&gt;以上で完了です。&lt;/p&gt;
+&lt;h3&gt;おまけ&lt;/h3&gt;
+&lt;p&gt;サイバートラスト株式会社さんがMIRACLE LINUXロゴがイメージされたマップデータとみらくるちゃんのスキンデータを公開してくれました！
+詳細は&lt;a href="https://www.miraclelinux.com/tech-blog/minecraft"&gt;Minecraft用みらくるちゃんスキンとmapを公開! / みらくるブログ&lt;/a&gt;をご覧ください。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
