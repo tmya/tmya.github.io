@@ -11,6 +11,7 @@
 &lt;li&gt;ファイヤウォールの設定&lt;/li&gt;
 &lt;li&gt;サーバの起動&lt;/li&gt;
 &lt;li&gt;ゲームの起動と接続&lt;/li&gt;
+&lt;li&gt;（おまけ）提供マップデータのマルチサーバへの適用&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;ConoHaのVPSでサーバを追加&lt;/h3&gt;
 &lt;p&gt;ConoHaのコントロールパネルにログイン後、&lt;code&gt;VPS&lt;/code&gt;タブの&lt;code&gt;サーバー追加&lt;/code&gt;をクリックし、下記の設定でサーバーを追加します。&lt;/p&gt;
