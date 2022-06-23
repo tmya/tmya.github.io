@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-05-23T00:00:00+09:00</updated><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/all.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-06-23T00:00:00+09:00</updated><entry><title>Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-wz-jasperlake.html" rel="alternate"></link><published>2022-06-23T00:00:00+09:00</published><updated>2022-06-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-06-23:/how-to-install-wz-jasperlake.html</id><summary type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインスト …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。&lt;/p&gt;
+&lt;h3&gt;まずはインストール&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-install.html"&gt;公式の手順&lt;/a&gt;の&lt;code&gt;実機&lt;/code&gt;の項目を参照してインストールを進めます。
+早速画面の端っこまで表示されずに見切れていると思いますが、ギリギリボタンが画面内に収まっているので進めます。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="インストーラー画面" src="https://tmya.github.io/images/ml-crop-installer.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;インストールが終了してデスクトップ画面が表示されたら、&lt;code&gt;端末&lt;/code&gt;を起動します。そしてグラフィック関係のエラーが出ているのを確認します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; dmesg &lt;span class="p"&gt;|&lt;/span&gt; grep i915
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;色々長いのが出てくるかもしれませんが、下記のような一文が確認できると思います。
+&lt;code&gt;4e55&lt;/code&gt;というのは手持ちのコンピュータではそうなっているのですが他のIDの可能性があります。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;use i915.force_probe=4e55 module parameter or CONFIG_DRM_I915_FORCE_PROBE=4e55 configuration&lt;/span&gt;
+&lt;span class="go"&gt; option &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;そしたらこの通りモジュールパラメータを設定しましょう。好きなエディタで&lt;code&gt;/etc/default/grub&lt;/code&gt;を開き(要root権限 : sudoを頭につけるとか。)、&lt;code&gt;GRUB_CMDLINE_LINUX=&lt;/code&gt;で始まる行の最後にパラメータを付け加えます。ダブルクォーテーションの中に付け加えてください。&lt;/p&gt;
+&lt;p&gt;Before&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;GRUB_CMDLINE_LINUX=&amp;quot;crashkernel=auto resume=/dev/mapper/ml-swap rd.lvm.lv=ml/root rd.lvm.lv=ml/swap rhgb quiet&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;GRUB_CMDLINE_LINUX=&amp;quot;crashkernel=auto resume=/dev/mapper/ml-swap rd.lvm.lv=ml/root rd.lvm.lv=ml/swap rhgb quiet i915.force_probe=4e55&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;GRUBの設定を変更したのでアップデートします。なんとこのBeelink U59は現代においてBIOSを使用しているので、今時のEFIではなくBIOSの方のディレクトリのgrub.cfgを生成します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ここまで設定を終えたら再起動してみましょう。手元では4Kサイズまで選ぶことができました。&lt;/p&gt;
+&lt;p&gt;設定からHDMI出力に切り替えると音も出ました。もしかしたらDRMが必要な動画は再生できないかもしれませんが試していません。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前提として、ConoHaの契約を行いコントロールパネルにログインができるようになっていることを想定しています。&lt;/p&gt;
 &lt;h4&gt;設定の流れ&lt;/h4&gt;
 &lt;ol&gt;

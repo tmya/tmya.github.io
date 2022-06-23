@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-wz-jasperlake.html">
+    <meta name="twitter:title" content="tmya note ~ Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4">
+    <meta name="twitter:description" content="最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインスト …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"/>
+    <meta property="og:description" content="最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインスト …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-wz-jasperlake.html" rel="bookmark"
+                                                  title="Permalink to Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4">Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</a></h2>
+            <div class="entry-content blog-post">
+                <p>最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。</p>
+<h3>まずはインストール</h3>
+<p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-install.html">公式の手順</a>の<code>実機</code>の項目を参照してインストールを進めます。
+早速画面の端っこまで表示されずに見切れていると思いますが、ギリギリボタンが画面内に収まっているので進めます。</p>
+<p><img alt="インストーラー画面" src="https://tmya.github.io/images/ml-crop-installer.jpg"></p>
+<p>インストールが終了してデスクトップ画面が表示されたら、<code>端末</code>を起動します。そしてグラフィック関係のエラーが出ているのを確認します。</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> dmesg <span class="p">|</span> grep i915
+</code></pre></div>
+
+<p>色々長いのが出てくるかもしれませんが、下記のような一文が確認できると思います。
+<code>4e55</code>というのは手持ちのコンピュータではそうなっているのですが他のIDの可能性があります。</p>
+<div class="highlight"><pre><span></span><code><span class="go">use i915.force_probe=4e55 module parameter or CONFIG_DRM_I915_FORCE_PROBE=4e55 configuration</span>
+<span class="go"> option </span>
+</code></pre></div>
+
+<p>そしたらこの通りモジュールパラメータを設定しましょう。好きなエディタで<code>/etc/default/grub</code>を開き(要root権限 : sudoを頭につけるとか。)、<code>GRUB_CMDLINE_LINUX=</code>で始まる行の最後にパラメータを付け加えます。ダブルクォーテーションの中に付け加えてください。</p>
+<p>Before</p>
+<div class="highlight"><pre><span></span><code><span class="go">GRUB_CMDLINE_LINUX=&quot;crashkernel=auto resume=/dev/mapper/ml-swap rd.lvm.lv=ml/root rd.lvm.lv=ml/swap rhgb quiet&quot;</span>
+</code></pre></div>
+
+<p>After</p>
+<div class="highlight"><pre><span></span><code><span class="go">GRUB_CMDLINE_LINUX=&quot;crashkernel=auto resume=/dev/mapper/ml-swap rd.lvm.lv=ml/root rd.lvm.lv=ml/swap rhgb quiet i915.force_probe=4e55&quot;</span>
+</code></pre></div>
+
+<p>GRUBの設定を変更したのでアップデートします。なんとこのBeelink U59は現代においてBIOSを使用しているので、今時のEFIではなくBIOSの方のディレクトリのgrub.cfgを生成します。</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+</code></pre></div>
+
+<p>ここまで設定を終えたら再起動してみましょう。手元では4Kサイズまで選ぶことができました。</p>
+<p>設定からHDMI出力に切り替えると音も出ました。もしかしたらDRMが必要な動画は再生できないかもしれませんが試していません。</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Thu 23 June 2022</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-wz-jasperlake.html&text=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-wz-jasperlake.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-wz-jasperlake.html&t=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-wz-jasperlake.html&title=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-wz-jasperlake.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
