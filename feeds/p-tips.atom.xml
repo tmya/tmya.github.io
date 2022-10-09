@@ -60,7 +60,7 @@
 &lt;/blockquote&gt;</content><category term="p-tips"></category></entry><entry><title>効率のいい平方根の計算方法</title><link href="https://tmya.github.io/an-efficient-way-to-calculate-square-roots.html" rel="alternate"></link><published>2020-10-26T00:00:00+09:00</published><updated>2020-10-26T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2020-10-26:/an-efficient-way-to-calculate-square-roots.html</id><summary type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
-&lt;li&gt;前提：コンピュータは基本的には加算と減算は高速 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
+&lt;li&gt;前提：コンピュータは基本的には加算と減算は高速に …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;【効率のいい平方根の計算方法】&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;対象：初級プログラミング演習ⅠとかⅡ&lt;/li&gt;
 &lt;li&gt;前提：コンピュータは基本的には加算と減算は高速に可能。次に早いのが乗算で、一番遅いのは除算です。&lt;/li&gt;

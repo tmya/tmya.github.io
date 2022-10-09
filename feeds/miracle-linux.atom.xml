@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-06-23T00:00:00+09:00</updated><entry><title>Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-wz-jasperlake.html" rel="alternate"></link><published>2022-06-23T00:00:00+09:00</published><updated>2022-06-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-06-23:/how-to-install-wz-jasperlake.html</id><summary type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインスト …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tmya note - MIRACLE LINUX</title><link href="https://tmya.github.io/" rel="alternate"></link><link href="https://tmya.github.io/feeds/miracle-linux.atom.xml" rel="self"></link><id>https://tmya.github.io/</id><updated>2022-06-23T00:00:00+09:00</updated><entry><title>Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-wz-jasperlake.html" rel="alternate"></link><published>2022-06-23T00:00:00+09:00</published><updated>2022-06-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-06-23:/how-to-install-wz-jasperlake.html</id><summary type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。&lt;/p&gt;
+&lt;h3&gt;まずはインストール&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-install.html"&gt;公式の手順&lt;/a&gt;の&lt;code&gt;実機&lt;/code&gt;の項目を参照してインストールを進めます。
+早 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。&lt;/p&gt;
 &lt;h3&gt;まずはインストール&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-install.html"&gt;公式の手順&lt;/a&gt;の&lt;code&gt;実機&lt;/code&gt;の項目を参照してインストールを進めます。
 早速画面の端っこまで表示されずに見切れていると思いますが、ギリギリボタンが画面内に収まっているので進めます。&lt;/p&gt;
@@ -28,7 +31,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;ここまで設定を終えたら再起動してみましょう。手元では4Kサイズまで選ぶことができました。&lt;/p&gt;
-&lt;p&gt;設定からHDMI出力に切り替えると音も出ました。もしかしたらDRMが必要な動画は再生できないかもしれませんが試していません。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;設定からHDMI出力に切り替えると音も出ました。もしかしたらDRMが必要な動画は再生できないかもしれませんが試していません。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.18.2)を建てる MIRACLE LINUX Meetup!!版</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha-vps.html" rel="alternate"></link><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-05-23:/miracle-linux-tips-minecraft-server-conoha-vps.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いで …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては&lt;a href="https://miraclelinux.connpass.com/event/245908/"&gt;こちら&lt;/a&gt;をご覧ください。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前提として、ConoHaの契約を行いコントロールパネルにログインができるようになっていることを想定しています。&lt;/p&gt;
 &lt;h4&gt;設定の流れ&lt;/h4&gt;
 &lt;ol&gt;
@@ -232,7 +235,7 @@
 
 &lt;p&gt;サーバを起動してクライアントからログインしてみましょう。マップデータが読み込まれ、クライアントからログインを行うとロゴが見えると思います。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;#&lt;/span&gt; ./start.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調に …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Byobuのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-byobu.html" rel="alternate"></link><published>2022-03-04T00:00:00+09:00</published><updated>2022-03-04T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2022-03-04:/how-to-install-byobu.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてし …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.byobu.org/"&gt;Byobu&lt;/a&gt;とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。&lt;/p&gt;
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -372,7 +375,11 @@
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Homebrewが使用可能&lt;/li&gt;
-&lt;li&gt;インストールは&lt;a href="https://brew.sh/index_ja"&gt;公式サイト&lt;/a&gt;に倣えば簡 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
+&lt;li&gt;インストールは&lt;a href="https://brew.sh/index_ja"&gt;公式サイト&lt;/a&gt;に倣えば簡単。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Homebrew導入後は下記のようなコマンドを実行するように案内されるので実行する。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;eval &amp;quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&amp;quot;&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /home/&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;/.bash_profile
+$ &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/home/linuxbrew/.linuxbrew …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;GoogleドライブをMIRACLE LINUXでも使いたい。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/astrada/google-drive-ocamlfuse"&gt;google-drive-ocamlfuse - Github&lt;/a&gt;を信じられる人向け。&lt;/p&gt;
 &lt;h3&gt;前提&lt;/h3&gt;
 &lt;ul&gt;
@@ -436,7 +443,7 @@ $ google-drive-ocamlfuse ~/googledrive
 &lt;p&gt;マウントが完了してファイル操作が可能になります。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Synology Drive Clientのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="alternate"></link><published>2021-12-09T00:00:00+09:00</published><updated>2021-12-09T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-12-09:/how-to-install-synology-drive-client.html</id><summary type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
 &lt;h3&gt;前提知識&lt;/h3&gt;
-&lt;p&gt;ダウン …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。&lt;/p&gt;
 &lt;h3&gt;前提知識&lt;/h3&gt;
 &lt;p&gt;ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXの&lt;strong&gt;GUI環境&lt;/strong&gt;で操作することを想定しています。&lt;/p&gt;
@@ -502,7 +509,7 @@ $ google-drive-ocamlfuse ~/googledrive
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force --relocate /&lt;span class="o"&gt;=&lt;/span&gt;/opt/synology-drive --badreloc
 sudo micro /opt/synology-drive/usr/bin/synology-drive
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>WSL2にMIRACLE LINUX 8.4(CUI)を導入してSLを走らせる</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-wsl-sl.html" rel="alternate"></link><published>2021-11-22T00:00:00+09:00</published><updated>2021-11-22T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-22:/miracle-linux-tips-deploy-on-wsl-sl.html</id><summary type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありませ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;WSL2でMIRACLE LINUXを使えるようにしよう。まずはCentOS 8.4をインストールしてから移行ツールで移行します。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; この手順では公式に用意されていない手順で行っているためきちんと動く保証はありません。人柱だと思ってください。もちろん無保証です。少なくともsystemdはWSLの都合で使えません。&lt;/p&gt;
 &lt;h4&gt;手順&lt;/h4&gt;
 &lt;ul&gt;
@@ -625,7 +632,15 @@ ML8-BaseOS                                        MIRACLE LINUX  - BaseOS       
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# mv ./sl /usr/local/bin&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;これで&lt;code&gt;ls&lt;/code&gt;を打ち間違えるといつでもslを走らせることができます。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Windowsからsshで接続する - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-using-ssh.html" rel="alternate"></link><published>2021-11-17T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-17:/how-to-using-ssh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;これで&lt;code&gt;ls&lt;/code&gt;を打ち間違えるといつでもslを走らせることができます。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>Windowsからsshで接続する - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-using-ssh.html" rel="alternate"></link><published>2021-11-17T00:00:00+09:00</published><updated>2021-11-17T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-17:/how-to-using-ssh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh鍵の生成&lt;/li&gt;
+&lt;li&gt;ConoHaへssh鍵の登録と設定&lt;/li&gt;
+&lt;li&gt;ConoHaの接続許可ポートの設定&lt;/li&gt;
+&lt;li&gt;接続&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;ssh鍵の生成 …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ssh鍵の生成&lt;/li&gt;
@@ -710,7 +725,9 @@ sudo systemctl restart sshd
 &lt;p&gt;&lt;img alt="ssh接続" src="https://tmya.github.io/images/win-ssh-connect.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;接続が成功するとコンソール画面と同じようにユーザ名と最後が&lt;code&gt;$&lt;/code&gt;の行が出力されます。切断は&lt;code&gt;exit&lt;/code&gt;コマンドで行います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>micro(テキストエディタ)のインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-micro.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/how-to-install-micro.html</id><summary type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
 &lt;h3&gt;インストール&lt;/h3&gt;
-&lt;p&gt;インストールはとっても簡単。2つ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
+&lt;p&gt;インストールはとっても簡単。2つのコマンドで完了する。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ curl https://getmic.ro &lt;span class="p"&gt;|&lt;/span&gt; bash
+$ sudo mv …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;viやEmacsは難しい？ではテキストエディタの&lt;a href="https://micro-editor.github.io/"&gt;micro&lt;/a&gt;をインストールしよう。&lt;/p&gt;
 &lt;h3&gt;インストール&lt;/h3&gt;
 &lt;p&gt;インストールはとっても簡単。2つのコマンドで完了する。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ curl https://getmic.ro &lt;span class="p"&gt;|&lt;/span&gt; bash
@@ -731,7 +748,7 @@ $ sudo mv micro /usr/bin
 &lt;p&gt;ほとんどWindowsのメモ帳と同じ。カーソルキーで動かしたり文字を打てば入力できます。&lt;/p&gt;
 &lt;h4&gt;保存等&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;Ctrl + s&lt;/code&gt; で保存。&lt;code&gt;Ctrl + q&lt;/code&gt;で終了。&lt;code&gt;micro&lt;/code&gt;のみで起動した後、&lt;code&gt;Ctrl + s&lt;/code&gt;を押すとファイル名を聞かれるので入力してEnterキーで保存。&lt;code&gt;Ctrl + q&lt;/code&gt;を押すと変更を保存するか聞かれるので、&lt;code&gt;y&lt;/code&gt;か&lt;code&gt;n&lt;/code&gt;かキャンセルなら&lt;code&gt;Esc&lt;/code&gt;を押す。&lt;/p&gt;
-&lt;p&gt;後は&lt;code&gt;micro エディタ 使い方&lt;/code&gt;で検索すると各種ショートカットが調べられると思います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/miracle-linux-tips-minecraft-server-conoha.html</id><summary type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。&lt;/p&gt;
+&lt;p&gt;後は&lt;code&gt;micro エディタ 使い方&lt;/code&gt;で検索すると各種ショートカットが調べられると思います。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</title><link href="https://tmya.github.io/miracle-linux-tips-minecraft-server-conoha.html" rel="alternate"></link><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-16:/miracle-linux-tips-minecraft-server-conoha.html</id><summary type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などは …&lt;/p&gt;</summary><content type="html">&lt;p&gt;みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は &lt;a href="./miracle-linux-tips-deploy-on-conoha.html"&gt;こちら&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;必要な事&lt;/h3&gt;
 &lt;ul&gt;
@@ -884,168 +901,12 @@ success
 &lt;p&gt;&lt;img alt="サーバーログイン後" src="https://tmya.github.io/images/mc-login.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;コンソール画面を見ると、ログインしたことがわかるログが表示されています。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ログインがわかるコンソール" src="https://tmya.github.io/images/conoha-mc-log.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>ConoHaにMIRACLE LINUX 8.4(CUI)を導入</title><link href="https://tmya.github.io/miracle-linux-tips-deploy-on-conoha.html" rel="alternate"></link><published>2021-11-15T00:00:00+09:00</published><updated>2021-11-15T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-15:/miracle-linux-tips-deploy-on-conoha.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;2022/03/04 追記&lt;/strong&gt;  ConoHaのテンプレートにMIRACLE LINUX 8.4が追加されたので、下記の手順を行わなくても普通にMIRACLE LINUX 8.4を選択する …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;2022/03/04 追記&lt;/strong&gt;  ConoHaのテンプレートにMIRACLE LINUX 8.4が追加されたので、下記の手順を行わなくても普通にMIRACLE LINUX 8.4を選択するだけでインストール可能です。やったね！&lt;/p&gt;
-&lt;p&gt;ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。&lt;/p&gt;
-&lt;h3&gt;ConoHaで新しいサーバの追加&lt;/h3&gt;
-&lt;p&gt;まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは&lt;code&gt;Steam8(64bit)&lt;/code&gt;になっているので、ドロップダウンから&lt;code&gt;8.3(64bit)&lt;/code&gt;を選びます。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="サーバ追加の画面" src="https://tmya.github.io/images/conoha-add-server-1.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;rootパスワードは大文字や小文字、数字と記号を混ぜないといけないので思いつかない場合は何らかのソフトで生成しましょう。&lt;a href="https://1password.com/jp/password-generator/"&gt;1passwordのジェネレータ&lt;/a&gt;でサクっと生成する方法もあります。お手持ちのマシンに&lt;code&gt;pwgen&lt;/code&gt;コマンドや&lt;code&gt;mkpasswd&lt;/code&gt;コマンドなどがあればそれで生成してもいいでしょう。&lt;/p&gt;
-&lt;p&gt;セキュリティ上の懸念があるため&lt;code&gt;オプションを見る&lt;/code&gt;をクリックして、&lt;code&gt;接続許可ポート IPv4&lt;/code&gt;と&lt;code&gt;接続許可ポート IPv6&lt;/code&gt;は両方とも&lt;code&gt;全て拒否&lt;/code&gt;にしましょう。これはサーバの設定を全て終わらせてある程度セキュリティを担保してから許可に変更すると良いでしょう。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="オプションを見るの中身" src="https://tmya.github.io/images/conoha-option-disable-inbound-port.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;サーバを追加すると1分程度構築中と表示され、その後起動中になります。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="サーバの追加完了" src="https://tmya.github.io/images/conoha-add-server-2.jpg"&gt;&lt;/p&gt;
-&lt;h3&gt;サーバへのログイン&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;ネームタグ&lt;/code&gt;から先ほど作成したサーバをクリックし、&lt;code&gt;コンソール&lt;/code&gt;をクリックすると新しいウィンドウでコンソール画面が表示されます。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="コンソール" src="https://tmya.github.io/images/conoha-console.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;root&lt;/code&gt;と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;でそうなっています。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xxx-xxx-xxx-xxx login: root
-Password:
-&lt;span class="o"&gt;[&lt;/span&gt;root@xxx-xxx-xxx-xxx ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="c1"&gt;# &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;この時点ではCentOS 8.3がインストールされていることが確認できます。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
-CentOS Linux release &lt;span class="m"&gt;8&lt;/span&gt;.3.2011
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;MIRACLE LINUXへの移行ツールのダウンロードと実行&lt;/h3&gt;
-&lt;p&gt;移行ツールをダウンロード&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;します。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# wget https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;移行ツール&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;を実行するために、実行権限を付与します。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# chmod +x ./migrate2ml.sh&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;通常の切り替えモードで移行ツールを実行します。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# ./migrate2ml.sh --core&lt;/span&gt;
-
-~~~~略~~~~
-
-Core package migration is completed!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;確認してみましょう。&lt;code&gt;redhat-release&lt;/code&gt;ファイルはMIRACLE LINUXになっています。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cat /etc/redhat-release&lt;/span&gt;
-MIRACLE LINUX release &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;パッケージのアップデートと再起動&lt;/h3&gt;
-&lt;p&gt;パッケージをアップデートします。数分かかるので待ちましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf -y update&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;終わったら念のため再起動しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# reboot&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;ブートローダの一番上にMIRACLE LINUXが追加されているので、数秒待つと起動します。ログイン画面が表示されたらログインしましょう。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ブートローダ" src="https://tmya.github.io/images/conoha-ml-boot.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;ログイン画面では次のようにMIRACLE LINUX 8.4と表示されます。以上で移行は完了です。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MIRACLE LINUX &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
-Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an X86_64
-
-xxx-xxx-xxx-xxx login:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;新規ユーザの追加&lt;/h3&gt;
-&lt;p&gt;今までの作業は&lt;code&gt;root&lt;/code&gt;という名前のユーザで作業してきました。これはスーパーユーザとも言い、システム等を自由に変更できる"すごいユーザ"であるので、コマンドを打ち間違えてシステムを破壊してしまうかもしれません。一般的に作業を行う一般ユーザを作成しましょう。ユーザを作成するには&lt;code&gt;adduser&lt;/code&gt;コマンドを使います。&lt;code&gt;XXXX&lt;/code&gt;には自分のユーザ名を入力してください。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# adduser XXXX&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;特に何の出力もありませんが、ユーザの作成はできているはずです。下記のコマンドで自分の作成したユーザの行が出力されていれば大丈夫です。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# grep XXXX /etc/passwd&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;一般ユーザと言っても、時々システムの管理を行いたい事があると思います。その時の為に管理者としてコマンドを実行できるように&lt;code&gt;wheel&lt;/code&gt;グループに作成したユーザを追加しましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# usermod -aG wheel XXXX&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;こちらも下記のコマンドで、wheelで始まる行が出力されていれば追加されていると確認できます。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# grep XXXX /etc/group&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;そして作成したユーザにはまだパスワードが設定されていません。パスワードを設定しましょう。設定したいパスワードを2回入力します。1回でないのは、もし打ち間違えているとログインできなくなってしまうので確認の為にこうなっています。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# passwd XXXX&lt;/span&gt;
-Changing password &lt;span class="k"&gt;for&lt;/span&gt; user XXXX.
-New password:
-Retype new password:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; &lt;code&gt;passwd&lt;/code&gt;の後にユーザ名を付けずに実行してしまうと、今ログインしてるユーザのパスワードを変更してしまいます。このタイミングではrootユーザのパスワードを変更してしまうので気を付けてください。1行目の&lt;code&gt;Changing password for user XXXX.&lt;/code&gt;の最後に自分のユーザ名が表示されているか確認しましょう。&lt;/p&gt;
-&lt;p&gt;2回とも同じパスワードを入力できているとパスワードが設定されます。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;passwd: all authentication tokens updated successfully.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;一旦ログアウトして、作成したユーザでログインしてみましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# exit&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;先ほど作成したユーザ名を入力してEnterキーを押しパスワードを入力してEnterキーを押します。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MIRACLE LINUX &lt;span class="m"&gt;8&lt;/span&gt;.4 &lt;span class="o"&gt;(&lt;/span&gt;Peony&lt;span class="o"&gt;)&lt;/span&gt;
-Kernel &lt;span class="m"&gt;4&lt;/span&gt;.18.0-305.25.1.el8_4.x86_64 on an x86_64
-
-xxx-xxx-xxx-xxx login: XXXX
-Password:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;ログインできるとコンソールの表示が先ほどまでのrootとちょっと違う形で表示されます。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;XXXX@xxx-xxx-xxx-xxx ~&lt;span class="o"&gt;]&lt;/span&gt;$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;[&lt;code&gt;ユーザ名&lt;/code&gt;@&lt;code&gt;ホスト名&lt;/code&gt; ~]$となります。最後の$は一般ユーザであることを表しています。実は先ほどまでのrootユーザは$ではなく#でした。&lt;/p&gt;
-&lt;p&gt;試しにrootユーザでない場合にどうなるか試すにはrootのホームディレクトリを覗こうとしてみるとわかります。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls /root
-ls: cannot open directory &lt;span class="s1"&gt;&amp;#39;/root&amp;#39;&lt;/span&gt;: Permission denied
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Permission deniedと表示され、権限がないよと言われます。&lt;/p&gt;
-&lt;p&gt;一時的にスーパーユーザとして実行するにはコマンドの先頭に&lt;code&gt;sudo&lt;/code&gt;をくっつけます。試してみましょう。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ls /root
-
-We trust you have received the usual lecture from the &lt;span class="nb"&gt;local&lt;/span&gt; System
-Administrator. It usually boils down to these three things:
-
-    &lt;span class="c1"&gt;#1) Respect the privacy of others.&lt;/span&gt;
-    &lt;span class="c1"&gt;#2) Think before you type.&lt;/span&gt;
-    &lt;span class="c1"&gt;#3) With great power comes great responsibility.&lt;/span&gt;
-
-&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; password &lt;span class="k"&gt;for&lt;/span&gt; XXXX:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は&lt;a href="https://www.deepl.com/en/translator#en/ja/We%20trust%20you%20have%20received%20the%20usual%20lecture%20from%20the%20local%20System%20Administrator.%20It%20usually%20boils%20down%20to%20these%20three%20things.%0A%0ARespect%20the%20privacy%20of%20others.%0AThink%20before%20you%20type.%0AWith%20great%20power%20comes%20great%20responsibility"&gt;翻訳ソフトで調べて&lt;/a&gt;ください。&lt;/p&gt;
-&lt;p&gt;ここでパスワードが要求されますが、&lt;code&gt;password for XXXX&lt;/code&gt;となっている通りrootのパスワードではなく作成した一般ユーザのパスワードを入力してください。正しいパスワードが入力されていれば&lt;code&gt;ls&lt;/code&gt;コマンドが実行されると思います。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;migrate2ml.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;これは、最初に移行ツールをダウンロードしたのでそのファイルが表示されています。ダウンロードした時はrootユーザのホームディレクトリで作業していたのでここで表示されます。&lt;/p&gt;
-&lt;p&gt;今後は一般ユーザでログインし、必要があれば&lt;code&gt;sudo&lt;/code&gt;を使って作業を行います。&lt;/p&gt;
-&lt;h4&gt;その他 いくつか&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;os-release&lt;/code&gt;がML仕様になっています。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cat /etc/os-release
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ dnf repolist --enabled
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;参考: &lt;a href="https://blogs.mcafee.jp/shoulder-surfing-protect"&gt;社員のための抜け目ないショルダーハック対策と注意したい５つの事例&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2"&gt;
-&lt;p&gt;&lt;a href="https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/"&gt;https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3"&gt;
-&lt;p&gt;&lt;a href="https://www.cybertrust.co.jp/miraclelinux-license-free/docs/ml84-migrationtool-manual.pdf"&gt;MIRACLE LINUX 8.4 移行ツールマニュアル&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;p&gt;以上で完了です。&lt;/p&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>nkfのインストール - MIRACLE LINUX 8.4</title><link href="https://tmya.github.io/how-to-install-nkf.html" rel="alternate"></link><published>2021-11-09T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-11-09:/how-to-install-nkf.html</id><summary type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install nkf
+一致した引数がありません: nkf
+エラ …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Network Kanji Filterをインストールしよう。&lt;/p&gt;
 &lt;h3&gt;nkfパッケージはどこ&lt;/h3&gt;
 &lt;p&gt;とりあえず&lt;code&gt;dnf&lt;/code&gt;でインストールしようとすると見つかりません。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install nkf
@@ -1113,7 +974,8 @@ Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content><category term="MIRACLE LINUX"></category></entry><entry><title>MIRACLE LINUX 8.4 メモ</title><link href="https://tmya.github.io/miracle-linux-tips.html" rel="alternate"></link><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><author><name>Akio Tomita</name></author><id>tag:tmya.github.io,2021-10-25:/miracle-linux-tips.html</id><summary type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
-とりあえず無償提供の物を使っ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
+とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
+CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CentOS 8が先行き不透明な今、懐かしのMIRACLE LINUXがライセンスフリー&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;となって公開された。
 とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
 CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
 日本発ディストリなので、ML関係の記事は日本語で書くよ。&lt;/p&gt;

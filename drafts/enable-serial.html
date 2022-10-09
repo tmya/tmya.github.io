@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4</title>
+        <title>Enable serial</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -30,13 +30,13 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/drafts/how-to-install-davinciresolv17.html">
-    <meta name="twitter:title" content="tmya note ~ DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4">
-    <meta name="twitter:description" content="DaVinci Resolveは動画編集ソフトです。 前提 EPELリポジトリが使えること 使えない場合はMIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラ …">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/enable-serial.html">
+    <meta name="twitter:title" content="tmya note ~ Enable serial">
+    <meta name="twitter:description" content="Memo VyOS seemed to change release policy ago. LTS(Long Term Support) Release is provides to subscriber. Subscriber includes commercial customer and contributor. If you are not subscribed, subscribe or get rolling release builds. Here is about upgrade v1.1.8 to v1.2.0(rolling release). Open your console …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="tmya note ~ DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4"/>
-    <meta property="og:description" content="DaVinci Resolveは動画編集ソフトです。 前提 EPELリポジトリが使えること 使えない場合はMIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラ …"/>
+    <meta property="og:title" content="tmya note ~ Enable serial"/>
+    <meta property="og:description" content="Memo VyOS seemed to change release policy ago. LTS(Long Term Support) Release is provides to subscriber. Subscriber includes commercial customer and contributor. If you are not subscribed, subscribe or get rolling release builds. Here is about upgrade v1.1.8 to v1.2.0(rolling release). Open your console …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -70,9 +70,9 @@
 
         <h2>Categories</h2>
         <ul class="navbar">
-                <li><a
-                        href="https://tmya.github.io/category/blog.html">blog</a></li>
                 <li class="active"><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li><a
                         href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
                         href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
@@ -85,32 +85,75 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/how-to-install-davinciresolv17.html" rel="bookmark"
-                                                  title="Permalink to DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4">DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4</a></h2>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/enable-serial.html" rel="bookmark"
+                                                  title="Permalink to Enable serial">Enable serial</a></h2>
             <div class="entry-content blog-post">
-                <p><a href="https://www.blackmagicdesign.com/jp/products/davinciresolve/">DaVinci Resolve</a>は動画編集ソフトです。</p>
-<h3>前提</h3>
-<ul>
-<li>
-<p>EPELリポジトリが使えること</p>
-</li>
-<li>
-<p>使えない場合は<a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">MIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラスト</a>の下の方に記載の方法で使えるようにしましょう。コマンド一発です。</p>
-</li>
-</ul>
-<h3>インストール</h3>
-<div class="highlight"><pre><span></span><code>$ unzip ./DaVinci_Resolve_17.4.5_Linux.zip
-$ ./DaVinci_Resolve_17.4.5_Linux.run 
-$ sudo dnf install ocl-icd
+                <h3>Memo</h3>
+<p>VyOS seemed to change release policy ago.
+LTS(Long Term Support) Release is provides to subscriber.
+Subscriber includes commercial customer and contributor.
+If you are not subscribed, subscribe or get rolling release builds.</p>
+<p>Here is about upgrade v1.1.8 to v1.2.0(rolling release).</p>
+<h2>Open your console</h2>
+<p>Connect ssh or other way to VyOS.<br>
+Check to running image.</p>
+<div class="highlight"><pre><span></span><code>$ show system image
+
+The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
+
+   <span class="m">1</span>: VyOS-1.1.8 <span class="o">(</span>default boot<span class="o">)</span> <span class="o">(</span>running image<span class="o">)</span>
+   <span class="m">2</span>: VyOS-1.1.7
+   <span class="m">3</span>: VyOS-1.1.6
+   <span class="m">4</span>: VyOS-1.1.5
+   <span class="m">5</span>: Old-non-image-installation
 </code></pre></div>
+
+<h2>Download and add image</h2>
+<p>Download latest rolling release build or choose what you like.<br>
+<a href="https://downloads.vyos.io/?dir=rolling/current/amd64">VyOS Downloads</a></p>
+<p>!Notice! If you are reboot soon will boot new image but sometimes occur problem.<br>
+At your own risk.</p>
+<div class="highlight"><pre><span></span><code>$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+</code></pre></div>
+
+<p>Perhaps you answer yes to the questions you are asked. me too. :p<br>
+You can see added image when retype "show system image".</p>
+<div class="highlight"><pre><span></span><code>$ show system image
+
+The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
+
+   <span class="m">1</span>: <span class="m">1</span>.2-rolling-201912030217- <span class="o">(</span>default boot<span class="o">)</span>
+   <span class="m">2</span>: VyOS-1.1.8 <span class="o">(</span>running image<span class="o">)</span>
+   <span class="m">3</span>: VyOS-1.1.7
+   <span class="m">4</span>: VyOS-1.1.6
+   <span class="m">5</span>: VyOS-1.1.5
+   <span class="m">6</span>: Old-non-image-installation
+</code></pre></div>
+
+<h2>Reboot to apply new image</h2>
+<p>Let's reboot.</p>
+<div class="highlight"><pre><span></span><code>$ reboot
+Proceed with reboot? <span class="o">(</span>Yes/No<span class="o">)</span> <span class="o">[</span>No<span class="o">]</span> Yes
+</code></pre></div>
+
+<p>Let's pray.  </p>
+<p>Few minutes later reconnect to VyOS. Check the Version.</p>
+<div class="highlight"><pre><span></span><code>$ show version
+Version:          VyOS <span class="m">1</span>.2-rolling-201912030217
+Built by:         autobuild@vyos.net
+Built on:         Tue <span class="m">03</span> Dec <span class="m">2019</span> <span class="m">02</span>:17 UTC
+~~
+</code></pre></div>
+
+<p>That's done it.</p>
             </div>
             <div class="post_list">
                 <span>By </span>
                 <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
-                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
-                <span class="post_date">Sat 12 March 2022</span>
+                <span class="post_category"><a href="https://tmya.github.io/category/blog.html" rel="bookmark"
+                                               title="Permalink to blog">[ blog ]</a></span>
+                <span class="post_date">Tue 03 December 2019</span>
                 <div><span>Tags : </span>
                 </div>
 
@@ -118,28 +161,28 @@ $ sudo dnf install ocl-icd
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/how-to-install-davinciresolv17.html&text=DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4&via="><img
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/enable-serial.html&text=Enable serial&via="><img
                             src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/how-to-install-davinciresolv17.html&hl=fr"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/enable-serial.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/how-to-install-davinciresolv17.html&t=DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4"><img
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/enable-serial.html&t=Enable serial"><img
                             src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/how-to-install-davinciresolv17.html&title=DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/enable-serial.html&title=Enable serial"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [DaVinci Resolve 17のインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/drafts/how-to-install-davinciresolv17.html"
+                            href="mailto:?subject=Enable serial&amp;body=Viens découvrir un article à propos de [Enable serial] sur le site de Akio Tomita. https://tmya.github.io/drafts/enable-serial.html"
                             title="Share by Email" target="_blank"><img
                             src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
                 </div>

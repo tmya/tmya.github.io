@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>MSFS2020でのSimConnectの使い方 C#編</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+            <link href="https://tmya.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+                  title="tmya note ATOM Feed"/>
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html">
+    <meta name="twitter:title" content="tmya note ~ MSFS2020でのSimConnectの使い方 C#編">
+    <meta name="twitter:description" content="Microsoft Flight Simulator(2020)でSimConnectを使うためのメモ C#編 ほんの少しですがわかっている情報について記載します。 必要なもの : MSFS2020本体、Visual Studio Community以上で.NET開発を有効 SimConnectのダウンロードとインストール まずMSFS2020のゲームを起動して、 Help -&gt; Downloads -&gt; SDK …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ MSFS2020でのSimConnectの使い方 C#編"/>
+    <meta property="og:description" content="Microsoft Flight Simulator(2020)でSimConnectを使うためのメモ C#編 ほんの少しですがわかっている情報について記載します。 必要なもの : MSFS2020本体、Visual Studio Community以上で.NET開発を有効 SimConnectのダウンロードとインストール まずMSFS2020のゲームを起動して、 Help -&gt; Downloads -&gt; SDK …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+            <a href="https://tmya.github.io/feeds/all.atom.xml" rel="alternate">
+                <img src="https://tmya.github.io/theme/images/icons/rss.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li class="active"><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html" rel="bookmark"
+                                                  title="Permalink to MSFS2020でのSimConnectの使い方 C#編">MSFS2020でのSimConnectの使い方 C#編</a></h2>
+            <div class="entry-content blog-post">
+                <h1>Microsoft Flight Simulator(2020)でSimConnectを使うためのメモ C#編</h1>
+<p>ほんの少しですがわかっている情報について記載します。</p>
+<p><strong>必要なもの</strong> : MSFS2020本体、Visual Studio Community以上で.NET開発を有効</p>
+<h2>SimConnectのダウンロードとインストール</h2>
+<p>まずMSFS2020のゲームを起動して、 Help -&gt; Downloads -&gt; SDK Installerを選びインストーラーをダウンロードします。
+ダウンロードしたらインストーラーを起動します。</p>
+<p>SDKの中にサンプルコードがあり、<code>SimvarWatcher</code>というプロジェクトを開くとMSFSから変数を取得したりEVENTをset/getする事ができるプログラムを閲覧できます。この内容で理解できるのであれば、この記事を読む必要はありません。</p>
+<h2>SimConnectを使うプログラミングの概要</h2>
+<p>詳しくはわからないのですが、SimConnectはFSX(Microsoft Flight Simulator X : 古いやつ)時代からあるようで、Prepar3Dというのにもあるようです。そのためWeb上にあるSimConnectを使う方法はMSFS2020以外の情報もごちゃ混ぜになっているので自分が参考にする資料に気を付けてください。</p>
+<h3>データの取得と設定</h3>
+<p>まず、データの取得と設定には大きく二種類あります。</p>
+<p>どちらもコールバックが必要になるので、イベントハンドラを用います。注意点としてコールバック関数が直接呼ばれるわけではなく、<a href="https://learn.microsoft.com/ja-jp/windows/win32/winmsg/windowing">ウィンドウプロシージャ</a>によって何かが起きたことを知らせてくれるので、メッセージを受け取ったらデータを受信する処理を行わないとイベントハンドラが呼ばれません。後述します。</p>
+<h4>EVENT IDsとVariablesについて</h4>
+<h5>EVENT IDs</h5>
+<p><code>フラップを動かす or 動かした</code>、<code>ランディングギアを動かす or 動かした</code>、<code>オートパイロットをON/OFF</code>の情報</p>
+<p><a href="https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Event_IDs.htm">EVENT IDs : SDKの情報</a></p>
+<h5>Variables</h5>
+<p><code>飛行機の高度</code>や<code>フラップの位置</code>、<code>ランディングギアのポジション等</code>、<code>オートパイロットのON/OFF</code>の情報</p>
+<p><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm">Simulation variables : SDKの情報</a></p>
+<h3>EVENT IDsとVariablesの使い分け</h3>
+<p>二つとも似たようなことができ詳しく調べられていませんが、それぞれ特性が違うので必要に応じて使い分ける必要があります。</p>
+<h4>EVENT IDs</h4>
+<p>EVENTは何かが起こったこと・起こすことを取得したり設定することができます。コックピット視点でオートパイロットのスイッチを押すたびに、<code>AP_MASTER</code>イベントが発生します。そのイベントデータの中に<code>ON</code>であれば<code>1</code>、<code>OFF</code>であれば<code>0</code>というデータが入っています。また、<code>AP_MASTER</code>イベントに<code>1</code>を設定すると、オートパイロットが<code>ON</code>になります。</p>
+<p>注意点として、EVENTで<code>AP_MASTER</code>に<code>1</code>を設定すると、何故か<code>AP_MASTER</code>イベントが発生せず値を取得でき来ません。コックピット視点でボタンを押すか、コントローラーなどのショートカットで設定をするときのみ値を取得できるので、プログラムから操作するときに設定した結果は<code>Variables</code>で読み取る必要があるようです。</p>
+<h4>Variables</h4>
+<p>Variablesは変数ということで、今の状態（飛行機の状態、カメラの状態等）を取得でき、一部は変数に値を設定できます。オートパイロットの状態を変数として取得するには<code>AUTOPILOT MASTER</code>という変数を読み込む必要があります。BoolでSettableが×という変数なので読みとり専用です。Boolといいながら、C#でプログラムを書く場合には<code>0</code>か<code>1</code>という数値型になっているようです。前述のEVENTで<code>AP_MASTER</code>を<code>1</code>にした場合、設定ができたかどうかは変数の<code>AUTOPILOT MASTER</code>で取得してみないとわからないということになります。</p>
+<h2>プログラミングのメモ</h2>
+<h3>初期設定</h3>
+<ul>
+<li>プロジェクト作成時のテンプレートは、<code>Windows フォーム アプリケーション (.NET Framework)</code>を選びましょう。似たような<code>Windows フォーム アプリ</code>がありますが違います。</li>
+<li>フォームいらないよ！コンソールでいいよ！っていう場合は、恐らくフォームを非表示にする方法をとるのが楽です。前述のウィンドウプロシージャの処理が必要なので、コンソールアプリでは苦労します。</li>
+<li>x64でビルドするように設定する。</li>
+<li>VSのプロジェクト参照に<code>Microsoft.FlightSimulator.SimConnect</code>を追加する。SDKをインストールしたフォルダの <code>SimConnect SDK\lib\managed</code>以下にあるはず。</li>
+</ul>
+<h3>大枠の流れ</h3>
+<ol>
+<li>Form1.csとかで<code>WndProc()</code>をオーバーライド</li>
+<li><code>WM_USER_SIMCONNECT</code>(0x0402)を受信したら<code>SimConnect.ReceiveMessage()</code>を呼ぶようにする。</li>
+<li>ウィンドウハンドルを取得。</li>
+<li>SimConnectのインスタンス化。</li>
+<li>コールバックの追加（イベントハンドラ）。</li>
+<li>EVENT IDsの登録。</li>
+<li><code>MapClientEventToSimEvent()</code></li>
+<li><code>AddClientEventToNotificationGroup()</code></li>
+<li>↑このセットを必要なEVENT分繰り返す。</li>
+<li><code>SetNotificationGroupPriority()</code></li>
+<li>Variablesの登録。</li>
+<li><code>AddToDataDefinition()</code></li>
+<li>↑このセットを必要なVariables分繰り返す。</li>
+<li><code>RegisterDataDefineStruct&lt;&gt;()</code></li>
+<li>EVENTの取得は<code>SimConnect.OnRecvEvent()</code></li>
+<li>Variablesの取得は2種類</li>
+<li><code>RequestDataOnSimObjectType()</code> → 単発<ol>
+<li>取得したら<code>SimConnect.OnRecvSimobjectDataByType()</code>が呼ばれる。</li>
+</ol>
+</li>
+<li><code>RequestDataOnSimObject()</code> → 指定した周期<ol>
+<li>取得したら<code>SimConnect.OnRecvSimobjectData()</code>が呼ばれる。</li>
+</ol>
+</li>
+<li>EVENTの設定は<code>TransmitClientEvent()</code></li>
+<li>Variablesの設定は<code>SetDataOnSimObject()</code></li>
+</ol>
+<h1>とりあえずここまで</h1>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/blog.html" rel="bookmark"
+                                               title="Permalink to blog">[ blog ]</a></span>
+                <span class="post_date">Tue 03 December 2019</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html&text=MSFS2020でのSimConnectの使い方 C#編&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html&t=MSFS2020でのSimConnectの使い方 C#編"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html&title=MSFS2020でのSimConnectの使い方 C#編"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=MSFS2020でのSimConnectの使い方 C#編&amp;body=Viens découvrir un article à propos de [MSFS2020でのSimConnectの使い方 C#編] sur le site de Akio Tomita. https://tmya.github.io/how-to-use-simconnect-msfs2020-csharp.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
