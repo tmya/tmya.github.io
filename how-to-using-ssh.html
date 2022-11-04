@@ -17,8 +17,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         <!-- Style Meta Data -->
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
 
         <!-- Feed Meta Data -->
 
@@ -28,7 +28,7 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/how-to-using-ssh.html">
+    <meta name="twitter:url" content="./how-to-using-ssh.html">
     <meta name="twitter:title" content="tmya note ~ Windowsからsshで接続する - MIRACLE LINUX 8.4">
     <meta name="twitter:description" content="前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は こちら ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。 ssh鍵の生成 ConoHaへssh鍵の登録と設定 ConoHaの接続許可ポートの設定 接続 ssh鍵の生成 …">
 
@@ -41,7 +41,7 @@
 <body>
 <!-- Sidebar -->
 <aside>
-    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
     <h1>tmya note</h1>
         <p>Something else</p>
     <br>
@@ -52,28 +52,28 @@
 
                 <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
 
-                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
 
         </ul>
     </nav>
 
     <p class="social">
                 <a href="https://github.com/tmya" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                        src="./theme/images/icons/github.png"></a>
                 <a href="https://twitter.com/tmyanote" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+                        src="./theme/images/icons/twitter.png"></a>
     </p>
 
         <h2>Categories</h2>
         <ul class="navbar">
                 <li><a
-                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                        href="./category/blog.html">blog</a></li>
                 <li class="active"><a
-                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+                        href="./category/p-tips.html">p-tips</a></li>
         </ul>
 
 
@@ -83,7 +83,7 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-using-ssh.html" rel="bookmark"
+            <h2 class="post_title post_detail"><a href="./how-to-using-ssh.html" rel="bookmark"
                                                   title="Permalink to Windowsからsshで接続する - MIRACLE LINUX 8.4">Windowsからsshで接続する - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
                 <p><strong>前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> </strong></p>
@@ -96,9 +96,9 @@
 </ul>
 <h3>ssh鍵の生成</h3>
 <p>スタートメニューをクリックしてメニューバーの検索欄に<code>cmd</code>と入力するとコマンドプロンプトが表示されるので、クリックして起動します。</p>
-<p><img alt="コマンドプロンプト" src="https://tmya.github.io/images/win-start-cmd.jpg"></p>
+<p><img alt="コマンドプロンプト" src="./images/win-start-cmd.jpg"></p>
 <p>黒い背景のウィンドウが表示されるので、下記のコマンドを入力してエンターを押します。</p>
-<p><img alt="コンソールウィンドウ" src="https://tmya.github.io/images/win-ssh-keygen.jpg"></p>
+<p><img alt="コンソールウィンドウ" src="./images/win-ssh-keygen.jpg"></p>
 <div class="highlight"><pre><span></span><code>ssh-keygen -C <span class="s2">&quot;&quot;</span> -t ed25519
 </code></pre></div>
 
@@ -141,7 +141,7 @@ C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX&gt;
 
 <h3>ConoHaへssh鍵の登録と設定</h3>
 <p>ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、<code>echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &gt;&gt; ~/.ssh/authorized_keys</code>の行のうち、<code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd</code>の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。</p>
-<p><img alt="sshkey" src="https://tmya.github.io/images/win-type-sshpubkey.jpg"></p>
+<p><img alt="sshkey" src="./images/win-type-sshpubkey.jpg"></p>
 <div class="highlight"><pre><span></span><code>$ mkdir ~/.ssh
 $ chmod <span class="m">700</span> ~/.ssh
 $ <span class="nb">echo</span> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &gt;&gt; ~/.ssh/authorized_keys
@@ -163,19 +163,19 @@ sudo systemctl restart sshd
 <h3>ConoHaの接続許可ポートの設定</h3>
 <p>今度はConoHaのWeb上での作業です。ConoHaにログインするとサーバの名前が表示されているはずなので、右側の<code>詳細設定</code>をクリックします。</p>
 <p>サーバの詳細設定画面では下にスクロールすると下部に<code>接続許可ポート</code>の設定がありますので、<code>□ SSH(22)</code>をクリックしてチェックマークをつけます。</p>
-<p><img alt="接続許可ポート" src="https://tmya.github.io/images/conoha-port-open-5432.jpg"></p>
+<p><img alt="接続許可ポート" src="./images/conoha-port-open-5432.jpg"></p>
 <p>↑この図ではチェックついていませんがチェックしてください。</p>
 <h3>接続</h3>
 <p>あとはもう接続するのみです。コマンドプロンプトからsshコマンドで接続可能です。オプションには<code>ユーザ名</code>@<code>IPアドレス</code>を指定します。ユーザ名はMLで作成した一般ユーザ名、IPアドレスにはConoHaの詳細設定で確認できるIPアドレスです。</p>
 <p><strong>例:</strong> ssh tmya@192.168.0.1</p>
-<p><img alt="ssh接続" src="https://tmya.github.io/images/win-ssh-connect.jpg"></p>
+<p><img alt="ssh接続" src="./images/win-ssh-connect.jpg"></p>
 <p>接続が成功するとコンソール画面と同じようにユーザ名と最後が<code>$</code>の行が出力されます。切断は<code>exit</code>コマンドで行います。</p>
             </div>
             <div class="post_list">
                 <span>By </span>
-                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                <span class="post_category"><a href="./category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
                 <span class="post_date">Wed 17 November 2021</span>
                 <div><span>Tags : </span>
@@ -185,30 +185,30 @@ sudo systemctl restart sshd
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-using-ssh.html&text=Windowsからsshで接続する - MIRACLE LINUX 8.4&via="><img
-                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+                                             href="https://twitter.com/share?url=./how-to-using-ssh.html&text=Windowsからsshで接続する - MIRACLE LINUX 8.4&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-using-ssh.html&hl=fr"
+                                           href="https://plus.google.com/share?url=./how-to-using-ssh.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+                            src="./theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-using-ssh.html&t=Windowsからsshで接続する - MIRACLE LINUX 8.4"><img
-                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+                                              href="https://www.facebook.com/sharer.php?u=./how-to-using-ssh.html&t=Windowsからsshで接続する - MIRACLE LINUX 8.4"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-using-ssh.html&title=Windowsからsshで接続する - MIRACLE LINUX 8.4"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./how-to-using-ssh.html&title=Windowsからsshで接続する - MIRACLE LINUX 8.4"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+                            src="./theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=Windowsからsshで接続する - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Windowsからsshで接続する - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-using-ssh.html"
+                            href="mailto:?subject=Windowsからsshで接続する - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Windowsからsshで接続する - MIRACLE LINUX 8.4] sur le site de Akio Tomita. ./how-to-using-ssh.html"
                             title="Share by Email" target="_blank"><img
-                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                            src="./theme/images/icons/mail-s.png"></a></span>
                 </div>
             </div>
         </article>

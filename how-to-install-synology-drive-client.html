@@ -17,8 +17,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         <!-- Style Meta Data -->
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
 
         <!-- Feed Meta Data -->
 
@@ -28,7 +28,7 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-synology-drive-client.html">
+    <meta name="twitter:url" content="./how-to-install-synology-drive-client.html">
     <meta name="twitter:title" content="tmya note ~ Synology Drive Clientのインストール - MIRACLE LINUX 8.4">
     <meta name="twitter:description" content="SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。 前提知識 ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する …">
 
@@ -41,7 +41,7 @@
 <body>
 <!-- Sidebar -->
 <aside>
-    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
     <h1>tmya note</h1>
         <p>Something else</p>
     <br>
@@ -52,28 +52,28 @@
 
                 <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
 
-                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
 
         </ul>
     </nav>
 
     <p class="social">
                 <a href="https://github.com/tmya" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                        src="./theme/images/icons/github.png"></a>
                 <a href="https://twitter.com/tmyanote" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+                        src="./theme/images/icons/twitter.png"></a>
     </p>
 
         <h2>Categories</h2>
         <ul class="navbar">
                 <li><a
-                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                        href="./category/blog.html">blog</a></li>
                 <li class="active"><a
-                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+                        href="./category/p-tips.html">p-tips</a></li>
         </ul>
 
 
@@ -83,10 +83,10 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-synology-drive-client.html" rel="bookmark"
+            <h2 class="post_title post_detail"><a href="./how-to-install-synology-drive-client.html" rel="bookmark"
                                                   title="Permalink to Synology Drive Clientのインストール - MIRACLE LINUX 8.4">Synology Drive Clientのインストール - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
-                <p><img alt="SynologyDrive起動画面" src="https://tmya.github.io/images/synology-logo.jpg"></p>
+                <p><img alt="SynologyDrive起動画面" src="./images/synology-logo.jpg"></p>
 <p>SynologyのNAS(DS220j)を手に入れたので、MIRACLE LINUXにSynology Drive Clientをインストールして他のマシンとファイルを同期しよう。</p>
 <h3>前提知識</h3>
 <p>ダウンロードはSynologyのサイトのサポートから可能ですが、Linux系のディストリビューションとしてはUbuntu向けしか提供されていません。何とかしてUbuntu向けのパッケージを使ってインストールしたいと思います。その為にdebファイルをrpmファイルに変換するalienというプログラムをインストールして使用します。またパッケージを作成する際のファイル所有者の問題を解決するために、fakerootもインストールしましょう。MIRACLE LINUXの<strong>GUI環境</strong>で操作することを想定しています。</p>
@@ -125,7 +125,7 @@
 </code></pre></div>
 
 <p>インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。</p>
-<p><img alt="SynologyDriveClientのアイコン" src="https://tmya.github.io/images/menu-synology-drive.jpg"></p>
+<p><img alt="SynologyDriveClientのアイコン" src="./images/menu-synology-drive.jpg"></p>
 <p>起動後は通常通り使えるので設定を行い終了です。</p>
 <h3>OSアップデートの際に必要なこと</h3>
 <p>上記で<code>--nodeps</code>と<code>--force</code>オプションを使ってインストールしているため、システムの依存関係をまったく無視してしまっています。その為、OSのアップデートの際に何かしらが競合してアップデートできない状態になります。一旦Synology Driveを終了し、アンインストールしてOSアップデートを行い、再度Synology Driveをインストールする手順で回避します。接続設定等は消えずに残るようなのでそこまで大変ではないと思います。</p>
@@ -155,9 +155,9 @@ sudo micro /opt/synology-drive/usr/bin/synology-drive
             </div>
             <div class="post_list">
                 <span>By </span>
-                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                <span class="post_category"><a href="./category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
                 <span class="post_date">Thu 09 December 2021</span>
                 <div><span>Tags : </span>
@@ -167,30 +167,30 @@ sudo micro /opt/synology-drive/usr/bin/synology-drive
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-synology-drive-client.html&text=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&via="><img
-                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+                                             href="https://twitter.com/share?url=./how-to-install-synology-drive-client.html&text=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-synology-drive-client.html&hl=fr"
+                                           href="https://plus.google.com/share?url=./how-to-install-synology-drive-client.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+                            src="./theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-synology-drive-client.html&t=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"><img
-                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+                                              href="https://www.facebook.com/sharer.php?u=./how-to-install-synology-drive-client.html&t=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-synology-drive-client.html&title=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./how-to-install-synology-drive-client.html&title=Synology Drive Clientのインストール - MIRACLE LINUX 8.4"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+                            src="./theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Synology Drive Clientのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-synology-drive-client.html"
+                            href="mailto:?subject=Synology Drive Clientのインストール - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Synology Drive Clientのインストール - MIRACLE LINUX 8.4] sur le site de Akio Tomita. ./how-to-install-synology-drive-client.html"
                             title="Share by Email" target="_blank"><img
-                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                            src="./theme/images/icons/mail-s.png"></a></span>
                 </div>
             </div>
         </article>

@@ -17,8 +17,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         <!-- Style Meta Data -->
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
 
         <!-- Feed Meta Data -->
 
@@ -28,7 +28,7 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="https://tmya.github.io/how-to-install-wz-jasperlake.html">
+    <meta name="twitter:url" content="./how-to-install-wz-jasperlake.html">
     <meta name="twitter:title" content="tmya note ~ Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4">
     <meta name="twitter:description" content="最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。 まずはインストール 公式の手順の実機の項目を参照してインストールを進めます。 早 …">
 
@@ -41,7 +41,7 @@
 <body>
 <!-- Sidebar -->
 <aside>
-    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
     <h1>tmya note</h1>
         <p>Something else</p>
     <br>
@@ -52,28 +52,28 @@
 
                 <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
 
-                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
 
         </ul>
     </nav>
 
     <p class="social">
                 <a href="https://github.com/tmya" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                        src="./theme/images/icons/github.png"></a>
                 <a href="https://twitter.com/tmyanote" target="_blank"><img
-                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+                        src="./theme/images/icons/twitter.png"></a>
     </p>
 
         <h2>Categories</h2>
         <ul class="navbar">
                 <li><a
-                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                        href="./category/blog.html">blog</a></li>
                 <li class="active"><a
-                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
                 <li><a
-                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+                        href="./category/p-tips.html">p-tips</a></li>
         </ul>
 
 
@@ -83,14 +83,14 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="https://tmya.github.io/how-to-install-wz-jasperlake.html" rel="bookmark"
+            <h2 class="post_title post_detail"><a href="./how-to-install-wz-jasperlake.html" rel="bookmark"
                                                   title="Permalink to Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4">Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
                 <p>最近、Celeron N5xxxなどのJasper Lakeを搭載したパソコンが販売されているので今回はCeleron N5095を搭載したBeelink U59にMIRACLE LINUX 8.4をインストールしてみました。HDMIやUSB-C Alt modeでのインストール時に解像度が800x600になってしまい難儀したのでインストール後に行った対策の紹介です。</p>
 <h3>まずはインストール</h3>
 <p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-install.html">公式の手順</a>の<code>実機</code>の項目を参照してインストールを進めます。
 早速画面の端っこまで表示されずに見切れていると思いますが、ギリギリボタンが画面内に収まっているので進めます。</p>
-<p><img alt="インストーラー画面" src="https://tmya.github.io/images/ml-crop-installer.jpg"></p>
+<p><img alt="インストーラー画面" src="./images/ml-crop-installer.jpg"></p>
 <p>インストールが終了してデスクトップ画面が表示されたら、<code>端末</code>を起動します。そしてグラフィック関係のエラーが出ているのを確認します。</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$</span> dmesg <span class="p">|</span> grep i915
 </code></pre></div>
@@ -119,9 +119,9 @@
             </div>
             <div class="post_list">
                 <span>By </span>
-                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                <span class="post_category"><a href="./category/miracle-linux.html" rel="bookmark"
                                                title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
                 <span class="post_date">Thu 23 June 2022</span>
                 <div><span>Tags : </span>
@@ -131,30 +131,30 @@
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=https://tmya.github.io/how-to-install-wz-jasperlake.html&text=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&via="><img
-                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+                                             href="https://twitter.com/share?url=./how-to-install-wz-jasperlake.html&text=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=https://tmya.github.io/how-to-install-wz-jasperlake.html&hl=fr"
+                                           href="https://plus.google.com/share?url=./how-to-install-wz-jasperlake.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+                            src="./theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/how-to-install-wz-jasperlake.html&t=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"><img
-                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+                                              href="https://www.facebook.com/sharer.php?u=./how-to-install-wz-jasperlake.html&t=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/how-to-install-wz-jasperlake.html&title=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./how-to-install-wz-jasperlake.html&title=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+                            src="./theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4] sur le site de Akio Tomita. https://tmya.github.io/how-to-install-wz-jasperlake.html"
+                            href="mailto:?subject=Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4&amp;body=Viens découvrir un article à propos de [Jasper LakeなCPUマシンへのインストール後、解像度が800x600になってしまう問題と解決方法 - MIRACLE LINUX 8.4] sur le site de Akio Tomita. ./how-to-install-wz-jasperlake.html"
                             title="Share by Email" target="_blank"><img
-                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                            src="./theme/images/icons/mail-s.png"></a></span>
                 </div>
             </div>
         </article>
