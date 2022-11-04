@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>MIRACLE LINUX 9 メモ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tmya.github.io/theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="https://tmya.github.io/drafts/miracle-linux-9-tips.html">
+    <meta name="twitter:title" content="tmya note ~ MIRACLE LINUX 9 メモ">
+    <meta name="twitter:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす メモ WSL2で動かす 参考サ …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ MIRACLE LINUX 9 メモ"/>
+    <meta property="og:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす メモ WSL2で動かす 参考サ …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="https://tmya.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="https://tmya.github.io/pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="https://tmya.github.io/theme/images/icons/twitter.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="https://tmya.github.io/category/blog.html">blog</a></li>
+                <li class="active"><a
+                        href="https://tmya.github.io/category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/miracle-linux-84.html">"MIRACLE LINUX 8.4"</a></li>
+                <li><a
+                        href="https://tmya.github.io/category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="https://tmya.github.io/drafts/miracle-linux-9-tips.html" rel="bookmark"
+                                                  title="Permalink to MIRACLE LINUX 9 メモ">MIRACLE LINUX 9 メモ</a></h2>
+            <div class="entry-content blog-post">
+                <p>2022年11月1日、ついにMIRACLE LINUX 9がリリース<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>されました。</p>
+<p>ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。</p>
+<h1>やってみたこと一覧</h1>
+<ul>
+<li>WSL2でML9を動かす</li>
+</ul>
+<h1>メモ</h1>
+<h2>WSL2で動かす</h2>
+<p>参考サイト<a href="https://access.redhat.com/discussions/5398621">Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal</a></p>
+<p>予めWindowsではwslを使えるようにしておいてください。
+ML9のインストールをVirtualBox等で行いユーザを管理者に、rootは無効にして最小限インストールを行います。
+ログイン後、下記のコマンドを実行します。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install tar
+$ sudo tar cvfzp ml9.tar.gz bin dev etc home lib lib64 media opt run root sbin srv usr var
+</code></pre></div>
+
+<p>その後、仮想マシンからWindowsマシンに圧縮ファイルをコピーします。
+Windowsのコンソールからscpコマンドでコピーすると良いと思います。
+また、予めwslをインストールする先のフォルダを作成しておきます。今回は<code>C:¥</code>直下に<code>wsl</code>フォルダを作成しました。</p>
+<div class="highlight"><pre><span></span><code>&gt; scp user@192.168.1.100:/ml9.tar.gz .¥
+&gt; wsl --import ML9 c:¥wsl .¥ml9.tar.gz
+</code></pre></div>
+
+<p>起動します。</p>
+<div class="highlight"><pre><span></span><code>&gt; wsl -d ML9
+</code></pre></div>
+
+<p>このままだと無効にしたはずのrootでログインしてしまうので、デフォルトユーザを切り替えましょう。Windows11ならsystemdも動くかもしれません。
+<code>/etc/wsl.conf</code>を作成し、ファイルの中身を下記のように書き換えます。</p>
+<div class="highlight"><pre><span></span><code>[boot]
+systemd=true
+[user]
+default=user
+</code></pre></div>
+
+<p>※ <code>user</code>の部分は自分のユーザ名に書き換えてください。</p>
+<div class="highlight"><pre><span></span><code>$ sudo mkdir /tmp
+$ sudo chmod <span class="m">777</span> /tmp
+</code></pre></div>
+
+<p>保存したら一旦<code>exit</code>で終了し、<code>wsl -t ML9</code>で完全に終了させます。</p>
+<p>もう一度<code>wsl -d ML</code>を実行するとML9環境にログインできます。</p>
+<h3>Homebrew on MIRACLE LINUX 9 on Windows 10</h3>
+<p>基本的には<a href="https://brew.sh/">公式サイトの手順</a>通りです。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install git
+$ bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+$ <span class="nb">echo</span> <span class="s1">&#39;# Set PATH, MANPATH, etc., for Homebrew.&#39;</span> &gt;&gt; /home/tmya/.bash_profile
+$ <span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span> &gt;&gt; /home/tmya/.bash_profile
+$ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew shellenv<span class="k">)</span><span class="s2">&quot;</span>
+$ sudo dnf groupinstall <span class="s1">&#39;Development Tools&#39;</span>
+$ brew install gcc
+</code></pre></div>
+
+<h3>ちょっとしたメモ</h3>
+<h4>ホームディレクトリのフォルダ名を英語にする。</h4>
+<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C xdg-user-dirs-gtk-update
+</code></pre></div>
+
+<h4>RDPサーバを動かす</h4>
+<h4>C# sdkのインストール</h4>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.cybertrust.co.jp/pressrelease/2022/1101-miraclelinux9.html">RHEL 9 互換の Linux OS の最新版「MIRACLE LINUX 9」を無償公開</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="https://tmya.github.io/author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="https://tmya.github.io/category/miracle-linux.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_date">Fri 04 November 2022</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=https://tmya.github.io/drafts/miracle-linux-9-tips.html&text=MIRACLE LINUX 9 メモ&via="><img
+                            src="https://tmya.github.io/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=https://tmya.github.io/drafts/miracle-linux-9-tips.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=https://tmya.github.io/drafts/miracle-linux-9-tips.html&t=MIRACLE LINUX 9 メモ"><img
+                            src="https://tmya.github.io/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=https://tmya.github.io/drafts/miracle-linux-9-tips.html&title=MIRACLE LINUX 9 メモ"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="https://tmya.github.io/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=MIRACLE LINUX 9 メモ&amp;body=Viens découvrir un article à propos de [MIRACLE LINUX 9 メモ] sur le site de Akio Tomita. https://tmya.github.io/drafts/miracle-linux-9-tips.html"
+                            title="Share by Email" target="_blank"><img
+                            src="https://tmya.github.io/theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
