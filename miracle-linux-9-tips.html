@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips.html">
     <meta name="twitter:title" content="tmya note ~ MIRACLE LINUX 9 メモ">
-    <meta name="twitter:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす メモ WSL2で動かす 参考サ …">
+    <meta name="twitter:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす WSL2で動かす 参考サイト …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ MIRACLE LINUX 9 メモ"/>
-    <meta property="og:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす メモ WSL2で動かす 参考サ …"/>
+    <meta property="og:description" content="2022年11月1日、ついにMIRACLE LINUX 9がリリース1されました。 ここではMIRACLE LINUX 9(以下、ML9)の情報を載せていきます。 やってみたこと一覧 WSL2でML9を動かす WSL2で動かす 参考サイト …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -94,18 +94,21 @@
 <ul>
 <li>WSL2でML9を動かす</li>
 </ul>
-<h1>メモ</h1>
 <h2>WSL2で動かす</h2>
 <p>参考サイト<a href="https://access.redhat.com/discussions/5398621">Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal</a></p>
-<p>前提条件
-- WSL2を使えるようにしておく</p>
-<p>大まかな進め方
-- VirtualBoxや実機にMIRACLE LINUX 9をインストールする
-- インストールされたファイルをまとめて圧縮する
-- 圧縮したファイルをWindowsにコピーする
-- WSLにインポートする
-- デフォルトユーザを切り替える
-- tmpフォルダを作成する</p>
+<p>前提条件</p>
+<ul>
+<li>WSL2を使えるようにしておく</li>
+</ul>
+<p>大まかな進め方</p>
+<ul>
+<li>VirtualBoxや実機にMIRACLE LINUX 9をインストールする</li>
+<li>インストールされたファイルをまとめて圧縮する</li>
+<li>圧縮したファイルをWindowsにコピーする</li>
+<li>WSLにインポートする</li>
+<li>デフォルトユーザを切り替える</li>
+<li>tmpフォルダを作成する</li>
+</ul>
 <p>今回はVirtualBoxを使います。</p>
 <p>VirtualBoxでML9のインストールをで行いユーザを管理者に、rootは無効にして最小限インストールを行います。
 ログイン後、下記のコマンドを実行します。</p>
