@@ -97,8 +97,17 @@
 <h1>メモ</h1>
 <h2>WSL2で動かす</h2>
 <p>参考サイト<a href="https://access.redhat.com/discussions/5398621">Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal</a></p>
-<p>予めWindowsではwslを使えるようにしておいてください。
-ML9のインストールをVirtualBox等で行いユーザを管理者に、rootは無効にして最小限インストールを行います。
+<p>前提条件
+- WSL2を使えるようにしておく</p>
+<p>大まかな進め方
+- VirtualBoxや実機にMIRACLE LINUX 9をインストールする
+- インストールされたファイルをまとめて圧縮する
+- 圧縮したファイルをWindowsにコピーする
+- WSLにインポートする
+- デフォルトユーザを切り替える
+- tmpフォルダを作成する</p>
+<p>今回はVirtualBoxを使います。</p>
+<p>VirtualBoxでML9のインストールをで行いユーザを管理者に、rootは無効にして最小限インストールを行います。
 ログイン後、下記のコマンドを実行します。</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf install tar
 $ sudo tar cvfzp ml9.tar.gz bin dev etc home lib lib64 media opt run root sbin srv usr var
@@ -124,6 +133,7 @@ default=user
 </code></pre></div>
 
 <p>※ <code>user</code>の部分は自分のユーザ名に書き換えてください。</p>
+<p>tmpフォルダが存在しないので作っておきましょう。</p>
 <div class="highlight"><pre><span></span><code>$ sudo mkdir /tmp
 $ sudo chmod <span class="m">777</span> /tmp
 </code></pre></div>
@@ -131,6 +141,8 @@ $ sudo chmod <span class="m">777</span> /tmp
 <p>保存したら一旦<code>exit</code>で終了し、<code>wsl -t ML9</code>で完全に終了させます。</p>
 <p>もう一度<code>wsl -d ML</code>を実行するとML9環境にログインできます。</p>
 <h3>Homebrew on MIRACLE LINUX 9 on Windows 10</h3>
+<p>前項で用意したWSL上のMIRACLE LINUX 9にHomebrewを導入します。
+これで大抵の開発環境は簡単に揃えることができるはずです。</p>
 <p>基本的には<a href="https://brew.sh/">公式サイトの手順</a>通りです。</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf install git
 $ bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
@@ -141,13 +153,6 @@ $ sudo dnf groupinstall <span class="s1">&#39;Development Tools&#39;</span>
 $ brew install gcc
 </code></pre></div>
 
-<h3>ちょっとしたメモ</h3>
-<h4>ホームディレクトリのフォルダ名を英語にする。</h4>
-<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C xdg-user-dirs-gtk-update
-</code></pre></div>
-
-<h4>RDPサーバを動かす</h4>
-<h4>C# sdkのインストール</h4>
 <div class="footnote">
 <hr>
 <ol>
