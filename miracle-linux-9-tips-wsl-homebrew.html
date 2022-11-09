@@ -68,11 +68,11 @@
         <ul class="navbar">
                 <li><a
                         href="./category/blog.html">blog</a></li>
-                <li class="active"><a
+                <li><a
                         href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
                         href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
-                <li><a
+                <li class="active"><a
                         href="./category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
                 <li><a
                         href="./category/p-tips.html">p-tips</a></li>
@@ -92,10 +92,11 @@
 <p><a href="./miracle-linux-9-tips-wsl.html">別の記事</a>で用意したWSL上のMIRACLE LINUX 9にHomebrewを導入します。
 これで大抵の開発環境は簡単に揃えることができるはずです。</p>
 <p>基本的には<a href="https://brew.sh/">公式サイトの手順</a>通りです。</p>
+<p><strong>注意</strong> : 以下のコマンド中の /home/<code>user</code>/.bash_profile の<code>user</code>は2行とも自分のユーザ名に置き換えてください。</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf install git
 $ bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;# Set PATH, MANPATH, etc., for Homebrew.&#39;</span> &gt;&gt; /home/tmya/.bash_profile
-$ <span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span> &gt;&gt; /home/tmya/.bash_profile
+$ <span class="nb">echo</span> <span class="s1">&#39;# Set PATH, MANPATH, etc., for Homebrew.&#39;</span> &gt;&gt; /home/user/.bash_profile
+$ <span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span> &gt;&gt; /home/user/.bash_profile
 $ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew shellenv<span class="k">)</span><span class="s2">&quot;</span>
 $ sudo dnf groupinstall <span class="s1">&#39;Development Tools&#39;</span>
 $ brew install gcc
@@ -105,8 +106,8 @@ $ brew install gcc
                 <span>By </span>
                 <a href="./author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="./category/miracle-linux.html" rel="bookmark"
-                                               title="Permalink to MIRACLE LINUX">[ MIRACLE LINUX ]</a></span>
+                <span class="post_category"><a href="./category/miracle-linux-9.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX 9">[ MIRACLE LINUX 9 ]</a></span>
                 <span class="post_date">Wed 09 November 2022</span>
                 <div><span>Tags : </span>
                 </div>
