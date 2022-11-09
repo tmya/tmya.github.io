@@ -17,8 +17,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         <!-- Style Meta Data -->
-        <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
 
         <!-- Feed Meta Data -->
 
@@ -28,20 +28,20 @@
         <meta name="twitter:image" content="">
 
     <meta name="twitter:creator" content="">
-    <meta name="twitter:url" content="../drafts/pelican-blog-plugin.html">
+    <meta name="twitter:url" content="./how-to-install-pelican-plugins-pelican-version-480.html">
     <meta name="twitter:title" content="tmya note ~ How to install Pelican plugins (Pelican version 4.8.0)">
-    <meta name="twitter:description" content="Pelican plugin install method has been changed in version 4.5. So you can use plugin easier than before. Pelican 4.8.0 document site.">
+    <meta name="twitter:description" content="Pelican plugin install method has been changed in version 4.5. So you can use plugin easier than before. Pelican 4.8.0 document site. pelican-plugins You should do not download plugin files from github. It can use pip command for plugin downloads directoly and add plugin automatically. Usage : pip …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ How to install Pelican plugins (Pelican version 4.8.0)"/>
-    <meta property="og:description" content="Pelican plugin install method has been changed in version 4.5. So you can use plugin easier than before. Pelican 4.8.0 document site."/>
+    <meta property="og:description" content="Pelican plugin install method has been changed in version 4.5. So you can use plugin easier than before. Pelican 4.8.0 document site. pelican-plugins You should do not download plugin files from github. It can use pip command for plugin downloads directoly and add plugin automatically. Usage : pip …"/>
     <meta property="og:image" content=""/>
 </head>
 
 <body>
 <!-- Sidebar -->
 <aside>
-    <!--<center><a href=".."><img id="avatar" src=""></a></center>-->
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
     <h1>tmya note</h1>
         <p>Something else</p>
     <br>
@@ -52,30 +52,30 @@
 
                 <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
 
-                <li><a class="nav__link" href="../pages/about.html">About</a></li>
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
 
         </ul>
     </nav>
 
     <p class="social">
                 <a href="https://github.com/tmya" target="_blank"><img
-                        src="../theme/images/icons/github.png"></a>
+                        src="./theme/images/icons/github.png"></a>
                 <a href="https://twitter.com/tmyanote" target="_blank"><img
-                        src="../theme/images/icons/twitter.png"></a>
+                        src="./theme/images/icons/twitter.png"></a>
     </p>
 
         <h2>Categories</h2>
         <ul class="navbar">
                 <li class="active"><a
-                        href="../category/blog.html">blog</a></li>
+                        href="./category/blog.html">blog</a></li>
                 <li><a
-                        href="../category/miracle-linux.html">MIRACLE LINUX</a></li>
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
                 <li><a
-                        href="../category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
                 <li><a
-                        href="../category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
+                        href="./category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
                 <li><a
-                        href="../category/p-tips.html">p-tips</a></li>
+                        href="./category/p-tips.html">p-tips</a></li>
         </ul>
 
 
@@ -85,17 +85,28 @@
 <article>
     <section id="content">
         <article>
-            <h2 class="post_title post_detail"><a href="../drafts/pelican-blog-plugin.html" rel="bookmark"
+            <h2 class="post_title post_detail"><a href="./how-to-install-pelican-plugins-pelican-version-480.html" rel="bookmark"
                                                   title="Permalink to How to install Pelican plugins (Pelican version 4.8.0)">How to install Pelican plugins (Pelican version 4.8.0)</a></h2>
             <div class="entry-content blog-post">
                 <p>Pelican plugin install method has been changed in version 4.5. So you can use plugin easier than before.</p>
 <p><a href="https://docs.getpelican.com/en/latest/plugins.html">Pelican 4.8.0 document site</a>.</p>
+<p><a href="https://github.com/pelican-plugins">pelican-plugins</a></p>
+<p>You should do not download plugin files from github. It can use pip command for plugin downloads directoly and add plugin automatically.</p>
+<p>Usage : pip install pelican.<code>plugin name</code></p>
+<p>Example for want to use more_categories plugin.</p>
+<div class="highlight"><pre><span></span><code>$ pip install pelican.more_categories
+</code></pre></div>
+
+<p>Now, you can add some categories to Metadata syntax.</p>
+<p>article.md :</p>
+<div class="highlight"><pre><span></span><code><span class="n">Category</span><span class="o">:</span> <span class="n">foo</span><span class="o">,</span> <span class="n">bar</span>
+</code></pre></div>
             </div>
             <div class="post_list">
                 <span>By </span>
-                <a href="../author/akio-tomita.html">@Akio Tomita</a>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
                 <span> in </span>
-                <span class="post_category"><a href="../category/blog.html" rel="bookmark"
+                <span class="post_category"><a href="./category/blog.html" rel="bookmark"
                                                title="Permalink to blog">[ blog ]</a></span>
                 <span class="post_date">Wed 09 November 2022</span>
                 <div><span>Tags : </span>
@@ -105,30 +116,30 @@
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=../drafts/pelican-blog-plugin.html&text=How to install Pelican plugins (Pelican version 4.8.0)&via="><img
-                            src="../theme/images/icons/twitter-s.png"></a></span>
+                                             href="https://twitter.com/share?url=./how-to-install-pelican-plugins-pelican-version-480.html&text=How to install Pelican plugins (Pelican version 4.8.0)&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
-                                           href="https://plus.google.com/share?url=../drafts/pelican-blog-plugin.html&hl=fr"
+                                           href="https://plus.google.com/share?url=./how-to-install-pelican-plugins-pelican-version-480.html&hl=fr"
                                            rel="nofollow"
                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="../theme/images/icons/google-s.png"></a></span>
+                            src="./theme/images/icons/google-s.png"></a></span>
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=../drafts/pelican-blog-plugin.html&t=How to install Pelican plugins (Pelican version 4.8.0)"><img
-                            src="../theme/images/icons/facebook-s.png"></a></span>
+                                              href="https://www.facebook.com/sharer.php?u=./how-to-install-pelican-plugins-pelican-version-480.html&t=How to install Pelican plugins (Pelican version 4.8.0)"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=../drafts/pelican-blog-plugin.html&title=How to install Pelican plugins (Pelican version 4.8.0)"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./how-to-install-pelican-plugins-pelican-version-480.html&title=How to install Pelican plugins (Pelican version 4.8.0)"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
-                            src="../theme/images/icons/linkedin-s.png"></a>
+                            src="./theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=How to install Pelican plugins (Pelican version 4.8.0)&amp;body=Viens découvrir un article à propos de [How to install Pelican plugins (Pelican version 4.8.0)] sur le site de Akio Tomita. ../drafts/pelican-blog-plugin.html"
+                            href="mailto:?subject=How to install Pelican plugins (Pelican version 4.8.0)&amp;body=Viens découvrir un article à propos de [How to install Pelican plugins (Pelican version 4.8.0)] sur le site de Akio Tomita. ./how-to-install-pelican-plugins-pelican-version-480.html"
                             title="Share by Email" target="_blank"><img
-                            src="../theme/images/icons/mail-s.png"></a></span>
+                            src="./theme/images/icons/mail-s.png"></a></span>
                 </div>
             </div>
         </article>
