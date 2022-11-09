@@ -3,7 +3,7 @@
 <head>
             <meta charset="utf-8">
         <!-- Site Meta Data -->
-        <title>MIRACLE LINUX 9 on WSL</title>
+        <title>WSLでMIRACLE LINUX 9を動かす</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Akio Tomita">
@@ -29,12 +29,12 @@
 
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-wsl.html">
-    <meta name="twitter:title" content="tmya note ~ MIRACLE LINUX 9 on WSL">
-    <meta name="twitter:description" content="WSLでMIRACLE LINUX 9を動かす 参考サイト : Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal 前提条件 WSL2を使えるようにしておく 大まかな進め方 VirtualBoxや実機にMIRACLE LINUX 9をインストールする インストールされたファイルをまと …">
+    <meta name="twitter:title" content="tmya note ~ WSLでMIRACLE LINUX 9を動かす">
+    <meta name="twitter:description" content="WSLでMIRACLE LINUX 9を動かす Notice : If you need the English version, please scroll down. 参考サイト : Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal 前提条件 WSL2を使えるようにしておく 大まかな進め方 VirtualBoxや実機にMIRACLE LINUX 9をインストールする インストール …">
 
     <!-- Facebook Meta Data -->
-    <meta property="og:title" content="tmya note ~ MIRACLE LINUX 9 on WSL"/>
-    <meta property="og:description" content="WSLでMIRACLE LINUX 9を動かす 参考サイト : Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal 前提条件 WSL2を使えるようにしておく 大まかな進め方 VirtualBoxや実機にMIRACLE LINUX 9をインストールする インストールされたファイルをまと …"/>
+    <meta property="og:title" content="tmya note ~ WSLでMIRACLE LINUX 9を動かす"/>
+    <meta property="og:description" content="WSLでMIRACLE LINUX 9を動かす Notice : If you need the English version, please scroll down. 参考サイト : Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal 前提条件 WSL2を使えるようにしておく 大まかな進め方 VirtualBoxや実機にMIRACLE LINUX 9をインストールする インストール …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -86,9 +86,10 @@
     <section id="content">
         <article>
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-wsl.html" rel="bookmark"
-                                                  title="Permalink to MIRACLE LINUX 9 on WSL">MIRACLE LINUX 9 on WSL</a></h2>
+                                                  title="Permalink to WSLでMIRACLE LINUX 9を動かす">WSLでMIRACLE LINUX 9を動かす</a></h2>
             <div class="entry-content blog-post">
                 <h2>WSLでMIRACLE LINUX 9を動かす</h2>
+<p><strong>Notice</strong> : If you need the English version, please scroll down.</p>
 <p>参考サイト : <a href="https://access.redhat.com/discussions/5398621">Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal</a></p>
 <p>前提条件</p>
 <ul>
@@ -104,7 +105,7 @@
 <li>tmpフォルダを作成する</li>
 </ul>
 <p>今回はVirtualBoxを使います。</p>
-<p>VirtualBoxでML9のインストールをで行いユーザを管理者に、rootは無効にして最小限インストールを行います。
+<p>VirtualBoxでML9のインストールを行いユーザを管理者に、rootは無効にして最小限インストールを行います。
 ログイン後、下記のコマンドを実行します。</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf install tar
 $ sudo tar cvfzp ml9.tar.gz bin dev etc home lib lib64 media opt run root sbin srv usr var
@@ -137,6 +138,63 @@ $ sudo chmod <span class="m">777</span> /tmp
 
 <p>保存したら一旦<code>exit</code>で終了し、<code>wsl -t ML9</code>で完全に終了させます。</p>
 <p>もう一度<code>wsl -d ML</code>を実行するとML9環境にログインできます。</p>
+<hr>
+<h2>MIRACLE LINUX 9("ML9") on WSL</h2>
+<p>Reference : <a href="https://access.redhat.com/discussions/5398621">Howto:RHEL 8.2 running under WSL2 - Red Hat Customer Portal</a></p>
+<p>Prerequisites</p>
+<ul>
+<li>WSL2 be enabled.</li>
+</ul>
+<p>Article outline</p>
+<ul>
+<li>Install ML9 on VirtualBox or physical machine.</li>
+<li>Archive and gzip installed files.</li>
+<li>Copy archived file to Windows.</li>
+<li>Import to WSL.</li>
+<li>Change default user name.</li>
+<li>Create tmp directory and chmod.</li>
+</ul>
+<p>Here is using VirtualBox.</p>
+<p>ログイン後、下記のコマンドを実行します。</p>
+<p>Install ML9 on VirtualBox. When creating a user, check <code>Make this user administrator</code> checkbox. <code>Root account is disabled</code> setting as it is.</p>
+<p>After installed, create a archived file.</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install tar
+$ sudo tar cvfzp ml9.tar.gz bin dev etc home lib lib64 media opt run root sbin srv usr var
+</code></pre></div>
+
+<p>Create wsl folder. here is create wsl folder under C:\ drive. <code>C:\wsl</code></p>
+<p>Copy archived file to Windows. You can use scp command, etc.</p>
+<div class="highlight"><pre><span></span><code>&gt; scp user@192.168.1.100:/ml9.tar.gz .¥
+&gt; wsl --import ML9 c:¥wsl .¥ml9.tar.gz
+</code></pre></div>
+
+<p>Boot the ML9 virtual machine using wsl.</p>
+<div class="highlight"><pre><span></span><code>&gt; wsl -d ML9
+</code></pre></div>
+
+<p>Now logged in root user. So change to the default account to created user.
+If you are using Windows 11, you might be able to use systemd.
+Create <code>/etc/wsl.conf</code> file and add text below.</p>
+<p><strong>Notice</strong> : Please change <code>user</code> to own user name.</p>
+<div class="highlight"><pre><span></span><code>[boot]
+systemd=true
+[user]
+default=user
+</code></pre></div>
+
+<p>Create tmp directory.</p>
+<div class="highlight"><pre><span></span><code>$ sudo mkdir /tmp
+$ sudo chmod <span class="m">777</span> /tmp
+</code></pre></div>
+
+<p>Exit and shutdown ML9 virtual machine.</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">exit</span>
+&gt; wsl -t ML9
+</code></pre></div>
+
+<p>Now you can use ML9.</p>
+<div class="highlight"><pre><span></span><code>&gt; wsl -d ML
+</code></pre></div>
             </div>
             <div class="post_list">
                 <span>By </span>
@@ -152,7 +210,7 @@ $ sudo chmod <span class="m">777</span> /tmp
                     <span class="twitter"><a target="_blank" rel="nofollow"
                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
                                              title="Twitter"
-                                             href="https://twitter.com/share?url=./miracle-linux-9-tips-wsl.html&text=MIRACLE LINUX 9 on WSL&via="><img
+                                             href="https://twitter.com/share?url=./miracle-linux-9-tips-wsl.html&text=WSLでMIRACLE LINUX 9を動かす&via="><img
                             src="./theme/images/icons/twitter-s.png"></a></span>
 
                     <span class="gplus"><a target="_blank" title="Google +"
@@ -163,17 +221,17 @@ $ sudo chmod <span class="m">777</span> /tmp
 
                     <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
                                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
-                                              href="https://www.facebook.com/sharer.php?u=./miracle-linux-9-tips-wsl.html&t=MIRACLE LINUX 9 on WSL"><img
+                                              href="https://www.facebook.com/sharer.php?u=./miracle-linux-9-tips-wsl.html&t=WSLでMIRACLE LINUX 9を動かす"><img
                             src="./theme/images/icons/facebook-s.png"></a></span>
 
                     <a target="_blank" title="Linkedin"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url=./miracle-linux-9-tips-wsl.html&title=MIRACLE LINUX 9 on WSL"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./miracle-linux-9-tips-wsl.html&title=WSLでMIRACLE LINUX 9を動かす"
                        rel="nofollow"
                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
                             src="./theme/images/icons/linkedin-s.png"></a>
 
                     <span class="mail"><a
-                            href="mailto:?subject=MIRACLE LINUX 9 on WSL&amp;body=Viens découvrir un article à propos de [MIRACLE LINUX 9 on WSL] sur le site de Akio Tomita. ./miracle-linux-9-tips-wsl.html"
+                            href="mailto:?subject=WSLでMIRACLE LINUX 9を動かす&amp;body=Viens découvrir un article à propos de [WSLでMIRACLE LINUX 9を動かす] sur le site de Akio Tomita. ./miracle-linux-9-tips-wsl.html"
                             title="Share by Email" target="_blank"><img
                             src="./theme/images/icons/mail-s.png"></a></span>
                 </div>
