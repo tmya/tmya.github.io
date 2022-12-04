@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Yubikeyを使う yubikey-manager (CUI)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="./miracle-linux-9-tips-yubikey-manager-cui.html">
+    <meta name="twitter:title" content="tmya note ~ Yubikeyを使う yubikey-manager (CUI)">
+    <meta name="twitter:description" content="yubikey-manager Yubikeyをセットアップするためには、yubikey-managerが必要です。 今回はCUI版をインストールします。 公式の手順によると、pip install --user yubikey-managerでインストール可能と表示されます。 MIRACLE LINUX 9では、あらかじめいくつかのパ …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ Yubikeyを使う yubikey-manager (CUI)"/>
+    <meta property="og:description" content="yubikey-manager Yubikeyをセットアップするためには、yubikey-managerが必要です。 今回はCUI版をインストールします。 公式の手順によると、pip install --user yubikey-managerでインストール可能と表示されます。 MIRACLE LINUX 9では、あらかじめいくつかのパ …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="./theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="./theme/images/icons/twitter.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="./category/blog.html">blog</a></li>
+                <li><a
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                <li class="active"><a
+                        href="./category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
+                <li><a
+                        href="./category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-yubikey-manager-cui.html" rel="bookmark"
+                                                  title="Permalink to Yubikeyを使う yubikey-manager (CUI)">Yubikeyを使う yubikey-manager (CUI)</a></h2>
+            <div class="entry-content blog-post">
+                <h2>yubikey-manager</h2>
+<p>Yubikeyをセットアップするためには、yubikey-managerが必要です。
+今回はCUI版をインストールします。</p>
+<p><a href="https://docs.yubico.com/software/yubikey/tools/ykman/Install_ykman.html">公式の手順</a>によると、<code>pip install --user yubikey-manager</code>でインストール可能と表示されます。</p>
+<p>MIRACLE LINUX 9では、あらかじめいくつかのパッケージをインストールしないとこのコマンドに失敗してしまうので、その備忘録です。</p>
+<h3>事前に必要なパッケージ類のインストール</h3>
+<p>開発ツール一式のインストール</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf groupinstall <span class="s2">&quot;Development Tools&quot;</span>
+</code></pre></div>
+
+<p>PowerToolsリポジトリの有効化</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf config-manager --enable <span class="m">9</span>-latest-PowerTools
+</code></pre></div>
+
+<p>PCSC開発ライブラリ、swig、Python開発ツールのインストール</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install pcsc-lite pcsc-lite-devel swig python-devel
+</code></pre></div>
+
+<h3>yubikey-managerのインストール</h3>
+<p>ここで公式通りのコマンドを実行してインストールを行います。</p>
+<div class="highlight"><pre><span></span><code>$ pip install --user yubikey-manager
+</code></pre></div>
+
+<h3>確認</h3>
+<p>YubikeyをUSBに接続して次のコマンドを実行するとYubikeyのデバイス情報を取得することが可能です。</p>
+<div class="highlight"><pre><span></span><code>$ ykman --device <span class="sb">`</span>ykman list --serials<span class="sb">`</span> info
+</code></pre></div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="./category/miracle-linux-9.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX 9">[ MIRACLE LINUX 9 ]</a></span>
+                <span class="post_date">Mon 05 December 2022</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=./miracle-linux-9-tips-yubikey-manager-cui.html&text=Yubikeyを使う yubikey-manager (CUI)&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=./miracle-linux-9-tips-yubikey-manager-cui.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="./theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=./miracle-linux-9-tips-yubikey-manager-cui.html&t=Yubikeyを使う yubikey-manager (CUI)"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./miracle-linux-9-tips-yubikey-manager-cui.html&title=Yubikeyを使う yubikey-manager (CUI)"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="./theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Yubikeyを使う yubikey-manager (CUI)&amp;body=Viens découvrir un article à propos de [Yubikeyを使う yubikey-manager (CUI)] sur le site de Akio Tomita. ./miracle-linux-9-tips-yubikey-manager-cui.html"
+                            title="Share by Email" target="_blank"><img
+                            src="./theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
