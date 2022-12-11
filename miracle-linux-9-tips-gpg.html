@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-gpg.html">
     <meta name="twitter:title" content="tmya note ~ GnuPGを運用する">
-    <meta name="twitter:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …">
+    <meta name="twitter:description" content="GnuPGを運用する（準備編） GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ GnuPGを運用する"/>
-    <meta property="og:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …"/>
+    <meta property="og:description" content="GnuPGを運用する（準備編） GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -88,7 +88,7 @@
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-gpg.html" rel="bookmark"
                                                   title="Permalink to GnuPGを運用する">GnuPGを運用する</a></h2>
             <div class="entry-content blog-post">
-                <h1>GnuPGを運用する</h1>
+                <h1>GnuPGを運用する（準備編）</h1>
 <h2>GnuPGとは</h2>
 <p>GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。</p>
 <p>データの暗号化や署名の用途に使うことが多いです。</p>
@@ -114,7 +114,7 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 <p>これはGnuPGでは使わないと思いますが、公開鍵暗号の用途としては存在します。実は公開鍵暗号はその暗号化と復号化に必要な処理が、共通鍵暗号より多いのです。そのため、一つのデータと暗号化したり署名して送る用途にはいいのですが、ストリームデータの暗号化（映像配信など）を行う時にはちょっと不向きです。その為、最初だけ公開鍵暗号を使って、共通鍵を暗号化して相手に送ります。その後はその共通鍵を使って暗号通信を行うと効率的な暗号通信が可能です。GnuPGにはあまり関係しないので多くは書きません。</p>
 <h4>公開鍵と秘密鍵の関係</h4>
 <p>公開鍵暗号では公開鍵と秘密鍵のペアという説明を何度もしましたが、これは公開鍵を持っていても、秘密鍵を知ることはできないという特性があるためです。逆に、秘密鍵を知っていると公開鍵を知ることができます。</p>
-<p>RSA暗号を例にすると、秘密鍵の中には素数<code>p</code>と<code>q</code>があります。適当に選んだ素数<code>p</code>と<code>q</code>をかけた値を<code>n</code>とします。<code>(p-1)(q-1)</code>と互いに素な数から適当に一つ数を選び、<code>e</code>とします。そして<code>e*d ≡ 1 mod φ(n)</code>(φ()はトーシェント関数)が成り立つように<code>d</code>を計算します。この<code>d</code>も秘密鍵の中に入れておきます。公開鍵には、<code>e</code>と<code>n</code>を入れておきましょう。[^1]</p>
+<p>RSA暗号を例にすると、秘密鍵の中には素数<code>p</code>と<code>q</code>があります。適当に選んだ素数<code>p</code>と<code>q</code>をかけた値を<code>n</code>とします。<code>(p-1)(q-1)</code>と互いに素な数から適当に一つ数を選び、<code>e</code>とします。そして<code>e*d ≡ 1 mod φ(n)</code>(φ()はトーシェント関数)が成り立つように<code>d</code>を計算します。この<code>d</code>も秘密鍵の中に入れておきます。公開鍵には、<code>e</code>と<code>n</code>を入れておきましょう。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <div class="highlight"><pre><span></span><code>公開鍵の中身→ eとn
 秘密鍵の中身→ pとqとd
 </code></pre></div>
@@ -149,7 +149,7 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 <tr>
 <td>C</td>
 <td>Certification</td>
-<td>主鍵から副鍵を証明する(副鍵を使うときに、主鍵に紐付いてることになる)</td>
+<td>証明(副鍵を使うときに、主鍵に紐付いてることになる)</td>
 </tr>
 <tr>
 <td>E</td>
@@ -159,7 +159,7 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 <tr>
 <td>A</td>
 <td>Authentication</td>
-<td>認証用(SSH接続やPAM認証等)</td>
+<td>認証(SSH接続やPAM認証等)</td>
 </tr>
 </tbody>
 </table>
@@ -191,7 +191,7 @@ License GNU GPL-3.0-or-later &lt;https://gnu.org/licenses/gpl.html&gt;
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
-Home: /home/ml9/.gnupg
+Home: /home/john/.gnupg
 サポートしているアルゴリズム:
 公開鍵: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
 暗号方式: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
@@ -262,7 +262,7 @@ There is NO WARRANTY, to the extent permitted by law.
    <span class="o">(</span>Q<span class="o">)</span> 完了
 </code></pre></div>
 
-<p>ここで生成する主鍵はCertificatio機能のみにして、Signは副鍵で作ることにしましょう。その為、現在認められた操作にSignが存在するので<code>S</code>を入力します。</p>
+<p>ここで生成する主鍵はCertificatio機能のみにして、Signは副鍵で作ることにしましょう。その為、現在認められた操作にSignが存在するので<code>S</code>を入力します。ちなみに<code>S</code>を入力する度に消えたり付与したりを繰り返します。</p>
 <div class="highlight"><pre><span></span><code>あなたの選択は? s
 
 このECC鍵にありうる操作: Sign Certify Authenticate 
@@ -323,7 +323,7 @@ GnuPGはあなたの鍵を識別するためにユーザIDを構成する必要�
 </code></pre></div>
 
 <p>OKなので<code>o</code>を入力します。</p>
-<p><img alt="パスワード入力" src="./images/gpg-input-pass.png"></p>
+<p><img alt="主鍵パスワード入力" src="./images/gpg-input-pass.png"></p>
 <p>パスワード入力画面が表示されます。秘密鍵はそのまま秘密鍵として使えるとあまりにも危険なので、パスワードで保護するようになっています。その為、適度なパスワードを設定しましょう。打ち間違い防止のため同じパスワードを上下に入力する必要があります。</p>
 <div class="highlight"><pre><span></span><code>次のユーザIDを選択しました:
     <span class="s2">&quot;John Doe &lt;john@doe&gt;&quot;</span>
@@ -379,11 +379,257 @@ uid         <span class="o">[</span>  究極  <span class="o">]</span> John Doe 
 <p><code>sec</code>行の<code>ed25519</code>の後にスラッシュがあり、その後に続いている8桁の英数字が鍵IDのショートバージョンになります。オプションを<code>short</code>から<code>long</code>に変えるともっと長いバージョンになりますが、大体shortで事が足ります。今は鍵のリストを表示しても一つしか出てきませんが、いろんな鍵をインポートしていくと増えるので、自分の鍵IDを記録しておき、<code>gpg -k E8FC0031</code>や<code>gpg -K E8FC0031</code>のような形で自分の鍵を表示すると見やすくなります。</p>
 <h4>副鍵の作成</h4>
 <p>次に主鍵に紐付く副鍵を作っていきます。SignとEncryptionとAuthenticationがあればOKです。</p>
-<p>副鍵の作成は、主鍵を編集モードで開いて、鍵の追加を行う形です。鍵の編集は<code>--edit-key</code>オプションで行います。</p>
-<p>執筆中...</p>
+<p>副鍵の作成は、主鍵を編集モードで開いて、鍵の追加を行う形です。鍵の編集は<code>--edit-key</code>オプションで行います。ここでも<code>--expert</code>オプションをつける必要があります。つけないと、鍵の種類の選択にRSAとDSAとElgamalしか出てきません。</p>
+<div class="highlight"><pre><span></span><code>$ gpg --expert --edit-key E8FC0031
+gpg <span class="o">(</span>GnuPG<span class="o">)</span> <span class="m">2</span>.3.3<span class="p">;</span> Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2021</span> Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+秘密鍵が利用できます。
+
+sec  ed25519/3C0CAA5EE8FC0031
+     作成: <span class="m">2022</span>-12-11  有効期限: 無期限      利用法: C   
+     信用: 究極        有効性: 究極
+<span class="o">[</span>  究極  <span class="o">]</span> <span class="o">(</span><span class="m">1</span><span class="o">)</span>. John Doe &lt;john@doe&gt;
+
+gpg&gt; 
+</code></pre></div>
+
+<p>選択した鍵の詳細が表示された後に、コンソールが<code>gpg&gt;</code>に変わります。ここからは専用のコマンドで設定していきます。先ほどの主鍵の作成では<code>gpg</code>コマンドにオプションを指定していましたが、副鍵はまた違った形で混乱しやすいポイントです。<code>addkey</code>と入力して鍵の作成に進みます。EncryptionとSignとAuthenticationの3つが必要なので、この手順を3回繰り返すイメージです。</p>
+<h5>署名用の副鍵作成</h5>
+<div class="highlight"><pre><span></span><code>gpg&gt; addkey
+ご希望の鍵の種類を選択してください:
+   <span class="o">(</span><span class="m">3</span><span class="o">)</span> DSA <span class="o">(</span>sign only<span class="o">)</span>
+   <span class="o">(</span><span class="m">4</span><span class="o">)</span> RSA <span class="o">(</span>sign only<span class="o">)</span>
+   <span class="o">(</span><span class="m">5</span><span class="o">)</span> Elgamal <span class="o">(</span>encrypt only<span class="o">)</span>
+   <span class="o">(</span><span class="m">6</span><span class="o">)</span> RSA <span class="o">(</span>encrypt only<span class="o">)</span>
+   <span class="o">(</span><span class="m">7</span><span class="o">)</span> DSA <span class="o">(</span><span class="nb">set</span> your own capabilities<span class="o">)</span>
+   <span class="o">(</span><span class="m">8</span><span class="o">)</span> RSA <span class="o">(</span><span class="nb">set</span> your own capabilities<span class="o">)</span>
+  <span class="o">(</span><span class="m">10</span><span class="o">)</span> ECC <span class="o">(</span>署名のみ<span class="o">)</span>
+  <span class="o">(</span><span class="m">11</span><span class="o">)</span> ECC <span class="o">(</span><span class="nb">set</span> your own capabilities<span class="o">)</span>
+  <span class="o">(</span><span class="m">12</span><span class="o">)</span> ECC <span class="o">(</span>encrypt only<span class="o">)</span>
+  <span class="o">(</span><span class="m">13</span><span class="o">)</span> Existing key
+  <span class="o">(</span><span class="m">14</span><span class="o">)</span> Existing key from card
+あなたの選択は? 
+</code></pre></div>
+
+<p><code>11</code>のECC (set your own capabilities)を選びましょう。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">11</span>
+
+このECC鍵にありうる操作: Sign Authenticate 
+現在の認められた操作: Sign 
+
+   <span class="o">(</span>S<span class="o">)</span> 署名機能を反転する
+   <span class="o">(</span>A<span class="o">)</span> 認証機能を反転する
+   <span class="o">(</span>Q<span class="o">)</span> 完了
+
+あなたの選択は? 
+</code></pre></div>
+
+<p>最初から署名機能のSignが有効になっているので、このまま完了の<code>q</code>を入力します。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? q
+ご希望の楕円曲線を選択してください:
+   <span class="o">(</span><span class="m">1</span><span class="o">)</span> Curve <span class="m">25519</span>
+   <span class="o">(</span><span class="m">2</span><span class="o">)</span> Curve <span class="m">448</span>
+   <span class="o">(</span><span class="m">3</span><span class="o">)</span> NIST P-256
+   <span class="o">(</span><span class="m">4</span><span class="o">)</span> NIST P-384
+   <span class="o">(</span><span class="m">5</span><span class="o">)</span> NIST P-521
+   <span class="o">(</span><span class="m">9</span><span class="o">)</span> secp256k1
+あなたの選択は? 
+</code></pre></div>
+
+<p>楕円曲線は<code>(1)</code>のCurve 25519を選びます。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">1</span>
+鍵の有効期限を指定してください。
+         <span class="nv">0</span> <span class="o">=</span> 鍵は無期限
+      &lt;n&gt;  <span class="o">=</span> 鍵は n 日間で期限切れ
+      &lt;n&gt;w <span class="o">=</span> 鍵は n 週間で期限切れ
+      &lt;n&gt;m <span class="o">=</span> 鍵は n か月間で期限切れ
+      &lt;n&gt;y <span class="o">=</span> 鍵は n 年間で期限切れ
+鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>
+</code></pre></div>
+
+<p>副鍵の有効期限はいろいろな考え方があると思います。私は<code>1y</code>(1年)にしています。盗まれた・漏洩した後Revokeを公表したとして、それを知らない人がいたとしても有効期限が切れればそれ以上使うことはできません。また逆に短い有効期限は、有効期限の延長には主鍵が必要なので有効期限を延長する操作が頻繁になるとそれはそれで面倒になります。有効期限の延長は、最初の期限の設定のように好きな期間を設定できるので、とりあえず1yぐらいから始めてもいいかもしれません。</p>
+<div class="highlight"><pre><span></span><code>鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>1y
+鍵は2023年12月XX日 10時00分00秒 JSTで期限切れとなります
+これで正しいですか? <span class="o">(</span>y/N<span class="o">)</span> 
+</code></pre></div>
+
+<p>期限切れ日時に問題なさそうであれば、<code>y</code>を入力します。本当に？と聞かれるので2回です。</p>
+<div class="highlight"><pre><span></span><code>これで正しいですか? <span class="o">(</span>y/N<span class="o">)</span> y
+本当に作成しますか? <span class="o">(</span>y/N<span class="o">)</span> y
+</code></pre></div>
+
+<p>そうすると、パスワード入力画面が表示されます。ここでは主鍵を使って副鍵を証明する必要があるので、主鍵のパスワードを聞かれています。主鍵の作成時に入力したパスワードを入力してください。</p>
+<p><img alt="副鍵パスワード入力" src="./images/gpg-input-pass2.jpg"></p>
+<div class="highlight"><pre><span></span><code>たくさんのランダム・バイトの生成が必要です。キーボードを打つ、マウスを動か
+す、ディスクにアクセスするなどの他の操作を素数生成の間に行うことで、乱数生
+成器に十分なエントロピーを供給する機会を与えることができます。
+
+sec  ed25519/3C0CAA5EE8FC0031
+     作成: <span class="m">2022</span>-12-11  有効期限: 無期限      利用法: C   
+     信用: 究極        有効性: 究極
+ssb  ed25519/370329AF39BDAAC3
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: S   
+<span class="o">[</span>  究極  <span class="o">]</span> <span class="o">(</span><span class="m">1</span><span class="o">)</span>. John Doe &lt;john@doe&gt;
+
+gpg&gt; 
+</code></pre></div>
+
+<p>この画面ではssbの行が増えて、副鍵が追加されたように見えます。実はこの操作は保存しないと反映されません。保存の為には<code>save</code>と入力します。失敗したら<code>q</code>で終了させれば副鍵の作成は無かったことになります。</p>
+<div class="highlight"><pre><span></span><code>gpg&gt; save
+$
+</code></pre></div>
+
+<h5>認証用の副鍵作成</h5>
+<p>また<code>gpg --expert --edit-key KEYID</code>で鍵の編集から副鍵を作成します。
+ほぼ同じ手順なので、出力は一部省略します。</p>
+<div class="highlight"><pre><span></span><code>$ gpg --expert --edit-key E8FC0031
+</code></pre></div>
+
+<p><code>addkey</code>と入力します。</p>
+<div class="highlight"><pre><span></span><code>gpg&gt; addkey 
+</code></pre></div>
+
+<p>また<code>11</code>を入力します。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">11</span>
+</code></pre></div>
+
+<p><code>s</code>と<code>a</code>を一回ずつ入力します。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? s
+
+このECC鍵にありうる操作: Sign Authenticate 
+現在の認められた操作: 
+
+   <span class="o">(</span>S<span class="o">)</span> 署名機能を反転する
+   <span class="o">(</span>A<span class="o">)</span> 認証機能を反転する
+   <span class="o">(</span>Q<span class="o">)</span> 完了
+
+あなたの選択は? a
+
+このECC鍵にありうる操作: Sign Authenticate 
+現在の認められた操作: Authenticate 
+
+   <span class="o">(</span>S<span class="o">)</span> 署名機能を反転する
+   <span class="o">(</span>A<span class="o">)</span> 認証機能を反転する
+   <span class="o">(</span>Q<span class="o">)</span> 完了
+
+あなたの選択は? 
+</code></pre></div>
+
+<p>これでAuthenticateの機能だけ選ぶことができます。<code>q</code>を押して完了させます。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? q
+</code></pre></div>
+
+<p><code>1</code>のCurve 25519を選びます。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">1</span>
+</code></pre></div>
+
+<p><code>1y</code>を入力します。</p>
+<div class="highlight"><pre><span></span><code>鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>1y
+</code></pre></div>
+
+<p>問題ないので<code>y</code>を2回と主鍵のパスワードを入力します。</p>
+<div class="highlight"><pre><span></span><code>これで正しいですか? <span class="o">(</span>y/N<span class="o">)</span> y
+本当に作成しますか? <span class="o">(</span>y/N<span class="o">)</span> y
+たくさんのランダム・バイトの生成が必要です。キーボードを打つ、マウスを動か
+す、ディスクにアクセスするなどの他の操作を素数生成の間に行うことで、乱数生
+成器に十分なエントロピーを供給する機会を与えることができます。
+
+sec  ed25519/3C0CAA5EE8FC0031
+     作成: <span class="m">2022</span>-12-11  有効期限: 無期限      利用法: C   
+     信用: 究極        有効性: 究極
+ssb  ed25519/370329AF39BDAAC3
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: S   
+ssb  ed25519/EBDD86586431967C
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: A   
+<span class="o">[</span>  究極  <span class="o">]</span> <span class="o">(</span><span class="m">1</span><span class="o">)</span>. John Doe &lt;john@doe&gt;
+
+gpg&gt; 
+</code></pre></div>
+
+<p><code>save</code>します。</p>
+<div class="highlight"><pre><span></span><code>gpg&gt; save
+$
+</code></pre></div>
+
+<h5>暗号化用の副鍵作成</h5>
+<p>鍵の編集から副鍵を作成します。</p>
+<div class="highlight"><pre><span></span><code>$ gpg --expert --edit-key E8FC0031
+</code></pre></div>
+
+<p><code>addkey</code>で副鍵を追加します。</p>
+<div class="highlight"><pre><span></span><code>gpg&gt; addkey
+</code></pre></div>
+
+<p>次に鍵の種類ですが、前の手順と違って<code>12</code>のECC (encrypt only)を選びます。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">12</span>
+</code></pre></div>
+
+<p>楕円曲線は前の手順と同じく<code>(1) Curve 25519</code>を選びます。</p>
+<div class="highlight"><pre><span></span><code>あなたの選択は? <span class="m">1</span>
+</code></pre></div>
+
+<p>有効期限は<code>1y</code>にします。</p>
+<div class="highlight"><pre><span></span><code>鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>1y
+</code></pre></div>
+
+<p>正しいはずなので<code>y</code>を2回と、主鍵のパスワードを入力します。</p>
+<div class="highlight"><pre><span></span><code>これで正しいですか? <span class="o">(</span>y/N<span class="o">)</span> y
+本当に作成しますか? <span class="o">(</span>y/N<span class="o">)</span> y
+たくさんのランダム・バイトの生成が必要です。キーボードを打つ、マウスを動か
+す、ディスクにアクセスするなどの他の操作を素数生成の間に行うことで、乱数生
+成器に十分なエントロピーを供給する機会を与えることができます。
+
+sec  ed25519/3C0CAA5EE8FC0031
+     作成: <span class="m">2022</span>-12-11  有効期限: 無期限      利用法: C   
+     信用: 究極        有効性: 究極
+ssb  ed25519/370329AF39BDAAC3
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: S   
+ssb  ed25519/EBDD86586431967C
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: A   
+ssb  cv25519/CC620FA4AADE0E49
+     作成: <span class="m">2022</span>-12-11  有効期限: <span class="m">2023</span>-12-11  利用法: E   
+<span class="o">[</span>  究極  <span class="o">]</span> <span class="o">(</span><span class="m">1</span><span class="o">)</span>. John Doe &lt;john@doe&gt;
+
+gpg&gt; 
+</code></pre></div>
+
+<p><code>save</code>します。</p>
+<div class="highlight"><pre><span></span><code>gpg&gt; save
+$ 
+</code></pre></div>
+
+<h5>作成した鍵の確認</h5>
+<p><code>gpg -k</code>を実行します。</p>
+<div class="highlight"><pre><span></span><code>$ gpg -k
+/home/john/.gnupg/pubring.kbx
+-----------------------------
+pub   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>C<span class="o">]</span>
+      28A2FB1E3A9A6DAC90ACD7943C0CAA5EE8FC0031
+uid           <span class="o">[</span>  究極  <span class="o">]</span> John Doe &lt;john@doe&gt;
+sub   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>S<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+sub   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>A<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+sub   cv25519 <span class="m">2022</span>-12-11 <span class="o">[</span>E<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+</code></pre></div>
+
+<p>公開鍵の一覧が表示されます。<code>pub</code>の行が主鍵で、<code>sub</code>が副鍵で3行あります。それぞれ<code>[S]</code>と<code>[A]</code>と<code>[E]</code>で別々の機能をもった鍵になっています。</p>
+<p>今度は<code>gpg -K</code>を実行します。</p>
+<div class="highlight"><pre><span></span><code>$ gpg -K
+/home/john/.gnupg/pubring.kbx
+-----------------------------
+sec   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>C<span class="o">]</span>
+      28A2FB1E3A9A6DAC90ACD7943C0CAA5EE8FC0031
+uid           <span class="o">[</span>  究極  <span class="o">]</span> John Doe &lt;john@doe&gt;
+ssb   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>S<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+ssb   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>A<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+ssb   cv25519 <span class="m">2022</span>-12-11 <span class="o">[</span>E<span class="o">]</span> <span class="o">[</span>有効期限: <span class="m">2023</span>-12-11<span class="o">]</span>
+</code></pre></div>
+
+<p>秘密鍵の一覧が表示されます。同じように主鍵と副鍵３つが表示されます。</p>
 <h4>鍵のバックアップ</h4>
 <p>ついに鍵を作ったので、早速使いたいところですがまずは鍵のバックアップをしましょう。秘密鍵が消えたらもう何もできないので、大切に保管することが大事です。</p>
-<p>まずバックアップは専用のコマンドがあり、エクスポートが可能です。そのエクスポートにはバイナリ形式とテキスト形式があります。バイナリorテキストは好みですが、テキストの方がコピペできたり使い勝手がよいので、ここではテキスト形式で説明をします。</p>
+<p>まずバックアップに使えるエクスポートがあります。そのエクスポートにはバイナリ形式とテキスト形式があります。バイナリorテキストは好みですが、テキストの方がコピペできたり使い勝手がよいので、ここではテキスト形式で説明をします。</p>
 <p>また、エクスポートの形式には複数ありますが、ここで３つ紹介します。</p>
 <ul>
 <li>公開鍵のエクスポート</li>
@@ -391,7 +637,54 @@ uid         <span class="o">[</span>  究極  <span class="o">]</span> John Doe 
 <li>公開鍵と秘密鍵の副鍵のエクスポート(主鍵の秘密鍵だけがない)</li>
 </ul>
 <p>上記のうち、上二つだけでいいのではないかと思うかもしれません。実際の運用を考えた場合、今回の構成では署名や暗号化には副鍵を使います。その為主鍵が手元にある必要がありません。漏洩の可能性があるので、主鍵以外を手元に置いておく方が安全です。また、副鍵が漏洩したり無くなってしまった場合には、主鍵を元に副鍵を取り消し(Revoke)でき、新たに副鍵を作ってそちらを使うことができます。その場合にも公開鍵(と一緒のuid等)を他の人にお知らせするだけで済みます。</p>
-<p>[^1] https://people.csail.mit.edu/rivest/pubs/RSA78.pdf</p>
+<p>あと、秘密鍵を失くしたり漏洩した時に取り消すためのRevocationファイル（失効証明書）もバックアップした方が良いです。主鍵を作成した時に自動で作成されていますが、探すのが面倒なのでこちらもコマンドでエクスポートしてバックアップしましょう。</p>
+<h5>公開鍵のエクスポート</h5>
+<p>公開鍵をテキストファイルとしてエクスポートします。<code>-a</code>オプションをつけると、テキスト形式になります。<code>--export</code>オプションの後には鍵IDを指定してください。下記の例では鍵ID E8FC0031の鍵をjohn-pub.ascにテキストファイルとしてエクスポートします。</p>
+<div class="highlight"><pre><span></span><code>$ gpg -a --export E8FC0031 &gt; john-pub.asc
+</code></pre></div>
+
+<p>公開鍵のファイルの内容を確認してみます。</p>
+<div class="highlight"><pre><span></span><code>$ cat ./john-pub.asc 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEY5WH4RYJKwYBBAHaRw8BAQdAK37G3RSwogO+MiQOJG19P4VDu/YQUGV60sRF
+HUpdoxe0E0pvaG4gRG9lIDxqb2huQGRvZT6IlAQTFgoAPBYhBCii+x46mm2skKzX
+lDwMql7o/AAxBQJjlYfhAhsBBQsJCAcCAyICAQYVCgkICwIEFgIDAQIeBwIXgAAK
+CRA8DKpe6PwAMSaaAQDM0T62VL2V1KmnZ+JuY1z9mhnIY/1jJsx4IdftU7lvLgEA
+yAz/5McIWu5vrVTKOk7Xw5VT4nj3ZA2km1RqL34JagK4MwRjlfEyFgkrBgEEAdpH
+DwEBB0BK+lcKe84zikiRnGN/SjJeoO3Ey0Rpfar02jp7+FA1AYj1BBgWCgAmFiEE
+KKL7HjqabayQrNeUPAyqXuj8ADEFAmOV8TICGwIFCQHhM4AAgQkQPAyqXuj8ADF2
+IAQZFgoAHRYhBJdoFjybcyzRmM5YrzcDKa85varDBQJjlfEyAAoJEDcDKa85varD
+ygMA/Rjr4QZSTGisJmbzVjmf67ufeg0qtATOGGc6QWN4INWSAQAAlwROFHTLVy2l
+ARy+kK7V5KcXMGETBYkYbPLmBxOtDWnxAQCJ4/3ABpNaTgLgJvdwjDyi8vtAVYTI
+TPJUCjV6/QaMywD/V7CngnAJm4mkvsREZMqC4f7bF5LaTaxjPk0oW8/aoQO4MwRj
+lfyyFgkrBgEEAdpHDwEBB0A3Swoa8RFP3p5CBh3rU6SeLmO2r8+Drl3iCj1eqz7l
+KIh+BBgWCgAmFiEEKKL7HjqabayQrNeUPAyqXuj8ADEFAmOV/LICGyAFCQHhM4AA
+CgkQPAyqXuj8ADFsgwD8D1p0Z+MxKuoR/0bN2HSBcmnDelkkz+kPQ00rF8DkfLEB
+AN9KkMnpuV//s5XjLsemmsLDawyO1bFZ6lAdRfsltKACuDgEY5YQmRIKKwYBBAGX
+VQEFAQEHQPBXUx6sh2insjEcoY7v9Uc9slABcwI601SOhdGiFFowAwEIB4h+BBgW
+CgAmFiEEKKL7HjqabayQrNeUPAyqXuj8ADEFAmOWEJkCGwwFCQHhM4AACgkQPAyq
+Xuj8ADEKBQD/XUhKmGOO/cM1UcjXIDdsa+/iDpoj1JdLaAjcdDT/ht4A/i/N2K4+
+<span class="nv">LIgSwnU1dAOtrddn0K0bIKVwZSBUasAZMrIG</span>
+<span class="o">=</span>W4A2
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre></div>
+
+<p>1行目がBEGIN PGP PUBLIC KEY BLOCKとなっており、Public keyつまり公開鍵ということがわかります。</p>
+<h5>秘密鍵全部のエクスポート</h5>
+<p>執筆中...</p>
+<h5>秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</h5>
+<p>執筆中...</p>
+<h5>失効証明書のエクスポート</h5>
+<p>執筆中...</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>https://people.csail.mit.edu/rivest/pubs/RSA78.pdf&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
             </div>
             <div class="post_list">
                 <span>By </span>
