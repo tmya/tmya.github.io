@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-gpg.html">
     <meta name="twitter:title" content="tmya note ~ GnuPGを運用する">
-    <meta name="twitter:description" content="GnuPGを運用する（準備編） GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や …">
+    <meta name="twitter:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ GnuPGを運用する"/>
-    <meta property="og:description" content="GnuPGを運用する（準備編） GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や …"/>
+    <meta property="og:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -88,7 +88,7 @@
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-gpg.html" rel="bookmark"
                                                   title="Permalink to GnuPGを運用する">GnuPGを運用する</a></h2>
             <div class="entry-content blog-post">
-                <h1>GnuPGを運用する（準備編）</h1>
+                <h1>GnuPGを運用する</h1>
 <h2>GnuPGとは</h2>
 <p>GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。</p>
 <p>データの暗号化や署名の用途に使うことが多いです。</p>
@@ -165,7 +165,7 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 </table>
 <h4>主鍵と副鍵</h4>
 <p>公開鍵と秘密鍵がセットで一つの鍵として考えた場合に、主となる鍵と、そこに紐付く複数の副鍵が存在します。
-GnuPGでデフォルト設定のまま鍵を生成すると、まずは主鍵が作られて<code>S</code>と<code>C</code>の機能が付与され、自動的に副鍵に<code>E</code>の機能が付与された状態になります。</p>
+GnuPGでデフォルト設定のまま鍵を生成すると、まずは主鍵が作られて<code>S</code>と<code>C</code>の機能が付与され、自動的に副鍵に<code>E</code>の機能が付与された状態で作成されます。</p>
 <h4>鍵データの場所</h4>
 <p>通常、鍵データ等は<code>$HOME/.gnupg/</code>以下に保存されています。セキュリティを保つために、ディレクトリのパーミッションは<code>700</code>になります。</p>
 <p>また、鍵データがファイルで存在していることになりますが、ディレクトリを開いてファイル移動でコピーしたりバックアップしたりということはあまり想定されていないようです。直接ファイルを触ることはせず<code>gpg</code>コマンドを使って操作することが前提になります。</p>
@@ -294,7 +294,7 @@ There is NO WARRANTY, to the extent permitted by law.
 鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>
 </code></pre></div>
 
-<p>主鍵は<code>0</code>の無期限でよいと思います。漏れたらおしまいなのでそうなんども期限更新する手間とかいろいろ考えると無期限の方が安心できる気がします。</p>
+<p>主鍵は<code>0</code>の無期限でよいと思います。漏れたらおしまいなので何度も期限更新する手間とかいろいろ考えると無期限の方が安心できる気がします。</p>
 <div class="highlight"><pre><span></span><code>鍵の有効期間は? <span class="o">(</span><span class="m">0</span><span class="o">)</span>
 鍵は無期限です
 これで正しいですか? <span class="o">(</span>y/N<span class="o">)</span> 
@@ -356,8 +356,8 @@ pub   ed25519 <span class="m">2022</span>-12-11 <span class="o">[</span>C<span c
 uid           <span class="o">[</span>  究極  <span class="o">]</span> John Doe &lt;john@doe&gt;
 </code></pre></div>
 
-<p><code>pub</code>から始まる行がpublicキーつまり公開鍵の行です。ed25519で作成日が表示され、<code>[C]</code>というCertificationの機能が付与されていることがわかります。Certificationのみなので、副鍵を作ることにしか使えません。その下の<code>uid</code>の行は、入力したUser IDの情報です。このUser IDは、主鍵の公開鍵に紐付いているので、副鍵をたくさん作っても、uidは変わりません。このuidは追加したり削除することができます。実際の運用では、主鍵の秘密鍵が唯一の本人を証明する鍵の基になるので、あまり主鍵を入れ替えて新しい鍵を使うということは少ないようです。そのため、メールアドレスが変わった・名前が変わった等の場合は、<code>uid</code>を追加していくことになります。また、削除すると今までに署名したりした時の名前・メールアドレスとの整合性や、記録が無くなってしまうので、過去に使っていたuidは削除ではなく取り消し(Revoke)という操作を行うことになります。</p>
-<p><code>究極</code>というのは英語でも<code>Ultimate</code>なので一緒なのですが、信用度のレベルです。自分自身で作ったので究極に信用できるってことです。この公開鍵を公開しても他の人に対して究極に信用できるという意味ではなく、自分が信用できるかどうかという意味です。</p>
+<p><code>pub</code>から始まる行がpublicキーつまり公開鍵の行です。ed25519で作成日が表示され、<code>[C]</code>というCertificationの機能が付与されていることがわかります。Certificationのみなので、副鍵を作ることにしか使えません。その下の<code>uid</code>の行は、入力したUser IDの情報です。このUser IDは、主鍵の公開鍵に紐付いているので、副鍵をたくさん作っても、uidは変わりません。このuidは追加したり削除することができます。実際の運用では、主鍵の秘密鍵が唯一の本人を証明する鍵の基になるので、あまり主鍵を入れ替えて新しい鍵を使うということは少ないようです。そのため、メールアドレスが変わった・名前が変わった等の場合は、<code>uid</code>を追加していくことになります。また、uidを削除すると今までに署名したした時の名前・メールアドレスとの整合性や、過去にこのuidを使っていたという記録が無くなってしまうので、過去に使っていたuidは削除ではなく取り消し(Revoke)という操作を行うことになります。</p>
+<p><code>究極</code>というのは英語でも<code>Ultimate</code>なので一緒なのですが、信用度のレベルです。自分自身で作ったので究極に信用できるということです。この公開鍵を公開しても他の人に対して究極に信用できるという意味ではなく、自分が信用できるかどうかという意味です。</p>
 <p>そして、秘密鍵の一覧を表示するには<code>gpg --list-secret-keys</code>を実行します。短縮コマンドは<code>gpg -K</code>です。先ほどと違って<code>K</code>が大文字になっています。</p>
 <div class="highlight"><pre><span></span><code>$ gpg -K
 /home/john/.gnupg/pubring.kbx
@@ -378,7 +378,7 @@ uid         <span class="o">[</span>  究極  <span class="o">]</span> John Doe 
 
 <p><code>sec</code>行の<code>ed25519</code>の後にスラッシュがあり、その後に続いている8桁の英数字が鍵IDのショートバージョンになります。オプションを<code>short</code>から<code>long</code>に変えるともっと長いバージョンになりますが、大体shortで事が足ります。今は鍵のリストを表示しても一つしか出てきませんが、いろんな鍵をインポートしていくと増えるので、自分の鍵IDを記録しておき、<code>gpg -k E8FC0031</code>や<code>gpg -K E8FC0031</code>のような形で自分の鍵を表示すると見やすくなります。</p>
 <h4>副鍵の作成</h4>
-<p>次に主鍵に紐付く副鍵を作っていきます。SignとEncryptionとAuthenticationがあればOKです。</p>
+<p>次に主鍵に紐付く副鍵を作っていきます。SignとEncryptionとAuthenticationの機能を持つ鍵を作成すればOKです。</p>
 <p>副鍵の作成は、主鍵を編集モードで開いて、鍵の追加を行う形です。鍵の編集は<code>--edit-key</code>オプションで行います。ここでも<code>--expert</code>オプションをつける必要があります。つけないと、鍵の種類の選択にRSAとDSAとElgamalしか出てきません。</p>
 <div class="highlight"><pre><span></span><code>$ gpg --expert --edit-key E8FC0031
 gpg <span class="o">(</span>GnuPG<span class="o">)</span> <span class="m">2</span>.3.3<span class="p">;</span> Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2021</span> Free Software Foundation, Inc.
@@ -671,13 +671,20 @@ Xuj8ADEKBQD/XUhKmGOO/cM1UcjXIDdsa+/iDpoj1JdLaAjcdDT/ht4A/i/N2K4+
 </code></pre></div>
 
 <p>1行目がBEGIN PGP PUBLIC KEY BLOCKとなっており、Public keyつまり公開鍵ということがわかります。</p>
+<p>以下執筆中...</p>
 <h5>秘密鍵全部のエクスポート</h5>
-<p>執筆中...</p>
 <h5>秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</h5>
-<p>執筆中...</p>
 <h5>失効証明書のエクスポート</h5>
-<p>執筆中...</p>
-<p>長くなってきたので続きは後編に</p>
+<h4>秘密鍵の削除と副鍵の秘密鍵インポート</h4>
+<h4>ファイルへの署名</h4>
+<h4>ファイルの署名の検証</h4>
+<h4>ファイルの暗号化</h4>
+<h4>ファイルの復号化</h4>
+<h4>有効期限の更新</h4>
+<h4>新たな環境で鍵のインポート</h4>
+<h4>失効させる(主鍵)</h4>
+<h4>失効させる(副鍵)</h4>
+<h4>Githubへの登録</h4>
 <div class="footnote">
 <hr>
 <ol>
