@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="./miracle-linux-9-tips-tailscale.html">
+    <meta name="twitter:title" content="tmya note ~ tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9">
+    <meta name="twitter:description" content="tailscale とは tailescaleはVPNのサービスの一種です。他のVPNとの違いは中央サーバを経由するような方法ではなく、tailscaleをインストールした端末同士で直接VPN接続を行うことになります。その為、一つのアカウントで何台もtailscaleにログインすると、お互いの端末はフルメッシュでVPN接続を行うことになります。VPN通信のプロトコルにはWireGuard®を使っています …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9"/>
+    <meta property="og:description" content="tailscale とは tailescaleはVPNのサービスの一種です。他のVPNとの違いは中央サーバを経由するような方法ではなく、tailscaleをインストールした端末同士で直接VPN接続を行うことになります。その為、一つのアカウントで何台もtailscaleにログインすると、お互いの端末はフルメッシュでVPN接続を行うことになります。VPN通信のプロトコルにはWireGuard®を使っています …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="./pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="./theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="./theme/images/icons/twitter.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="./category/blog.html">blog</a></li>
+                <li><a
+                        href="./category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="./category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                <li class="active"><a
+                        href="./category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
+                <li><a
+                        href="./category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-tailscale.html" rel="bookmark"
+                                                  title="Permalink to tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9">tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9</a></h2>
+            <div class="entry-content blog-post">
+                <h1>tailscale とは</h1>
+<p><a href="https://tailscale.com/">tailescale</a>はVPNのサービスの一種です。他のVPNとの違いは中央サーバを経由するような方法ではなく、tailscaleをインストールした端末同士で直接VPN接続を行うことになります。その為、一つのアカウントで何台もtailscaleにログインすると、お互いの端末はフルメッシュでVPN接続を行うことになります。VPN通信のプロトコルには<a href="https://www.wireguard.com/">WireGuard®</a>を使っています。WireGuardは1対1接続で接続ごとに設定が必要になります。フルメッシュにしようと思うと接続数が多く、管理が大変になってしまいます。その手間を無くしたのがtailscaleというものになっています。</p>
+<p>そして何より、LinuxをはじめWindows、MacOS、iPhoneのiOS、Androidに対応しているので手持ちのデバイスの種類にほぼ関係なくお互いを接続することが可能なのはとても便利です。</p>
+<h1>料金</h1>
+<p>2023/4/17現在では、個人利用(For personal &amp; hobby projects)であれば無料です。20台までという制限や他にも制限がありますが実質20台越えなければ個人で使う分には問題とならないと思います。<a href="https://tailscale.com/pricing/">Pricingのページ</a>を確認することをお勧めします。</p>
+<h1>アカウント作成</h1>
+<p><a href="https://tailscale.com/">公式サイト</a>上部右側の<a href="https://login.tailscale.com/start">Try for free</a>のリンクからアカウントを登録できます。今時のSSO ID プロバイダを使うタイプなのでGoogleかMicrosoftかGithubあたりのアカウントか、OIDC規格のサービスのアカウント（<a href="https://goauthentik.io/">Authentik</a>、<a href="https://dexidp.io/">Dex</a>、<a href="https://www.keycloak.org/">Keycloak</a>、<a href="https://www.ory.sh/">Ory</a>、<a href="https://zitadel.com/">Zitadel</a>等）が必要になります。</p>
+<h1>ML9へのインストールと接続</h1>
+<p>公式の案内では各ディストリビューションごとに説明がありますが、残念ながらMIRACLE LINUX 9向けがありません。でも大丈夫。RHEL9のソースをちょっとカスタムしてビルドしたのがML9なので、<a href="https://tailscale.com/download/linux/rhel-9">RHEL9の手順に従う</a>とインストールが可能です。</p>
+<h2>今回のインストールについて</h2>
+<p>今回はML9のCUIのみのマシンにインストールしました。家に置いて外出先から接続して、公共の無線LANは危ないことがあるのでこのマシンを経由してインターネットを利用する形です。外出先からこのマシンまでがVPN接続で安全になります。その為、tailscaleのインストール後にML9でIPルーティングを可能にする設定も一緒に行っているので公式のインストール手順にいくつか手順を足したり修正しています。</p>
+<h2>インストール</h2>
+<h3>リポジトリの追加</h3>
+<p>tailscaleのパッケージが置いてあるリポジトリを追加します。今後は<code>dnf update</code>でパッケージがアップデートされることになります。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--add-repo<span class="w"> </span>https://pkgs.tailscale.com/stable/rhel/9/tailscale.repo
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>tailscale
+</code></pre></div>
+
+<p>途中、リポジトリの鍵のインポートと、インストールの確認で二回、</p>
+<div class="highlight"><pre><span></span><code>これでよろしいですか?<span class="w"> </span><span class="o">[</span>y/N<span class="o">]</span>:<span class="w"> </span>
+</code></pre></div>
+
+<p>と確認されます。それぞれ<code>y</code>と入力して<code>Enterキー</code>を押して進みます。</p>
+<h3>tailscaledの有効化と起動</h3>
+<p>tailscaleのデーモンとしてtailscaledの有効化と起動をします。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>tailscaled
+</code></pre></div>
+
+<h3>Tailscale networkへの登録と認証</h3>
+<p>tailscaleにログインすると、Web上の<a href="https://login.tailscale.com/welcome">Admin console</a>に登録されてネットワーク接続や諸々の操作が可能になります。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>tailscale<span class="w"> </span>up
+</code></pre></div>
+
+<p>コマンドを入力すると下記のようなメッセージが表示されます。</p>
+<div class="highlight"><pre><span></span><code>To<span class="w"> </span>authenticate,<span class="w"> </span>visit:
+
+<span class="w">        </span>https://login.tailscale.com/a/XXXXXXXXXXXX
+</code></pre></div>
+
+<p>表示された<code>https://</code>以下のURLに別のマシンのブラウザからアクセスすると、SSOを用いたログイン画面が表示されます。アカウント作成時に使ったアカウントでログインを行いましょう。</p>
+<p>ログインすると黒いボタンで<code>Connect</code>というのが出てくるので、クリックすると先ほど設定していたマシンがtailscaleに接続されます。</p>
+<h2>ルーティング許可とexit node</h2>
+<p>前述の手順までで、他にtailscaleに接続したマシンがあればもうお互いにVPN通信を行うことが可能です。自分のIPv4アドレスは<code>tailscale ip -4</code>で取得することができます。</p>
+<p>今回は外出先からこのマシンに接続した上で、このマシンからインターネットに通信が出ていく形にしたいので、exit nodeという機能を使います。exit nodeは、exit nodeとなったマシンを経由してからインターネットへの通信を行う機能です。exit nodeの設定は、まずマシン側でexit nodeになることを許可した上で、Web上の<a href="https://login.tailscale.com/welcome">Admin console</a>で設定を行います。</p>
+<p>またLinuxでは基本的にどのディストリビューションも似ていますが、IPプロトコルをあるインタフェースから他のインタフェースに転送するにはKernelにIP転送を許可する設定を行わなければできません。その設定も合わせて行います。</p>
+<h3>IP転送を有効にする</h3>
+<p>IP転送を有効にする設定をファイルに書き込みます。やり方は<a href="https://tailscale.com/kb/1103/exit-nodes/">公式サイトのExit Nodes</a>に記載があり、そのまま実行します。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.ip_forward = 1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.d/99-tailscale.conf
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv6.conf.all.forwarding = 1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.d/99-tailscale.conf
+$<span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p<span class="w"> </span>/etc/sysctl.d/99-tailscale.conf
+</code></pre></div>
+
+<p>ML9では<code>firewalld</code>が稼働しているので<a href="https://github.com/tailscale/tailscale/issues/3416">既知の問題を回避したいので念のため</a>次のコマンドも実行します。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-masquerade
+</code></pre></div>
+
+<h3>exit nodeとして広告する</h3>
+<p>広告といっても全世界にではなく、自分のアカウントの中で他のマシンに広告するだけです。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>tailscale<span class="w"> </span>up<span class="w"> </span>--advertise-exit-node
+</code></pre></div>
+
+<h3>exit nodeを有効にする</h3>
+<p>Web上の<a href="https://login.tailscale.com/admin/machines">Admin consoleのMachinesのページ</a>にアクセスして、対象のマシンの行の一番右側の<code>・・・</code>をクリックして<code>Edit route settings...</code>をクリックします。</p>
+<p>新しく表示された子ウィンドウの一番下に、<code>Use as exit node</code>スライドボタンが表示されているので、クリックしてボタンの一部が青くなったら有効になります。右上の<code>×</code>をクリックして閉じてください。</p>
+<h1>他のマシンからexit node経由でインターネットへ接続する</h1>
+<p>Windowsへの<a href="https://tailscale.com/download/windows">インストール方法</a>はインストーラーを起動してログインするだけなので割愛します。</p>
+<p>Windowsでtailscaleをインストールしたマシンからは、タスクトレイのtailscaleアイコンを<code>右クリック</code>→<code>Exit node</code>をクリック→対象のマシンをクリックで完了です。</p>
+<p>直接インターネットに接続するように戻すには、同じく<code>Exit node</code>から<code>None</code>を選択すると元に戻ります。</p>
+<h1>MagicDNS</h1>
+<p>tailscaleにはWireGuardにはないオリジナル機能でMagicDNSという機能があり、最初から有効になっています。<a href="https://login.tailscale.com/admin/machines">Admin consoleのMachinesのページ</a>に載っているマシン名、それぞれのマシンの一番左の名前で名前解決ができます。ですので、わざわざIPアドレスを調べなくてもマシン名で通信することができます。つまり<code>ping 100.x.x.x</code>とやらなくても、<code>ping hogehoge</code>で通信できます。</p>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="./author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="./category/miracle-linux-9.html" rel="bookmark"
+                                               title="Permalink to MIRACLE LINUX 9">[ MIRACLE LINUX 9 ]</a></span>
+                <span class="post_date">Thu 30 March 2023</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=./miracle-linux-9-tips-tailscale.html&text=tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9&via="><img
+                            src="./theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=./miracle-linux-9-tips-tailscale.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="./theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=./miracle-linux-9-tips-tailscale.html&t=tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9"><img
+                            src="./theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=./miracle-linux-9-tips-tailscale.html&title=tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="./theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9&amp;body=Viens découvrir un article à propos de [tailscaleを使って簡単VPNの構築 on MIRACLE LINUX 9] sur le site de Akio Tomita. ./miracle-linux-9-tips-tailscale.html"
+                            title="Share by Email" target="_blank"><img
+                            src="./theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>

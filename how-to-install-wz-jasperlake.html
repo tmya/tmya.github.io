@@ -94,7 +94,7 @@
 早速画面の端っこまで表示されずに見切れていると思いますが、ギリギリボタンが画面内に収まっているので進めます。</p>
 <p><img alt="インストーラー画面" src="./images/ml-crop-installer.jpg"></p>
 <p>インストールが終了してデスクトップ画面が表示されたら、<code>端末</code>を起動します。そしてグラフィック関係のエラーが出ているのを確認します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> dmesg <span class="p">|</span> grep i915
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>i915
 </code></pre></div>
 
 <p>色々長いのが出てくるかもしれませんが、下記のような一文が確認できると思います。
@@ -113,7 +113,7 @@
 </code></pre></div>
 
 <p>GRUBの設定を変更したのでアップデートします。なんとこのBeelink U59は現代においてBIOSを使用しているので、今時のEFIではなくBIOSの方のディレクトリのgrub.cfgを生成します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
 </code></pre></div>
 
 <p>ここまで設定を終えたら再起動してみましょう。手元では4Kサイズまで選ぶことができました。</p>

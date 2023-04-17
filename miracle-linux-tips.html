@@ -117,22 +117,22 @@ CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその�
 <img alt="みらくるちゃんとカーネルくん" src="./images/miracle_kernel.jpg"></p>
 <h3>ちょっとしたメモ</h3>
 <h4>ホームディレクトリのフォルダ名を英語にする。</h4>
-<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C xdg-user-dirs-gtk-update
+<div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>xdg-user-dirs-gtk-update
 </code></pre></div>
 
 <h4>RDPサーバを動かす</h4>
 <p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">ここ</a>を参考にEPELを有効にした後下記のコマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install xrdp tigervnc-server
-$ sudo systemctl start xrdp
-$ sudo systemctl <span class="nb">enable</span> xrdp
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>xrdp<span class="w"> </span>tigervnc-server
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>xrdp
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>xrdp
 </code></pre></div>
 
 <p>GNOME classicで使いたい場合は追加で下記のコマンドを実行する。元に戻す場合は<code>/etc/sysconfig/desktop</code>を削除の事。</p>
-<div class="highlight"><pre><span></span><code>$ sudo sh -c <span class="s1">&#39;echo &quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&quot; &gt; /etc/sysconfig/desktop&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&quot; &gt; /etc/sysconfig/desktop&#39;</span>
 </code></pre></div>
 
 <h4>C# sdkのインストール</h4>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install dotnet-sdk-5.0
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>dotnet-sdk-5.0
 </code></pre></div>
 
 <div class="footnote">

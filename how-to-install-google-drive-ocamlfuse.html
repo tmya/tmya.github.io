@@ -96,8 +96,8 @@
 <li>インストールは<a href="https://brew.sh/index_ja">公式サイト</a>に倣えば簡単。</li>
 </ul>
 <p>Homebrew導入後は下記のようなコマンドを実行するように案内されるので実行する。</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span> &gt;&gt; /home/<span class="sb">`</span>whoami<span class="sb">`</span>/.bash_profile
-$ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew shellenv<span class="k">)</span><span class="s2">&quot;</span>   
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/<span class="sb">`</span>whoami<span class="sb">`</span>/.bash_profile
+$<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew<span class="w"> </span>shellenv<span class="k">)</span><span class="s2">&quot;</span><span class="w">   </span>
 </code></pre></div>
 
 <h3>手順</h3>
@@ -107,46 +107,46 @@ $ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(<
 <li>google-drive-ocamlfuseの起動と設定</li>
 </ol>
 <h2>opamのインストールと初期設定</h2>
-<div class="highlight"><pre><span></span><code>$ brew install opam
-$ opam init
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>opam
+$<span class="w"> </span>opam<span class="w"> </span>init
 </code></pre></div>
 
 <p>少し待つと、<code>Do you want opam to modify ~/.bash_profile? [N/y/f]</code>とか聞かれるので、<code>y</code>を入力してからEnter。その後数分待ちます。最後に<code>Done</code>と表示されて完了です。</p>
 <h2>google-drive-ocamlfuseのインストール</h2>
 <p>下記コマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>opam<span class="w"> </span>install<span class="w"> </span>google-drive-ocamlfuse
 </code></pre></div>
 
 <p><code>Do you want to continu? [Y/n]</code>と聞かれるのでそのままEnter。</p>
 <p>しかしここで<code>conf-gmp</code>, <code>conf-libcurl</code>, <code>conf-libfuse</code>のインストールに失敗してしまいました。必要なパッケージをインストールします。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install libcurl-devel fuse-devel gmp-devel
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>libcurl-devel<span class="w"> </span>fuse-devel<span class="w"> </span>gmp-devel
 </code></pre></div>
 
 <p>【2022/2/18追記】別のマシンではconf-sqlite3も必要だったので、追加でパッケージインストールが必要かもしれません。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install sqlite-devel
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>sqlite-devel
 </code></pre></div>
 
 <p>もう一度google-drive-ocamlfuseをインストールします。</p>
-<div class="highlight"><pre><span></span><code>$ opam install google-drive-ocamlfuse
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>opam<span class="w"> </span>install<span class="w"> </span>google-drive-ocamlfuse
 </code></pre></div>
 
 <p>今回は成功しました。下記のコマンドを実行すると環境変数が今のシェルに読み込まれます。</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">eval</span> <span class="k">$(</span>opam env<span class="k">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>opam<span class="w"> </span>env<span class="k">)</span>
 </code></pre></div>
 
 <h2>google-drive-ocamlfuseの起動と設定</h2>
 <p>初回起動でgoogleの認証を行います。</p>
-<div class="highlight"><pre><span></span><code>$ google-drive-ocamlfuse
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>google-drive-ocamlfuse
 </code></pre></div>
 
 <p>ブラウザが立ち上がり、Googleアカウントでのログインが促されるのでログインします。Google Driveへのアクセスが要求されます。サードパーティのソフトウェアなので、信じるかどうかは各自で判断するしかありません。</p>
 <p>ログインして正常に通信が行われていればコンソールに下記のようなメッセージが表示されます。</p>
-<div class="highlight"><pre><span></span><code>Access token retrieved correctly.
+<div class="highlight"><pre><span></span><code>Access<span class="w"> </span>token<span class="w"> </span>retrieved<span class="w"> </span>correctly.
 </code></pre></div>
 
 <p>ユーザのホームディレクトリ直下にフォルダを作り、そこにマウントします。</p>
-<div class="highlight"><pre><span></span><code>$ mkdir ~/googledrive
-$ google-drive-ocamlfuse ~/googledrive
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>~/googledrive
+$<span class="w"> </span>google-drive-ocamlfuse<span class="w"> </span>~/googledrive
 </code></pre></div>
 
 <p>マウントが完了してファイル操作が可能になります。</p>

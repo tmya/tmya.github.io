@@ -92,9 +92,9 @@
 <p>sudo dnf install texinfo lzip</p>
 <h3>nkfパッケージはどこ</h3>
 <p>とりあえず<code>dnf</code>でインストールしようとすると見つかりません。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install nkf
-一致した引数がありません: nkf
-エラー: 一致するものが見つかりません: nkf
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nkf
+一致した引数がありません:<span class="w"> </span>nkf
+エラー:<span class="w"> </span>一致するものが見つかりません:<span class="w"> </span>nkf
 </code></pre></div>
 
 <p>MLでは<a href="https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/">PowerTools リポジトリと思われるURL</a>に存在するが、まだ準備中(2021/11/9現在)のようで<code>repomd.xml</code>が存在しません。つまりリポジトリの追加ができません。11月上旬には公開予定<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>とのこと。</p>
@@ -103,48 +103,48 @@
 <p>リポジトリをミラーリングして<code>createrepo</code>という手もあるけれどそろそろ公開してくれると期待して今回はやりません。</p>
 <h3>nkfのインストール</h3>
 <p>パッケージだけダウンロードして<code>localinstall</code>オプションを使ってインストールしてみます。依存関係に問題がでないのでこれだけで導入可能です。</p>
-<div class="highlight"><pre><span></span><code>$ wget https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
-$ sudo dnf localinstall ./nkf-2.1.4-8.el8.x86_64.rpm
-メタデータの期限切れの最終確認: <span class="m">3</span>:06:36 時間前の 2021年11月09日 09時21分29秒 に実施しました。
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>wget<span class="w"> </span>https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>localinstall<span class="w"> </span>./nkf-2.1.4-8.el8.x86_64.rpm
+メタデータの期限切れの最終確認:<span class="w"> </span><span class="m">3</span>:06:36<span class="w"> </span>時間前の<span class="w"> </span>2021年11月09日<span class="w"> </span>09時21分29秒<span class="w"> </span>に実施しました。
 依存関係が解決しました。
 <span class="o">========================================================================================================================</span>
- パッケージ            アーキテクチャー         バージョン                         リポジトリー                   <span class="nv">サイズ</span>
+<span class="w"> </span>パッケージ<span class="w">            </span>アーキテクチャー<span class="w">         </span>バージョン<span class="w">                         </span>リポジトリー<span class="w">                   </span><span class="nv">サイズ</span>
 <span class="o">========================================================================================================================</span>
 インストール:
- nkf                   x86_64                   <span class="m">1</span>:2.1.4-8.el8                      @commandline                   <span class="m">143</span> k
+<span class="w"> </span>nkf<span class="w">                   </span>x86_64<span class="w">                   </span><span class="m">1</span>:2.1.4-8.el8<span class="w">                      </span>@commandline<span class="w">                   </span><span class="m">143</span><span class="w"> </span>k
 
 <span class="nv">トランザクションの概要</span>
 <span class="o">========================================================================================================================</span>
-インストール  <span class="m">1</span> パッケージ
+インストール<span class="w">  </span><span class="m">1</span><span class="w"> </span>パッケージ
 
-合計サイズ: <span class="m">143</span> k
-インストール後のサイズ: <span class="m">309</span> k
-これでよろしいですか? <span class="o">[</span>y/N<span class="o">]</span>:
+合計サイズ:<span class="w"> </span><span class="m">143</span><span class="w"> </span>k
+インストール後のサイズ:<span class="w"> </span><span class="m">309</span><span class="w"> </span>k
+これでよろしいですか?<span class="w"> </span><span class="o">[</span>y/N<span class="o">]</span>:
 </code></pre></div>
 
 <p><code>y</code>を押して<code>Enter</code>でインストールできます。</p>
-<div class="highlight"><pre><span></span><code>これでよろしいですか? <span class="o">[</span>y/N<span class="o">]</span>: y
+<div class="highlight"><pre><span></span><code>これでよろしいですか?<span class="w"> </span><span class="o">[</span>y/N<span class="o">]</span>:<span class="w"> </span>y
 パッケージのダウンロード:
 トランザクションの確認を実行中
 トランザクションの確認に成功しました。
 トランザクションのテストを実行中
 トランザクションのテストに成功しました。
 トランザクションを実行中
-  準備             :                                                                                                <span class="m">1</span>/1
-  インストール中   : nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
-  scriptletの実行中: nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
-  検証             : nkf-1:2.1.4-8.el8.x86_64                                                                       <span class="m">1</span>/1
+<span class="w">  </span>準備<span class="w">             </span>:<span class="w">                                                                                                </span><span class="m">1</span>/1
+<span class="w">  </span>インストール中<span class="w">   </span>:<span class="w"> </span>nkf-1:2.1.4-8.el8.x86_64<span class="w">                                                                       </span><span class="m">1</span>/1
+<span class="w">  </span>scriptletの実行中:<span class="w"> </span>nkf-1:2.1.4-8.el8.x86_64<span class="w">                                                                       </span><span class="m">1</span>/1
+<span class="w">  </span>検証<span class="w">             </span>:<span class="w"> </span>nkf-1:2.1.4-8.el8.x86_64<span class="w">                                                                       </span><span class="m">1</span>/1
 
 インストール済み:
-  nkf-1:2.1.4-8.el8.x86_64
+<span class="w">  </span>nkf-1:2.1.4-8.el8.x86_64
 
 完了しました!
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>$ nkf -v
-Network Kanji Filter Version <span class="m">2</span>.1.4 <span class="o">(</span><span class="m">2015</span>-12-12<span class="o">)</span>
-Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1987</span>, FUJITSU LTD. <span class="o">(</span>I.Ichikawa<span class="o">)</span>.
-Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1996</span>-2015, The nkf Project.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nkf<span class="w"> </span>-v
+Network<span class="w"> </span>Kanji<span class="w"> </span>Filter<span class="w"> </span>Version<span class="w"> </span><span class="m">2</span>.1.4<span class="w"> </span><span class="o">(</span><span class="m">2015</span>-12-12<span class="o">)</span>
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">1987</span>,<span class="w"> </span>FUJITSU<span class="w"> </span>LTD.<span class="w"> </span><span class="o">(</span>I.Ichikawa<span class="o">)</span>.
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">1996</span>-2015,<span class="w"> </span>The<span class="w"> </span>nkf<span class="w"> </span>Project.
 </code></pre></div>
 
 <p>問題なくインストールできてます。が、バージョンを見ると現行の一つ前のバージョンですね。バグを踏まなければ使えるでしょう。</p>

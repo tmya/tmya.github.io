@@ -101,63 +101,63 @@
 <h3>PowerShellを開く</h3>
 <p>スタートメニューの検索窓に、<code>powershell</code>と入力してPowerShellを起動します。下から続くコマンドはすべてPowerShellのウィンドウに打ち込むかコピペしてください。また、行頭の<code>&gt;</code>はプロンプトを表すので、入力しないでください。PowerShellの画面上、行頭には<code>PS C:\XXXXXX\XXXX&gt;</code>と表示されていると思いますが、その部分を表す為に<code>&gt;</code>と表示しています。</p>
 <h3>WSL2の確認と準備(環境によっては必要が無い場合があります)</h3>
-<div class="highlight"><pre><span></span><code>&gt; wsl --set-default-version <span class="m">2</span>
-Windows の仮想マシン プラットフォーム機能を有効にして、BIOS で仮想化が有効になっていることを確認してください。
-詳細については、https://aka.ms/wsl2-install を参照してください
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>wsl<span class="w"> </span>--set-default-version<span class="w"> </span><span class="m">2</span>
+Windows<span class="w"> </span>の仮想マシン<span class="w"> </span>プラットフォーム機能を有効にして、BIOS<span class="w"> </span>で仮想化が有効になっていることを確認してください。
+詳細については、https://aka.ms/wsl2-install<span class="w"> </span>を参照してください
 </code></pre></div>
 
 <p><code>Windowsの機能の有効化または無効化</code>で仮想マシンプラットフォームのチェックが外れていたのでチェックをして再起動しました。</p>
 <p><img alt="仮想マシンプラットフォームの有効化" src="./images/win_virt_plt.jpg"></p>
 <p>もう一度実行すると切り替えができました。</p>
-<div class="highlight"><pre><span></span><code>&gt; wsl --set-default-version <span class="m">2</span>
-WSL <span class="m">2</span> との主な違いについては、https://aka.ms/wsl2 を参照してください
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>wsl<span class="w"> </span>--set-default-version<span class="w"> </span><span class="m">2</span>
+WSL<span class="w"> </span><span class="m">2</span><span class="w"> </span>との主な違いについては、https://aka.ms/wsl2<span class="w"> </span>を参照してください
 この操作を正しく終了しました。
 </code></pre></div>
 
 <h3>CentOSの導入</h3>
 <p>WSL公式にはCentOSが用意されていません。またCentOSの公開されているWSL向けイメージも古いものが多い状況です。その為CentOS 8.4を用意したので使ってみてください。（無保証・β）</p>
 <p>まずはCentOS 8.4のイメージをダウンロードして解凍します。</p>
-<div class="highlight"><pre><span></span><code><span class="p">&gt;</span> <span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">tmya</span><span class="p">/</span><span class="n">WSL-CentOS8</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">v0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">2105</span><span class="p">/</span><span class="n">centos8</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="p">((</span><span class="nb">Convert-Path</span> <span class="p">.)</span> <span class="p">+</span> <span class="s2">&quot;\\centos8.zip&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">&gt;</span> <span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">tmya</span><span class="p">/</span><span class="n">WSL-CentOS8</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">v0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">2105</span><span class="p">/</span><span class="n">centos8</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="p">((</span><span class="nb">Convert-Path</span> <span class="p">.)</span> <span class="p">+</span> <span class="s2">&quot;\\centos8.zip&quot;</span><span class="p">)</span>
 <span class="p">&gt;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="p">((</span><span class="nb">Convert-Path</span> <span class="p">.)</span> <span class="p">+</span> <span class="s2">&quot;\\centos8.zip&quot;</span><span class="p">)</span> <span class="n">-DestinationPath</span> <span class="p">(</span><span class="nb">Convert-Path</span> <span class="p">.)</span>
 </code></pre></div>
 
 <p>CentOSを導入する為のフォルダを作成します。今回はC:\wsl\ML以下にインストールします。後程MIRACLE LINUXに移行するのでMLという名前にしています。好きな場所でも良いと思いますが、その場合は後に続くコマンドのパスを直してください。</p>
-<div class="highlight"><pre><span></span><code>&gt; New-Item -ItemType Directory -Force -Path C:<span class="se">\w</span>sl<span class="se">\M</span>L
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>New-Item<span class="w"> </span>-ItemType<span class="w"> </span>Directory<span class="w"> </span>-Force<span class="w"> </span>-Path<span class="w"> </span>C:<span class="se">\w</span>sl<span class="se">\M</span>L
 </code></pre></div>
 
 <p><strong>NOTE:</strong> インポートせずに通常通りWSLでインストールする場合は%homepath%\AppData\Local\Packages\以下になる模様です。</p>
 <p>そしてWSLにインポートします。以下の様なメッセージが表示された場合はリンクに従ってパッケージをインストールしてください。表示されなければもう一度このコマンドを実行する必要はありません。</p>
-<div class="highlight"><pre><span></span><code>&gt; wsl --import ML c:<span class="se">\w</span>sl<span class="se">\M</span>L .<span class="se">\c</span>entos8.tar
-WSL <span class="m">2</span> を実行するには、カーネル コンポーネントの更新が必要です。詳細については https://aka.ms/wsl2kernel を参照してください
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>wsl<span class="w"> </span>--import<span class="w"> </span>ML<span class="w"> </span>c:<span class="se">\w</span>sl<span class="se">\M</span>L<span class="w"> </span>.<span class="se">\c</span>entos8.tar
+WSL<span class="w"> </span><span class="m">2</span><span class="w"> </span>を実行するには、カーネル<span class="w"> </span>コンポーネントの更新が必要です。詳細については<span class="w"> </span>https://aka.ms/wsl2kernel<span class="w"> </span>を参照してください
 </code></pre></div>
 
 <p><a href="https://aka.ms/wsl2kernel">手順4 - Linux カーネル更新プログラム パッケージをダウンロードする</a></p>
 <p><img alt="Kernelのアップデート" src="./images/win-wsl-kernel-update.jpg"></p>
 <p>もう一度実行するとエラーは表示されません。</p>
-<div class="highlight"><pre><span></span><code>&gt; wsl --import ML c:<span class="se">\w</span>sl<span class="se">\M</span>L .<span class="se">\c</span>entos8.tar
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>wsl<span class="w"> </span>--import<span class="w"> </span>ML<span class="w"> </span>c:<span class="se">\w</span>sl<span class="se">\M</span>L<span class="w"> </span>.<span class="se">\c</span>entos8.tar
 </code></pre></div>
 
 <p>ディストリビューション一覧を表示してみます。インポートできているようです。</p>
-<div class="highlight"><pre><span></span><code>&gt;  wsl -l
-Linux 用 Windows サブシステム ディストリビューション:
-ML <span class="o">(</span>既定<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>&gt;<span class="w">  </span>wsl<span class="w"> </span>-l
+Linux<span class="w"> </span>用<span class="w"> </span>Windows<span class="w"> </span>サブシステム<span class="w"> </span>ディストリビューション:
+ML<span class="w"> </span><span class="o">(</span>既定<span class="o">)</span>
 </code></pre></div>
 
 <p>wslコマンドに<code>-d</code>オプションと名前を与えると、そのディストリビューションで起動します。</p>
-<div class="highlight"><pre><span></span><code>&gt; wsl -d ML
-<span class="o">[</span>root@PC user<span class="o">]</span><span class="c1">#</span>
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>wsl<span class="w"> </span>-d<span class="w"> </span>ML
+<span class="o">[</span>root@PC<span class="w"> </span>user<span class="o">]</span><span class="c1">#</span>
 </code></pre></div>
 
 <p>LINUXらしいプロンプトに切り替わりましたので、LINUXコマンドで確認してみましょう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/redhat-release</span>
-CentOS Linux release <span class="m">8</span>.4.2105
+CentOS<span class="w"> </span>Linux<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.4.2105
 <span class="c1"># pwd</span>
 /mnt/c/Users/user
 </code></pre></div>
 
 <p>どうやらCentOSになっているようです。カレントディレクトリはWindowsユーザのホームフォルダになっています。作業するのに分かりやすくするためLinuxのホームディレクトリに移動しておきましょう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cd</span>
-<span class="o">[</span>root@pc ~<span class="o">]</span><span class="c1">#</span>
+<span class="o">[</span>root@pc<span class="w"> </span>~<span class="o">]</span><span class="c1">#</span>
 <span class="c1"># pwd</span>
 /root
 </code></pre></div>
@@ -166,28 +166,28 @@ CentOS Linux release <span class="m">8</span>.4.2105
 <h3>移行ツールを使ってのMLへの移行</h3>
 <p>移行ツールをダウンロードします。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># curl -LO https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh</span>
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-<span class="m">100</span> <span class="m">20833</span>  <span class="m">100</span> <span class="m">20833</span>    <span class="m">0</span>     <span class="m">0</span>  <span class="m">98734</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:-- <span class="m">98734</span>
+<span class="w">  </span>%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+<span class="m">100</span><span class="w"> </span><span class="m">20833</span><span class="w">  </span><span class="m">100</span><span class="w"> </span><span class="m">20833</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">98734</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span><span class="m">98734</span>
 </code></pre></div>
 
 <p>マイグレーションツールを実行します。ブートローダーはありませんし切り替える必要がないので./migrate2ml.sh --minimalでも良いのですが、商標の入ったパッケージの切り替えを行いたいので--coreオプションにしています。そのため最後にgrub2パッケージのエラー表示がありますがおそらく大丈夫だと思います。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># bash ./migrate2ml.sh --core</span>
 
 ~略~
-Failed to upgrade grub2 packages
+Failed<span class="w"> </span>to<span class="w"> </span>upgrade<span class="w"> </span>grub2<span class="w"> </span>packages
 Exit.
 </code></pre></div>
 
 <p>確認してみましょう。商標やリポジトリが切り替わっています。localeはそのうち直しましょう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/redhat-release</span>
-MIRACLE LINUX release <span class="m">8</span>.4 <span class="o">(</span>Peony<span class="o">)</span>
+MIRACLE<span class="w"> </span>LINUX<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.4<span class="w"> </span><span class="o">(</span>Peony<span class="o">)</span>
 <span class="c1"># dnf repolist</span>
-Failed to <span class="nb">set</span> locale, defaulting to C.UTF-8
-Last metadata expiration check: <span class="m">0</span>:03:08 ago on Mon Nov <span class="m">22</span> <span class="m">02</span>:06:52 <span class="m">2021</span>.
-repo id                                           repo name                                                       status
-ML8-AppStream                                     MIRACLE LINUX  - AppStream                                      <span class="m">14445</span>
-ML8-BaseOS                                        MIRACLE LINUX  - BaseOS                                          <span class="m">6170</span>
+Failed<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>locale,<span class="w"> </span>defaulting<span class="w"> </span>to<span class="w"> </span>C.UTF-8
+Last<span class="w"> </span>metadata<span class="w"> </span>expiration<span class="w"> </span>check:<span class="w"> </span><span class="m">0</span>:03:08<span class="w"> </span>ago<span class="w"> </span>on<span class="w"> </span>Mon<span class="w"> </span>Nov<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">02</span>:06:52<span class="w"> </span><span class="m">2021</span>.
+repo<span class="w"> </span>id<span class="w">                                           </span>repo<span class="w"> </span>name<span class="w">                                                       </span>status
+ML8-AppStream<span class="w">                                     </span>MIRACLE<span class="w"> </span>LINUX<span class="w">  </span>-<span class="w"> </span>AppStream<span class="w">                                      </span><span class="m">14445</span>
+ML8-BaseOS<span class="w">                                        </span>MIRACLE<span class="w"> </span>LINUX<span class="w">  </span>-<span class="w"> </span>BaseOS<span class="w">                                          </span><span class="m">6170</span>
 </code></pre></div>
 
 <p>パッケージのアップデートを行います。</p>

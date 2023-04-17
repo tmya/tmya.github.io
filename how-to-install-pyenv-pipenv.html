@@ -106,119 +106,119 @@
 </ul>
 <h2>Install require components</h2>
 <p>(Raspberry Pi) &gt;</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>libbz2-dev<span class="w"> </span>libreadline-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>wget<span class="w"> </span>curl<span class="w"> </span>llvm<span class="w"> </span>libncurses5-dev<span class="w"> </span>libncursesw5-dev<span class="w"> </span>xz-utils<span class="w"> </span>tk-dev<span class="w"> </span>libffi-dev<span class="w"> </span>liblzma-dev<span class="w"> </span>python-openssl<span class="w"> </span>git
 </code></pre></div>
 
 <p>&lt; (Raspberry Pi)</p>
 <p>(MacOS) &gt;</p>
-<div class="highlight"><pre><span></span><code>brew install readline xz
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>readline<span class="w"> </span>xz
 </code></pre></div>
 
 <p>&lt; (MacOS)</p>
 <h2>Install pyenv</h2>
 <p>(Raspberry Pi)</p>
 <p>First, install pyenv from CUI command.</p>
-<div class="highlight"><pre><span></span><code>$ curl https://pyenv.run <span class="p">|</span> bash
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://pyenv.run<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </code></pre></div>
 
 <p>When install finished, You'll see warnings like below.</p>
-<div class="highlight"><pre><span></span><code>WARNING: seems you still have not added <span class="s1">&#39;pyenv&#39;</span> to the load path.
+<div class="highlight"><pre><span></span><code>WARNING:<span class="w"> </span>seems<span class="w"> </span>you<span class="w"> </span>still<span class="w"> </span>have<span class="w"> </span>not<span class="w"> </span>added<span class="w"> </span><span class="s1">&#39;pyenv&#39;</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>load<span class="w"> </span>path.
 
 <span class="c1"># Load pyenv automatically by adding</span>
 <span class="c1"># the following to ~/.bashrc:</span>
 
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
-<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>virtualenv-init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 
 <p>Edit ~/.bashrc file and add three rows.</p>
-<div class="highlight"><pre><span></span><code>$ micro ~/.bashrc
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>micro<span class="w"> </span>~/.bashrc
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
-<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/tmya/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>virtualenv-init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 
 <p>Reload .bashrc file.</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> ~/.bashrc
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 
 <p>&lt; (Raspberry Pi)</p>
 <p>(MacOS)</p>
-<div class="highlight"><pre><span></span><code>$ brew install pyenv
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>pyenv
 </code></pre></div>
 
 <p>&lt; (MacOS)</p>
 <h2>Install pipenv.</h2>
-<div class="highlight"><pre><span></span><code>$ python -m pip install pipenv
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipenv
 </code></pre></div>
 
 <p>or</p>
-<div class="highlight"><pre><span></span><code>$ python3 -m pip install pipenv
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipenv
 </code></pre></div>
 
 <h2>How to use</h2>
 <h3>Install Python 3.8.2 or what you need.</h3>
-<div class="highlight"><pre><span></span><code>$ pyenv install <span class="m">3</span>.8.2
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.8.2
 </code></pre></div>
 
 <h2>Create a local environment.</h2>
 <p>First check the default Python version</p>
-<div class="highlight"><pre><span></span><code>$ python --version
-Python <span class="m">3</span>.7.3
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>--version
+Python<span class="w"> </span><span class="m">3</span>.7.3
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>$ mkdir mypy
-$ <span class="nb">cd</span> mypy
-$ pipenv install --python <span class="m">3</span>.8.2
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>mypy
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mypy
+$<span class="w"> </span>pipenv<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.8.2
 
-Creating a virtualenv <span class="k">for</span> this project…
-Pipfile: /home/tmya/mypy/Pipfile
-Using /home/tmya/.pyenv/versions/3.8.2/bin/python3.8 <span class="o">(</span><span class="m">3</span>.8.2<span class="o">)</span> to create virtualenv…
-⠦ Creating virtual environment...created virtual environment CPython3.8.2.final.0-32 in 1015ms
-  creator CPython3Posix<span class="o">(</span><span class="nv">dest</span><span class="o">=</span>/home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka, <span class="nv">clear</span><span class="o">=</span>False, <span class="nv">global</span><span class="o">=</span>False<span class="o">)</span>
-  seeder FromAppData<span class="o">(</span><span class="nv">download</span><span class="o">=</span>False, <span class="nv">pip</span><span class="o">=</span>latest, <span class="nv">setuptools</span><span class="o">=</span>latest, <span class="nv">wheel</span><span class="o">=</span>latest, <span class="nv">via</span><span class="o">=</span>copy, <span class="nv">app_data_dir</span><span class="o">=</span>/home/tmya/.local/share/virtualenv/seed-app-data/v1.0.1<span class="o">)</span>
-  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Creating<span class="w"> </span>a<span class="w"> </span>virtualenv<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>project…
+Pipfile:<span class="w"> </span>/home/tmya/mypy/Pipfile
+Using<span class="w"> </span>/home/tmya/.pyenv/versions/3.8.2/bin/python3.8<span class="w"> </span><span class="o">(</span><span class="m">3</span>.8.2<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>virtualenv…
+⠦<span class="w"> </span>Creating<span class="w"> </span>virtual<span class="w"> </span>environment...created<span class="w"> </span>virtual<span class="w"> </span>environment<span class="w"> </span>CPython3.8.2.final.0-32<span class="w"> </span><span class="k">in</span><span class="w"> </span>1015ms
+<span class="w">  </span>creator<span class="w"> </span>CPython3Posix<span class="o">(</span><span class="nv">dest</span><span class="o">=</span>/home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka,<span class="w"> </span><span class="nv">clear</span><span class="o">=</span>False,<span class="w"> </span><span class="nv">global</span><span class="o">=</span>False<span class="o">)</span>
+<span class="w">  </span>seeder<span class="w"> </span>FromAppData<span class="o">(</span><span class="nv">download</span><span class="o">=</span>False,<span class="w"> </span><span class="nv">pip</span><span class="o">=</span>latest,<span class="w"> </span><span class="nv">setuptools</span><span class="o">=</span>latest,<span class="w"> </span><span class="nv">wheel</span><span class="o">=</span>latest,<span class="w"> </span><span class="nv">via</span><span class="o">=</span>copy,<span class="w"> </span><span class="nv">app_data_dir</span><span class="o">=</span>/home/tmya/.local/share/virtualenv/seed-app-data/v1.0.1<span class="o">)</span>
+<span class="w">  </span>activators<span class="w"> </span>BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
 
-✔ Successfully created virtual environment! 
-Virtualenv location: /home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka
-Creating a Pipfile <span class="k">for</span> this project…
-Pipfile.lock not found, creating…
-Locking <span class="o">[</span>dev-packages<span class="o">]</span> dependencies…
-Locking <span class="o">[</span>packages<span class="o">]</span> dependencies…
-Updated Pipfile.lock <span class="o">(</span>db4242<span class="o">)</span>!
-Installing dependencies from Pipfile.lock <span class="o">(</span>db4242<span class="o">)</span>…
-  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ <span class="m">0</span>/0 — <span class="m">00</span>:00:00
-To activate this project<span class="err">&#39;</span>s virtualenv, run pipenv shell.
-Alternatively, run a <span class="nb">command</span> inside the virtualenv with pipenv run.
+✔<span class="w"> </span>Successfully<span class="w"> </span>created<span class="w"> </span>virtual<span class="w"> </span>environment!<span class="w"> </span>
+Virtualenv<span class="w"> </span>location:<span class="w"> </span>/home/tmya/.local/share/virtualenvs/mypy-udRPw8Ka
+Creating<span class="w"> </span>a<span class="w"> </span>Pipfile<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>project…
+Pipfile.lock<span class="w"> </span>not<span class="w"> </span>found,<span class="w"> </span>creating…
+Locking<span class="w"> </span><span class="o">[</span>dev-packages<span class="o">]</span><span class="w"> </span>dependencies…
+Locking<span class="w"> </span><span class="o">[</span>packages<span class="o">]</span><span class="w"> </span>dependencies…
+Updated<span class="w"> </span>Pipfile.lock<span class="w"> </span><span class="o">(</span>db4242<span class="o">)</span>!
+Installing<span class="w"> </span>dependencies<span class="w"> </span>from<span class="w"> </span>Pipfile.lock<span class="w"> </span><span class="o">(</span>db4242<span class="o">)</span>…
+<span class="w">  </span>🐍<span class="w">   </span>▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉<span class="w"> </span><span class="m">0</span>/0<span class="w"> </span>—<span class="w"> </span><span class="m">00</span>:00:00
+To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>project<span class="err">&#39;</span>s<span class="w"> </span>virtualenv,<span class="w"> </span>run<span class="w"> </span>pipenv<span class="w"> </span>shell.
+Alternatively,<span class="w"> </span>run<span class="w"> </span>a<span class="w"> </span><span class="nb">command</span><span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>virtualenv<span class="w"> </span>with<span class="w"> </span>pipenv<span class="w"> </span>run.
 </code></pre></div>
 
 <p>You can see your specified version of Python.</p>
-<div class="highlight"><pre><span></span><code>$ pipenv shell
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pipenv<span class="w"> </span>shell
 ~~~
-$ python --version
-Python <span class="m">3</span>.8.2
+$<span class="w"> </span>python<span class="w"> </span>--version
+Python<span class="w"> </span><span class="m">3</span>.8.2
 </code></pre></div>
 
 <p>If you want to exit local environment, type 'exit' command.</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">exit</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">exit</span>
 </code></pre></div>
 
 <h3>Install library</h3>
 <p>You can not use 'pip' command. You should use 'pipenv' command instead.</p>
-<div class="highlight"><pre><span></span><code>$ pipenv install beautifulsoup4
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pipenv<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
 </code></pre></div>
 
 <h3>Optional settings</h3>
 <p>How to create a virtual environment in the project directory.
 This setting is recommended for git and other version-control software.</p>
-<div class="highlight"><pre><span></span><code>$ micro ~/.bashrc
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>micro<span class="w"> </span>~/.bashrc
 
-<span class="nb">export</span> <span class="nv">PIPENV_VENV_IN_PROJECT</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PIPENV_VENV_IN_PROJECT</span><span class="o">=</span><span class="m">1</span>
 
-$ <span class="nb">source</span> ~/.bashrc
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
             </div>
             <div class="post_list">

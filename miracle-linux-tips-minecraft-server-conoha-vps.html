@@ -154,39 +154,39 @@
 <h3>手順3 - JAVAのインストール</h3>
 <p>マインクラフトサーバの本体を動かすために、JAVAのランタイムというものが必要です。下記のコマンドでインストール可能です。
 それなりに大きいファイルのダウンロードがあるので終了まで数分かかるかもしれません。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> dnf -y install java-latest-openjdk-headless
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>java-latest-openjdk-headless
 </code></pre></div>
 
 <p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
 <h3>手順4 - マインクラフトサーバの本体をダウンロード</h3>
 <p>まずはマインクラフトサーバのファイルを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> mkdir minecraft-server
-<span class="gp">#</span> <span class="nb">cd</span> minecraft-server
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>mkdir<span class="w"> </span>minecraft-server
+<span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>minecraft-server
 </code></pre></div>
 
 <p>マインクラフトサーバのファイルをダウンロードします。今回はバージョン 1.18.2 です。下記のようなコマンドは長くキーボードで全て入力するのは大変ですので、このコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックします。</p>
 <p><img alt="テキストを張り付ける方法" src="./images/conoha-mc-dl.jpg"></p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>wget<span class="w"> </span>https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 </code></pre></div>
 
 <p>そしてEnterキーを押して実行します。以降もコマンドについては同じ手順でコピー&amp;ペーストを繰り返すととても楽です。</p>
 <h3>手順5 - サーバの初期設定</h3>
 <p>マインクラフトサーバに使用メモリなど指定して実行したいので、そのためのスクリプトを作成します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> <span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx3072M -Xms1024M -jar server.jar nogui&quot;</span> &gt; start.sh
+<div class="highlight"><pre><span></span><code><span class="gp"># </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx3072M -Xms1024M -jar server.jar nogui&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.sh
 </code></pre></div>
 
 <p>この設定についてはConoHaの<a href="https://www.conoha.jp/vps/media/mine-semi/memory/">マイクラゼミ</a>に解説があります。</p>
 <p>start.shファイルが作成されていると思います。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> ls
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>ls
 <span class="go">server.jar start.sh</span>
 </code></pre></div>
 
 <p>start.shはそのままでは実行できません。実行権限を付与しましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> chmod +x start.sh
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
 </code></pre></div>
 
 <p>とりあえず一度起動してみましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> ./start.sh
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>./start.sh
 <span class="go">[00:00:00] [main/ERROR]: Failed to load properties from file: server.properties</span>
 <span class="go">[00:00:00] [main/WARN]: Failed to load eula.txt</span>
 <span class="go">[00:00:00] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.</span>
@@ -194,7 +194,7 @@
 
 <p>何やらメッセージが表示されます。それぞれの行で、<code>server.properties</code>ファイルが見当たらない、<code>eula.txt</code>がロードできない、EULAに同意しないといけないとなっています。</p>
 <p>一旦今のファイル一覧を見てみましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> ls
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>ls
 <span class="go">eula.txt logs server.jar server.properties start.sh</span>
 </code></pre></div>
 
@@ -207,19 +207,19 @@
 </code></pre></div>
 
 <p>確認は下記のコマンドで可能です。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> grep <span class="m">5432</span> server.properties
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>grep<span class="w"> </span><span class="m">5432</span><span class="w"> </span>server.properties
 <span class="go">server-port=5432</span>
 <span class="go">query.port=5432</span>
 </code></pre></div>
 
 <h3>手順6 - ファイヤウォールの設定</h3>
 <p>MIRACLE LINUXに機能としてあるファイヤウォールを設定します。初期状態では、マインクラフトサーバで設定した<code>tcp</code>の<code>5432</code>ポートへの接続は閉じられていますので、接続を受け付けるように設定します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --add-port<span class="o">=</span><span class="m">5432</span>/tcp
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">5432</span>/tcp
 <span class="go">success</span>
 </code></pre></div>
 
 <p>追加されたか確認しましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --list-all
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>firewall-cmd<span class="w"> </span>--list-all
 <span class="go">public (active)</span>
 <span class="go">  target: default</span>
 <span class="go">  icmp-block-inversion: no</span>
@@ -236,14 +236,14 @@
 </code></pre></div>
 
 <p><code>ports</code>行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、永続的に適用するために下記のコマンドを実行しましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> firewall-cmd --runtime-to-permanent
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>firewall-cmd<span class="w"> </span>--runtime-to-permanent
 <span class="go">success</span>
 </code></pre></div>
 
 <p><code>success</code>と表示がされればOKです。</p>
 <h3>手順7 - サーバの起動</h3>
 <p>ついにマインクラフトサーバを起動します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> ./start.sh
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>./start.sh
 </code></pre></div>
 
 <p>マップデータの初期化などが行われるので、数分待つことになると思います。
@@ -269,29 +269,29 @@
 </code></pre></div>
 
 <p>先ほどのサイトから辿れるGithubからデータをダウンロードします。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> wget https://github.com/miraclelinux/minecraft-miraclelinux-map/archive/refs/heads/main.zip
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>wget<span class="w"> </span>https://github.com/miraclelinux/minecraft-miraclelinux-map/archive/refs/heads/main.zip
 </code></pre></div>
 
 <p>zip形式で圧縮されているので解凍します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> unzip main.zip
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>unzip<span class="w"> </span>main.zip
 </code></pre></div>
 
 <p>このデータにはスキンなども入っているので、必要なマップデータのみをマインクラフトサーバの実行フォルダ内に移動します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> mv minecraft-miraclelinux-map-main/saves/MIRACLE<span class="se">\ </span>LINUX<span class="se">\ </span>MEETUP/ ./
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>mv<span class="w"> </span>minecraft-miraclelinux-map-main/saves/MIRACLE<span class="se">\ </span>LINUX<span class="se">\ </span>MEETUP/<span class="w"> </span>./
 </code></pre></div>
 
 <p>マップデータ名は<code>server.properties</code>ファイルの<code>level-name</code>行に設定されています。
 初期値は<code>world</code>で同名のフォルダ以下にワールドデータがありますが、配布データは<code>MIRACLE LINUX MEETUP</code>ですので、サーバの設定ファイルを書き換えて配布データを読み込むように設定します。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> sed -i <span class="s1">&#39;s/=world/=MIRACLE LINUX MEETUP/g&#39;</span> server.properties
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/=world/=MIRACLE LINUX MEETUP/g&#39;</span><span class="w"> </span>server.properties
 </code></pre></div>
 
 <p>確認すると<code>level-name</code>行が書き変わっていると思います。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> grep MIRACLE server.properties
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>grep<span class="w"> </span>MIRACLE<span class="w"> </span>server.properties
 <span class="go">level-name=MIRACLE LINUX MEETUP</span>
 </code></pre></div>
 
 <p>サーバを起動してクライアントからログインしてみましょう。マップデータが読み込まれ、クライアントからログインを行うとロゴが見えると思います。</p>
-<div class="highlight"><pre><span></span><code><span class="gp">#</span> ./start.sh
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>./start.sh
 </code></pre></div>
             </div>
             <div class="post_list">

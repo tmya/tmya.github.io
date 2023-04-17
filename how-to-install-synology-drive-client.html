@@ -108,22 +108,22 @@
 <h3>dnfでEPELを有効にする(未実施の場合)</h3>
 <p>alienはEPELに存在するのでEPELを使えるようにします。すでにEPELを使えている方はこの手順は不要です。</p>
 <p>EPELの有効化については、サイバートラストのサイトに<a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">説明が載っています</a>。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 </code></pre></div>
 
 <h3>alienとfakerootのインストール</h3>
 <p>dnfを使ってalienをインストールします。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install alien fakeroot
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>alien<span class="w"> </span>fakeroot
 </code></pre></div>
 
 <h3>DEBからRPMへの変換</h3>
 <p>fakerootを使うので下記のようなコマンドとオプションになります。<code>-r</code>はrpmへ変換。<code>-c</code>はスクリプトを含む。rpmはカレントディレクトリに出来上がります。<strong>2021/12/10追記: -cは要らなかった</strong></p>
-<div class="highlight"><pre><span></span><code>$ fakeroot alien -r ./Downloads/synology-drive-client-12682.x86_64.deb
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fakeroot<span class="w"> </span>alien<span class="w"> </span>-r<span class="w"> </span>./Downloads/synology-drive-client-12682.x86_64.deb
 </code></pre></div>
 
 <h3>Synology Drive Clientのインストール</h3>
 <p>rpmコマンドでインストールします。<code>dnf localinstall</code>でも可能と思いますが試していません。</p>
-<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rpm<span class="w"> </span>-ivh<span class="w"> </span>./synology-drive-7.0.2-12683.x86_64.rpm<span class="w"> </span>--nodeps<span class="w"> </span>--force
 </code></pre></div>
 
 <p>インストールが完了するとアプリケーションメニューに表示されているのでクリックして起動します。下記の写真はgnome classicですがgnome3でもほとんど同じだと思います。</p>
@@ -133,26 +133,26 @@
 <p>上記で<code>--nodeps</code>と<code>--force</code>オプションを使ってインストールしているため、システムの依存関係をまったく無視してしまっています。その為、OSのアップデートの際に何かしらが競合してアップデートできない状態になります。一旦Synology Driveを終了し、アンインストールしてOSアップデートを行い、再度Synology Driveをインストールする手順で回避します。接続設定等は消えずに残るようなのでそこまで大変ではないと思います。</p>
 <h4>Synology Driveの終了</h4>
 <p>GUIから終了できないので、コマンドから終了します。</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">kill</span> -TERM <span class="sb">`</span>pgrep cloud-drive-ui<span class="sb">`</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-TERM<span class="w"> </span><span class="sb">`</span>pgrep<span class="w"> </span>cloud-drive-ui<span class="sb">`</span>
 </code></pre></div>
 
 <h4>Synology Driveのアンインストール</h4>
 <p>RPMを削除します。</p>
-<div class="highlight"><pre><span></span><code>$ sudo rpm -e synology-drive
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rpm<span class="w"> </span>-e<span class="w"> </span>synology-drive
 </code></pre></div>
 
 <h4>OSのアップデート</h4>
 <p>ここでシステムのアップデートを行います。GUIであれば<code>アプリケーション</code>→<code>システムツール</code>→<code>ソフトウェア</code>を選び、アップデートタブからアップデートを行います。CUIであれば<code>$ sudo dnf update</code>と実行します。</p>
 <h4>再度Synology Driveのインストール</h4>
 <p>インストール時と同じコマンドでインストールします。作成したrpmを削除してしまっていたらrpmを作成する所から作業します。</p>
-<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rpm<span class="w"> </span>-ivh<span class="w"> </span>./synology-drive-7.0.2-12683.x86_64.rpm<span class="w"> </span>--nodeps<span class="w"> </span>--force
 </code></pre></div>
 
 <p>インストールが完了したら<code>アプリケーション</code>→<code>インターネット</code>→<code>Synology Drive Client</code>を実行します。もしかしたら2回起動しないとUI画面が表示されないかもしれません。接続設定等が維持されていると思います。以上で完了です。</p>
 <h4>試行錯誤メモ</h4>
 <p>いろいろ試してみたけど諦めたやつ</p>
-<div class="highlight"><pre><span></span><code>$ sudo rpm -ivh ./synology-drive-7.0.2-12683.x86_64.rpm --nodeps --force --relocate /<span class="o">=</span>/opt/synology-drive --badreloc
-sudo micro /opt/synology-drive/usr/bin/synology-drive
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rpm<span class="w"> </span>-ivh<span class="w"> </span>./synology-drive-7.0.2-12683.x86_64.rpm<span class="w"> </span>--nodeps<span class="w"> </span>--force<span class="w"> </span>--relocate<span class="w"> </span>/<span class="o">=</span>/opt/synology-drive<span class="w"> </span>--badreloc
+sudo<span class="w"> </span>micro<span class="w"> </span>/opt/synology-drive/usr/bin/synology-drive
 </code></pre></div>
             </div>
             <div class="post_list">

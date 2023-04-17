@@ -90,19 +90,19 @@
             <div class="entry-content blog-post">
                 <p>Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based.</p>
 <h3>memo</h3>
-<div class="highlight"><pre><span></span><code>wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
-sudo apt update
-sudo apt upgrade
-sudo apt --fix-borken install
-debconf-set-selections &lt; keysetting.conf
-<span class="nb">export</span> <span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
-sudo apt install --assume-yes xfce4 desktop-base dbus-x11 xscreensaver xfce4-terminal
-sudo dpkg --install chrome-remote-desktop_current_amd64.deb
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+sudo<span class="w"> </span>apt<span class="w"> </span>--fix-borken<span class="w"> </span>install
+debconf-set-selections<span class="w"> </span>&lt;<span class="w"> </span>keysetting.conf
+<span class="nb">export</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>--assume-yes<span class="w"> </span>xfce4<span class="w"> </span>desktop-base<span class="w"> </span>dbus-x11<span class="w"> </span>xscreensaver<span class="w"> </span>xfce4-terminal
+sudo<span class="w"> </span>dpkg<span class="w"> </span>--install<span class="w"> </span>chrome-remote-desktop_current_amd64.deb
 </code></pre></div>
 
 <p>headless install</p>
 <p><a href="https://remotedesktop.google.com/headless">google remote desktop</a></p>
-<div class="highlight"><pre><span></span><code>sudo apt -y install debconf-utils
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>debconf-utils
 </code></pre></div>
 
 <h4>Consult the keyboard(5) manual page.</h4>

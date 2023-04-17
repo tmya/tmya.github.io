@@ -97,15 +97,15 @@ If you are not subscribed, subscribe or get rolling release builds.</p>
 <h2>Open your console</h2>
 <p>Connect ssh or other way to VyOS.<br>
 Check to running image.</p>
-<div class="highlight"><pre><span></span><code>$ show system image
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>show<span class="w"> </span>system<span class="w"> </span>image
 
-The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
+The<span class="w"> </span>system<span class="w"> </span>currently<span class="w"> </span>has<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>image<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>installed:
 
-   <span class="m">1</span>: VyOS-1.1.8 <span class="o">(</span>default boot<span class="o">)</span> <span class="o">(</span>running image<span class="o">)</span>
-   <span class="m">2</span>: VyOS-1.1.7
-   <span class="m">3</span>: VyOS-1.1.6
-   <span class="m">4</span>: VyOS-1.1.5
-   <span class="m">5</span>: Old-non-image-installation
+<span class="w">   </span><span class="m">1</span>:<span class="w"> </span>VyOS-1.1.8<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>boot<span class="o">)</span><span class="w"> </span><span class="o">(</span>running<span class="w"> </span>image<span class="o">)</span>
+<span class="w">   </span><span class="m">2</span>:<span class="w"> </span>VyOS-1.1.7
+<span class="w">   </span><span class="m">3</span>:<span class="w"> </span>VyOS-1.1.6
+<span class="w">   </span><span class="m">4</span>:<span class="w"> </span>VyOS-1.1.5
+<span class="w">   </span><span class="m">5</span>:<span class="w"> </span>Old-non-image-installation
 </code></pre></div>
 
 <h2>Download and add image</h2>
@@ -113,35 +113,35 @@ The system currently has the following image<span class="o">(</span>s<span class
 <a href="https://downloads.vyos.io/?dir=rolling/current/amd64">VyOS Downloads</a></p>
 <p>!Notice! If you are reboot soon will boot new image but sometimes occur problem.<br>
 At your own risk.</p>
-<div class="highlight"><pre><span></span><code>$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>add<span class="w"> </span>system<span class="w"> </span>image<span class="w"> </span>https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 </code></pre></div>
 
 <p>Perhaps you answer yes to the questions you are asked. me too. :p<br>
 You can see added image when retype "show system image".</p>
-<div class="highlight"><pre><span></span><code>$ show system image
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>show<span class="w"> </span>system<span class="w"> </span>image
 
-The system currently has the following image<span class="o">(</span>s<span class="o">)</span> installed:
+The<span class="w"> </span>system<span class="w"> </span>currently<span class="w"> </span>has<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>image<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>installed:
 
-   <span class="m">1</span>: <span class="m">1</span>.2-rolling-201912030217- <span class="o">(</span>default boot<span class="o">)</span>
-   <span class="m">2</span>: VyOS-1.1.8 <span class="o">(</span>running image<span class="o">)</span>
-   <span class="m">3</span>: VyOS-1.1.7
-   <span class="m">4</span>: VyOS-1.1.6
-   <span class="m">5</span>: VyOS-1.1.5
-   <span class="m">6</span>: Old-non-image-installation
+<span class="w">   </span><span class="m">1</span>:<span class="w"> </span><span class="m">1</span>.2-rolling-201912030217-<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>boot<span class="o">)</span>
+<span class="w">   </span><span class="m">2</span>:<span class="w"> </span>VyOS-1.1.8<span class="w"> </span><span class="o">(</span>running<span class="w"> </span>image<span class="o">)</span>
+<span class="w">   </span><span class="m">3</span>:<span class="w"> </span>VyOS-1.1.7
+<span class="w">   </span><span class="m">4</span>:<span class="w"> </span>VyOS-1.1.6
+<span class="w">   </span><span class="m">5</span>:<span class="w"> </span>VyOS-1.1.5
+<span class="w">   </span><span class="m">6</span>:<span class="w"> </span>Old-non-image-installation
 </code></pre></div>
 
 <h2>Reboot to apply new image</h2>
 <p>Let's reboot.</p>
-<div class="highlight"><pre><span></span><code>$ reboot
-Proceed with reboot? <span class="o">(</span>Yes/No<span class="o">)</span> <span class="o">[</span>No<span class="o">]</span> Yes
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>reboot
+Proceed<span class="w"> </span>with<span class="w"> </span>reboot?<span class="w"> </span><span class="o">(</span>Yes/No<span class="o">)</span><span class="w"> </span><span class="o">[</span>No<span class="o">]</span><span class="w"> </span>Yes
 </code></pre></div>
 
 <p>Let's pray.  </p>
 <p>Few minutes later reconnect to VyOS. Check the Version.</p>
-<div class="highlight"><pre><span></span><code>$ show version
-Version:          VyOS <span class="m">1</span>.2-rolling-201912030217
-Built by:         autobuild@vyos.net
-Built on:         Tue <span class="m">03</span> Dec <span class="m">2019</span> <span class="m">02</span>:17 UTC
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>show<span class="w"> </span>version
+Version:<span class="w">          </span>VyOS<span class="w"> </span><span class="m">1</span>.2-rolling-201912030217
+Built<span class="w"> </span>by:<span class="w">         </span>autobuild@vyos.net
+Built<span class="w"> </span>on:<span class="w">         </span>Tue<span class="w"> </span><span class="m">03</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2019</span><span class="w"> </span><span class="m">02</span>:17<span class="w"> </span>UTC
 ~~
 </code></pre></div>
 

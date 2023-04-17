@@ -92,13 +92,13 @@
 <p><a href="./miracle-linux-9-tips-wsl.html">別の記事</a>で用意したWSL上のMIRACLE LINUX 9にHomebrewを導入します。もちろん通常通りインストールされたMIRACLE LINUX 9の環境でも同じように導入できます。これで大抵の開発環境は簡単に揃えることができるはずです。</p>
 <p>基本的に<a href="https://brew.sh/">公式サイトの手順</a>通りです。</p>
 <p><strong>注意</strong> : 以下のコマンド中の /home/<code>user</code>/.bash_profile の<code>user</code>は2行とも自分のユーザ名に置き換えてください。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install git
-$ bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;# Set PATH, MANPATH, etc., for Homebrew.&#39;</span> &gt;&gt; /home/user/.bash_profile
-$ <span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span> &gt;&gt; /home/user/.bash_profile
-$ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew shellenv<span class="k">)</span><span class="s2">&quot;</span>
-$ sudo dnf groupinstall <span class="s1">&#39;Development Tools&#39;</span>
-$ brew install gcc
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>git
+$<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;# Set PATH, MANPATH, etc., for Homebrew.&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/user/.bash_profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/user/.bash_profile
+$<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew<span class="w"> </span>shellenv<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span><span class="s1">&#39;Development Tools&#39;</span>
+$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>gcc
 </code></pre></div>
             </div>
             <div class="post_list">

@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./how-to-using-ssh.html">
     <meta name="twitter:title" content="tmya note ~ Windowsからsshで接続する - MIRACLE LINUX 8.4">
-    <meta name="twitter:description" content="前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は こちら ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。 ssh鍵の生成 ConoHaへssh鍵の登録と設定 ConoHaの接続許可ポートの設定 接続 ssh鍵の生成 …">
+    <meta name="twitter:description" content="**前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は こちら ** ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。 ssh鍵の生成 ConoHaへssh鍵の登録と設定 ConoHaの接続許可ポートの設定 接続 ssh鍵の生成 …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ Windowsからsshで接続する - MIRACLE LINUX 8.4"/>
-    <meta property="og:description" content="前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は こちら ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。 ssh鍵の生成 ConoHaへssh鍵の登録と設定 ConoHaの接続許可ポートの設定 接続 ssh鍵の生成 …"/>
+    <meta property="og:description" content="**前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は こちら ** ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。 ssh鍵の生成 ConoHaへssh鍵の登録と設定 ConoHaの接続許可ポートの設定 接続 ssh鍵の生成 …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -88,7 +88,7 @@
             <h2 class="post_title post_detail"><a href="./how-to-using-ssh.html" rel="bookmark"
                                                   title="Permalink to Windowsからsshで接続する - MIRACLE LINUX 8.4">Windowsからsshで接続する - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
-                <p><strong>前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> </strong></p>
+                <p>**前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定しています。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> **</p>
 <p>ConoHaのWebからコンソールを開いて作業する事はできますが、テキストの貼りつけや出力のコピー等が面倒です。手元のWindows 10パソコンからsshを使って直接サーバに接続して作業を行える環境を用意します。</p>
 <ul>
 <li>ssh鍵の生成</li>
@@ -101,65 +101,65 @@
 <p><img alt="コマンドプロンプト" src="./images/win-start-cmd.jpg"></p>
 <p>黒い背景のウィンドウが表示されるので、下記のコマンドを入力してエンターを押します。</p>
 <p><img alt="コンソールウィンドウ" src="./images/win-ssh-keygen.jpg"></p>
-<div class="highlight"><pre><span></span><code>ssh-keygen -C <span class="s2">&quot;&quot;</span> -t ed25519
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>-t<span class="w"> </span>ed25519
 </code></pre></div>
 
 <p>3回質問がありますが、何も入力せずそのままEnterキーを3回押します。</p>
 <p><strong>NOTE:</strong> 本来は鍵ファイルの流出時に不正使用を防止する為にパスワードの設定を推奨します。<code>Enter passphrase</code>と<code>Enter same passphrase again</code>に同じパスワードを入力します。ここでは簡略化の為に設定していません。</p>
-<div class="highlight"><pre><span></span><code>Generating public/private ed25519 key pair.
-Enter file in which to save the key <span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519<span class="o">)</span>:
-Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:
-Enter same passphrase again:
+<div class="highlight"><pre><span></span><code>Generating<span class="w"> </span>public/private<span class="w"> </span>ed25519<span class="w"> </span>key<span class="w"> </span>pair.
+Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519<span class="o">)</span>:
+Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
+Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
 </code></pre></div>
 
 <p>鍵生成が行われて処理結果が表示されます。</p>
-<div class="highlight"><pre><span></span><code>Your identification has been saved in C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519.
-Your public key has been saved in C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519.pub.
-The key fingerprint is:
+<div class="highlight"><pre><span></span><code>Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519.
+Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX/.ssh/id_ed25519.pub.
+The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
 SHA256:F5WpHOiy7GSSTgHBNv0jJ71gLgfpNPmzQxLS9Zy47n0
-The key<span class="err">&#39;</span>s randomart image is:
-+--<span class="o">[</span>ED25519 <span class="m">256</span><span class="o">]</span>--+
-<span class="p">|</span> ..o     .  .o   <span class="p">|</span>
-<span class="p">|</span>  <span class="o">=</span> o   . ..o    <span class="p">|</span>
-<span class="p">|</span> o * * o ..o     <span class="p">|</span>
-<span class="p">|</span>. O B X . o.     <span class="p">|</span>
-<span class="p">|</span> + B <span class="nv">X</span> <span class="o">=</span>S .      <span class="p">|</span>
-<span class="p">|</span>  + @ *  .       <span class="p">|</span>
-<span class="p">|</span>   O B           <span class="p">|</span>
-<span class="p">|</span>    <span class="o">=</span>.. E        <span class="p">|</span>
-<span class="p">|</span>   .....         <span class="p">|</span>
+The<span class="w"> </span>key<span class="err">&#39;</span>s<span class="w"> </span>randomart<span class="w"> </span>image<span class="w"> </span>is:
++--<span class="o">[</span>ED25519<span class="w"> </span><span class="m">256</span><span class="o">]</span>--+
+<span class="p">|</span><span class="w"> </span>..o<span class="w">     </span>.<span class="w">  </span>.o<span class="w">   </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>o<span class="w">   </span>.<span class="w"> </span>..o<span class="w">    </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>o<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>o<span class="w"> </span>..o<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>.<span class="w"> </span>O<span class="w"> </span>B<span class="w"> </span>X<span class="w"> </span>.<span class="w"> </span>o.<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>+<span class="w"> </span>B<span class="w"> </span><span class="nv">X</span><span class="w"> </span><span class="o">=</span>S<span class="w"> </span>.<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>+<span class="w"> </span>@<span class="w"> </span>*<span class="w">  </span>.<span class="w">       </span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span>O<span class="w"> </span>B<span class="w">           </span><span class="p">|</span>
+<span class="p">|</span><span class="w">    </span><span class="o">=</span>..<span class="w"> </span>E<span class="w">        </span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span>.....<span class="w">         </span><span class="p">|</span>
 +----<span class="o">[</span>SHA256<span class="o">]</span>-----+
 
 C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX&gt;
 </code></pre></div>
 
 <p>出来上がった鍵から、ConoHaに登録する鍵を表示するため次のコマンドを実行しましょう。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">type</span> .ssh<span class="se">\i</span>d_ed25519.pub
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="w"> </span>.ssh<span class="se">\i</span>d_ed25519.pub
 </code></pre></div>
 
 <p>中身が1行で表示されます。コマンドプロンプトのウィンドウは表示したままにして次のステップに進みましょう。</p>
-<div class="highlight"><pre><span></span><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
+<div class="highlight"><pre><span></span><code>ssh-ed25519<span class="w"> </span>AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
 </code></pre></div>
 
 <h3>ConoHaへssh鍵の登録と設定</h3>
 <p>ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、<code>echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &gt;&gt; ~/.ssh/authorized_keys</code>の行のうち、<code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd</code>の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。</p>
 <p><img alt="sshkey" src="./images/win-type-sshpubkey.jpg"></p>
-<div class="highlight"><pre><span></span><code>$ mkdir ~/.ssh
-$ chmod <span class="m">700</span> ~/.ssh
-$ <span class="nb">echo</span> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &gt;&gt; ~/.ssh/authorized_keys
-$ chmod <span class="m">600</span> ~/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>~/.ssh
+$<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.ssh
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>ssh-ed25519<span class="w"> </span>AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.ssh/authorized_keys
+$<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/authorized_keys
 </code></pre></div>
 
 <p>次に、sshサーバの設定を行います。既存の設定ファイルを別名保存して公開鍵認証を有効にしてパスワード認証を禁止にしてRootでのログインを禁止にしてsshサーバを再起動する一連のコマンドです。テキスト送信へコピペする場合、<code>sudo</code>コマンドの初回にパスワードを聞かれると複数行の貼りつけがうまくできないので、まずは<code>sudo true</code>と実行してパスワードを入力してから5分以内にテキスト送信に貼りつけると楽です。</p>
-<div class="highlight"><pre><span></span><code>sudo <span class="nb">true</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
 
 <p>↑でパスワードを入力したら5分以内に↓をテキスト送信に貼りつけ</p>
-<div class="highlight"><pre><span></span><code>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-sudo sed -i <span class="s1">&#39;s/^#PubkeyAuthentication yes/PubkeyAuthentication yes/&#39;</span> /etc/ssh/sshd_config
-sudo sed -i <span class="s1">&#39;s/^PasswordAuthentication yes/PasswordAuthentication no/&#39;</span> /etc/ssh/sshd_config
-sudo sed -i <span class="s1">&#39;s/^PermitRootLogin yes/PermitRootLogin no/&#39;</span> /etc/ssh/sshd_config
-sudo systemctl restart sshd
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/ssh/sshd_config<span class="w"> </span>/etc/ssh/sshd_config.bak
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#PubkeyAuthentication yes/PubkeyAuthentication yes/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^PasswordAuthentication yes/PasswordAuthentication no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^PermitRootLogin yes/PermitRootLogin no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
 </code></pre></div>
 
 <h3>ConoHaの接続許可ポートの設定</h3>

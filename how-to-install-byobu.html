@@ -100,7 +100,7 @@
 </ul>
 <h3>インストール</h3>
 <p>インストールはとっても簡単。インストールの続行を問われるので、<code>y</code>を入力して<code>Enterキー</code>をプッシュ。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install byobu
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>byobu
 </code></pre></div>
 
 <p>一緒に<code>screen</code>がインストールされます。Byobuはscreenをバックエンドに使い、機能を拡張しています。設定を行なえばバックエンドにtmuxも使えるよ。</p>
@@ -108,7 +108,7 @@
 <p>Byobuは仮想的にCUIの中に複数のウィンドウを開いて並べることができます。</p>
 <h4>起動方法</h4>
 <p>コマンドを実行すると新しいターミナルが立ち上がります。</p>
-<div class="highlight"><pre><span></span><code>$ byobu
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>byobu
 </code></pre></div>
 
 <p>この状態でいろいろな作業を行うことができます。</p>
@@ -220,7 +220,7 @@
 <p>あまり深く考えずにbyobuを起動して作業を行い、作業途中で<code>Shift</code> + <code>F6</code>でデタッチをすれば、次にbyobuを起動した時に前回の続きから作業を行うことができます。</p>
 <h4>メモ</h4>
 <p>さて、SSHで接続した時に作業開始と共にbyobuを起動することを忘れたりします。忘れないようにSSH接続した時に自動でbyobuを起動するにように設定するには下記の通りにコマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>$ byobu-enable
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>byobu-enable
 </code></pre></div>
 
 <p>次回、SSHでログインした時に自動でbyobuが実行されるはずです。</p>

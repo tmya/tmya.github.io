@@ -102,14 +102,14 @@
 <p><code>ネームタグ</code>から先ほど作成したサーバをクリックし、<code>コンソール</code>をクリックすると新しいウィンドウでコンソール画面が表示されます。</p>
 <p><img alt="コンソール" src="./images/conoha-console.jpg"></p>
 <p><code>root</code>と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>でそうなっています。</p>
-<div class="highlight"><pre><span></span><code>xxx-xxx-xxx-xxx login: root
+<div class="highlight"><pre><span></span><code>xxx-xxx-xxx-xxx<span class="w"> </span>login:<span class="w"> </span>root
 Password:
-<span class="o">[</span>root@xxx-xxx-xxx-xxx ~<span class="o">]</span><span class="c1"># </span>
+<span class="o">[</span>root@xxx-xxx-xxx-xxx<span class="w"> </span>~<span class="o">]</span><span class="c1"># </span>
 </code></pre></div>
 
 <p>この時点ではCentOS 8.3がインストールされていることが確認できます。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/redhat-release</span>
-CentOS Linux release <span class="m">8</span>.3.2011
+CentOS<span class="w"> </span>Linux<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.3.2011
 </code></pre></div>
 
 <h3>MIRACLE LINUXへの移行ツールのダウンロードと実行</h3>
@@ -126,12 +126,12 @@ CentOS Linux release <span class="m">8</span>.3.2011
 
 ~~~~略~~~~
 
-Core package migration is completed!
+Core<span class="w"> </span>package<span class="w"> </span>migration<span class="w"> </span>is<span class="w"> </span>completed!
 </code></pre></div>
 
 <p>確認してみましょう。<code>redhat-release</code>ファイルはMIRACLE LINUXになっています。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/redhat-release</span>
-MIRACLE LINUX release <span class="m">8</span>.4 <span class="o">(</span>Peony<span class="o">)</span>
+MIRACLE<span class="w"> </span>LINUX<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.4<span class="w"> </span><span class="o">(</span>Peony<span class="o">)</span>
 </code></pre></div>
 
 <h3>パッケージのアップデートと再起動</h3>
@@ -146,10 +146,10 @@ MIRACLE LINUX release <span class="m">8</span>.4 <span class="o">(</span>Peony<s
 <p>ブートローダの一番上にMIRACLE LINUXが追加されているので、数秒待つと起動します。ログイン画面が表示されたらログインしましょう。</p>
 <p><img alt="ブートローダ" src="./images/conoha-ml-boot.jpg"></p>
 <p>ログイン画面では次のようにMIRACLE LINUX 8.4と表示されます。以上で移行は完了です。</p>
-<div class="highlight"><pre><span></span><code>MIRACLE LINUX <span class="m">8</span>.4 <span class="o">(</span>Peony<span class="o">)</span>
-Kernel <span class="m">4</span>.18.0-305.25.1.el8_4.x86_64 on an X86_64
+<div class="highlight"><pre><span></span><code>MIRACLE<span class="w"> </span>LINUX<span class="w"> </span><span class="m">8</span>.4<span class="w"> </span><span class="o">(</span>Peony<span class="o">)</span>
+Kernel<span class="w"> </span><span class="m">4</span>.18.0-305.25.1.el8_4.x86_64<span class="w"> </span>on<span class="w"> </span>an<span class="w"> </span>X86_64
 
-xxx-xxx-xxx-xxx login:
+xxx-xxx-xxx-xxx<span class="w"> </span>login:
 </code></pre></div>
 
 <h3>新規ユーザの追加</h3>
@@ -171,14 +171,14 @@ xxx-xxx-xxx-xxx login:
 
 <p>そして作成したユーザにはまだパスワードが設定されていません。パスワードを設定しましょう。設定したいパスワードを2回入力します。1回でないのは、もし打ち間違えているとログインできなくなってしまうので確認の為にこうなっています。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># passwd XXXX</span>
-Changing password <span class="k">for</span> user XXXX.
-New password:
-Retype new password:
+Changing<span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span>XXXX.
+New<span class="w"> </span>password:
+Retype<span class="w"> </span>new<span class="w"> </span>password:
 </code></pre></div>
 
 <p><strong>NOTE:</strong> <code>passwd</code>の後にユーザ名を付けずに実行してしまうと、今ログインしてるユーザのパスワードを変更してしまいます。このタイミングではrootユーザのパスワードを変更してしまうので気を付けてください。1行目の<code>Changing password for user XXXX.</code>の最後に自分のユーザ名が表示されているか確認しましょう。</p>
 <p>2回とも同じパスワードを入力できているとパスワードが設定されます。</p>
-<div class="highlight"><pre><span></span><code>passwd: all authentication tokens updated successfully.
+<div class="highlight"><pre><span></span><code>passwd:<span class="w"> </span>all<span class="w"> </span>authentication<span class="w"> </span>tokens<span class="w"> </span>updated<span class="w"> </span>successfully.
 </code></pre></div>
 
 <p>一旦ログアウトして、作成したユーザでログインしてみましょう。</p>
@@ -186,35 +186,35 @@ Retype new password:
 </code></pre></div>
 
 <p>先ほど作成したユーザ名を入力してEnterキーを押しパスワードを入力してEnterキーを押します。</p>
-<div class="highlight"><pre><span></span><code>MIRACLE LINUX <span class="m">8</span>.4 <span class="o">(</span>Peony<span class="o">)</span>
-Kernel <span class="m">4</span>.18.0-305.25.1.el8_4.x86_64 on an x86_64
+<div class="highlight"><pre><span></span><code>MIRACLE<span class="w"> </span>LINUX<span class="w"> </span><span class="m">8</span>.4<span class="w"> </span><span class="o">(</span>Peony<span class="o">)</span>
+Kernel<span class="w"> </span><span class="m">4</span>.18.0-305.25.1.el8_4.x86_64<span class="w"> </span>on<span class="w"> </span>an<span class="w"> </span>x86_64
 
-xxx-xxx-xxx-xxx login: XXXX
+xxx-xxx-xxx-xxx<span class="w"> </span>login:<span class="w"> </span>XXXX
 Password:
 </code></pre></div>
 
 <p>ログインできるとコンソールの表示が先ほどまでのrootとちょっと違う形で表示されます。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>XXXX@xxx-xxx-xxx-xxx ~<span class="o">]</span>$
+<div class="highlight"><pre><span></span><code><span class="o">[</span>XXXX@xxx-xxx-xxx-xxx<span class="w"> </span>~<span class="o">]</span>$
 </code></pre></div>
 
 <p>[<code>ユーザ名</code>@<code>ホスト名</code> ~]$となります。最後の$は一般ユーザであることを表しています。実は先ほどまでのrootユーザは$ではなく#でした。</p>
 <p>試しにrootユーザでない場合にどうなるか試すにはrootのホームディレクトリを覗こうとしてみるとわかります。</p>
-<div class="highlight"><pre><span></span><code>$ ls /root
-ls: cannot open directory <span class="s1">&#39;/root&#39;</span>: Permission denied
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/root
+ls:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>directory<span class="w"> </span><span class="s1">&#39;/root&#39;</span>:<span class="w"> </span>Permission<span class="w"> </span>denied
 </code></pre></div>
 
 <p>Permission deniedと表示され、権限がないよと言われます。</p>
 <p>一時的にスーパーユーザとして実行するにはコマンドの先頭に<code>sudo</code>をくっつけます。試してみましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo ls /root
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>ls<span class="w"> </span>/root
 
-We trust you have received the usual lecture from the <span class="nb">local</span> System
-Administrator. It usually boils down to these three things:
+We<span class="w"> </span>trust<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>received<span class="w"> </span>the<span class="w"> </span>usual<span class="w"> </span>lecture<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span><span class="nb">local</span><span class="w"> </span>System
+Administrator.<span class="w"> </span>It<span class="w"> </span>usually<span class="w"> </span>boils<span class="w"> </span>down<span class="w"> </span>to<span class="w"> </span>these<span class="w"> </span>three<span class="w"> </span>things:
 
-    <span class="c1">#1) Respect the privacy of others.</span>
-    <span class="c1">#2) Think before you type.</span>
-    <span class="c1">#3) With great power comes great responsibility.</span>
+<span class="w">    </span><span class="c1">#1) Respect the privacy of others.</span>
+<span class="w">    </span><span class="c1">#2) Think before you type.</span>
+<span class="w">    </span><span class="c1">#3) With great power comes great responsibility.</span>
 
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>XXXX:
 </code></pre></div>
 
 <p>初回はだらだらと警告メッセージが表示されます。気を付けて使いましょうという事が書いてあるので、気になる方は<a href="https://www.deepl.com/en/translator#en/ja/We%20trust%20you%20have%20received%20the%20usual%20lecture%20from%20the%20local%20System%20Administrator.%20It%20usually%20boils%20down%20to%20these%20three%20things.%0A%0ARespect%20the%20privacy%20of%20others.%0AThink%20before%20you%20type.%0AWith%20great%20power%20comes%20great%20responsibility">翻訳ソフトで調べて</a>ください。</p>
@@ -226,11 +226,11 @@ Administrator. It usually boils down to these three things:
 <p>今後は一般ユーザでログインし、必要があれば<code>sudo</code>を使って作業を行います。</p>
 <h4>その他 いくつか</h4>
 <p><code>os-release</code>がML仕様になっています。</p>
-<div class="highlight"><pre><span></span><code>$ cat /etc/os-release
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/os-release
 </code></pre></div>
 
 <p>リポジトリがMLに切り替わっており、epelはConoHaのCentOS 8.3でもともと有効のようです。</p>
-<div class="highlight"><pre><span></span><code>$ dnf repolist --enabled
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>repolist<span class="w"> </span>--enabled
 </code></pre></div>
 
 <div class="footnote">

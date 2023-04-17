@@ -89,7 +89,7 @@
                                                   title="Permalink to ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる">ConoHaに導入したMIRACLE LINUX 8.4でマイクラサーバ(JAVA版 1.17.1)を建てる</a></h2>
             <div class="entry-content blog-post">
                 <p>みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。</p>
-<p><strong>前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> </strong></p>
+<p>**前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> **</p>
 <h3>必要な事</h3>
 <ul>
 <li>サーバのダウンロード</li>
@@ -100,127 +100,127 @@
 </ul>
 <h3>マインクラフトサーバの本体をダウンロード</h3>
 <p>ConoHaのコンソールを開き、一般ユーザでログインします。まずはマインクラフトサーバを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
-<div class="highlight"><pre><span></span><code>$ mkdir minecraft-server
-$ <span class="nb">cd</span> minecraft-server
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>minecraft-server
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>minecraft-server
 </code></pre></div>
 
 <p>コンソールが[<code>ユーザ名</code>@<code>ホスト名</code> minecraft-server ]$ となっていると思います。</p>
 <p>次にコンソールにコマンドを打ちMinecraftをダウンロードします。</p>
-<div class="highlight"><pre><span></span><code>wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
 </code></pre></div>
 
 <p>と言ってもURLが長いので、上のコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックします。</p>
 <p><img alt="テキストを張り付ける方法" src="./images/conoha-mc-dl.jpg"></p>
 <p>そしてEnterキーを押して実行します。</p>
-<div class="highlight"><pre><span></span><code>~~略~~  <span class="s1">&#39;server.jar&#39;</span> saved <span class="o">[</span><span class="m">43626592</span>/43626592<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>~~略~~<span class="w">  </span><span class="s1">&#39;server.jar&#39;</span><span class="w"> </span>saved<span class="w"> </span><span class="o">[</span><span class="m">43626592</span>/43626592<span class="o">]</span>
 </code></pre></div>
 
 <p>ダウンロードが完了したので、実行用のスクリプトを作成します。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> -e <span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx1024M -Xms1024M -jar server.jar nogui&quot;</span> &gt; start.sh
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx1024M -Xms1024M -jar server.jar nogui&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.sh
 </code></pre></div>
 
 <p><strong>NOTE:</strong> 今回のメモではサーバに512MBのメモリ(RAM)しかありませんが、Swapというメモリが足りなかった場合に使える領域が2GB程度存在します。メモリに比べて速度がとても遅いのでメモリの代わりにはなりませんが、サーバの動作というだけなら起動は可能です。また、<code>-Xmx1024M</code>と<code>-Xms1024M</code>はそれぞれ指定できる最低値です。これ以下の値を指定しても、自動的に1024Mが指定されたものとして起動してしまいます。</p>
 <p>先ほどと同じく、上のコマンドをコピーしてコンソール上部の<code>テキスト送信</code>をクリックして貼り付け、<code>送信</code>ボタンをクリックし、Enterキーを押します。</p>
 <p>start.shファイルが作成されていると思います。</p>
-<div class="highlight"><pre><span></span><code>$ ls
-server.jar start.sh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls
+server.jar<span class="w"> </span>start.sh
 </code></pre></div>
 
 <p>実行権限を付与しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ chmod +x start.sh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
 </code></pre></div>
 
 <h3>JAVAの実行環境をインストール</h3>
 <p>次に、サーバを実行するためのJAVAのインストールを行います。ここで<code>sudo</code>コマンドの登場です。パスワードを聞かれるので、ログインしたユーザのパスワードを入力します。java以外にも必要なパッケージが自動でインストールされます。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf -y install java-latest-openjdk-headless
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>java-latest-openjdk-headless
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>XXXX:
 </code></pre></div>
 
 <p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
 <h3>サーバの初期設定</h3>
 <p>とりあえず一度起動しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ ./start.sh
-<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>main/ERROR<span class="o">]</span>: Failed to load properties from file: server.properties
-<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>main/WARN<span class="o">]</span>: Failed to load eula.txt
-<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>main/INFO<span class="o">]</span>: You need to agree to the EULA in order to run the server. Go to eula.txt <span class="k">for</span> more info.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./start.sh
+<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>main/ERROR<span class="o">]</span>:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>properties<span class="w"> </span>from<span class="w"> </span>file:<span class="w"> </span>server.properties
+<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>main/WARN<span class="o">]</span>:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>eula.txt
+<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>main/INFO<span class="o">]</span>:<span class="w"> </span>You<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>agree<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>EULA<span class="w"> </span><span class="k">in</span><span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>server.<span class="w"> </span>Go<span class="w"> </span>to<span class="w"> </span>eula.txt<span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>info.
 </code></pre></div>
 
 <p>何やらメッセージが表示されます。それぞれの行で、<code>server.properties</code>ファイルが見当たらない、<code>eula.txt</code>がロードできない、EULAに同意しないといけないとなっています。</p>
 <p>一旦今のファイル一覧を見てみましょう。</p>
-<div class="highlight"><pre><span></span><code>$ ls
-eula.txt logs server.jar server.properties start.sh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls
+eula.txt<span class="w"> </span>logs<span class="w"> </span>server.jar<span class="w"> </span>server.properties<span class="w"> </span>start.sh
 </code></pre></div>
 
 <p>ファイルが増えています。</p>
 <p>EULAに同意するため下記のコマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/false/true/g&#39;</span> eula.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/false/true/g&#39;</span><span class="w"> </span>eula.txt
 </code></pre></div>
 
 <p>サーバのポートがデフォルトだとtcpの25565番ですが、ConoHaの接続許可ポートを指定するにはAPI操作等が必要になってきます。ですので、簡単に選べる代表的なポートを拝借して5432番ポートを利用するように設定変更します。5432番は元々PostgreSQL用ですが、マインクラフトサーバを立てるにあたり同じサーバでPostgreSQLを動かす事はほとんどないと思うので影響は無いと考えていいと思います。</p>
-<div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/25565/5432/g&#39;</span> server.properties
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/25565/5432/g&#39;</span><span class="w"> </span>server.properties
 </code></pre></div>
 
 <p>確認は下記のコマンドで可能です。</p>
-<div class="highlight"><pre><span></span><code>$ grep <span class="m">5432</span> server.properties
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>grep<span class="w"> </span><span class="m">5432</span><span class="w"> </span>server.properties
 server-port<span class="o">=</span><span class="m">5432</span>
 query.port<span class="o">=</span><span class="m">5432</span>
 </code></pre></div>
 
 <h3>サーバの起動</h3>
 <p>サーバを起動しましょう。いろいろ文字が表示されます。メモリ512MBでは非常に苦しく時間がかかるので、しばし待ちましょう。今回は起動に210秒かかりました。</p>
-<div class="highlight"><pre><span></span><code>$ ./start.sh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./start.sh
 ~~略~~
-<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>Server thread/INFO<span class="o">]</span>: Done <span class="o">(</span><span class="m">210</span>.643.s<span class="o">)</span>! For help, <span class="nb">type</span> <span class="s2">&quot;help&quot;</span>
-<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>Server thread/WARN<span class="o">]</span>: Can<span class="err">&#39;</span>t keep up! Is the server overloaded? Running 2885ms or <span class="m">57</span> ticks behind
+<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>Server<span class="w"> </span>thread/INFO<span class="o">]</span>:<span class="w"> </span>Done<span class="w"> </span><span class="o">(</span><span class="m">210</span>.643.s<span class="o">)</span>!<span class="w"> </span>For<span class="w"> </span>help,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;help&quot;</span>
+<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>Server<span class="w"> </span>thread/WARN<span class="o">]</span>:<span class="w"> </span>Can<span class="err">&#39;</span>t<span class="w"> </span>keep<span class="w"> </span>up!<span class="w"> </span>Is<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>overloaded?<span class="w"> </span>Running<span class="w"> </span>2885ms<span class="w"> </span>or<span class="w"> </span><span class="m">57</span><span class="w"> </span>ticks<span class="w"> </span>behind
 </code></pre></div>
 
 <p>無事に起動しましたが、すでにサーバがオーバーロード（つまりあっぷあっぷして苦しい）していないか？と警告が出ています。メモリ512MBでは厳しいようです。今回はこのまま進めます。</p>
 <p>ここまででサーバが立ち上がりました。早速接続を・・・と考えたくなりますが、実はポートが開いていないので接続できません。ポートを開ける為に2種類の設定を行わなければなりません。</p>
 <p>一旦<code>Ctrl</code>+<code>c</code>ボタンを押して、サーバを終了させましょう。</p>
-<div class="highlight"><pre><span></span><code>^C<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span> <span class="o">[</span>Server thread/INFO<span class="o">]</span>: Stopping server
+<div class="highlight"><pre><span></span><code>^C<span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>Server<span class="w"> </span>thread/INFO<span class="o">]</span>:<span class="w"> </span>Stopping<span class="w"> </span>server
 </code></pre></div>
 
 <p>と表示され、サーバが終了してコンソール画面に戻ってくると思います。</p>
 <h3>ファイヤウォールの設定</h3>
 <p>1種類目はMLのファイヤウォール設定です。現在のファイヤウォールの設定を確認します。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --list-all
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> XXXX:
-public <span class="o">(</span>active<span class="o">)</span>
-  target: default
-  icmp-block-inversion: no
-  interfaces: eth0
-  sources:
-  services: cockpit dhcpv6-client ssh
-  ports:
-  protocols:
-  masquerade: no
-  forward-ports:
-  source-ports:
-  icmp-blocks:
-  rich rules:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-all
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>XXXX:
+public<span class="w"> </span><span class="o">(</span>active<span class="o">)</span>
+<span class="w">  </span>target:<span class="w"> </span>default
+<span class="w">  </span>icmp-block-inversion:<span class="w"> </span>no
+<span class="w">  </span>interfaces:<span class="w"> </span>eth0
+<span class="w">  </span>sources:
+<span class="w">  </span>services:<span class="w"> </span>cockpit<span class="w"> </span>dhcpv6-client<span class="w"> </span>ssh
+<span class="w">  </span>ports:
+<span class="w">  </span>protocols:
+<span class="w">  </span>masquerade:<span class="w"> </span>no
+<span class="w">  </span>forward-ports:
+<span class="w">  </span>source-ports:
+<span class="w">  </span>icmp-blocks:
+<span class="w">  </span>rich<span class="w"> </span>rules:
 </code></pre></div>
 
 <p>現在有効な設定が表示されます。現在はservicesの行にあるサービスしか外部から通信できません。今回はserviceとしてではなく、portとして、<code>tcp</code>の<code>5432</code>を追加し、もう一度確認しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">5432</span>/tcp
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">5432</span>/tcp
 success
-$ sudo firewall-cmd --list-all
-public <span class="o">(</span>active<span class="o">)</span>
-  target: default
-  icmp-block-inversion: no
-  interfaces: eth0
-  sources:
-  services: cockpit dhcpv6-client ssh
-  ports: <span class="m">5432</span>/tcp
-  protocols:
-  masquerade: no
-  forward-ports:
-  source-ports:
-  icmp-blocks:
-  rich rules:
+$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-all
+public<span class="w"> </span><span class="o">(</span>active<span class="o">)</span>
+<span class="w">  </span>target:<span class="w"> </span>default
+<span class="w">  </span>icmp-block-inversion:<span class="w"> </span>no
+<span class="w">  </span>interfaces:<span class="w"> </span>eth0
+<span class="w">  </span>sources:
+<span class="w">  </span>services:<span class="w"> </span>cockpit<span class="w"> </span>dhcpv6-client<span class="w"> </span>ssh
+<span class="w">  </span>ports:<span class="w"> </span><span class="m">5432</span>/tcp
+<span class="w">  </span>protocols:
+<span class="w">  </span>masquerade:<span class="w"> </span>no
+<span class="w">  </span>forward-ports:
+<span class="w">  </span>source-ports:
+<span class="w">  </span>icmp-blocks:
+<span class="w">  </span>rich<span class="w"> </span>rules:
 </code></pre></div>
 
 <p><code>ports</code>行に追加されているのが確認できます。この設定は再起動すると消えてしまうので、恒久的に適用するために下記のコマンドを実行しましょう。</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --runtime-to-permanent
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--runtime-to-permanent
 success
 </code></pre></div>
 
