@@ -93,8 +93,8 @@
 <p>ML9では2023年8月現在でKernel 5.14系なので、対処が必要です。</p>
 <p>askubuntuの<a href="https://askubuntu.com/questions/1376871/rz608-mt7921k-wireless-lan-driver-is-not-supported-on-ubuntu-18-04">該当ページ</a>に対処方法が書いてあります。</p>
 <p>Ubuntuの修正方法に見えますが、MLでの修正方法も同じです。リンク先と同じことをやっていますが、下記に対処方法を記載します。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nb">alias</span><span class="w"> </span>pci:v000014C3d00000608sv*sd*bc*sc*i*<span class="w"> </span>mt7921e<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/modprobe.d/rz608.conf
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;SUBSYSTEM==&quot;drivers&quot;, DEVPATH==&quot;/bus/pci/drivers/mt7921e&quot;, ATTR{new_id}=&quot;14c3 0608&quot;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/udev/rules.d/99-rz608.rules
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">alias</span><span class="w"> </span>pci:v000014C3d00000608sv*sd*bc*sc*i*<span class="w"> </span>mt7921e<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/modprobe.d/rz608.conf
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;SUBSYSTEM==&quot;drivers&quot;, DEVPATH==&quot;/bus/pci/drivers/mt7921e&quot;, ATTR{new_id}=&quot;14c3 0608&quot;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/udev/rules.d/99-rz608.rules
 </code></pre></div>
 
 <p>再起動を行うと、無線LANモジュールを認識していて、無線LAN設定ができます。</p>
