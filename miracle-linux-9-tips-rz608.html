@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-rz608.html">
     <meta name="twitter:title" content="tmya note ~ RZ608を搭載したマシンでの無線LAN接続@MIRACLE LINUX 9">
-    <meta name="twitter:description" content="RZ608 無線LANモジュール RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。Kernel 5.16ぐらいまでのバージョンでは、RZ608を認識せず無線LANが使えないように見えますが、設定変更でMediaTekのドライバを使うことで使用可能になります。 ML9では2023年8月現在でKernel 5.14系なので、対処が必要です。 askubuntuの該当ページに対処方法が書いてあります。 Ubuntuの修正方法に見えますが、MLでの修正方法も同じです。リンク先 …">
+    <meta name="twitter:description" content="RZ608 無線LANモジュール RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。 MediaTek MT7921のドライバで動くようです。 対処方法 Kernelバージョンが5.12～5.16ぐらいまでで、無線LANを認識しない場合、下記の設定で動くと思われます。ML9では2023年8月現在でKernel 5.14系なので、この対処が必要です。 askubuntuの該当ページ …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ RZ608を搭載したマシンでの無線LAN接続@MIRACLE LINUX 9"/>
-    <meta property="og:description" content="RZ608 無線LANモジュール RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。Kernel 5.16ぐらいまでのバージョンでは、RZ608を認識せず無線LANが使えないように見えますが、設定変更でMediaTekのドライバを使うことで使用可能になります。 ML9では2023年8月現在でKernel 5.14系なので、対処が必要です。 askubuntuの該当ページに対処方法が書いてあります。 Ubuntuの修正方法に見えますが、MLでの修正方法も同じです。リンク先 …"/>
+    <meta property="og:description" content="RZ608 無線LANモジュール RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。 MediaTek MT7921のドライバで動くようです。 対処方法 Kernelバージョンが5.12～5.16ぐらいまでで、無線LANを認識しない場合、下記の設定で動くと思われます。ML9では2023年8月現在でKernel 5.14系なので、この対処が必要です。 askubuntuの該当ページ …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -89,8 +89,10 @@
                                                   title="Permalink to RZ608を搭載したマシンでの無線LAN接続@MIRACLE LINUX 9">RZ608を搭載したマシンでの無線LAN接続@MIRACLE LINUX 9</a></h2>
             <div class="entry-content blog-post">
                 <h1>RZ608 無線LANモジュール</h1>
-<p>RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。Kernel 5.16ぐらいまでのバージョンでは、RZ608を認識せず無線LANが使えないように見えますが、設定変更でMediaTekのドライバを使うことで使用可能になります。</p>
-<p>ML9では2023年8月現在でKernel 5.14系なので、対処が必要です。</p>
+<p>RyzenのCPUを搭載したマシンの一部に搭載されている無線LANのモジュールです。</p>
+<p>MediaTek MT7921のドライバで動くようです。</p>
+<h1>対処方法</h1>
+<p>Kernelバージョンが5.12～5.16ぐらいまでで、無線LANを認識しない場合、下記の設定で動くと思われます。<strong>ML9では2023年8月現在でKernel 5.14系なので、この対処が必要です。</strong></p>
 <p>askubuntuの<a href="https://askubuntu.com/questions/1376871/rz608-mt7921k-wireless-lan-driver-is-not-supported-on-ubuntu-18-04">該当ページ</a>に対処方法が書いてあります。</p>
 <p>Ubuntuの修正方法に見えますが、MLでの修正方法も同じです。リンク先と同じことをやっていますが、下記に対処方法を記載します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nb">alias</span><span class="w"> </span>pci:v000014C3d00000608sv*sd*bc*sc*i*<span class="w"> </span>mt7921e<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/modprobe.d/rz608.conf
