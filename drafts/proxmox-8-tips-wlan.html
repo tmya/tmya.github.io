@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+<head>
+            <meta charset="utf-8">
+        <!-- Site Meta Data -->
+        <title>Proxmox VE 8.0での無線LAN設定</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Akio Tomita">
+
+        <link rel="shortcut icon" href="">
+
+        <!-- schema.org -->
+        <meta itemprop="name" content="tmya note">
+        <meta itemprop="image" content="">
+        <meta itemprop="description" content="">
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!-- Style Meta Data -->
+        <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css"/>
+
+        <!-- Feed Meta Data -->
+
+        <!-- Twitter Feed -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:image" content="">
+
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:url" content="../drafts/proxmox-8-tips-wlan.html">
+    <meta name="twitter:title" content="tmya note ~ Proxmox VE 8.0での無線LAN設定">
+    <meta name="twitter:description" content="Proxmox VE 8.0 について Proxmox VE 8.0は、Debian 12 &#34;bookworm&#34;ベースの仮想サーバーマネージメントプラットフォームです。Debian 12との違いで気づいた点は、KernelがDebian 12が採用している6.1ではなくUbuntu 23.04派生の6.2になっていることです …">
+
+    <!-- Facebook Meta Data -->
+    <meta property="og:title" content="tmya note ~ Proxmox VE 8.0での無線LAN設定"/>
+    <meta property="og:description" content="Proxmox VE 8.0 について Proxmox VE 8.0は、Debian 12 &#34;bookworm&#34;ベースの仮想サーバーマネージメントプラットフォームです。Debian 12との違いで気づいた点は、KernelがDebian 12が採用している6.1ではなくUbuntu 23.04派生の6.2になっていることです …"/>
+    <meta property="og:image" content=""/>
+</head>
+
+<body>
+<!-- Sidebar -->
+<aside>
+    <!--<center><a href=".."><img id="avatar" src=""></a></center>-->
+    <h1>tmya note</h1>
+        <p>Something else</p>
+    <br>
+
+
+    <nav class="nav">
+        <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://tmya.github.io">Blog</a></li>
+
+                <li><a class="nav__link" href="../pages/about.html">About</a></li>
+
+        </ul>
+    </nav>
+
+    <p class="social">
+                <a href="https://github.com/tmya" target="_blank"><img
+                        src="../theme/images/icons/github.png"></a>
+                <a href="https://twitter.com/tmyanote" target="_blank"><img
+                        src="../theme/images/icons/twitter.png"></a>
+    </p>
+
+        <h2>Categories</h2>
+        <ul class="navbar">
+                <li><a
+                        href="../category/blog.html">blog</a></li>
+                <li><a
+                        href="../category/miracle-linux.html">MIRACLE LINUX</a></li>
+                <li><a
+                        href="../category/miracle-linux-84.html">MIRACLE LINUX 8.4</a></li>
+                <li><a
+                        href="../category/miracle-linux-9.html">MIRACLE LINUX 9</a></li>
+                <li><a
+                        href="../category/p-tips.html">p-tips</a></li>
+        </ul>
+
+
+</aside>
+
+<!-- Content -->
+<article>
+    <section id="content">
+        <article>
+            <h2 class="post_title post_detail"><a href="../drafts/proxmox-8-tips-wlan.html" rel="bookmark"
+                                                  title="Permalink to Proxmox VE 8.0での無線LAN設定">Proxmox VE 8.0での無線LAN設定</a></h2>
+            <div class="entry-content blog-post">
+                <h1>Proxmox VE 8.0 について</h1>
+<p>Proxmox VE 8.0は、Debian 12 "bookworm"ベースの仮想サーバーマネージメントプラットフォームです。Debian 12との違いで気づいた点は、KernelがDebian 12が採用している6.1ではなくUbuntu 23.04派生の6.2になっていることです。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># uname -s -r -v -m -o</span>
+Linux<span class="w"> </span><span class="m">6</span>.2.16-3-pve<span class="w"> </span><span class="c1">#1 SMP PREEMPT_DYNAMIC PVE 6.2.16-3 (2023-06-17T05:58Z) x86_64 GNU/Linux</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/os-release </span>
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Debian GNU/Linux 12 (bookworm)&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Debian GNU/Linux&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;12&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;12 (bookworm)&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>bookworm
+<span class="nv">ID</span><span class="o">=</span>debian
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;https://www.debian.org/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://www.debian.org/support&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://bugs.debian.org/&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># apt -y install wpasupplicant</span>
+
+<span class="c1"># wpa_passphrase myssid my_very_secret_passphrase &gt; /etc/wpa_supplicant/wpa_supplicant.conf&quot;</span>
+</code></pre></div>
+
+<p><code>/etc/network/interfaces</code></p>
+<div class="highlight"><pre><span></span><code>iface<span class="w"> </span>wlp2s0<span class="w"> </span>inet<span class="w"> </span>manual
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>allow-hotplug<span class="w"> </span>wlp2s0
+iface<span class="w"> </span>wlp2s0<span class="w"> </span>inet<span class="w"> </span>dhcp
+<span class="w">        </span>wpa-ssid<span class="w"> </span>myssid
+<span class="w">        </span>wpa-psk<span class="w"> </span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre></div>
+            </div>
+            <div class="post_list">
+                <span>By </span>
+                <a href="../author/akio-tomita.html">@Akio Tomita</a>
+                <span> in </span>
+                <span class="post_category"><a href="../category/proxmox-ve-80.html" rel="bookmark"
+                                               title="Permalink to Proxmox VE 8.0">[ Proxmox VE 8.0 ]</a></span>
+                <span class="post_date">Tue 05 September 2023</span>
+                <div><span>Tags : </span>
+                </div>
+
+                <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=../drafts/proxmox-8-tips-wlan.html&text=Proxmox VE 8.0での無線LAN設定&via="><img
+                            src="../theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=../drafts/proxmox-8-tips-wlan.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="../theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=../drafts/proxmox-8-tips-wlan.html&t=Proxmox VE 8.0での無線LAN設定"><img
+                            src="../theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=../drafts/proxmox-8-tips-wlan.html&title=Proxmox VE 8.0での無線LAN設定"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="../theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Proxmox VE 8.0での無線LAN設定&amp;body=Viens découvrir un article à propos de [Proxmox VE 8.0での無線LAN設定] sur le site de Akio Tomita. ../drafts/proxmox-8-tips-wlan.html"
+                            title="Share by Email" target="_blank"><img
+                            src="../theme/images/icons/mail-s.png"></a></span>
+                </div>
+            </div>
+        </article>
+    </section>
+</article>
+
+<!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a
+                href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+</html>
