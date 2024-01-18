@@ -243,12 +243,14 @@ div.admonition {
   border-radius: 2px;
 }
 div.admonition.note {
-  background-color: darkkhaki;
+  color: rgb(105, 101, 41);
+  background-color: lemonchiffon;
 }
 div.admonition.hint {
+  color: darkslateblue;
   background-color: #1DAEDF;
 }
-div.admonition-title {
+p.admonition-title {
   font-weight: 800;
 }
 
