@@ -242,6 +242,9 @@ div.admonition {
   padding: 1em;
   border-radius: 2px;
 }
+div.admonition.note {
+  background-color: darkkhaki;
+}
 div.admonition.hint {
   background-color: #1DAEDF;
 }
