@@ -90,7 +90,7 @@
             <div class="entry-content blog-post">
                 <p><strong>この記事は5/25開催の MIRACLE LINUX Meetup!! でライブデモを行う際の資料です。マインクラフトサーバを建てる時の参考になれば幸いです。イベントページについては<a href="https://miraclelinux.connpass.com/event/245908/">こちら</a>をご覧ください。</strong></p>
 <p>前提として、ConoHaの契約を行いコントロールパネルにログインができるようになっていることを想定しています。</p>
-<h4>設定の流れ</h4>
+<h4 id="_1">設定の流れ</h4>
 <ol>
 <li>ConoHaのVPSでサーバを追加</li>
 <li>コンソールを開く</li>
@@ -102,7 +102,7 @@
 <li>ゲームの起動と接続</li>
 <li>（おまけ）提供マップデータのマルチサーバへの適用</li>
 </ol>
-<h3>手順1 - ConoHaのVPSでサーバを追加</h3>
+<h3 id="1-conohavps">手順1 - ConoHaのVPSでサーバを追加</h3>
 <p>ConoHaのコントロールパネルにログイン後、<code>VPS</code>タブの<code>サーバー追加</code>をクリックし、下記の設定でサーバーを追加します。</p>
 <ul>
 <li>リージョン : <code>東京</code></li>
@@ -132,7 +132,7 @@
 <li>スタートアップスクリプト : <code>使用しない</code></li>
 </ul>
 <p>画面右側の<code>追加</code>をクリックしてください。少し待つと画面が遷移して指定したネームタグのサーバがサーバーリスト画面に表示されます。追加したサーバーのステータスが<code>構築中</code>になり、30秒前後待つと<code>起動中</code>になってサーバーが起動します。</p>
-<h3>手順2 - コンソールを開く</h3>
+<h3 id="2-">手順2 - コンソールを開く</h3>
 <p>追加したサーバーのネームタグ部分をクリックすると、サーバーの操作が可能になります。画面中央上部に<code>コンソール</code>ボタンがあるのでクリックすると新しくウィンドウが立ち上がり、サーバーのコンソール画面が表示されてキーボードからコマンドを入力できるようになります。</p>
 <p>先ほどの手順でrootパスワードを設定しました。今回のライブデモではroot
 ユーザで作業を行います。rootユーザでログインを行うため、ユーザ名の<code>root</code>と入力して<code>Enter</code>キーを押します。</p>
@@ -151,14 +151,14 @@
 </code></pre></div>
 
 <p><strong>これ以降、コマンドを打つ際に上記の表記を省略して<code>#</code>だけ行頭に表記しておきます。<code>#</code>より後ろのコマンドを打って、<code>Enter</code>キーを押すことでコマンドを実行することを繰り返す流れになります。行頭に<code>#</code>が無い行はコマンドの実行結果として表示される出力です。</strong></p>
-<h3>手順3 - JAVAのインストール</h3>
+<h3 id="3-java">手順3 - JAVAのインストール</h3>
 <p>マインクラフトサーバの本体を動かすために、JAVAのランタイムというものが必要です。下記のコマンドでインストール可能です。
 それなりに大きいファイルのダウンロードがあるので終了まで数分かかるかもしれません。</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>java-latest-openjdk-headless
 </code></pre></div>
 
 <p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
-<h3>手順4 - マインクラフトサーバの本体をダウンロード</h3>
+<h3 id="4-">手順4 - マインクラフトサーバの本体をダウンロード</h3>
 <p>まずはマインクラフトサーバのファイルを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>mkdir<span class="w"> </span>minecraft-server
 <span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>minecraft-server
@@ -170,7 +170,7 @@
 </code></pre></div>
 
 <p>そしてEnterキーを押して実行します。以降もコマンドについては同じ手順でコピー&amp;ペーストを繰り返すととても楽です。</p>
-<h3>手順5 - サーバの初期設定</h3>
+<h3 id="5-">手順5 - サーバの初期設定</h3>
 <p>マインクラフトサーバに使用メモリなど指定して実行したいので、そのためのスクリプトを作成します。</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;#!&#39;</span><span class="s2">&quot;/usr/bin/bash\njava -Xmx3072M -Xms1024M -jar server.jar nogui&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.sh
 </code></pre></div>
@@ -212,7 +212,7 @@
 <span class="go">query.port=5432</span>
 </code></pre></div>
 
-<h3>手順6 - ファイヤウォールの設定</h3>
+<h3 id="6-">手順6 - ファイヤウォールの設定</h3>
 <p>MIRACLE LINUXに機能としてあるファイヤウォールを設定します。初期状態では、マインクラフトサーバで設定した<code>tcp</code>の<code>5432</code>ポートへの接続は閉じられていますので、接続を受け付けるように設定します。</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">5432</span>/tcp
 <span class="go">success</span>
@@ -241,14 +241,14 @@
 </code></pre></div>
 
 <p><code>success</code>と表示がされればOKです。</p>
-<h3>手順7 - サーバの起動</h3>
+<h3 id="7-">手順7 - サーバの起動</h3>
 <p>ついにマインクラフトサーバを起動します。</p>
 <div class="highlight"><pre><span></span><code><span class="gp"># </span>./start.sh
 </code></pre></div>
 
 <p>マップデータの初期化などが行われるので、数分待つことになると思います。
 最後に<code>Done (xx.xxs)! For help, type "help"</code>と表示されたらサーバにログインが可能です。</p>
-<h3>手順8 - ゲームの起動と接続</h3>
+<h3 id="8-">手順8 - ゲームの起動と接続</h3>
 <p>マインクラフト(バージョン 1.18.2)を起動し、<code>マルチプレイ</code>から<code>サーバーを追加</code>をクリックします。<code>サーバー名</code>はわかりやすい値で好きなように設定し、<code>サーバーアドレス</code>には<code>ConoHaのIPv4のIPアドレス</code>:5432を入力し、完了をクリックします。</p>
 <p><strong>NOTE:画像は古いバージョンですが1.18.2も同じ画面です。</strong></p>
 <p><img alt="サーバーの追加" src="./images/mc-add-serv.jpg"></p>
@@ -259,10 +259,10 @@
 <p>コンソール画面を見ると、ログインしたことがわかるログが表示されています。</p>
 <p><img alt="ログインがわかるコンソール" src="./images/conoha-mc-log.jpg"></p>
 <p>以上で完了です。</p>
-<h2>おまけ</h2>
+<h2 id="_2">おまけ</h2>
 <p>サイバートラスト株式会社さんがMIRACLE LINUXロゴがイメージされたマップデータとみらくるちゃんのスキンデータを公開してくれました！
 詳細は<a href="https://www.miraclelinux.com/tech-blog/minecraft">Minecraft用みらくるちゃんスキンとmapを公開! / みらくるブログ</a>をご覧ください。</p>
-<h3>手順9 - 提供マップデータのマルチサーバへの適用</h3>
+<h3 id="9-">手順9 - 提供マップデータのマルチサーバへの適用</h3>
 <p>起動中のサーバのコンソールで<code>/stop</code>と入力して<code>Enter</code>キーを押してください。
 サーバの状態が保存され終了し、コマンドを入力するシェルに戻ってきます。</p>
 <div class="highlight"><pre><span></span><code><span class="go">/stop</span>

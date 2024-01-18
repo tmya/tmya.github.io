@@ -88,10 +88,10 @@
             <h2 class="post_title post_detail"><a href="./how-to-install-softether-on-centos-to-enable-radius-authentication-in-japan.html" rel="bookmark"
                                                   title="Permalink to How to install SoftEther on CentOS to enable RADIUS authentication in Japan.">How to install SoftEther on CentOS to enable RADIUS authentication in Japan.</a></h2>
             <div class="entry-content blog-post">
-                <h3>Memo</h3>
+                <h3 id="memo">Memo</h3>
 <p>As you know disabled Certificate authentication or RADIUS authentication and other(ex. Deep-inspect packet logging,,,) in Japan due to SoftEther's contractual issue.
 If you need these features, have to add code and compile from source.</p>
-<h2>Download source code from SoftEther website.</h2>
+<h2 id="download-source-code-from-softether-website">Download source code from SoftEther website.</h2>
 <p><a href="https://www.softether-download.com/ja.aspx">SoftEther Download page</a></p>
 <p>You should choice "Source Code of SoftEther VPN" from "Choose a component" listbox.
 It can choose tar.gz or zip if you like and download then untar it.</p>
@@ -99,7 +99,7 @@ It can choose tar.gz or zip if you like and download then untar it.</p>
 $<span class="w"> </span>tar<span class="w"> </span>xvf<span class="w"> </span>./softether-src-v4.34-9745-beta.tar.gz
 </code></pre></div>
 
-<h2>Edit source code.</h2>
+<h2 id="edit-source-code">Edit source code.</h2>
 <p>Edit Server.c file at "src/Cedar/". I like "micro" editor. Of cource, any other editor is fine.</p>
 <p><a href="https://micro-editor.github.io/">micro</a></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>micro<span class="w"> </span>v4.34-9745/src/Cedar/Server.c
@@ -155,7 +155,7 @@ $<span class="w"> </span>tar<span class="w"> </span>xvf<span class="w"> </span>.
 <p>ret = true; to ret = false;</p>
 <p>or</p>
 <p>ret = true; to //ret = true; (comment out)</p>
-<h2>Configure and Compile</h2>
+<h2 id="configure-and-compile">Configure and Compile</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>v4.34-9745
 $<span class="w"> </span>./configure
 $<span class="w"> </span>make

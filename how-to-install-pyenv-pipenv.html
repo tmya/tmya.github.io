@@ -92,19 +92,19 @@
 <p>Python has many versions of many environments. It has need one of them but too much hassle to choosing appropriate version of Python and modules. I want to operation easely.</p>
 <p>pyenv : Easy to switch between some versions of Python.</p>
 <p>pipenv : It can install modules separately of version.(use pyenv's version switch module inside.)</p>
-<h1>Memo</h1>
+<h1 id="memo">Memo</h1>
 <ul>
 <li>I using this settings on Raspberry Pi 4(64bit Kernel) and MacOS Catalina</li>
 <li>Python 3(.8)</li>
 </ul>
-<h1>Contents</h1>
+<h1 id="contents">Contents</h1>
 <ul>
 <li>Install require components</li>
 <li>Install pyenv</li>
 <li>Install pipenv</li>
 <li>How to use.</li>
 </ul>
-<h2>Install require components</h2>
+<h2 id="install-require-components">Install require components</h2>
 <p>(Raspberry Pi) &gt;</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>libbz2-dev<span class="w"> </span>libreadline-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>wget<span class="w"> </span>curl<span class="w"> </span>llvm<span class="w"> </span>libncurses5-dev<span class="w"> </span>libncursesw5-dev<span class="w"> </span>xz-utils<span class="w"> </span>tk-dev<span class="w"> </span>libffi-dev<span class="w"> </span>liblzma-dev<span class="w"> </span>python-openssl<span class="w"> </span>git
 </code></pre></div>
@@ -115,7 +115,7 @@
 </code></pre></div>
 
 <p>&lt; (MacOS)</p>
-<h2>Install pyenv</h2>
+<h2 id="install-pyenv">Install pyenv</h2>
 <p>(Raspberry Pi)</p>
 <p>First, install pyenv from CUI command.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://pyenv.run<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
@@ -151,7 +151,7 @@
 </code></pre></div>
 
 <p>&lt; (MacOS)</p>
-<h2>Install pipenv.</h2>
+<h2 id="install-pipenv">Install pipenv.</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipenv
 </code></pre></div>
 
@@ -159,12 +159,12 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipenv
 </code></pre></div>
 
-<h2>How to use</h2>
-<h3>Install Python 3.8.2 or what you need.</h3>
+<h2 id="how-to-use">How to use</h2>
+<h3 id="install-python-382-or-what-you-need">Install Python 3.8.2 or what you need.</h3>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.8.2
 </code></pre></div>
 
-<h2>Create a local environment.</h2>
+<h2 id="create-a-local-environment">Create a local environment.</h2>
 <p>First check the default Python version</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>--version
 Python<span class="w"> </span><span class="m">3</span>.7.3
@@ -206,12 +206,12 @@ Python<span class="w"> </span><span class="m">3</span>.8.2
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">exit</span>
 </code></pre></div>
 
-<h3>Install library</h3>
+<h3 id="install-library">Install library</h3>
 <p>You can not use 'pip' command. You should use 'pipenv' command instead.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pipenv<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
 </code></pre></div>
 
-<h3>Optional settings</h3>
+<h3 id="optional-settings">Optional settings</h3>
 <p>How to create a virtual environment in the project directory.
 This setting is recommended for git and other version-control software.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>micro<span class="w"> </span>~/.bashrc

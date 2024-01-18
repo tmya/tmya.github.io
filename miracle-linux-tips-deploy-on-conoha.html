@@ -90,7 +90,7 @@
             <div class="entry-content blog-post">
                 <p><strong>2022/03/04 追記</strong>  ConoHaのテンプレートにMIRACLE LINUX 8.4が追加されたので、下記の手順を行わなくても普通にMIRACLE LINUX 8.4を選択するだけでインストール可能です。やったね！</p>
 <p>ConoHaのVPSにて、MIRACLE LINUX(以下、ML)を使おうと思います。MLにはCentOSからの移行ツールが存在しており、CentOS Linux 8.0から8.4までであれば対応しているようです。今回はConoHaのVPSにCentOS 8.3をインストールして移行ツールを使ってMIRACLE LINUXを導入します。GUIは使わないのでCUIのみとなります。</p>
-<h3>ConoHaで新しいサーバの追加</h3>
+<h3 id="conoha">ConoHaで新しいサーバの追加</h3>
 <p>まずはConoHaにログインをして新しいサーバの追加を行います。VPS割引きっぷは前払いで少し割引になるようですが試していません。イメージタイプはOSタブのCentOSを選びますが、デフォルトは<code>Steam8(64bit)</code>になっているので、ドロップダウンから<code>8.3(64bit)</code>を選びます。</p>
 <p><img alt="サーバ追加の画面" src="./images/conoha-add-server-1.jpg"></p>
 <p>rootパスワードは大文字や小文字、数字と記号を混ぜないといけないので思いつかない場合は何らかのソフトで生成しましょう。<a href="https://1password.com/jp/password-generator/">1passwordのジェネレータ</a>でサクっと生成する方法もあります。お手持ちのマシンに<code>pwgen</code>コマンドや<code>mkpasswd</code>コマンドなどがあればそれで生成してもいいでしょう。</p>
@@ -98,7 +98,7 @@
 <p><img alt="オプションを見るの中身" src="./images/conoha-option-disable-inbound-port.jpg"></p>
 <p>サーバを追加すると1分程度構築中と表示され、その後起動中になります。</p>
 <p><img alt="サーバの追加完了" src="./images/conoha-add-server-2.jpg"></p>
-<h3>サーバへのログイン</h3>
+<h3 id="_1">サーバへのログイン</h3>
 <p><code>ネームタグ</code>から先ほど作成したサーバをクリックし、<code>コンソール</code>をクリックすると新しいウィンドウでコンソール画面が表示されます。</p>
 <p><img alt="コンソール" src="./images/conoha-console.jpg"></p>
 <p><code>root</code>と打ってEnterキーでログインします。パスワードを聞かれるので先ほどサーバ追加の時に指定したパスワードを入力します。パスワードはキーボードから入力しても画面上に文字が出ません。覗き見防止<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>でそうなっています。</p>
@@ -112,7 +112,7 @@ Password:
 CentOS<span class="w"> </span>Linux<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.3.2011
 </code></pre></div>
 
-<h3>MIRACLE LINUXへの移行ツールのダウンロードと実行</h3>
+<h3 id="miracle-linux">MIRACLE LINUXへの移行ツールのダウンロードと実行</h3>
 <p>移行ツールをダウンロード<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>します。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># wget https://repo.dist.miraclelinux.net/miraclelinux/migration-tool/migrate2ml.sh</span>
 </code></pre></div>
@@ -134,7 +134,7 @@ Core<span class="w"> </span>package<span class="w"> </span>migration<span class=
 MIRACLE<span class="w"> </span>LINUX<span class="w"> </span>release<span class="w"> </span><span class="m">8</span>.4<span class="w"> </span><span class="o">(</span>Peony<span class="o">)</span>
 </code></pre></div>
 
-<h3>パッケージのアップデートと再起動</h3>
+<h3 id="_2">パッケージのアップデートと再起動</h3>
 <p>パッケージをアップデートします。数分かかるので待ちましょう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># dnf -y update</span>
 </code></pre></div>
@@ -152,7 +152,7 @@ Kernel<span class="w"> </span><span class="m">4</span>.18.0-305.25.1.el8_4.x86_6
 xxx-xxx-xxx-xxx<span class="w"> </span>login:
 </code></pre></div>
 
-<h3>新規ユーザの追加</h3>
+<h3 id="_3">新規ユーザの追加</h3>
 <p>今までの作業は<code>root</code>という名前のユーザで作業してきました。これはスーパーユーザとも言い、システム等を自由に変更できる"すごいユーザ"であるので、コマンドを打ち間違えてシステムを破壊してしまうかもしれません。一般的に作業を行う一般ユーザを作成しましょう。ユーザを作成するには<code>adduser</code>コマンドを使います。<code>XXXX</code>には自分のユーザ名を入力してください。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># adduser XXXX</span>
 </code></pre></div>
@@ -224,7 +224,7 @@ Administrator.<span class="w"> </span>It<span class="w"> </span>usually<span cla
 
 <p>これは、最初に移行ツールをダウンロードしたのでそのファイルが表示されています。ダウンロードした時はrootユーザのホームディレクトリで作業していたのでここで表示されます。</p>
 <p>今後は一般ユーザでログインし、必要があれば<code>sudo</code>を使って作業を行います。</p>
-<h4>その他 いくつか</h4>
+<h4 id="_4">その他 いくつか</h4>
 <p><code>os-release</code>がML仕様になっています。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/os-release
 </code></pre></div>

@@ -89,7 +89,7 @@
                                                   title="Permalink to Byobuのインストール - MIRACLE LINUX 8.4">Byobuのインストール - MIRACLE LINUX 8.4</a></h2>
             <div class="entry-content blog-post">
                 <p><a href="https://www.byobu.org/">Byobu</a>とは、CUIで使用できるウィンドウマネージャ・ターミナルマルチプレクサです。使い道の例として、SSH接続の不調による切断から作業状態を守ることができます。作業中にネットワークが不調になり切断されてしまった場合に、通常は作業途中の状態が消えてしまいますが、Byobuを起動してその中のターミナルで作業を行っていると切断されてもByobuは起動したままなので、再接続時に作業を継続できるようになります。</p>
-<h3>前提</h3>
+<h3 id="_1">前提</h3>
 <ul>
 <li>
 <p>EPELリポジトリが使えること</p>
@@ -98,21 +98,21 @@
 <p>使えない場合は<a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">MIRACLE LINUX 8.4 でいろんなリポジトリを使ってみよう｜BLOG｜サイバートラスト</a>の下の方に記載の方法で使えるようにしましょう。コマンド一発です。</p>
 </li>
 </ul>
-<h3>インストール</h3>
+<h3 id="_2">インストール</h3>
 <p>インストールはとっても簡単。インストールの続行を問われるので、<code>y</code>を入力して<code>Enterキー</code>をプッシュ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>byobu
 </code></pre></div>
 
 <p>一緒に<code>screen</code>がインストールされます。Byobuはscreenをバックエンドに使い、機能を拡張しています。設定を行なえばバックエンドにtmuxも使えるよ。</p>
-<h3>使い方</h3>
+<h3 id="_3">使い方</h3>
 <p>Byobuは仮想的にCUIの中に複数のウィンドウを開いて並べることができます。</p>
-<h4>起動方法</h4>
+<h4 id="_4">起動方法</h4>
 <p>コマンドを実行すると新しいターミナルが立ち上がります。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>byobu
 </code></pre></div>
 
 <p>この状態でいろいろな作業を行うことができます。</p>
-<h4>操作方法</h4>
+<h4 id="_5">操作方法</h4>
 <p>公式の説明は<a href="https://www.byobu.org/documentation">Byobu - Documentation</a>にあります。私の適当な説明は下記に記載。</p>
 <table>
 <thead>
@@ -216,9 +216,9 @@
 </tr>
 </tbody>
 </table>
-<h4>簡単に使うためには</h4>
+<h4 id="_6">簡単に使うためには</h4>
 <p>あまり深く考えずにbyobuを起動して作業を行い、作業途中で<code>Shift</code> + <code>F6</code>でデタッチをすれば、次にbyobuを起動した時に前回の続きから作業を行うことができます。</p>
-<h4>メモ</h4>
+<h4 id="_7">メモ</h4>
 <p>さて、SSHで接続した時に作業開始と共にbyobuを起動することを忘れたりします。忘れないようにSSH接続した時に自動でbyobuを起動するにように設定するには下記の通りにコマンドを実行します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>byobu-enable
 </code></pre></div>

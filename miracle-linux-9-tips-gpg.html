@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-gpg.html">
     <meta name="twitter:title" content="tmya note ~ GnuPGを運用する">
-    <meta name="twitter:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …">
+    <meta name="twitter:description" content="目次 目次 GnuPGを運用する GnuPGとは MIRACLE LINUX 9 での使い方 GnuPGを使う前に 公開鍵暗号 暗号化用途 署名用途 鍵配送用途 公開鍵と秘密鍵の関係 GnuPGのデータ構造 公開鍵デー …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ GnuPGを運用する"/>
-    <meta property="og:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …"/>
+    <meta property="og:description" content="目次 目次 GnuPGを運用する GnuPGとは MIRACLE LINUX 9 での使い方 GnuPGを使う前に 公開鍵暗号 暗号化用途 署名用途 鍵配送用途 公開鍵と秘密鍵の関係 GnuPGのデータ構造 公開鍵デー …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -88,31 +88,98 @@
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-gpg.html" rel="bookmark"
                                                   title="Permalink to GnuPGを運用する">GnuPGを運用する</a></h2>
             <div class="entry-content blog-post">
-                <h1>GnuPGを運用する</h1>
-<h2>GnuPGとは</h2>
+                <h1 id="_1">目次</h1>
+<div class="toc">
+<ul>
+<li><a href="#_1">目次</a></li>
+<li><a href="#gnupg">GnuPGを運用する</a><ul>
+<li><a href="#gnupg_1">GnuPGとは</a></li>
+<li><a href="#miracle-linux-9">MIRACLE LINUX 9 での使い方</a></li>
+<li><a href="#gnupg_2">GnuPGを使う前に</a><ul>
+<li><a href="#_2">公開鍵暗号</a><ul>
+<li><a href="#_3">暗号化用途</a></li>
+<li><a href="#_4">署名用途</a></li>
+<li><a href="#_5">鍵配送用途</a></li>
+<li><a href="#_6">公開鍵と秘密鍵の関係</a></li>
+</ul>
+</li>
+<li><a href="#gnupg_3">GnuPGのデータ構造</a><ul>
+<li><a href="#_7">公開鍵データ</a></li>
+<li><a href="#_8">たくさんの鍵</a></li>
+<li><a href="#_9">鍵の機能</a></li>
+<li><a href="#_10">主鍵と副鍵</a></li>
+<li><a href="#_11">鍵データの場所</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#gnupg_4">GnuPGを使う</a><ul>
+<li><a href="#_12">概要</a><ul>
+<li><a href="#_13">心構え</a></li>
+<li><a href="#_14">オプションをつけよう</a></li>
+<li><a href="#_15">オプションの指定</a></li>
+<li><a href="#_16">鍵の区別</a></li>
+</ul>
+</li>
+<li><a href="#_17">目的別操作方法</a><ul>
+<li><a href="#_18">最初の鍵ペア(主鍵)作成</a></li>
+<li><a href="#_19">副鍵の作成</a><ul>
+<li><a href="#_20">署名用の副鍵作成</a></li>
+<li><a href="#_21">認証用の副鍵作成</a></li>
+<li><a href="#_22">暗号化用の副鍵作成</a></li>
+<li><a href="#_23">作成した鍵の確認</a></li>
+</ul>
+</li>
+<li><a href="#_24">鍵のバックアップ</a><ul>
+<li><a href="#_25">公開鍵のエクスポート</a></li>
+<li><a href="#_26">秘密鍵全部のエクスポート</a></li>
+<li><a href="#_27">秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</a></li>
+<li><a href="#_28">失効証明書のエクスポート</a></li>
+</ul>
+</li>
+<li><a href="#_29">秘密鍵の削除と副鍵の秘密鍵インポート</a></li>
+<li><a href="#_30">ファイルへの署名</a></li>
+<li><a href="#_31">ファイルの署名の検証</a></li>
+<li><a href="#_32">ファイルの暗号化</a></li>
+<li><a href="#_33">ファイルの復号化</a></li>
+<li><a href="#_34">有効期限の更新</a></li>
+<li><a href="#_35">新たな環境で鍵のインポート</a></li>
+<li><a href="#_36">失効させる(主鍵)</a></li>
+<li><a href="#_37">失効させる(副鍵)</a></li>
+<li><a href="#github">Githubへの登録</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="gnupg">GnuPGを運用する</h1>
+<h2 id="gnupg_1">GnuPGとは</h2>
 <p>GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。</p>
 <p>データの暗号化や署名の用途に使うことが多いです。</p>
 <p>詳しいことを抜きに話すと、一対の公開鍵と秘密鍵のペアを用意して、あらゆる相手先に同じ公開鍵を渡すので、相手側で公開鍵が漏洩してもそもそも公開されているので安全という事です。自分の持つ一つの秘密鍵は自分できちんと管理していれば安全です。
 普通のパスワードの場合、どこからか漏洩したらすべての同じパスワードが危険になります。</p>
 <p>この説明はgpgを使うのに大変苦労したので、GnuPGを使うために必要な知識と実際の使い方と雰囲気のメモと概説になります。</p>
-<h2>MIRACLE LINUX 9 での使い方</h2>
+<h2 id="miracle-linux-9">MIRACLE LINUX 9 での使い方</h2>
 <p>MIRACLE LINUX 9では、2022/12時点でGnuPGのバージョン 2.3.3が使われているようです。通常の使い方であれば問題ありません。
 GnuPGを他のプログラムと連携を行う場合、別の設定やソフトウェアのインストールが必要になることがあります。（例えばSSH鍵として使ったり、OpenPGP card互換の機能を使うなど。）</p>
-<h2>GnuPGを使う前に</h2>
+<h2 id="gnupg_2">GnuPGを使う前に</h2>
 <p>GnuPGのリリースは20年以上前になります。その為、現代(2022年)ではソフトウェアそのものの操作はもとより、仕組みから何からとても複雑に感じてしまいます。そういうプログラムであるという事を前提に取り組むと良いと思います。</p>
-<h3>公開鍵暗号</h3>
+<h3 id="_2">公開鍵暗号</h3>
 <p>公開鍵暗号方式には、公開鍵と秘密鍵がペアで存在し、公開鍵はその名の通り公開する鍵（秘密にする必要がない）で、秘密鍵はその名の通り秘密にする鍵（他人に知られてはならない）です。</p>
 <p>公開鍵暗号に対して、一般的に暗号化で思いつくのは共通鍵暗号です。これは一般的にパスワードとして使っているものです。一つのパスワードで暗号化と復号化を行います。</p>
 <p>暗号化通信を行う場合に、公開鍵暗号では必要な鍵の数がn×2個なのに対して、共通鍵暗号では1/2×n×(n-1)個必要になります。つまり通信相手が多くなってくると、公開鍵暗号の方が鍵の数が少なくて鍵を管理する手間も少ないということになります。感覚的にも、公開鍵暗号は自分が鍵ペアを一つ持っていればいいことに対して、共通鍵暗号では通信相手毎にたくさんの鍵が必要だなということで分かるかと思います。</p>
 <p>そして公開鍵暗号の用途は大きく次の3種類にわかれます。</p>
-<h4>暗号化用途</h4>
+<h4 id="_3">暗号化用途</h4>
 <p>相手に暗号化したデータを送るために、相手の公開鍵を探してきて取得し、公開鍵でデータを暗号化します。この暗号化データは相手が持っている秘密鍵でのみ復号化できるので、インターネット経由で暗号化データを送っても安全です。</p>
-<h4>署名用途</h4>
+<h4 id="_4">署名用途</h4>
 <p>自分が作成したデータですよと証明するためには、そのデータに対して自分の秘密鍵を用いて署名を行います。署名されたデータを公開した時に、相手はそのデータに署名がされているかを公開鍵を用いて確認することができます。データが改竄されていたりすると、署名の検証に失敗するので違うデータということがわかります。</p>
 <p>どちらのパターンでも大事なのは、秘密鍵は自分だけが持っていることと公開鍵は公開していること。公開鍵については誰かが勝手になりすまして公開されないように、はっきりと自分だと言えることが大事になります。</p>
-<h4>鍵配送用途</h4>
+<h4 id="_5">鍵配送用途</h4>
 <p>これはGnuPGでは使わないと思いますが、公開鍵暗号の用途としては存在します。実は公開鍵暗号はその暗号化と復号化に必要な処理が、共通鍵暗号より多いのです。そのため、一つのデータと暗号化したり署名して送る用途にはいいのですが、ストリームデータの暗号化（映像配信など）を行う時にはちょっと不向きです。その為、最初だけ公開鍵暗号を使って、共通鍵を暗号化して相手に送ります。その後はその共通鍵を使って暗号通信を行うと効率的な暗号通信が可能です。GnuPGにはあまり関係しないので多くは書きません。</p>
-<h4>公開鍵と秘密鍵の関係</h4>
+<h4 id="_6">公開鍵と秘密鍵の関係</h4>
 <p>公開鍵暗号では公開鍵と秘密鍵のペアという説明を何度もしましたが、これは公開鍵を持っていても、秘密鍵を知ることはできないという特性があるためです。逆に、秘密鍵を知っていると公開鍵を知ることができます。</p>
 <p>RSA暗号を例にすると、秘密鍵の中には素数<code>p</code>と<code>q</code>があります。適当に選んだ素数<code>p</code>と<code>q</code>をかけた値を<code>n</code>とします。<code>(p-1)(q-1)</code>と互いに素な数から適当に一つ数を選び、<code>e</code>とします。そして<code>e*d ≡ 1 mod φ(n)</code>(φ()はトーシェント関数)が成り立つように<code>d</code>を計算します。この<code>d</code>も秘密鍵の中に入れておきます。公開鍵には、<code>e</code>と<code>n</code>を入れておきましょう。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <div class="highlight"><pre><span></span><code>公開鍵の中身→ eとn
@@ -124,12 +191,12 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 <p>秘密鍵には<code>p</code>と<code>q</code>と<code>d</code>があり、復号化は<code>m = c^d mod n</code>なので、暗号文<code>c</code>があれば<code>m</code>を求めることができます。さらに、公開鍵の<code>e</code>は最初の計算通り<code>e*d ≡ 1 mod φ(n)</code>を満たすような<code>d</code>を探すと求めることができます。<code>n</code>は単純に<code>p</code>と<code>q</code>を掛けると求めることができます。</p>
 <p>これが、公開鍵から秘密鍵を計算することはできないが、秘密鍵から公開鍵を計算することができるという仕組みです。</p>
 <p>楕円曲線暗号は分からないので誰か教えてください。</p>
-<h3>GnuPGのデータ構造</h3>
-<h4>公開鍵データ</h4>
+<h3 id="gnupg_3">GnuPGのデータ構造</h3>
+<h4 id="_7">公開鍵データ</h4>
 <p>gpgで生成される公開鍵には単純な公開鍵以外に、鍵の所有者や有効期限等のデータが一緒になっています。その為、有効期限を更新したり自分の名前やメールアドレスが変更になった場合は公開鍵を更新してみんなにお知らせする必要があるようです。ここに関しては詳しくないのであまり分かりません。</p>
-<h4>たくさんの鍵</h4>
+<h4 id="_8">たくさんの鍵</h4>
 <p>使用していくと、鍵一覧にどんどん他の人の公開鍵が増えます。gpgでは特に自分の鍵と他人の鍵という区別はなさそうで、公開鍵があるか・秘密鍵があるかぐらいのようです。自分の鍵がどれなのか、きちんと後述する<code>keyid</code>や<code>fingerprint</code>を別途テキストに記録しておくと便利かもしれません。</p>
-<h4>鍵の機能</h4>
+<h4 id="_9">鍵の機能</h4>
 <p>鍵には署名・暗号化等複数の機能を持たせることがあり、それぞれ別の機能をもった鍵として作ることもできます。
 プログラム上でそれぞれ略称で<code>S</code>、<code>C</code>、<code>E</code>、<code>A</code>と表示されます。</p>
 <table>
@@ -163,10 +230,10 @@ GnuPGを他のプログラムと連携を行う場合、別の設定やソフト
 </tr>
 </tbody>
 </table>
-<h4>主鍵と副鍵</h4>
+<h4 id="_10">主鍵と副鍵</h4>
 <p>公開鍵と秘密鍵がセットで一つの鍵として考えた場合に、主となる鍵と、そこに紐付く複数の副鍵が存在します。
 GnuPGでデフォルト設定のまま鍵を生成すると、まずは主鍵が作られて<code>S</code>と<code>C</code>の機能が付与され、自動的に副鍵に<code>E</code>の機能が付与された状態で作成されます。</p>
-<h4>鍵データの場所</h4>
+<h4 id="_11">鍵データの場所</h4>
 <p>通常、鍵データ等は<code>$HOME/.gnupg/</code>以下に保存されています。セキュリティを保つために、ディレクトリのパーミッションは<code>700</code>になります。</p>
 <p>また、鍵データがファイルで存在していることになりますが、ディレクトリを開いてファイル移動でコピーしたりバックアップしたりということはあまり想定されていないようです。直接ファイルを触ることはせず<code>gpg</code>コマンドを使って操作することが前提になります。</p>
 <p>環境変数のGNUPGHOMEにパスを設定すると、そのパスが鍵データ等のディレクトリとしてgpgコマンドが実行されます。一時的に鍵を生成したり、インポート・エクスポート等を行う場合に重宝します。<code>export GNUPGHOME="$(mktemp -d)"</code>で環境変数を設定すると、以後のgpgコマンドは環境変数に指定したディレクトリのデータを基に動作するので、<code>$HOME/.gnupg/</code>以下に影響を与えることがありません。一通り作業が終わったら、<code>export -n GNUPGHOME</code>で環境変数を削除すると、以後gpgコマンドは<code>$HOME/.gnupg/</code>以下のデータを読み込むようになり、元に戻ります。なお、<code>gpg-agent</code>プロセスが立ち上がるので、<code>ps x | grep gpg-agent</code>を実行して表示された中で、<code>--homedir</code>以下が<code>/tmp/tmp.****</code>となっているもののプロセスを終了させましょう。左端の数値を覚えて、<code>kill xxxx</code>(xxxxに数値を入れる)で終了することができます。</p>
@@ -179,8 +246,8 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-
 
 <p>このような感じで作業します。<code>mktemp -d</code>で/tmp以下に一時的なフォルダを作って作業を行う方法は、<a href="https://www.gnupg.org/documentation/manuals/gnupg/Unattended-GPG-key-generation.html">公式の説明</a>の中にあった方法です。</p>
 <p>この手法はエクスポートしたデータをきちんとインポートできるかのテストや、他にも役立つので重宝します。</p>
-<h2>GnuPGを使う</h2>
-<h3>概要</h3>
+<h2 id="gnupg_4">GnuPGを使う</h2>
+<h3 id="_12">概要</h3>
 <p>GnuPGは<code>gpg</code>という実行ファイルになっています。<code>--version</code>オプションをつけるとインストールされているgpgのバージョンを確認できます。
 再度になりますが、2022年12月時点のMIRACLE LINUX 9ではバージョンが<code>2.3.3</code>になっています。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>--version
@@ -205,10 +272,10 @@ AEAD:<span class="w"> </span>EAX,<span class="w"> </span>OCB
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>gnupg<span class="w"> </span>pinentry
 </code></pre></div>
 
-<h4>心構え</h4>
+<h4 id="_13">心構え</h4>
 <p><code>gpg</code>コマンドを使う時の個人的な印象と注意点ですが、とにかくオプションが多くなっていて覚えづらいことと、コマンドごとに動作の一貫性がないことがあります。またバージョンによって必要なオプションが違ったり、オプションの短縮形が存在したりしています。</p>
 <p>他にもたくさん細かい注意点や補足があるので、都度書いておきます。</p>
-<h4>オプションをつけよう</h4>
+<h4 id="_14">オプションをつけよう</h4>
 <p><code>gpg</code>コマンドをオプション無しで起動すると</p>
 <div class="highlight"><pre><span></span><code>gpg:<span class="w"> </span>*警告*:<span class="w"> </span>コマンドが指定されていません。なにを意味しているのか当ててみます<span class="w"> </span>...
 gpg:<span class="w"> </span>開始します。メッセージを打ってください<span class="w"> </span>...
@@ -216,16 +283,16 @@ gpg:<span class="w"> </span>開始します。メッセージを打ってくだ�
 
 <p>と表示されますが、当ててくれたことがないので<code>Ctrl-C</code>で終了する方が幸せになれると思います。
 基本的にすべての操作はオプションをつけるとやりやすいと思います。</p>
-<h4>オプションの指定</h4>
+<h4 id="_15">オプションの指定</h4>
 <p>オプションは、途中まで打って他とかぶらなければそのまま認識されるようです。
 例 : <code>--list-ke</code> → --list-keys以外にないので--list-keysとして認識される。</p>
-<h4>鍵の区別</h4>
+<h4 id="_16">鍵の区別</h4>
 <p>gpgでは鍵を個別に指定するのに複数の種類があるようです。
 鍵IDとなる<code>keyid</code>に<code>short</code>と<code>long</code>、そして鍵の指紋である<code>fingerprint</code>があります。オプションではほとんど<code>keyid</code>を指定しますが、時々<code>fingerprint</code>が必要なことがあります。<code>keyid</code>の<code>short</code>と<code>long</code>は、重複しなければ<code>short</code>でよいみたいです。また<code>keyid</code>といいながらユーザの氏名やメールアドレスを指定しても部分一致で表示してくれるみたいです。
 <code>keyid</code>をテキストに保存しておいて、毎回<code>cat my_keyid.txt</code>で読み込むという方法もいいかもしれません。</p>
-<h3>目的別操作方法</h3>
+<h3 id="_17">目的別操作方法</h3>
 <p>逆引きリファレンスみたいに使い方をメモしておきます。</p>
-<h4>最初の鍵ペア(主鍵)作成</h4>
+<h4 id="_18">最初の鍵ペア(主鍵)作成</h4>
 <p>早速鍵の生成に入りたいところですが、まずどんな種類の鍵を作るか考える必要があります。</p>
 <p>通常、鍵ペアを作成するためのコマンドとしては<code>gpg --gen-key</code>(gpg --generate-keyの略)があります。このコマンドを実行し、本名とメールアドレス、そして秘密鍵を守る為のパスワードを入力すると鍵ペアが作成されます。この方法で作成しても問題はありません。この場合はRSAの3072bitで生成されるみたいです。
 この場合、鍵ペアが二つ作られます。</p>
@@ -377,7 +444,7 @@ uid<span class="w">         </span><span class="o">[</span><span class="w">  </s
 </code></pre></div>
 
 <p><code>sec</code>行の<code>ed25519</code>の後にスラッシュがあり、その後に続いている8桁の英数字が鍵IDのショートバージョンになります。オプションを<code>short</code>から<code>long</code>に変えるともっと長いバージョンになりますが、大体shortで事が足ります。今は鍵のリストを表示しても一つしか出てきませんが、いろんな鍵をインポートしていくと増えるので、自分の鍵IDを記録しておき、<code>gpg -k E8FC0031</code>や<code>gpg -K E8FC0031</code>のような形で自分の鍵を表示すると見やすくなります。</p>
-<h4>副鍵の作成</h4>
+<h4 id="_19">副鍵の作成</h4>
 <p>次に主鍵に紐付く副鍵を作っていきます。SignとEncryptionとAuthenticationの機能を持つ鍵を作成すればOKです。</p>
 <p>副鍵の作成は、主鍵を編集モードで開いて、鍵の追加を行う形です。鍵の編集は<code>--edit-key</code>オプションで行います。ここでも<code>--expert</code>オプションをつける必要があります。つけないと、鍵の種類の選択にRSAとDSAとElgamalしか出てきません。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>--expert<span class="w"> </span>--edit-key<span class="w"> </span>E8FC0031
@@ -396,7 +463,7 @@ gpg&gt;<span class="w"> </span>
 </code></pre></div>
 
 <p>選択した鍵の詳細が表示された後に、コンソールが<code>gpg&gt;</code>に変わります。ここからは専用のコマンドで設定していきます。先ほどの主鍵の作成では<code>gpg</code>コマンドにオプションを指定していましたが、副鍵はまた違った形で混乱しやすいポイントです。<code>addkey</code>と入力して鍵の作成に進みます。EncryptionとSignとAuthenticationの3つが必要なので、この手順を3回繰り返すイメージです。</p>
-<h5>署名用の副鍵作成</h5>
+<h5 id="_20">署名用の副鍵作成</h5>
 <div class="highlight"><pre><span></span><code>gpg&gt;<span class="w"> </span>addkey
 ご希望の鍵の種類を選択してください:
 <span class="w">   </span><span class="o">(</span><span class="m">3</span><span class="o">)</span><span class="w"> </span>DSA<span class="w"> </span><span class="o">(</span>sign<span class="w"> </span>only<span class="o">)</span>
@@ -481,7 +548,7 @@ gpg&gt;<span class="w"> </span>
 $
 </code></pre></div>
 
-<h5>認証用の副鍵作成</h5>
+<h5 id="_21">認証用の副鍵作成</h5>
 <p>また<code>gpg --expert --edit-key KEYID</code>で鍵の編集から副鍵を作成します。
 ほぼ同じ手順なので、出力は一部省略します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>--expert<span class="w"> </span>--edit-key<span class="w"> </span>E8FC0031
@@ -553,7 +620,7 @@ gpg&gt;<span class="w"> </span>
 $
 </code></pre></div>
 
-<h5>暗号化用の副鍵作成</h5>
+<h5 id="_22">暗号化用の副鍵作成</h5>
 <p>鍵の編集から副鍵を作成します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>--expert<span class="w"> </span>--edit-key<span class="w"> </span>E8FC0031
 </code></pre></div>
@@ -600,7 +667,7 @@ gpg&gt;<span class="w"> </span>
 $<span class="w"> </span>
 </code></pre></div>
 
-<h5>作成した鍵の確認</h5>
+<h5 id="_23">作成した鍵の確認</h5>
 <p><code>gpg -k</code>を実行します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>-k
 /home/john/.gnupg/pubring.kbx
@@ -627,7 +694,7 @@ ssb<span class="w">   </span>cv25519<span class="w"> </span><span class="m">2022
 </code></pre></div>
 
 <p>秘密鍵の一覧が表示されます。同じように主鍵と副鍵３つが表示されます。</p>
-<h4>鍵のバックアップ</h4>
+<h4 id="_24">鍵のバックアップ</h4>
 <p>ついに鍵を作ったので、早速使いたいところですがまずは鍵のバックアップをしましょう。秘密鍵が消えたらもう何もできないので、大切に保管することが大事です。</p>
 <p>まずバックアップに使えるエクスポートがあります。そのエクスポートにはバイナリ形式とテキスト形式があります。バイナリorテキストは好みですが、テキストの方がコピペできたり使い勝手がよいので、ここではテキスト形式で説明をします。</p>
 <p>また、エクスポートの形式には複数ありますが、ここで３つ紹介します。</p>
@@ -638,7 +705,7 @@ ssb<span class="w">   </span>cv25519<span class="w"> </span><span class="m">2022
 </ul>
 <p>上記のうち、上二つだけでいいのではないかと思うかもしれません。実際の運用を考えた場合、今回の構成では署名や暗号化には副鍵を使います。その為主鍵が手元にある必要がありません。漏洩の可能性があるので、主鍵以外を手元に置いておく方が安全です。また、副鍵が漏洩したり無くなってしまった場合には、主鍵を元に副鍵を取り消し(Revoke)でき、新たに副鍵を作ってそちらを使うことができます。その場合にも公開鍵(と一緒のuid等)を他の人にお知らせするだけで済みます。</p>
 <p>あと、秘密鍵を失くしたり漏洩した時に取り消すためのRevocationファイル（失効証明書）もバックアップした方が良いです。主鍵を作成した時に自動で作成されていますが、探すのが面倒なのでこちらもコマンドでエクスポートしてバックアップしましょう。</p>
-<h5>公開鍵のエクスポート</h5>
+<h5 id="_25">公開鍵のエクスポート</h5>
 <p>公開鍵をテキストファイルとしてエクスポートします。<code>-a</code>オプションをつけると、テキスト形式になります。<code>--export</code>オプションの後には鍵IDを指定してください。下記の例では鍵ID E8FC0031の鍵をjohn-pub.ascにテキストファイルとしてエクスポートします。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gpg<span class="w"> </span>-a<span class="w"> </span>--export<span class="w"> </span>E8FC0031<span class="w"> </span>&gt;<span class="w"> </span>john-pub.asc
 </code></pre></div>
@@ -672,19 +739,19 @@ Xuj8ADEKBQD/XUhKmGOO/cM1UcjXIDdsa+/iDpoj1JdLaAjcdDT/ht4A/i/N2K4+
 
 <p>1行目がBEGIN PGP PUBLIC KEY BLOCKとなっており、Public keyつまり公開鍵ということがわかります。</p>
 <p>以下執筆中...</p>
-<h5>秘密鍵全部のエクスポート</h5>
-<h5>秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</h5>
-<h5>失効証明書のエクスポート</h5>
-<h4>秘密鍵の削除と副鍵の秘密鍵インポート</h4>
-<h4>ファイルへの署名</h4>
-<h4>ファイルの署名の検証</h4>
-<h4>ファイルの暗号化</h4>
-<h4>ファイルの復号化</h4>
-<h4>有効期限の更新</h4>
-<h4>新たな環境で鍵のインポート</h4>
-<h4>失効させる(主鍵)</h4>
-<h4>失効させる(副鍵)</h4>
-<h4>Githubへの登録</h4>
+<h5 id="_26">秘密鍵全部のエクスポート</h5>
+<h5 id="_27">秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</h5>
+<h5 id="_28">失効証明書のエクスポート</h5>
+<h4 id="_29">秘密鍵の削除と副鍵の秘密鍵インポート</h4>
+<h4 id="_30">ファイルへの署名</h4>
+<h4 id="_31">ファイルの署名の検証</h4>
+<h4 id="_32">ファイルの暗号化</h4>
+<h4 id="_33">ファイルの復号化</h4>
+<h4 id="_34">有効期限の更新</h4>
+<h4 id="_35">新たな環境で鍵のインポート</h4>
+<h4 id="_36">失効させる(主鍵)</h4>
+<h4 id="_37">失効させる(副鍵)</h4>
+<h4 id="github">Githubへの登録</h4>
 <div class="footnote">
 <hr>
 <ol>

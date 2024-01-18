@@ -89,7 +89,7 @@
                                                   title="Permalink to How to create a GitHub Pages using Pelican and Google Colaboratory">How to create a GitHub Pages using Pelican and Google Colaboratory</a></h2>
             <div class="entry-content blog-post">
                 <p>Pelican is known as a blog generator and uses Python. I want to update my blog easily with web based.</p>
-<h3>Work flow</h3>
+<h3 id="work-flow">Work flow</h3>
 <ol>
 <li>Create a empty repository for GitHub Pages. (<code>username</code>.github.io)</li>
 <li>Generate a personal access token. it's alternative way to not use a GitHub password.</li>
@@ -103,18 +103,18 @@
 <li>Google Drive</li>
 </ul>
 <hr>
-<h2>How to do</h2>
-<h3>Create a empty repository</h3>
+<h2 id="how-to-do">How to do</h2>
+<h3 id="create-a-empty-repository">Create a empty repository</h3>
 <p>The repository name needs to be <code>username</code>.github.io (ex. tmya.github.io). and will be URL is https://<code>username</code>.github.io/. username is github account's username.</p>
-<h3>Generate a personal access token</h3>
+<h3 id="generate-a-personal-access-token">Generate a personal access token</h3>
 <p>You can generate it here. <a href="https://github.com/settings/tokens">Personal access tokens</a></p>
 <p>Press <code>Generate new token</code> button and check <code>repo</code> checkbox. Note field can be anything, or <code>blog</code> for simplicity. Generated access token use it later.</p>
-<h3>Coding on Colab</h3>
+<h3 id="coding-on-colab">Coding on Colab</h3>
 <p>Open your <a href="https://drive.google.com/">Google Drive</a></p>
 <p>Create a folder for blog on Google Drive. (ex. pelican-blog) <code>My Drive &gt; pelican-blog</code> and create Colaboratory. (Right mouse click -&gt; More -&gt; Google Colaboratory)</p>
 <p>Next, connect the Colaboratory to Google Drive. Press <code>File</code> and then <code>Mount google drive</code> then it'll ask you allow access for Google Drive. Let's allow.</p>
 <p><strong>NOTE:</strong> If you save a file in Colaboratory, it'll all disappear after a certain period of time. so you should need to safe save for Google Drive.</p>
-<h3>Initialize a blog with Pelican.</h3>
+<h3 id="initialize-a-blog-with-pelican">Initialize a blog with Pelican.</h3>
 <p><strong>NOTE:</strong> cd is a Linux command. Add <code>!</code> or <code>%</code> to the head of the command for execute Linux command. but different between <code>!</code> and <code>%</code>. <code>!</code> will be executed temporarily and has no other effect. For example, <code>!cd</code> is will be executed <code>cd</code>, but the directory will not be changed at the end of execution. <code>%</code> is continue to have an effect.</p>
 <p>Add a new column of code on Colaboratory then type below.</p>
 <div class="highlight"><pre><span></span><code><span class="nf">%cd</span><span class="w"> </span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span>
@@ -164,7 +164,7 @@
 <span class="n">Done</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">My</span><span class="w"> </span><span class="n">Drive</span><span class="o">/</span><span class="n">pelican</span><span class="o">-</span><span class="n">blog</span>
 </code></pre></div>
 
-<h3>Write a article and publish</h3>
+<h3 id="write-a-article-and-publish">Write a article and publish</h3>
 <p>Write some article and save content directory. ( MyDrive -&gt; pelican-blog -&gt; content)</p>
 <ul>
 <li>Official guide to create an article. <a href="https://docs.getpelican.com/en/latest/quickstart.html#create-an-article">Create an article</a></li>

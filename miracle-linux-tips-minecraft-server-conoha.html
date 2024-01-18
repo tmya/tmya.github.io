@@ -90,7 +90,7 @@
             <div class="entry-content blog-post">
                 <p>みんな大好きマインクラフト。サーバを建てるにもCentOSを選ぶとサポートが切れるまで短い今、代替となるMIRACLE LINUXを使ってマインクラフトサーバをインストールしてみよう。とりあえず動かす方法です。細かい設定などはまた別の機会に。</p>
 <p>**前提としてConoHaにMIRACLE LINUX 8.4を導入の記事の作業が終わっている事を想定していますが、記事の説明通りだとサーバのスペックが低いので快適にプレイできないと思います。お金に余裕があればCPUやメモリが強いプランを選ぶと良いでしょう。ConoHaにMIRACLE LINUX 8.4を導入する方法は <a href="./miracle-linux-tips-deploy-on-conoha.html">こちら</a> **</p>
-<h3>必要な事</h3>
+<h3 id="_1">必要な事</h3>
 <ul>
 <li>サーバのダウンロード</li>
 <li>JAVAのインストール</li>
@@ -98,7 +98,7 @@
 <li>ファイヤウォールの設定</li>
 <li>ConoHaの接続許可ポートの設定</li>
 </ul>
-<h3>マインクラフトサーバの本体をダウンロード</h3>
+<h3 id="_2">マインクラフトサーバの本体をダウンロード</h3>
 <p>ConoHaのコンソールを開き、一般ユーザでログインします。まずはマインクラフトサーバを置くディレクトリを作成します。そして作業ディレクトリを作成したディレクトリに変更します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>minecraft-server
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>minecraft-server
@@ -130,14 +130,14 @@ server.jar<span class="w"> </span>start.sh
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
 </code></pre></div>
 
-<h3>JAVAの実行環境をインストール</h3>
+<h3 id="java">JAVAの実行環境をインストール</h3>
 <p>次に、サーバを実行するためのJAVAのインストールを行います。ここで<code>sudo</code>コマンドの登場です。パスワードを聞かれるので、ログインしたユーザのパスワードを入力します。java以外にも必要なパッケージが自動でインストールされます。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>java-latest-openjdk-headless
 <span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>XXXX:
 </code></pre></div>
 
 <p><strong>NOTE:</strong> JAVAのバージョンは複数ありますが、Minecraft1.17以降はJAVAのバージョン16以降が必要なようです。MLでは<code>java-latest-openjdkほにゃらら</code>がバージョン16になります。因みに<code>java-11-openjdkほにゃらら</code>だとバージョン11がインストールされます。</p>
-<h3>サーバの初期設定</h3>
+<h3 id="_3">サーバの初期設定</h3>
 <p>とりあえず一度起動しましょう。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./start.sh
 <span class="o">[</span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>main/ERROR<span class="o">]</span>:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>properties<span class="w"> </span>from<span class="w"> </span>file:<span class="w"> </span>server.properties
@@ -166,7 +166,7 @@ server-port<span class="o">=</span><span class="m">5432</span>
 query.port<span class="o">=</span><span class="m">5432</span>
 </code></pre></div>
 
-<h3>サーバの起動</h3>
+<h3 id="_4">サーバの起動</h3>
 <p>サーバを起動しましょう。いろいろ文字が表示されます。メモリ512MBでは非常に苦しく時間がかかるので、しばし待ちましょう。今回は起動に210秒かかりました。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./start.sh
 ~~略~~
@@ -181,7 +181,7 @@ query.port<span class="o">=</span><span class="m">5432</span>
 </code></pre></div>
 
 <p>と表示され、サーバが終了してコンソール画面に戻ってくると思います。</p>
-<h3>ファイヤウォールの設定</h3>
+<h3 id="_5">ファイヤウォールの設定</h3>
 <p>1種類目はMLのファイヤウォール設定です。現在のファイヤウォールの設定を確認します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-all
 <span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>XXXX:
@@ -225,14 +225,14 @@ success
 </code></pre></div>
 
 <p><code>success</code>と表示がされればOKです。</p>
-<h3>ConoHaの接続許可ポートの設定</h3>
+<h3 id="conoha">ConoHaの接続許可ポートの設定</h3>
 <p>2種類目はVPSの接続許可ポートの設定です。</p>
 <p>ConoHaのWebから<a href="https://manage.conoha.jp/Service/">サーバーリストを参照</a>し、ネームタグの列の作成したサーバをクリックします。</p>
 <p><img alt="サーバーリスト" src="./images/conoha-server-list-1.jpg"></p>
 <p>画面下部の接続許可ポートのうち、<code>PostgreSQL (5432)</code>にチェックを入れて数秒待つと画面左下に<code>成功しました。</code>と表示されます。</p>
 <p><img alt="接続許可ポートにチェック" src="./images/conoha-port-open-5432.jpg"></p>
 <p>以上で設定は完了です。</p>
-<h3>ゲームの起動と接続</h3>
+<h3 id="_6">ゲームの起動と接続</h3>
 <p>マインクラフト(バージョン 1.17.1)を起動し、<code>マルチプレイ</code>から<code>サーバーを追加</code>をクリックします。<code>サーバー名</code>はわかりやすい値で好きなように設定し、<code>サーバーアドレス</code>には<code>ConoHaのIPv4のIPアドレス</code>:5432を入力し、完了をクリックします。</p>
 <p><img alt="サーバーの追加" src="./images/mc-add-serv.jpg"></p>
 <p><img alt="ConoHaのIPアドレス" src="./images/conoha-serv-ip.jpg"></p>

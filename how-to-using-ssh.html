@@ -96,7 +96,7 @@
 <li>ConoHaの接続許可ポートの設定</li>
 <li>接続</li>
 </ul>
-<h3>ssh鍵の生成</h3>
+<h3 id="ssh">ssh鍵の生成</h3>
 <p>スタートメニューをクリックしてメニューバーの検索欄に<code>cmd</code>と入力するとコマンドプロンプトが表示されるので、クリックして起動します。</p>
 <p><img alt="コマンドプロンプト" src="./images/win-start-cmd.jpg"></p>
 <p>黒い背景のウィンドウが表示されるので、下記のコマンドを入力してエンターを押します。</p>
@@ -141,7 +141,7 @@ C:<span class="se">\U</span>sers<span class="se">\X</span>XXXX&gt;
 <div class="highlight"><pre><span></span><code>ssh-ed25519<span class="w"> </span>AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd
 </code></pre></div>
 
-<h3>ConoHaへssh鍵の登録と設定</h3>
+<h3 id="conohassh">ConoHaへssh鍵の登録と設定</h3>
 <p>ConoHaのWebにログインしコンソール画面を表示します。コンソール内でログイン後、下記のコマンドを順番に実行します。なお、<code>echo ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd &gt;&gt; ~/.ssh/authorized_keys</code>の行のうち、<code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2HnRkz2jknsAdfUSzg96ggYtKYQPgwYO1Ev0tUk3wd</code>の部分は先ほどのコマンドプロンプトで表示した鍵の値をコピーして書き換えてください。このコマンドも長いので、コンソールのテキスト送信で行うと楽です。</p>
 <p><img alt="sshkey" src="./images/win-type-sshpubkey.jpg"></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>~/.ssh
@@ -162,12 +162,12 @@ sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
 </code></pre></div>
 
-<h3>ConoHaの接続許可ポートの設定</h3>
+<h3 id="conoha">ConoHaの接続許可ポートの設定</h3>
 <p>今度はConoHaのWeb上での作業です。ConoHaにログインするとサーバの名前が表示されているはずなので、右側の<code>詳細設定</code>をクリックします。</p>
 <p>サーバの詳細設定画面では下にスクロールすると下部に<code>接続許可ポート</code>の設定がありますので、<code>□ SSH(22)</code>をクリックしてチェックマークをつけます。</p>
 <p><img alt="接続許可ポート" src="./images/conoha-port-open-5432.jpg"></p>
 <p>↑この図ではチェックついていませんがチェックしてください。</p>
-<h3>接続</h3>
+<h3 id="_1">接続</h3>
 <p>あとはもう接続するのみです。コマンドプロンプトからsshコマンドで接続可能です。オプションには<code>ユーザ名</code>@<code>IPアドレス</code>を指定します。ユーザ名はMLで作成した一般ユーザ名、IPアドレスにはConoHaの詳細設定で確認できるIPアドレスです。</p>
 <p><strong>例:</strong> ssh tmya@192.168.0.1</p>
 <p><img alt="ssh接続" src="./images/win-ssh-connect.jpg"></p>

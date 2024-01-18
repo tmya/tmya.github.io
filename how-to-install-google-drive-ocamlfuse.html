@@ -90,7 +90,7 @@
             <div class="entry-content blog-post">
                 <p>GoogleドライブをMIRACLE LINUXでも使いたい。</p>
 <p><a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse - Github</a>を信じられる人向け。</p>
-<h3>前提</h3>
+<h3 id="_1">前提</h3>
 <ul>
 <li>Homebrewが使用可能</li>
 <li>インストールは<a href="https://brew.sh/index_ja">公式サイト</a>に倣えば簡単。</li>
@@ -100,19 +100,19 @@
 $<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/home/linuxbrew/.linuxbrew/bin/brew<span class="w"> </span>shellenv<span class="k">)</span><span class="s2">&quot;</span><span class="w">   </span>
 </code></pre></div>
 
-<h3>手順</h3>
+<h3 id="_2">手順</h3>
 <ol>
 <li>opamのインストールと初期設定</li>
 <li>google-drive-ocamlfuseのインストール</li>
 <li>google-drive-ocamlfuseの起動と設定</li>
 </ol>
-<h2>opamのインストールと初期設定</h2>
+<h2 id="opam">opamのインストールと初期設定</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>opam
 $<span class="w"> </span>opam<span class="w"> </span>init
 </code></pre></div>
 
 <p>少し待つと、<code>Do you want opam to modify ~/.bash_profile? [N/y/f]</code>とか聞かれるので、<code>y</code>を入力してからEnter。その後数分待ちます。最後に<code>Done</code>と表示されて完了です。</p>
-<h2>google-drive-ocamlfuseのインストール</h2>
+<h2 id="google-drive-ocamlfuse">google-drive-ocamlfuseのインストール</h2>
 <p>下記コマンドを実行します。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>opam<span class="w"> </span>install<span class="w"> </span>google-drive-ocamlfuse
 </code></pre></div>
@@ -134,7 +134,7 @@ $<span class="w"> </span>opam<span class="w"> </span>init
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>opam<span class="w"> </span>env<span class="k">)</span>
 </code></pre></div>
 
-<h2>google-drive-ocamlfuseの起動と設定</h2>
+<h2 id="google-drive-ocamlfuse_1">google-drive-ocamlfuseの起動と設定</h2>
 <p>初回起動でgoogleの認証を行います。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>google-drive-ocamlfuse
 </code></pre></div>

@@ -88,12 +88,12 @@
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-yubikey-manager-cui.html" rel="bookmark"
                                                   title="Permalink to Yubikeyを使う yubikey-manager (CUI)">Yubikeyを使う yubikey-manager (CUI)</a></h2>
             <div class="entry-content blog-post">
-                <h2>yubikey-manager</h2>
+                <h2 id="yubikey-manager">yubikey-manager</h2>
 <p>Yubikeyをセットアップするためには、yubikey-managerが必要です。
 今回はCUI版をインストールします。</p>
 <p><a href="https://docs.yubico.com/software/yubikey/tools/ykman/Install_ykman.html">公式の手順</a>によると、<code>pip install --user yubikey-manager</code>でインストール可能と表示されます。</p>
 <p>MIRACLE LINUX 9では、あらかじめいくつかのパッケージをインストールしないとこのコマンドに失敗してしまうので、その備忘録です。</p>
-<h3>事前に必要なパッケージ類のインストール</h3>
+<h3 id="_1">事前に必要なパッケージ類のインストール</h3>
 <p>開発ツール一式のインストール</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>groupinstall<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
 </code></pre></div>
@@ -106,12 +106,12 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>pcsc-lite<span class="w"> </span>pcsc-lite-devel<span class="w"> </span>swig<span class="w"> </span>python-devel
 </code></pre></div>
 
-<h3>yubikey-managerのインストール</h3>
+<h3 id="yubikey-manager_1">yubikey-managerのインストール</h3>
 <p>ここで公式通りのコマンドを実行してインストールを行います。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>yubikey-manager
 </code></pre></div>
 
-<h3>確認</h3>
+<h3 id="_2">確認</h3>
 <p>YubikeyをUSBに接続して次のコマンドを実行するとYubikeyのデバイス情報を取得することが可能です。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ykman<span class="w"> </span>--device<span class="w"> </span><span class="sb">`</span>ykman<span class="w"> </span>list<span class="w"> </span>--serials<span class="sb">`</span><span class="w"> </span>info
 </code></pre></div>

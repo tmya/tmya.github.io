@@ -90,7 +90,7 @@
             <div class="entry-content blog-post">
                 <p>wget2をインストールしよう。</p>
 <p>sudo dnf install texinfo lzip</p>
-<h3>nkfパッケージはどこ</h3>
+<h3 id="nkf">nkfパッケージはどこ</h3>
 <p>とりあえず<code>dnf</code>でインストールしようとすると見つかりません。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nkf
 一致した引数がありません:<span class="w"> </span>nkf
@@ -101,7 +101,7 @@
 <p><strong>NOTE:</strong> CentOS Stream release 8であれば<code>CentOS-Stream-PowerTools.repo</code>が存在していて<code>dnf config-manager</code>ほにゃららで有効にすると簡単にリポジトリの追加とインストールが可能なので、MLもきっとそうなると信じています。</p>
 <p><img alt="nkfのパッケージ" src="../images/nkf-2.1.4.jpg"></p>
 <p>リポジトリをミラーリングして<code>createrepo</code>という手もあるけれどそろそろ公開してくれると期待して今回はやりません。</p>
-<h3>nkfのインストール</h3>
+<h3 id="nkf_1">nkfのインストール</h3>
 <p>パッケージだけダウンロードして<code>localinstall</code>オプションを使ってインストールしてみます。依存関係に問題がでないのでこれだけで導入可能です。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>wget<span class="w"> </span>https://repo.dist.miraclelinux.net/miraclelinux/8-latest/PowerTools/x86_64/os/Packages-BASE/nkf-2.1.4-8.el8.x86_64.rpm
 $<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>localinstall<span class="w"> </span>./nkf-2.1.4-8.el8.x86_64.rpm

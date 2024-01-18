@@ -88,16 +88,16 @@
             <h2 class="post_title post_detail"><a href="./setup-to-join-active-directory-on-centos-8.html" rel="bookmark"
                                                   title="Permalink to Setup to join Active Directory on CentOS 8">Setup to join Active Directory on CentOS 8</a></h2>
             <div class="entry-content blog-post">
-                <h3>Complete install CentOS with server option (without GUI).</h3>
+                <h3 id="complete-install-centos-with-server-option-without-gui">Complete install CentOS with server option (without GUI).</h3>
 <p>Setting DNS server IP address the same as Active Directory Server IP address.<br>
 Do not edit config manually /etc/resolv.conf. If you forget to edit DNS IP address in install operation, Edit on web console later.</p>
-<h3>Open url https://YOURSERVER:9090/ when on your console type command below.</h3>
+<h3 id="open-url-httpsyourserver9090-when-on-your-console-type-command-below">Open url https://YOURSERVER:9090/ when on your console type command below.</h3>
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>cockpit.socket
 </code></pre></div>
 
-<h3>Click "System" -&gt; "Domain" and type Admin's(or Manager account) id/pass, domain.</h3>
+<h3 id="click-system-domain-and-type-adminsor-manager-account-idpass-domain">Click "System" -&gt; "Domain" and type Admin's(or Manager account) id/pass, domain.</h3>
 <p>Important: Do not use IP address for domain field. sssd does not resolve domain by IP address.</p>
-<h3>Edit /etc/sssd/sssd.conf (option. I prefer this settings.)</h3>
+<h3 id="edit-etcsssdsssdconf-option-i-prefer-this-settings">Edit /etc/sssd/sssd.conf (option. I prefer this settings.)</h3>
 <p>If you want to custom user's home directory and user name. </p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>domain/%YOURDOMAIN%<span class="o">]</span>
 <span class="nv">use_fully_qualified_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>False

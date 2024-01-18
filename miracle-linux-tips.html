@@ -92,12 +92,12 @@
 とりあえず無償提供の物を使っても2030年5月まではアップデートが提供されるらしいので期待できる。
 CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその際の気付いたことをメモしていく予定。
 日本発ディストリなので、ML関係の記事は日本語で書くよ。</p>
-<h2>気をつけるポイント</h2>
-<h3>パーティション構成</h3>
+<h2 id="_1">気をつけるポイント</h2>
+<h3 id="_2">パーティション構成</h3>
 <p>自動構成だと<code>/</code>と<code>/home</code>でパーティションが分かれている。場合によってはまとめてもいいかもしれない。</p>
-<h3>インストール後</h3>
+<h3 id="_3">インストール後</h3>
 <p>日本語入力は<code>半角/英数</code>や<code>Ctrl + Space</code>を押してもすぐには出来無い。画面右上のタスクバーから日本語入力に切り替えると、キーボードでの切り替えが可能になる。（公式にも書いてある）</p>
-<h2>やってみたこと一覧</h2>
+<h2 id="_4">やってみたこと一覧</h2>
 <ul>
 <li>pyenv, pipenvの導入</li>
 <li>GnuPGの導入</li>
@@ -108,19 +108,19 @@ CentOSの代替としてMIRACLE LINUX(以下 ML)を使ってみるのでその�
 <li>MIRACLE LINUX on WSL2</li>
 <li>VSCodeの導入</li>
 </ul>
-<h3>VirtualBoxでやったこと</h3>
+<h3 id="virtualbox">VirtualBoxでやったこと</h3>
 <p>元のWindows10マシンにSSDを追加してMLをインストールし、物理SSDにアクセスするvmdkを用意する。あとはVirtualBoxにそのvmdkを追加するとWindows10が起動する。なおライセンスに注意。
 <img alt="Windows10 on MIRACLE LINUX" src="./images/ml_win_d.png"></p>
-<h2>気付いたこと</h2>
-<h3>マスコット画像</h3>
+<h2 id="_5">気付いたこと</h2>
+<h3 id="_6">マスコット画像</h3>
 <p><code>/usr/share/backgrounds</code> にみらくるちゃんとカーネルくんの背景画像が存在する。
 <img alt="みらくるちゃんとカーネルくん" src="./images/miracle_kernel.jpg"></p>
-<h3>ちょっとしたメモ</h3>
-<h4>ホームディレクトリのフォルダ名を英語にする。</h4>
+<h3 id="_7">ちょっとしたメモ</h3>
+<h4 id="_8">ホームディレクトリのフォルダ名を英語にする。</h4>
 <div class="highlight"><pre><span></span><code><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>xdg-user-dirs-gtk-update
 </code></pre></div>
 
-<h4>RDPサーバを動かす</h4>
+<h4 id="rdp">RDPサーバを動かす</h4>
 <p><a href="https://www.cybertrust.co.jp/blog/linux-oss/linux/miraclelinux84-repository.html">ここ</a>を参考にEPELを有効にした後下記のコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>xrdp<span class="w"> </span>tigervnc-server
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>xrdp
@@ -131,7 +131,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;PREFERRED=env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic&quot; &gt; /etc/sysconfig/desktop&#39;</span>
 </code></pre></div>
 
-<h4>C# sdkのインストール</h4>
+<h4 id="c-sdk">C# sdkのインストール</h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>dotnet-sdk-5.0
 </code></pre></div>
 

@@ -88,13 +88,13 @@
             <h2 class="post_title post_detail"><a href="./upgrade-vyos-118-to-120.html" rel="bookmark"
                                                   title="Permalink to Upgrade VyoS 1.1.8 to 1.2.0">Upgrade VyoS 1.1.8 to 1.2.0</a></h2>
             <div class="entry-content blog-post">
-                <h3>Memo</h3>
+                <h3 id="memo">Memo</h3>
 <p>VyOS seemed to change release policy ago.
 LTS(Long Term Support) Release is provides to subscriber.
 Subscriber includes commercial customer and contributor.
 If you are not subscribed, subscribe or get rolling release builds.</p>
 <p>Here is about upgrade v1.1.8 to v1.2.0(rolling release).</p>
-<h2>Open your console</h2>
+<h2 id="open-your-console">Open your console</h2>
 <p>Connect ssh or other way to VyOS.<br>
 Check to running image.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>show<span class="w"> </span>system<span class="w"> </span>image
@@ -108,7 +108,7 @@ The<span class="w"> </span>system<span class="w"> </span>currently<span class="w
 <span class="w">   </span><span class="m">5</span>:<span class="w"> </span>Old-non-image-installation
 </code></pre></div>
 
-<h2>Download and add image</h2>
+<h2 id="download-and-add-image">Download and add image</h2>
 <p>Download latest rolling release build or choose what you like.<br>
 <a href="https://downloads.vyos.io/?dir=rolling/current/amd64">VyOS Downloads</a></p>
 <p>!Notice! If you are reboot soon will boot new image but sometimes occur problem.<br>
@@ -130,7 +130,7 @@ The<span class="w"> </span>system<span class="w"> </span>currently<span class="w
 <span class="w">   </span><span class="m">6</span>:<span class="w"> </span>Old-non-image-installation
 </code></pre></div>
 
-<h2>Reboot to apply new image</h2>
+<h2 id="reboot-to-apply-new-image">Reboot to apply new image</h2>
 <p>Let's reboot.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>reboot
 Proceed<span class="w"> </span>with<span class="w"> </span>reboot?<span class="w"> </span><span class="o">(</span>Yes/No<span class="o">)</span><span class="w"> </span><span class="o">[</span>No<span class="o">]</span><span class="w"> </span>Yes
