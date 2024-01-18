@@ -30,11 +30,11 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:url" content="./miracle-linux-9-tips-gpg.html">
     <meta name="twitter:title" content="tmya note ~ GnuPGを運用する">
-    <meta name="twitter:description" content="目次 GnuPGを運用する GnuPGとは MIRACLE LINUX 9 での使い方 GnuPGを使う前に 公開鍵暗号 暗号化用途 署名用途 鍵配送用途 公開鍵と秘密鍵の関係 GnuPGのデータ構造 公開鍵データ た …">
+    <meta name="twitter:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …">
 
     <!-- Facebook Meta Data -->
     <meta property="og:title" content="tmya note ~ GnuPGを運用する"/>
-    <meta property="og:description" content="目次 GnuPGを運用する GnuPGとは MIRACLE LINUX 9 での使い方 GnuPGを使う前に 公開鍵暗号 暗号化用途 署名用途 鍵配送用途 公開鍵と秘密鍵の関係 GnuPGのデータ構造 公開鍵データ た …"/>
+    <meta property="og:description" content="GnuPGを運用する GnuPGとは GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。 データの暗号化や署名の …"/>
     <meta property="og:image" content=""/>
 </head>
 
@@ -88,74 +88,7 @@
             <h2 class="post_title post_detail"><a href="./miracle-linux-9-tips-gpg.html" rel="bookmark"
                                                   title="Permalink to GnuPGを運用する">GnuPGを運用する</a></h2>
             <div class="entry-content blog-post">
-                <p>目次</p>
-<!-- TOC -->
-<ul>
-<li><a href="#gnupg%E3%82%92%E9%81%8B%E7%94%A8%E3%81%99%E3%82%8B">GnuPGを運用する</a><ul>
-<li><a href="#gnupg%E3%81%A8%E3%81%AF">GnuPGとは</a></li>
-<li><a href="#miracle-linux-9-%E3%81%A7%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">MIRACLE LINUX 9 での使い方</a></li>
-<li><a href="#gnupg%E3%82%92%E4%BD%BF%E3%81%86%E5%89%8D%E3%81%AB">GnuPGを使う前に</a><ul>
-<li><a href="#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%9A%97%E5%8F%B7">公開鍵暗号</a><ul>
-<li><a href="#%E6%9A%97%E5%8F%B7%E5%8C%96%E7%94%A8%E9%80%94">暗号化用途</a></li>
-<li><a href="#%E7%BD%B2%E5%90%8D%E7%94%A8%E9%80%94">署名用途</a></li>
-<li><a href="#%E9%8D%B5%E9%85%8D%E9%80%81%E7%94%A8%E9%80%94">鍵配送用途</a></li>
-<li><a href="#%E5%85%AC%E9%96%8B%E9%8D%B5%E3%81%A8%E7%A7%98%E5%AF%86%E9%8D%B5%E3%81%AE%E9%96%A2%E4%BF%82">公開鍵と秘密鍵の関係</a></li>
-</ul>
-</li>
-<li><a href="#gnupg%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">GnuPGのデータ構造</a><ul>
-<li><a href="#%E5%85%AC%E9%96%8B%E9%8D%B5%E3%83%87%E3%83%BC%E3%82%BF">公開鍵データ</a></li>
-<li><a href="#%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93%E3%81%AE%E9%8D%B5">たくさんの鍵</a></li>
-<li><a href="#%E9%8D%B5%E3%81%AE%E6%A9%9F%E8%83%BD">鍵の機能</a></li>
-<li><a href="#%E4%B8%BB%E9%8D%B5%E3%81%A8%E5%89%AF%E9%8D%B5">主鍵と副鍵</a></li>
-<li><a href="#%E9%8D%B5%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%A0%B4%E6%89%80">鍵データの場所</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#gnupg%E3%82%92%E4%BD%BF%E3%81%86">GnuPGを使う</a><ul>
-<li><a href="#%E6%A6%82%E8%A6%81">概要</a><ul>
-<li><a href="#%E5%BF%83%E6%A7%8B%E3%81%88">心構え</a></li>
-<li><a href="#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%81%A4%E3%81%91%E3%82%88%E3%81%86">オプションをつけよう</a></li>
-<li><a href="#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%8C%87%E5%AE%9A">オプションの指定</a></li>
-<li><a href="#%E9%8D%B5%E3%81%AE%E5%8C%BA%E5%88%A5">鍵の区別</a></li>
-</ul>
-</li>
-<li><a href="#%E7%9B%AE%E7%9A%84%E5%88%A5%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95">目的別操作方法</a><ul>
-<li><a href="#%E6%9C%80%E5%88%9D%E3%81%AE%E9%8D%B5%E3%83%9A%E3%82%A2%E4%B8%BB%E9%8D%B5%E4%BD%9C%E6%88%90">最初の鍵ペア主鍵作成</a></li>
-<li><a href="#%E5%89%AF%E9%8D%B5%E3%81%AE%E4%BD%9C%E6%88%90">副鍵の作成</a><ul>
-<li><a href="#%E7%BD%B2%E5%90%8D%E7%94%A8%E3%81%AE%E5%89%AF%E9%8D%B5%E4%BD%9C%E6%88%90">署名用の副鍵作成</a></li>
-<li><a href="#%E8%AA%8D%E8%A8%BC%E7%94%A8%E3%81%AE%E5%89%AF%E9%8D%B5%E4%BD%9C%E6%88%90">認証用の副鍵作成</a></li>
-<li><a href="#%E6%9A%97%E5%8F%B7%E5%8C%96%E7%94%A8%E3%81%AE%E5%89%AF%E9%8D%B5%E4%BD%9C%E6%88%90">暗号化用の副鍵作成</a></li>
-<li><a href="#%E4%BD%9C%E6%88%90%E3%81%97%E3%81%9F%E9%8D%B5%E3%81%AE%E7%A2%BA%E8%AA%8D">作成した鍵の確認</a></li>
-</ul>
-</li>
-<li><a href="#%E9%8D%B5%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97">鍵のバックアップ</a><ul>
-<li><a href="#%E5%85%AC%E9%96%8B%E9%8D%B5%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88">公開鍵のエクスポート</a></li>
-<li><a href="#%E7%A7%98%E5%AF%86%E9%8D%B5%E5%85%A8%E9%83%A8%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88">秘密鍵全部のエクスポート</a></li>
-<li><a href="#%E7%A7%98%E5%AF%86%E9%8D%B5%E3%81%AE%E5%89%AF%E9%8D%B5%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E4%B8%BB%E9%8D%B5%E4%BB%A5%E5%A4%96%E3%82%92%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88">秘密鍵の副鍵エクスポート（主鍵以外をエクスポート）</a></li>
-<li><a href="#%E5%A4%B1%E5%8A%B9%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88">失効証明書のエクスポート</a></li>
-</ul>
-</li>
-<li><a href="#%E7%A7%98%E5%AF%86%E9%8D%B5%E3%81%AE%E5%89%8A%E9%99%A4%E3%81%A8%E5%89%AF%E9%8D%B5%E3%81%AE%E7%A7%98%E5%AF%86%E9%8D%B5%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">秘密鍵の削除と副鍵の秘密鍵インポート</a></li>
-<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%B8%E3%81%AE%E7%BD%B2%E5%90%8D">ファイルへの署名</a></li>
-<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%BD%B2%E5%90%8D%E3%81%AE%E6%A4%9C%E8%A8%BC">ファイルの署名の検証</a></li>
-<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%9A%97%E5%8F%B7%E5%8C%96">ファイルの暗号化</a></li>
-<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%BE%A9%E5%8F%B7%E5%8C%96">ファイルの復号化</a></li>
-<li><a href="#%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90%E3%81%AE%E6%9B%B4%E6%96%B0">有効期限の更新</a></li>
-<li><a href="#%E6%96%B0%E3%81%9F%E3%81%AA%E7%92%B0%E5%A2%83%E3%81%A7%E9%8D%B5%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">新たな環境で鍵のインポート</a></li>
-<li><a href="#%E5%A4%B1%E5%8A%B9%E3%81%95%E3%81%9B%E3%82%8B%E4%B8%BB%E9%8D%B5">失効させる主鍵</a></li>
-<li><a href="#%E5%A4%B1%E5%8A%B9%E3%81%95%E3%81%9B%E3%82%8B%E5%89%AF%E9%8D%B5">失効させる副鍵</a></li>
-<li><a href="#github%E3%81%B8%E3%81%AE%E7%99%BB%E9%8C%B2">Githubへの登録</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-
-<h1>GnuPGを運用する</h1>
+                <h1>GnuPGを運用する</h1>
 <h2>GnuPGとは</h2>
 <p>GnuPGを使うと、通信の秘密を守ることができます。そのために公開鍵暗号方式が採用されています。</p>
 <p>データの暗号化や署名の用途に使うことが多いです。</p>
