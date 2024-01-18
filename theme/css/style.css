@@ -237,6 +237,17 @@ aside > h2 {
   border-bottom: 3px solid #328cc7;
 } 
 
+/* custom by Akio Tomita */
+div.admonition {
+  padding: 1em;
+  border-radius: 2px;
+}
+div.admonition.hint {
+  background-color: #1DAEDF;
+}
+div.admonition-title {
+  font-weight: 800;
+}
 
 /*--------Responsive------------*/
 
